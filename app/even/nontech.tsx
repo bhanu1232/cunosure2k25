@@ -4,8 +4,6 @@ import Section from "@/components/layout/section";
 import Heading from "../../components/atoms/heading";
 import { fun } from "@/constants";
 import Image from "next/image";
-import { GradientLight } from "@/components/design/benefits";
-import ClipPath from "@/components/svg/clip-path";
 import Link from "next/link";
 
 type Props = {};
