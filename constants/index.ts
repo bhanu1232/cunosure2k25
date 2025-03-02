@@ -515,7 +515,7 @@ export const events = [
     - Frontend Development
     - Responsive Design
     - UI/UX Implementation
-    - Web Performance
+    - Web Performance.
     
     💻 Event Format:
     - 6-hour development challenge
