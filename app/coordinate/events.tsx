@@ -61,7 +61,7 @@ const Benefits = () => {
               {/* Coordinator Info */}
               <div className="text-center">
                 <h3 className="mb-2 text-xl font-semibold text-white">{item.coordinatorName}</h3>
-                <p className="mb-4 text-sm text-n-3">Student Coordinator</p>
+                <p className="mb-4 text-sm text-n-3">Student Organizer</p>
               </div>
 
               {/* Contact Links */}

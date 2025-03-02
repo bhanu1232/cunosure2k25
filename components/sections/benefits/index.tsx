@@ -17,7 +17,7 @@ const Benefits = (props: Props) => {
   return (
     <Section id="features">
       <div className="container relative z-2">
-        <Heading className="md:max-w-md lg:max-w-2xl" title="Featured Events at Cynosure" />
+        <Heading className="md:max-w-md lg:max-w-2xl" title="Top Events at Cynosure" />
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {mixedEvents.map((item) => (

@@ -350,61 +350,102 @@ export const benefits = [
 
 export const events = [
   {
-    id: "0",
+    id: "6",
     type: "tech",
-    title: "Hackathon",
-    text: "24-hour coding marathon to build innovative solutions. Showcase your coding skills and creativity in this flagship event!",
+    title: "Code Marathon",
+    text: "Test your endurance and coding skills in this long-format programming challenge.",
     backgroundUrl: "assets/benefits/card-1.svg",
-    iconUrl: benefitIcon1,
+    iconUrl: benefitIcon3,
     imageUrl: benefitImage2,
-    prize: "25000",
-    fullDescription: `Join us for Cynosure 2024's premier Hackathon! 
+    prize: "20000",
+    fullDescription: `Push your limits in our 12-hour Code Marathon!
 
-    🔥 Event Highlights:
-    - 24-hour intensive coding challenge
-    - Build innovative solutions for real-world problems
-    - Team collaboration opportunity
-    - Industry expert mentoring
-    - Networking with tech enthusiasts
+    🏃‍♂️ Marathon Format:
+    - 12-hour coding challenge
+    - Multiple problem sets
+    - Progressive difficulty
+    - Checkpoint submissions
     
-    🎯 Problem Statements:
-    - AI/ML Solutions
-    - Web/Mobile Applications
-    - IoT & Hardware
-    - Open Innovation
-    
-    🏆 Prize Pool:
-    - First Prize: ₹25,000
-    - Second Prize: ₹15,000
-    - Third Prize: ₹10,000`,
+    🎯 Challenge Areas:
+    - Algorithm Design
+    - Problem Solving
+    - Code Optimization
+    - Debug Challenges`,
     rules: [
-      "Team size: 2-4 members",
-      "24-hour time limit",
-      "Original work only",
-      "Use of open-source libraries allowed",
-      "Code must be written during hackathon",
-      "Final presentation required",
+      "Individual participation",
+      "12-hour time limit",
+      "Checkpoint submissions required",
+      "Multiple language support",
+      "Original solutions only",
     ],
     requirements: [
+      "Strong coding background",
       "Laptop with charger",
-      "Valid college ID",
-      "Development tools",
-      "GitHub account",
-      "Basic coding knowledge",
+      "Development environment",
+      "Energy drinks (recommended)",
     ],
     coordinators: [
-      {
-        name: "Swaroop",
-        insta: "swaroopkohli18",
-        phone: "86396 51716",
-      },
       {
         name: "Sudhansu Reddy",
         insta: "p_sudansu_reddy",
         phone: "95153 65601",
       },
+      {
+        name: "Susheel Kumar",
+        insta: "susheel_kumar",
+        phone: "8688970995",
+      },
     ],
   },
+  {
+    id: "4",
+    type: "tech",
+    title: "Blind Coding",
+    text: "Show off your competitive programming skills in this fast-paced coding contest.",
+    backgroundUrl: "assets/benefits/card-5.svg",
+    iconUrl: benefitIcon1,
+    imageUrl: benefitImage2,
+    prize: "15000",
+    fullDescription: `Compete in our high-energy competitive programming contest!
+
+    🏆 Contest Format:
+    - Multiple coding problems
+    - Time-based scoring
+    - Various difficulty levels
+    - Live leaderboard
+    
+    🎯 Problem Categories:
+    - Data Structures
+    - Algorithms
+    - Mathematical Problems
+    - Logic Puzzles`,
+    rules: [
+      "Individual participation",
+      "Time limit: 3 hours",
+      "Any programming language allowed",
+      "Plagiarism check enforced",
+    ],
+    requirements: [
+      "Competitive programming experience",
+      "Laptop required",
+      "Internet connectivity",
+      "HackerRank account",
+    ],
+    coordinators: [
+      {
+        name: "Rahithya",
+        insta: "rahithya_22",
+        phone: "90142 42562",
+      },
+      {
+        name: "Pavan Kumar",
+        insta: "__pavankumar_17",
+        phone: "79898 83868",
+      },
+    ],
+  },
+  
+  
   {
     id: "1",
     type: "tech",
@@ -451,6 +492,53 @@ export const events = [
         name: "Pavan Kumar",
         insta: "__pavankumar_17",
         phone: "79898 83868",
+      },
+    ],
+  },
+  {
+    id: "5",
+    type: "tech",
+    title: "Ideathon",
+    text: "Present your innovative ideas and solutions to real-world problems.",
+    backgroundUrl: "assets/benefits/card-6.svg",
+    iconUrl: benefitIcon2,
+    imageUrl: benefitImage2,
+    prize: "10000",
+    fullDescription: `Transform your innovative ideas into impactful solutions!
+
+    🎯 Focus Areas:
+    - Social Innovation
+    - Technology Solutions
+    - Environmental Impact
+    - Business Ideas
+    
+    📋 Event Format:
+    - Idea presentation
+    - Q&A rounds
+    - Mentor feedback
+    - Final pitch`,
+    rules: [
+      "Team size: 2-3 members",
+      "Original ideas only",
+      "10-minute presentation",
+      "5-minute Q&A",
+    ],
+    requirements: [
+      "Presentation slides",
+      "Project documentation",
+      "Basic prototype (if applicable)",
+      "Team registration",
+    ],
+    coordinators: [
+      {
+        name: "Swaroop",
+        insta: "swaroopkohli18",
+        phone: "86396 51716",
+      },
+      {
+        name: "Sudhansu Reddy",
+        insta: "p_sudansu_reddy",
+        phone: "95153 65601",
       },
     ],
   },
@@ -548,86 +636,49 @@ export const events = [
       },
     ],
   },
+
   {
-    id: "4",
+    id: "0",
     type: "tech",
-    title: "Dazzle Coding",
-    text: "Show off your competitive programming skills in this fast-paced coding contest.",
-    backgroundUrl: "assets/benefits/card-5.svg",
+    title: "Hackathon",
+    text: "24-hour coding marathon to build innovative solutions. Showcase your coding skills and creativity in this flagship event!",
+    backgroundUrl: "assets/benefits/card-1.svg",
     iconUrl: benefitIcon1,
     imageUrl: benefitImage2,
-    prize: "15000",
-    fullDescription: `Compete in our high-energy competitive programming contest!
+    prize: "25000",
+    fullDescription: `Join us for Cynosure 2024's premier Hackathon! 
 
-    🏆 Contest Format:
-    - Multiple coding problems
-    - Time-based scoring
-    - Various difficulty levels
-    - Live leaderboard
+    🔥 Event Highlights:
+    - 24-hour intensive coding challenge
+    - Build innovative solutions for real-world problems
+    - Team collaboration opportunity
+    - Industry expert mentoring
+    - Networking with tech enthusiasts
     
-    🎯 Problem Categories:
-    - Data Structures
-    - Algorithms
-    - Mathematical Problems
-    - Logic Puzzles`,
+    🎯 Problem Statements:
+    - AI/ML Solutions
+    - Web/Mobile Applications
+    - IoT & Hardware
+    - Open Innovation
+    
+    🏆 Prize Pool:
+    - First Prize: ₹25,000
+    - Second Prize: ₹15,000
+    - Third Prize: ₹10,000`,
     rules: [
-      "Individual participation",
-      "Time limit: 3 hours",
-      "Any programming language allowed",
-      "Plagiarism check enforced",
+      "Team size: 2-4 members",
+      "24-hour time limit",
+      "Original work only",
+      "Use of open-source libraries allowed",
+      "Code must be written during hackathon",
+      "Final presentation required",
     ],
     requirements: [
-      "Competitive programming experience",
-      "Laptop required",
-      "Internet connectivity",
-      "HackerRank account",
-    ],
-    coordinators: [
-      {
-        name: "Rahithya",
-        insta: "rahithya_22",
-        phone: "90142 42562",
-      },
-      {
-        name: "Pavan Kumar",
-        insta: "__pavankumar_17",
-        phone: "79898 83868",
-      },
-    ],
-  },
-  {
-    id: "5",
-    type: "tech",
-    title: "Ideathon",
-    text: "Present your innovative ideas and solutions to real-world problems.",
-    backgroundUrl: "assets/benefits/card-6.svg",
-    iconUrl: benefitIcon2,
-    imageUrl: benefitImage2,
-    prize: "10000",
-    fullDescription: `Transform your innovative ideas into impactful solutions!
-
-    🎯 Focus Areas:
-    - Social Innovation
-    - Technology Solutions
-    - Environmental Impact
-    - Business Ideas
-    
-    📋 Event Format:
-    - Idea presentation
-    - Q&A rounds
-    - Mentor feedback
-    - Final pitch`,
-    rules: [
-      "Team size: 2-3 members",
-      "Original ideas only",
-      "10-minute presentation",
-      "5-minute Q&A",
-    ],
-    requirements: [
-      "Presentation slides",
-      "Project documentation",
-      "Basic prototype (if applicable)",
-      "Team registration",
+      "Laptop with charger",
+      "Valid college ID",
+      "Development tools",
+      "GitHub account",
+      "Basic coding knowledge",
     ],
     coordinators: [
       {
@@ -642,108 +693,11 @@ export const events = [
       },
     ],
   },
-  {
-    id: "6",
-    type: "tech",
-    title: "Code Marathon",
-    text: "Test your endurance and coding skills in this long-format programming challenge.",
-    backgroundUrl: "assets/benefits/card-1.svg",
-    iconUrl: benefitIcon3,
-    imageUrl: benefitImage2,
-    prize: "20000",
-    fullDescription: `Push your limits in our 12-hour Code Marathon!
-
-    🏃‍♂️ Marathon Format:
-    - 12-hour coding challenge
-    - Multiple problem sets
-    - Progressive difficulty
-    - Checkpoint submissions
-    
-    🎯 Challenge Areas:
-    - Algorithm Design
-    - Problem Solving
-    - Code Optimization
-    - Debug Challenges`,
-    rules: [
-      "Individual participation",
-      "12-hour time limit",
-      "Checkpoint submissions required",
-      "Multiple language support",
-      "Original solutions only",
-    ],
-    requirements: [
-      "Strong coding background",
-      "Laptop with charger",
-      "Development environment",
-      "Energy drinks (recommended)",
-    ],
-    coordinators: [
-      {
-        name: "Sudhansu Reddy",
-        insta: "p_sudansu_reddy",
-        phone: "95153 65601",
-      },
-      {
-        name: "Susheel Kumar",
-        insta: "susheel_kumar",
-        phone: "8688970995",
-      },
-    ],
-  },
+  
 ];
 
 export const fun = [
-  {
-    id: "0",
-    type: "fun",
-    title: "Tech Pictionary",
-    text: "Draw and guess technical concepts in this exciting artistic challenge!",
-    backgroundUrl: "assets/benefits/card-2.svg",
-    iconUrl: benefitIcon2,
-    imageUrl: benefitImage2,
-    prize: "5000",
-    fullDescription: `Get ready for a unique blend of art and technology!
-
-    🎨 Game Format:
-    - Teams of 2 players
-    - Technical terms to draw
-    - Time-limited rounds
-    - Multiple categories
-    
-    🎯 Categories:
-    - Programming Concepts
-    - Tech Gadgets
-    - Software Icons
-    - Tech Brands
-    
-    🏆 Prize Pool:
-    - Winner: ₹5,000
-    - Runner-up: ₹3,000`,
-    rules: [
-      "2 players per team",
-      "No words or numbers allowed",
-      "60 seconds per drawing",
-      "No verbal hints allowed",
-    ],
-    requirements: [
-      "Basic drawing skills",
-      "Tech knowledge",
-      "Team registration",
-      "Enthusiasm to participate",
-    ],
-    coordinators: [
-      {
-        name: "Rahithya",
-        insta: "rahithya_22",
-        phone: "90142 42562",
-      },
-      {
-        name: "Pavan Kumar",
-        insta: "__pavankumar_17",
-        phone: "79898 83868",
-      },
-    ],
-  },
+  
   {
     id: "1",
     type: "fun",
@@ -798,7 +752,7 @@ export const fun = [
   {
     id: "2",
     type: "fun",
-    title: "Aptitude Challenge",
+    title: "Curious Crew",
     text: "Showcase your quantitative and analytical skills in this comprehensive aptitude test.",
     backgroundUrl: "assets/benefits/card-3.svg",
     iconUrl: benefitIcon3,
@@ -888,6 +842,110 @@ export const fun = [
       },
     ],
   },
+  {
+    id: "0",
+    type: "fun",
+    title: "Spot Photography",
+    text: "Draw and guess technical concepts in this exciting artistic challenge!",
+    backgroundUrl: "assets/benefits/card-2.svg",
+    iconUrl: benefitIcon2,
+    imageUrl: benefitImage2,
+    prize: "5000",
+    fullDescription: `Get ready for a unique blend of art and technology!
+
+    🎨 Game Format:
+    - Teams of 2 players
+    - Technical terms to draw
+    - Time-limited rounds
+    - Multiple categories
+    
+    🎯 Categories:
+    - Programming Concepts
+    - Tech Gadgets
+    - Software Icons
+    - Tech Brands
+    
+    🏆 Prize Pool:
+    - Winner: ₹5,000
+    - Runner-up: ₹3,000`,
+    rules: [
+      "2 players per team",
+      "No words or numbers allowed",
+      "60 seconds per drawing",
+      "No verbal hints allowed",
+    ],
+    requirements: [
+      "Basic drawing skills",
+      "Tech knowledge",
+      "Team registration",
+      "Enthusiasm to participate",
+    ],
+    coordinators: [
+      {
+        name: "Rahithya",
+        insta: "rahithya_22",
+        phone: "90142 42562",
+      },
+      {
+        name: "Pavan Kumar",
+        insta: "__pavankumar_17",
+        phone: "79898 83868",
+      },
+    ],
+  },
+  {
+    id: "5",
+    type: "fun",
+    title: "Escape Room",
+    text: "Solve clues and navigate through an exciting tech-themed treasure hunt across campus.",
+    backgroundUrl: "assets/benefits/card-4.svg",
+    iconUrl: benefitIcon4,
+    imageUrl: benefitImage2,
+    prize: "8000",
+    fullDescription: `Embark on an exciting adventure around the campus!
+
+    🗺️ Hunt Format:
+    - Tech-themed clues
+    - Multiple checkpoints
+    - QR code scanning
+    - Time-based scoring
+    
+    🎯 Challenge Types:
+    - Technical Riddles
+    - Location-based Tasks
+    - Problem Solving
+    - Team Coordination
+    
+    🏆 Prize Pool:
+    - Winning Team: ₹8,000
+    - Runner-up: ₹4,000`,
+    rules: [
+      "Teams of 3-4 members",
+      "Time limit: 2 hours",
+      "Stay within campus bounds",
+      "All checkpoints mandatory",
+    ],
+    requirements: [
+      "Smartphone with QR scanner",
+      "Team registration",
+      "Comfortable walking shoes",
+      "College ID for all members",
+    ],
+    coordinators: [
+      {
+        name: "Sudhansu Reddy",
+        insta: "p_sudansu_reddy",
+        phone: "95153 65601",
+      },
+      {
+        name: "Susheel Kumar",
+        insta: "susheel_kumar",
+        phone: "8688970995",
+      },
+    ],
+  },
+  
+  
 ];
 
 export const socials = [
@@ -909,7 +967,7 @@ export const coord = [
     imageUrl: benefitImage2,
     coordinatorImage: images.vivek,
     coordinatorName: "Prof Dr.D. Vivekanada Reddy",
-    contactInfo: "@john_doe",
+    contactInfo: "",
     mail: "Pandillapallesudhansureddy23@gmail.com",
   },
   {
@@ -921,7 +979,7 @@ export const coord = [
     imageUrl: benefitImage2,
     coordinatorImage: images.sudhansu,
     coordinatorName: "P. Sudhansu reddy",
-    contactInfo: "@john_doe",
+    contactInfo: "8919115624",
     mail: "Pandillapallesudhansureddy23@gmail.com",
   },
   {
