@@ -3,6 +3,7 @@ import { fun } from "@/constants";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+
 const FunEventDetailPage = ({ params }: { params: { eventId: string } }) => {
   const event = fun.find((e) => e.id === params.eventId);
 

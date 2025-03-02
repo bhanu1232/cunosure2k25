@@ -1,14 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
   images: {
-    unoptimized: true,
     domains: ["firebasestorage.googleapis.com"],
+    unoptimized: true,
   },
-  trailingSlash: true,
-  swcMinify: true,
-  reactStrictMode: true,
-  poweredByHeader: false,
 };
 
 module.exports = nextConfig;
