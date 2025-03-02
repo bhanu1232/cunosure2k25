@@ -31,6 +31,8 @@ const EventDetailPage = ({ params }: { params: { eventId: string } }) => {
             <Image
               src={event.imageUrl}
               alt={event.title}
+              width={800}
+              height={400}
               className="h-64 w-full rounded-lg object-cover"
             />
           </div>

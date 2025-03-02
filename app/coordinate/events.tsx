@@ -15,12 +15,12 @@ const Benefits = () => {
       <div className="container relative z-2">
         <div className="mb-16">
           <Heading className="md:max-w-md lg:max-w-2xl" title="Faculty Coordinator" />
-
+          
           {/* Faculty Coordinator Card */}
           <div className="mx-auto max-w-md">
             <div className="relative overflow-hidden rounded-2xl border border-n-6 bg-n-7 p-6 transition-colors hover:border-cyan-400">
               <div className="flex flex-col items-center">
-                <div className="relative mb-4 size-48 overflow-hidden rounded-full">
+                <div className="relative size-48 overflow-hidden rounded-full">
                   <Image
                     src={facultyCoord.coordinatorImage}
                     alt={facultyCoord.coordinatorName}
