@@ -73,6 +73,7 @@ export const images = {
   swaroop: "/assets/coord/swaroop.jpg",
   pavan: "/assets/coord/pavan.jpg",
   sudhansu: "/assets/coord/sudhansu.jpeg",
+  harika: "/assets/coord/harika.jpeg",
 };
 
 const {
@@ -937,6 +938,18 @@ export const coord = [
     mail: "swaroopdevarajan@gmail.com",
   },
   {
+    id: "5",
+    title: "__pavankumar_17",
+    text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
+    backgroundUrl: "assets/benefits/card-5.svg",
+    iconUrl: benefitIcon1,
+    imageUrl: benefitImage2,
+    coordinatorImage: images.pavan,
+    coordinatorName: "M pavan kumar",
+    contactInfo: "79898 83868",
+    mail: "matapallipavan@gmail.com",
+  },
+  {
     id: "3",
     title: "gayathri_komma",
     text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
@@ -957,21 +970,10 @@ export const coord = [
     backgroundUrl: "assets/benefits/card-5.svg",
     iconUrl: benefitIcon1,
     imageUrl: benefitImage2,
-    coordinatorImage: benefitIcon1,
+    coordinatorImage: images.harika,
     coordinatorName: "Harika Velpula",
     contactInfo: "7075602932",
     mail: "harikavelpula8@gmail.com",
   },
-  {
-    id: "5",
-    title: "__pavankumar_17",
-    text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
-    backgroundUrl: "assets/benefits/card-5.svg",
-    iconUrl: benefitIcon1,
-    imageUrl: benefitImage2,
-    coordinatorImage: images.pavan,
-    coordinatorName: "M pavan kumar",
-    contactInfo: "79898 83868",
-    mail: "matapallipavan@gmail.com",
-  },
+  
 ];
