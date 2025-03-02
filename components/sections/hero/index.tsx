@@ -21,24 +21,29 @@ const Hero = (props: Props) => {
     >
       <div className="container relative" ref={parallaxRef}>
         <div className="relative z-1 mx-auto mb-16 max-w-[62rem] text-center md:mb-20 lg:mb-24">
-          <h1 className="h1 mb-6">
-            <span className="relative inline-block">
-              CYNOSURE <br />
-              2025
+          <h1 className="relative mb-6 text-center font-bold">
+            <div className="relative inline-block">
+              <span className="animate-typing inline-block bg-gradient-to-r from-[#8E2DE2] via-[#4A00E0] to-[#8E2DE2] bg-clip-text text-5xl text-transparent md:text-7xl">
+                CYNOSURE
+              </span>
+              <br />
+              <span className="animate-typing-delayed inline-block bg-gradient-to-r from-[#FF512F] to-[#DD2476] bg-clip-text text-4xl text-transparent md:text-6xl">
+                2025
+              </span>
               <Image
                 src={images.curve}
-                className="absolute left-0 top-full w-full xl:-mt-2"
+                className="absolute left-0 top-full w-full animate-fade-up xl:-mt-2"
                 width={624}
                 height={28}
                 alt="curve"
               />
-            </span>
+            </div>
           </h1>
-          <p className={cn("body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8")}>
+          <p className={cn("body-1 mx-auto mb-6 max-w-3xl animate-fade-up text-n-2 lg:mb-8")}>
             Unleash the power of AI within Brainwave. Upgrade your productivity with Brainwave, the
             open AI chat app.
           </p>
-          <Button href="#pricing" white className="animate-pulse">
+          <Button href="#pricing" white className="animate-fade-up">
             Register Now
           </Button>
         </div>
@@ -56,7 +61,7 @@ const Hero = (props: Props) => {
                   src={images.robot}
                   width={1024}
                   height={490}
-                  className="w-full translate-y-[8%] scale-[1.7] md:translate-y-[-10%] md:scale-100 lg:translate-y-[-23%]"
+                  className="w-full translate-y-[8%] scale-[1.7] transition-transform duration-700 hover:scale-[1.8] md:translate-y-[-10%] md:scale-100 md:hover:scale-105 lg:translate-y-[-23%]"
                   alt="AI"
                 />
               </div>

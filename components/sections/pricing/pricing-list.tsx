@@ -3,44 +3,60 @@ import { images, pricing } from "@/constants";
 import React from "react";
 import Image from "next/image";
 
-type Props = {};
-
-const PricingList = (props: Props) => {
+const PricingList = () => {
   return (
-    <div className="flex gap-4 max-lg:flex-wrap">
+    <div className="flex flex-wrap justify-center gap-8">
       {pricing.map((item) => (
         <div
           key={item.id}
-          className="h-full w-[19rem] rounded-[2rem] border border-n-6 bg-n-8 px-6 odd:my-4 odd:py-8 even:py-14 max-lg:w-full lg:w-auto [&>h4]:first:text-color-2 [&>h4]:last:text-color-3 [&>h4]:even:text-color-1"
+          className="group relative w-full max-w-[380px] transform rounded-[2rem] border-2 border-n-6 bg-n-8 p-8 transition-all duration-300 hover:scale-105 hover:border-cyan-400 hover:shadow-2xl sm:w-[380px]"
         >
-          <h4 className="h4 mb-4">{item.title}</h4>
-          <p className="body-2 mb-3 min-h-16 text-n-1/50">{item.description}</p>
-
-          <div className="mb-6 flex h-[5.5rem] items-center">
-            {item.price && (
-              <>
-                <span className="h3">₹</span>
-                <span className="text-[5.5rem] font-bold leading-none">{item.price}</span>
-              </>
-            )}
+          {/* Pass Type Badge */}
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+            <div className="rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 px-6 py-1.5">
+              <span className="text-sm font-semibold text-white">{item.title} Pass</span>
+            </div>
           </div>
 
+          {/* Price */}
+          <div className="mb-8 mt-6 text-center">
+            <div className="mb-3 flex items-center justify-center">
+              <span className="text-2xl font-semibold text-n-1">₹</span>
+              <span className="text-6xl font-bold text-n-1">{item.price}</span>
+            </div>
+            <p className="text-sm text-n-3">{item.description}</p>
+          </div>
+
+          {/* Features */}
+          <div className="mb-8 space-y-4">
+            {item.features.map((feature, index) => (
+              <div
+                key={index}
+                className="flex items-start gap-4 rounded-xl border border-n-6 bg-n-7 p-4 transition-colors group-hover:border-n-5"
+              >
+                <Image
+                  src={images.check}
+                  width={24}
+                  height={24}
+                  alt="check"
+                  className="text-cyan-500"
+                />
+                <p className="text-sm text-n-2">{feature}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA Button */}
           <Button
-            className="mb-6 w-full"
-            href={item.price ? "/pricing" : "mailto:contact@brainwave.ai"}
-            white={!!item.price}
+            className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 text-center font-semibold text-white transition-all hover:from-cyan-600 hover:to-purple-600"
+            href="https://forms.gle/Ld5PVS5UEqGFB5Ry8"
           >
-            {item.price ? "Get started" : "Contact us"}
+            Get Pass Now
           </Button>
 
-          <ul>
-            {item.features.map((feature, index) => (
-              <li key={index} className="flex items-start border-t border-n-6 py-5">
-                <Image src={images.check} width={24} height={24} alt="check" />
-                <p className="body-2 ml-4">{feature}</p>
-              </li>
-            ))}
-          </ul>
+          {/* Decorative Elements */}
+          <div className="absolute -left-4 -top-4 h-24 w-24 rounded-full bg-gradient-to-br from-cyan-500/20 to-transparent blur-2xl" />
+          <div className="absolute -bottom-4 -right-4 h-24 w-24 rounded-full bg-gradient-to-br from-purple-500/20 to-transparent blur-2xl" />
         </div>
       ))}
     </div>

@@ -251,31 +251,9 @@ export const collabApps = [
 export const pricing = [
   {
     id: "0",
-    title: "Gold",
+    title: "Event",
     description: "AI chatbot, personalized recommendations",
-    price: "299",
-    features: [
-      "An AI chatbot that can understand your queries",
-      "Personalized recommendations based on your preferences",
-      "Ability to explore the app and its features without any cost",
-    ],
-  },
-  {
-    id: "1",
-    title: "Platinnum",
-    description: "Advanced AI chatbot, priority support, analytics dashboard",
-    price: "399",
-    features: [
-      "An advanced AI chatbot that can understand complex queries",
-      "An analytics dashboard to track your conversations",
-      "Priority support to solve issues quickly",
-    ],
-  },
-  {
-    id: "2",
-    title: "Silver",
-    description: "Custom AI chatbot, advanced analytics, dedicated account",
-    price: "199",
+    price: "350",
     features: [
       "An AI chatbot that can understand your queries",
       "Personalized recommendations based on your preferences",
