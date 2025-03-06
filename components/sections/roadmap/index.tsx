@@ -77,11 +77,8 @@ const Roadmap = (props: Props) => {
         </div>
 
         <div className="mt-8 flex justify-center md:mt-15 xl:mt-20">
-          <Button
-            href="/passes"
-            className="animate-pulse hover:animate-none transition-all duration-300"
-          >
-            Register now
+          <Button href="/passes" white className="animate-fade-up">
+            Register Now
           </Button>
         </div>
       </div>

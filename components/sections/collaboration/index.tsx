@@ -25,9 +25,9 @@ const Collaboration = (props: Props) => {
               </li>
             ))}
           </ul>
-          <Link href="/passes">
-            <Button>Register now</Button>
-          </Link>
+          <Button href="/passes" white className="animate-fade-up">
+            Register Now
+          </Button>
         </div>
 
         <div className="mt-4 lg:ml-auto xl:w-[38rem]">
