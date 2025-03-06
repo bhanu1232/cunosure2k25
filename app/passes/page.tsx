@@ -1,187 +1,188 @@
 "use client";
 
-import React from "react";
-import Section from "@/components/layout/section";
-import Heading from "@/components/atoms/heading";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
+import PaymentModal from "@/components/payment/PaymentModal";
 import Navbar from "@/components/layout/navbar";
+const PASSES = [
+  {
+    id: "tech",
+    name: "Technical Pass",
+    price: 1000,
+    features: [
+      "Access to all technical events",
+      "Workshop participation",
+      "Certificate of participation",
+      "Tech swag kit",
+      "Networking opportunities",
+    ],
+    gradient: "from-[#1F4AF6] to-[#1BC7FB]",
+    popular: false,
+  },
+  {
+    id: "combo",
+    name: "Combo Pass",
+    price: 1500,
+    features: [
+      "Access to ALL events",
+      "Premium workshop access",
+      "Exclusive merchandise",
+      "Priority registration",
+      "Special networking events",
+      "Food & refreshments",
+      "Professional certification",
+    ],
+    gradient: "from-[#FF6B6B] to-[#FFB547]",
+    popular: true,
+  },
+  {
+    id: "nontech",
+    name: "Non-Technical Pass",
+    price: 800,
+    features: [
+      "Access to cultural events",
+      "Sports participation",
+      "Entertainment shows",
+      "Fun activities",
+      "Event certificate",
+    ],
+    gradient: "from-[#8F46FF] to-[#FF6B6B]",
+    popular: false,
+  },
+];
+
+const PassCard = ({ pass, onSelect }: any) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className={`relative bg-n-8/50 backdrop-blur-sm rounded-[30px] p-6 border border-n-6 hover:border-n-5 transition-colors lg:p-8 ${
+      pass.popular ? "lg:scale-105 lg:shadow-2xl" : ""
+    }`}
+  >
+    {pass.popular && (
+      <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FF6B6B] to-[#FFB547] px-4 py-1 rounded-full">
+        <p className="text-white text-sm font-semibold">Most Popular</p>
+      </div>
+    )}
+
+    <div
+      className={`h-12 w-12 rounded-2xl bg-gradient-to-r ${pass.gradient} flex items-center justify-center mb-4`}
+    >
+      <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"
+        />
+      </svg>
+    </div>
+
+    <div className="mb-4">
+      <h3 className="text-2xl font-bold text-white mb-2">{pass.name}</h3>
+      <div className="flex items-baseline gap-1">
+        <span className="text-3xl font-bold text-white">₹{pass.price}</span>
+        <span className="text-n-4">/pass</span>
+      </div>
+    </div>
+
+    <ul className="space-y-3 mb-8">
+      {pass.features.map((feature: string, index: number) => (
+        <motion.li
+          key={index}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: index * 0.1 }}
+          className="flex items-center text-n-4"
+        >
+          <svg
+            className="w-5 h-5 mr-3 text-green-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+          {feature}
+        </motion.li>
+      ))}
+    </ul>
+
+    <button
+      onClick={() => onSelect(pass.id)}
+      className={`w-full py-4 rounded-2xl bg-gradient-to-r ${pass.gradient} text-white font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]`}
+    >
+      Get Started
+    </button>
+  </motion.div>
+);
+
 const PassesPage = () => {
-  const passes = [
-    {
-      id: "tech",
-      name: "Technical Pass",
-      price: "299",
-      imageUrl: "/images/tech.jpg",
-      description: "Access to all technical events and workshops",
-      features: [
-        "All Technical Competitions",
-        "Workshop Access",
-        "Certificate of Participation",
-        "Tech Swag Kit",
-      ],
-      gradient: "from-[#1F4AF6] to-[#1BC7FB]",
-      popular: false,
-    },
-    {
-      id: "all",
-      name: "All Access Pass",
-      price: "499",
-      imageUrl: "/images/all.jpg",
-      description: "Full access to all events and premium benefits",
-      features: [
-        "All Technical & Cultural Events",
-        "Priority Registration",
-        "Premium Swag Kit",
-        "VIP Lounge Access",
-      ],
-      gradient: "from-[#8E2DE2] to-[#4A00E0]",
-      popular: true,
-    },
-    {
-      id: "cultural",
-      name: "Cultural Pass",
-      price: "299",
-      imageUrl: "/images/cultural.jpg",
-      description: "Access to all cultural and fun events",
-      features: [
-        "All Cultural Events",
-        "Entertainment Shows",
-        "Certificate of Participation",
-        "Cultural Swag Kit",
-      ],
-      gradient: "from-[#8F46FF] to-[#FF6B6B]",
-      popular: false,
-    },
-  ];
+  const [selectedPass, setSelectedPass] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handlePassSelect = (passId: string) => {
+    setSelectedPass(passId);
+    setIsModalOpen(true);
+  };
 
   return (
-    <>
-      {/* Navbar */}
+    <section className="relative min-h-screen py-20 overflow-hidden">
+      {/* Background Elements */}
       <Navbar />
-      <Section className="overflow-hidden pt-32">
-        <div className="container relative z-2">
-          <div className="relative">
-            {/* Background Glow Effects */}
-            <div className="absolute top-0 -left-[40%] w-[80%] aspect-square rounded-full bg-[#1F4AF6]/20 blur-[120px] pointer-events-none" />
-            <div className="absolute top-0 -right-[40%] w-[80%] aspect-square rounded-full bg-[#8F46FF]/20 blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1F4AF6] rounded-full opacity-20 blur-[100px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#8F46FF] rounded-full opacity-20 blur-[100px]" />
+      </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="relative text-center mb-12"
-            >
-              <Heading
-                title="Choose Your Pass"
-                text="Select the perfect pass that suits your interests and get ready for an amazing experience"
-                tag="Event Passes"
-                className="md:max-w-md lg:max-w-2xl mx-auto"
-              />
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
-              {passes.map((pass, index) => (
-                <motion.div
-                  key={pass.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group"
-                >
-                  <div className="relative bg-n-8 rounded-[20px] overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                    {/* Subtle Border Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-n-1/5 to-transparent pointer-events-none" />
-
-                    {/* Image Container */}
-                    <div className="relative h-[200px] overflow-hidden">
-                      <Image
-                        src={pass.imageUrl || "/images/placeholder.jpg"}
-                        alt={pass.name}
-                        fill
-                        className="object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
-                      />
-                      {/* Image Overlay Gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-n-8/80 to-transparent" />
-
-                      {/* Price Badge */}
-                      <div className="absolute top-4 right-4 px-4 py-2 rounded-full bg-n-1/10 backdrop-blur-sm">
-                        <div className="flex items-center">
-                          <span className="text-white text-sm font-medium">₹{pass.price}</span>
-                        </div>
-                      </div>
-
-                      {pass.popular && (
-                        <div className="absolute top-4 left-4">
-                          <div className="bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0] text-white text-sm font-medium px-4 py-1 rounded-full">
-                            Popular
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Content Container */}
-                    <div className="p-6">
-                      <h3 className="h4 mb-3 text-start group-hover:text-white/90 transition-colors">
-                        {pass.name}
-                      </h3>
-                      <p className="body-2 text-n-4/80 mb-4 line-clamp-2 text-start group-hover:text-n-4/90 transition-colors">
-                        {pass.description}
-                      </p>
-
-                      {/* Features List */}
-                      <div className="space-y-2 mb-6">
-                        {pass.features.map((feature, i) => (
-                          <div key={i} className="flex items-center text-sm text-n-4">
-                            <svg className="w-4 h-4 mr-2 text-n-1" viewBox="0 0 24 24" fill="none">
-                              <path
-                                d="M9 12l2 2 4-4"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                              />
-                            </svg>
-                            {feature}
-                          </div>
-                        ))}
-                      </div>
-
-                      <button
-                        className={`w-full rounded-full bg-gradient-to-r ${pass.gradient} py-3 px-6 text-white font-medium hover:shadow-xl hover:shadow-n-1/10 transition-all duration-200 group-hover:scale-[1.02] flex items-center justify-center`}
-                      >
-                        Get Started
-                        <svg
-                          className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            d="M4 12h16m-4-4l4 4-4 4"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+      <div className="container mx-auto px-4 max-w-7xl mt-5">
+        <div className="text-center mb-16">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
+          >
+            Choose Your Pass
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-n-4 text-lg max-w-2xl mx-auto"
+          >
+            Select the perfect pass that matches your interests and unlock an amazing experience at
+            Cynosure 2024
+          </motion.p>
         </div>
-      </Section>
-    </>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {PASSES.map((pass) => (
+            <PassCard key={pass.id} pass={pass} onSelect={handlePassSelect} />
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="mt-12 text-center"
+        >
+          <p className="text-n-4">
+            Need help choosing?{" "}
+            <a href="#" className="text-[#1F4AF6] hover:text-[#1BC7FB] transition-colors">
+              Contact us
+            </a>
+          </p>
+        </motion.div>
+      </div>
+
+      <PaymentModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        passType={selectedPass as "tech" | "nontech" | "combo"}
+      />
+    </section>
   );
 };
 
