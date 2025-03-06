@@ -14,8 +14,8 @@ const Benefits = () => {
     <Section id="features pt-2">
       <div className="container relative z-2">
         <div className="mb-16">
-          <Heading className="md:max-w-md lg:max-w-2xl" title="Faculty Coordinator" />
-          
+          <Heading className="md:max-w-md lg:max-w-2xl" title="Coordinators" />
+
           {/* Faculty Coordinator Card */}
           <div className="mx-auto max-w-md">
             <div className="relative overflow-hidden rounded-2xl border border-n-6 bg-n-7 p-6 transition-colors hover:border-cyan-400">
@@ -28,7 +28,7 @@ const Benefits = () => {
                     className="object-cover"
                   />
                 </div>
-                <h3 className="mb-2 text-2xl font-semibold text-white">
+                <h3 className="mb-2 text-2xl max-sm:text-lg  font-semibold text-white">
                   {facultyCoord.coordinatorName}
                 </h3>
                 <p className="text-lg text-n-3">Faculty Coordinator</p>
@@ -36,8 +36,6 @@ const Benefits = () => {
             </div>
           </div>
         </div>
-
-        <Heading className="mb-10 md:max-w-md lg:max-w-2xl" title="Student Coordinators" />
 
         {/* Student Coordinators Grid */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

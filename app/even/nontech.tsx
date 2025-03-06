@@ -66,10 +66,10 @@ const Benefits1 = () => {
                     {/* CTA Button */}
                     <div className="flex items-center justify-between">
                       <Link
-                        href={`/even/fun/${item.id}`}
+                        href="/passes"
                         className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-gradient-to-r from-[#8F46FF] to-[#FF6B6B] hover:shadow-xl hover:shadow-n-1/10 text-white font-medium transition-all duration-200 group-hover:px-10"
                       >
-                        View Details
+                        Register Now
                         <svg
                           className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
                           viewBox="0 0 24 24"

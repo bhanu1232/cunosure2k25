@@ -115,7 +115,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <Button href="#pricing" white className="animate-fade-up">
+          <Button href="/passes" white className="animate-fade-up">
             Register Now
           </Button>
         </div>

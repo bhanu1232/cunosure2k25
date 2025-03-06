@@ -1,114 +1,187 @@
 "use client";
-import React, { useState } from "react";
-import { db } from "@/firebase/config";
-import { collection, query, where, getDocs } from "firebase/firestore";
+
+import React from "react";
+import Section from "@/components/layout/section";
+import Heading from "@/components/atoms/heading";
+import { motion } from "framer-motion";
 import Link from "next/link";
-
+import Image from "next/image";
+import Navbar from "@/components/layout/navbar";
 const PassesPage = () => {
-  const [email, setEmail] = useState("");
-  const [passes, setPasses] = useState<Array<{ name: string; url: string }>>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    try {
-      // Query Firestore for passes associated with the email
-      const passesRef = collection(db, "passes");
-      const q = query(passesRef, where("email", "==", email.toLowerCase()));
-      const querySnapshot = await getDocs(q);
-
-      const passesData = querySnapshot.docs.map((doc) => ({
-        name: doc.data().name || "Unnamed Pass",
-        url: doc.data().pdfPath,
-      }));
-
-      setPasses(passesData);
-      if (passesData.length === 0) {
-        setError("No passes found for this email");
-      }
-    } catch (err) {
-      setError("Error fetching passes. Please try again.");
-      console.error(err);
-    }
-    setLoading(false);
-  };
+  const passes = [
+    {
+      id: "tech",
+      name: "Technical Pass",
+      price: "299",
+      imageUrl: "/images/tech.jpg",
+      description: "Access to all technical events and workshops",
+      features: [
+        "All Technical Competitions",
+        "Workshop Access",
+        "Certificate of Participation",
+        "Tech Swag Kit",
+      ],
+      gradient: "from-[#1F4AF6] to-[#1BC7FB]",
+      popular: false,
+    },
+    {
+      id: "all",
+      name: "All Access Pass",
+      price: "499",
+      imageUrl: "/images/all.jpg",
+      description: "Full access to all events and premium benefits",
+      features: [
+        "All Technical & Cultural Events",
+        "Priority Registration",
+        "Premium Swag Kit",
+        "VIP Lounge Access",
+      ],
+      gradient: "from-[#8E2DE2] to-[#4A00E0]",
+      popular: true,
+    },
+    {
+      id: "cultural",
+      name: "Cultural Pass",
+      price: "299",
+      imageUrl: "/images/cultural.jpg",
+      description: "Access to all cultural and fun events",
+      features: [
+        "All Cultural Events",
+        "Entertainment Shows",
+        "Certificate of Participation",
+        "Cultural Swag Kit",
+      ],
+      gradient: "from-[#8F46FF] to-[#FF6B6B]",
+      popular: false,
+    },
+  ];
 
   return (
-    <div className="min-h-screen bg-gray-900 px-4 py-6 sm:py-12">
-      <div className="mx-auto max-w-4xl">
-        {/* Navigation */}
-        <nav className="mb-8">
-          <Link
-            href="/"
-            className="text-lg font-semibold text-cyan-400 transition-colors hover:text-cyan-300"
-          >
-            Back to Home
-          </Link>
-        </nav>
+    <>
+      {/* Navbar */}
+      <Navbar />
+      <Section className="overflow-hidden pt-32">
+        <div className="container relative z-2">
+          <div className="relative">
+            {/* Background Glow Effects */}
+            <div className="absolute top-0 -left-[40%] w-[80%] aspect-square rounded-full bg-[#1F4AF6]/20 blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 -right-[40%] w-[80%] aspect-square rounded-full bg-[#8F46FF]/20 blur-[120px] pointer-events-none" />
 
-        {/* Main Content */}
-        <div className="rounded-xl border border-cyan-400 bg-gray-800 p-6 shadow-[0_0_15px_rgba(34,211,238,0.3)] sm:p-8">
-          <h1 className="mb-8 text-center text-2xl font-bold text-white sm:text-3xl">
-            Download Your Passes
-          </h1>
-
-          <form onSubmit={handleSearch} className="mb-8">
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your Gmail ID"
-                className="flex-1 rounded-lg border border-cyan-400 bg-gray-700 p-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                required
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="relative text-center mb-12"
+            >
+              <Heading
+                title="Choose Your Pass"
+                text="Select the perfect pass that suits your interests and get ready for an amazing experience"
+                tag="Event Passes"
+                className="md:max-w-md lg:max-w-2xl mx-auto"
               />
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full rounded-lg bg-cyan-500 px-8 py-3 text-white transition-colors hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-gray-600 sm:w-auto"
-              >
-                {loading ? "Searching..." : "Search Passes"}
-              </button>
-            </div>
-          </form>
+            </motion.div>
 
-          {error && (
-            <div className="mb-6 rounded-lg border border-red-500 bg-red-900/50 p-4 text-center text-red-400">
-              {error}
-            </div>
-          )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
+              {passes.map((pass, index) => (
+                <motion.div
+                  key={pass.id}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group"
+                >
+                  <div className="relative bg-n-8 rounded-[20px] overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                    {/* Subtle Border Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-n-1/5 to-transparent pointer-events-none" />
 
-          {passes.length > 0 && (
-            <div className="space-y-6">
-              <h2 className="mb-4 text-xl font-semibold text-white">Available Passes</h2>
-              <div className="grid gap-4">
-                {passes.map((pass, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col items-center justify-between gap-4 rounded-lg border border-cyan-400 bg-gray-700 p-4 transition-shadow hover:shadow-[0_0_10px_rgba(34,211,238,0.2)] sm:flex-row"
-                  >
-                    <span className="text-center font-medium text-white sm:text-left">
-                      {pass.name}
-                    </span>
-                    <a
-                      href={pass.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full rounded-lg bg-cyan-500 px-6 py-2 text-center text-white transition-colors hover:bg-cyan-400 sm:w-auto"
-                    >
-                      Download PDF
-                    </a>
+                    {/* Image Container */}
+                    <div className="relative h-[200px] overflow-hidden">
+                      <Image
+                        src={pass.imageUrl || "/images/placeholder.jpg"}
+                        alt={pass.name}
+                        fill
+                        className="object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
+                      />
+                      {/* Image Overlay Gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-n-8/80 to-transparent" />
+
+                      {/* Price Badge */}
+                      <div className="absolute top-4 right-4 px-4 py-2 rounded-full bg-n-1/10 backdrop-blur-sm">
+                        <div className="flex items-center">
+                          <span className="text-white text-sm font-medium">₹{pass.price}</span>
+                        </div>
+                      </div>
+
+                      {pass.popular && (
+                        <div className="absolute top-4 left-4">
+                          <div className="bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0] text-white text-sm font-medium px-4 py-1 rounded-full">
+                            Popular
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Content Container */}
+                    <div className="p-6">
+                      <h3 className="h4 mb-3 text-start group-hover:text-white/90 transition-colors">
+                        {pass.name}
+                      </h3>
+                      <p className="body-2 text-n-4/80 mb-4 line-clamp-2 text-start group-hover:text-n-4/90 transition-colors">
+                        {pass.description}
+                      </p>
+
+                      {/* Features List */}
+                      <div className="space-y-2 mb-6">
+                        {pass.features.map((feature, i) => (
+                          <div key={i} className="flex items-center text-sm text-n-4">
+                            <svg className="w-4 h-4 mr-2 text-n-1" viewBox="0 0 24 24" fill="none">
+                              <path
+                                d="M9 12l2 2 4-4"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                              <circle
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                              />
+                            </svg>
+                            {feature}
+                          </div>
+                        ))}
+                      </div>
+
+                      <button
+                        className={`w-full rounded-full bg-gradient-to-r ${pass.gradient} py-3 px-6 text-white font-medium hover:shadow-xl hover:shadow-n-1/10 transition-all duration-200 group-hover:scale-[1.02] flex items-center justify-center`}
+                      >
+                        Get Started
+                        <svg
+                          className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M4 12h16m-4-4l4 4-4 4"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
-                ))}
-              </div>
+                </motion.div>
+              ))}
             </div>
-          )}
+          </div>
         </div>
-      </div>
-    </div>
+      </Section>
+    </>
   );
 };
 

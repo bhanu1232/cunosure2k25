@@ -116,14 +116,9 @@ export const navigation = [
     url: "/",
   },
   {
-    id: "1",
-    title: "About",
-    url: "#about",
-  },
-  {
     id: "2",
     title: "Passes",
-    url: "#pricing",
+    url: "/passes",
   },
   {
     id: "3",
@@ -134,6 +129,11 @@ export const navigation = [
     id: "4",
     title: "coordinators",
     url: "/coordinate",
+  },
+  {
+    id: "5",
+    title: "gallery",
+    url: "/gallery",
   },
 ];
 
