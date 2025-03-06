@@ -12,15 +12,9 @@ const Benefits1 = (props: Props) => {
   return (
     <Section id="features">
       <div className="container relative z-2">
-        <Heading className="md:max-w-md lg:max-w-2xl" title="Fun events" />
-
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {fun.map((item) => (
-            <Link 
-              href={`/even/fun/${item.id}`} 
-              key={item.id}
-              passHref
-            >
+            <Link href={`/even/fun/${item.id}`} key={item.id} passHref>
               <div className="group relative block h-[450px] overflow-hidden rounded-2xl border border-n-6 bg-n-7 transition-colors hover:border-cyan-400">
                 {/* Image Container */}
                 <div className="relative h-48 w-full overflow-hidden">

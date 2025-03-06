@@ -10,27 +10,6 @@ const Pricing = () => {
   return (
     <Section id="pricing" className="overflow-hidden">
       <div className="container relative z-2">
-        {/* Background Elements */}
-        <div className="relative mb-[6.5rem] hidden justify-center lg:flex">
-          <Image
-            src={images.smallSphere}
-            className="relative z-1 animate-pulse"
-            width={255}
-            height={255}
-            alt="small sphere"
-          />
-
-          <div className="pointer-events-none absolute left-1/2 top-1/2 w-[60rem] -translate-x-1/2 -translate-y-1/2">
-            <Image
-              src={images.stars}
-              className="w-full animate-float"
-              width={950}
-              height={400}
-              alt="stars"
-            />
-          </div>
-        </div>
-
         {/* Heading */}
         <div className="relative mb-16 text-center">
           <Heading tag="Get Ready for Cynosure" className="mx-auto max-w-2xl" />

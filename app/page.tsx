@@ -15,8 +15,8 @@ export default function Home() {
       <div className={cn("overflow-hidden pt-[4.75rem] lg:pt-[5.25rem]")}>
         <Navbar />
         <Hero />
-        <Benefits />
         <Collaboration />
+        <Benefits />
         <Services />
         <Pricing />
         <Roadmap />

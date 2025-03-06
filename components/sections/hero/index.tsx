@@ -69,11 +69,11 @@ const Hero = (props: Props) => {
 
             <Gradient />
           </div>
-          <div className="absolute left-1/2 top-[-54%] w-[234%] -translate-x-1/2 md:top-[-46%] md:w-[138%] lg:top-[-104%]">
+          <div className="absolute overflow-hidden h-[160vh] max-sm:h-[110vh] left-1/2 top-[-54%] w-[234%] -translate-x-1/2 md:top-[-46%] md:w-[138%] lg:top-[-104%] max-sm:top-0">
             <Image
               src={images.heroBackground}
               width={1440}
-              height={1880}
+              height={1080}
               className="w-full"
               alt="hero"
             />
