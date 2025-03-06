@@ -19,7 +19,7 @@ import { motion, AnimatePresence } from "framer-motion";
 interface PaymentModalProps {
   isOpen: boolean;
   onClose: () => void;
-  passType?: "tech" | "nontech" | "combo";
+  passType?: "bronze" | "silver" | "gold";
 }
 
 declare global {
@@ -29,20 +29,20 @@ declare global {
 }
 
 const PASS_DETAILS = {
-  tech: {
-    name: "Technical Pass",
-    amount: 100000, // ₹1000 in paise
-    description: "Technical Events Pass - Cynosure 2024",
+  bronze: {
+    name: "Bronze",
+    amount: 35000, // ₹350 in paise
+    description: "Bronze Pass - Cynosure 2025",
   },
-  nontech: {
-    name: "Non-Technical Pass",
-    amount: 80000, // ₹800 in paise
-    description: "Non-Technical Events Pass - Cynosure 2024",
+  silver: {
+    name: "Silver",
+    amount: 45000, // ₹450 in paise
+    description: "Silver Pass - Cynosure 2025",
   },
-  combo: {
-    name: "Combo Pass",
-    amount: 150000, // ₹1500 in paise
-    description: "All Events Combo Pass - Cynosure 2024",
+  gold: {
+    name: "Gold",
+    amount: 55000, // ₹550 in paise
+    description: "Gold Pass - Cynosure 2025",
   },
 };
 
@@ -51,7 +51,7 @@ const RETRY_DELAY = 1000; // 1 second
 
 const registrationsRef = collection(db, "registrations");
 
-const PaymentModal = ({ isOpen, onClose, passType = "tech" }: PaymentModalProps) => {
+const PaymentModal = ({ isOpen, onClose, passType = "bronze" }: PaymentModalProps) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -169,7 +169,7 @@ const PaymentModal = ({ isOpen, onClose, passType = "tech" }: PaymentModalProps)
           passType: passType,
         },
         theme: {
-          color: passType === "tech" ? "#1F4AF6" : passType === "nontech" ? "#8F46FF" : "#FF6B6B",
+          color: passType === "bronze" ? "#1F4AF6" : passType === "silver" ? "#8F46FF" : "#FF6B6B",
         },
         modal: {
           ondismiss: function () {
@@ -200,11 +200,11 @@ const PaymentModal = ({ isOpen, onClose, passType = "tech" }: PaymentModalProps)
 
   const getButtonGradient = () => {
     switch (passType) {
-      case "tech":
+      case "bronze":
         return "from-[#1F4AF6] to-[#1BC7FB]";
-      case "nontech":
+      case "silver":
         return "from-[#8F46FF] to-[#FF6B6B]";
-      case "combo":
+      case "gold":
         return "from-[#FF6B6B] to-[#FFB547]";
       default:
         return "from-[#1F4AF6] to-[#1BC7FB]";
