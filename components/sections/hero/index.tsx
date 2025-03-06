@@ -1,16 +1,46 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Section from "../../layout/section";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { images } from "@/constants";
 import Button from "../../atoms/button";
 import { BackgroundCircles, BottomLine, Gradient } from "../../design/hero";
-type Props = {};
+import { motion } from "framer-motion";
 
-const Hero = (props: Props) => {
+const Hero = () => {
   const parallaxRef = useRef(null);
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    // Set your event date here
+    const eventDate = new Date("2025-03-27T00:00:00");
+
+    const calculateTimeLeft = () => {
+      const difference = +eventDate - +new Date();
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        });
+      }
+    };
+
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <Section
       className={cn("pt-[12rem] -mt-[5.25rem]")}
@@ -43,6 +73,48 @@ const Hero = (props: Props) => {
             Unleash the power of AI within Brainwave. Upgrade your productivity with Brainwave, the
             open AI chat app.
           </p>
+
+          {/* Countdown Timer */}
+          <div className="mb-8">
+            <div className="flex justify-center gap-4 md:gap-8">
+              {[
+                { label: "Days", value: timeLeft.days },
+                { label: "Hours", value: timeLeft.hours },
+                { label: "Minutes", value: timeLeft.minutes },
+                { label: "Seconds", value: timeLeft.seconds },
+              ].map((item, index) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative"
+                >
+                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-2xl bg-n-8/80 backdrop-blur-sm border border-n-1/10 flex flex-col items-center justify-center p-2">
+                    <div className="relative">
+                      <motion.span
+                        key={item.value}
+                        initial={{ y: -20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: 20, opacity: 0 }}
+                        className="block text-2xl md:text-4xl font-bold bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0] bg-clip-text text-transparent"
+                      >
+                        {item.value.toString().padStart(2, "0")}
+                      </motion.span>
+                    </div>
+                    <span className="text-xs md:text-sm text-n-4 mt-1">{item.label}</span>
+                  </div>
+                  {index < 3 && (
+                    <div className="absolute top-1/2 -right-2 md:-right-4 transform -translate-y-1/2">
+                      <span className="block w-1 h-1 rounded-full bg-n-1/50 mb-1" />
+                      <span className="block w-1 h-1 rounded-full bg-n-1/50" />
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
           <Button href="#pricing" white className="animate-fade-up">
             Register Now
           </Button>

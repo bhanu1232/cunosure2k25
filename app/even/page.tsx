@@ -1,12 +1,11 @@
 "use client";
 import { useState } from "react";
 import ButtonGradient from "@/components/svg/button-gradient";
-import CoordinateNavbar from "./CoordinateNavbar"; // Import the custom Navbar
 import { cn } from "@/lib/utils";
 import Benefits from "./events"; // Import the Benefits component
 import Benefits1 from "./nontech";
 import { motion, AnimatePresence } from "framer-motion";
-
+import Navbar from "@/components/layout/navbar";
 export default function Even() {
   const [activeFilter, setActiveFilter] = useState("all");
 
@@ -19,8 +18,7 @@ export default function Even() {
   return (
     <main className="min-h-screen bg-n-8">
       {/* Add the custom Navbar */}
-      <CoordinateNavbar />
-
+      <Navbar />
       {/* Main Content */}
       <div className={cn("overflow-hidden pt-[4.75rem] lg:pt-[5.25rem]")}>
         <ButtonGradient />

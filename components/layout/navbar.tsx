@@ -7,10 +7,10 @@ import { navigation } from "@/constants";
 import Button from "../atoms/button";
 import MenuSvg from "../svg/menu-svg";
 import { HamburgerMenu } from "../design/navbar";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const [hash, setHash] = useState<string>("hero");
   const [openNavigation, setOpenNavigation] = useState<boolean>(false);
 
@@ -22,8 +22,7 @@ const Navbar = (props: Props) => {
         if (current === null) return;
 
         const sectionId = current.getAttribute("id");
-        // @ts-ignore
-        const sectionHeight = current.offsetHeight;
+        const sectionHeight = (current as HTMLElement).offsetHeight;
         const sectionTop = current.getBoundingClientRect().top - sectionHeight * 0.2;
 
         if (sectionTop < 0 && sectionTop + sectionHeight > 0 && hash !== sectionId) {
@@ -35,13 +34,11 @@ const Navbar = (props: Props) => {
     window.addEventListener("scroll", dynamicNavbarHighlight);
 
     return () => window.removeEventListener("scroll", dynamicNavbarHighlight);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [hash]);
 
   const toggleNavigation = () => setOpenNavigation(!openNavigation);
   const handleClick = () => {
     if (!openNavigation) return;
-
     setOpenNavigation(false);
   };
 
@@ -53,8 +50,28 @@ const Navbar = (props: Props) => {
       )}
     >
       <div className={cn(`flex items-center px-5 max-lg:py-4 lg:px-7.5 xl:px-10`)}>
-        <Link href="#hero" className={cn(`block w-48 xl:mr-8`)}>
-          <h2>Cynosure</h2>
+        <Link href="#hero" className="group block">
+          <div className="flex items-center gap-4">
+            {/* Logo/Icon */}
+            <div className="relative w-10 h-10 md:w-12 md:h-12  rounded-xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-[1px] bg-n-8 rounded-xl flex items-center justify-center">
+                <Image src={"assets/brainwave-symbol.svg"} width={30} height={30} alt="AI" />
+              </div>
+            </div>
+
+            {/* Text */}
+            <div className="flex flex-col">
+              <motion.span
+                className="text-lg md:text-xl font-bold  "
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                CYNOSURE
+              </motion.span>
+            </div>
+          </div>
         </Link>
 
         <nav
