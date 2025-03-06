@@ -58,13 +58,13 @@ const Services = () => {
         />
 
         <div className="relative mt-10">
-          <div className="relative z-1 mb-5 h-[39rem] overflow-hidden rounded-3xl border border-n-1/10 lg:h-[46rem]">
+          <div className="relative z-1 mb-5 h-[39rem] max-sm:h-[70vh] overflow-hidden rounded-3xl border border-n-1/10 lg:h-[46rem]">
             {/* Background Glow Effects */}
             <div className="absolute top-0 -left-[40%] w-[80%] aspect-square rounded-full bg-[#1F4AF6]/20 blur-[120px] pointer-events-none" />
             <div className="absolute top-0 -right-[40%] w-[80%] aspect-square rounded-full bg-[#8F46FF]/20 blur-[120px] pointer-events-none" />
 
             {/* Slider Container */}
-            <div className="relative h-full">
+            <div className="relative h-full max-sm:h-[70vh]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentSlide}

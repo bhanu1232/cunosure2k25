@@ -101,7 +101,7 @@ const EventDetailPage = ({ params }: { params: { eventId: string } }) => {
 
           {/* Registration Button */}
           <Link
-            href="/#pricing"
+            href="/passes"
             className="inline-block rounded-lg bg-cyan-500 px-8 py-3 text-center text-white transition-colors hover:bg-cyan-400"
           >
             Register Now

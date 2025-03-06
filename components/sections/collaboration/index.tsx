@@ -5,7 +5,7 @@ import Image from "next/image";
 import Button from "@/components/atoms/button";
 import { cn } from "@/lib/utils";
 import { LeftCurve, RightCurve } from "@/components/design/collaboration";
-
+import Link from "next/link";
 type Props = {};
 
 const Collaboration = (props: Props) => {
@@ -25,9 +25,9 @@ const Collaboration = (props: Props) => {
               </li>
             ))}
           </ul>
-          <a href="#pricing">
+          <Link href="/passes">
             <Button>Register now</Button>
-          </a>
+          </Link>
         </div>
 
         <div className="mt-4 lg:ml-auto xl:w-[38rem]">

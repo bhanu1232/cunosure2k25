@@ -331,6 +331,30 @@ export const benefits = [
   },
 ];
 
+export interface Coordinator {
+  name: string;
+  phone: string;
+  email: string;
+}
+
+export interface Event {
+  id: string;
+  type: string;
+  title: string;
+  text: string;
+  backgroundUrl: string;
+  iconUrl: string;
+  imageUrl: string;
+  prize: string;
+  fullDescription: string;
+  rules: string[];
+  requirements: string[];
+  coordinators: Coordinator[];
+  date?: string;
+  venue?: string;
+  teamSize?: string;
+}
+
 export const events = [
   {
     id: "6",
@@ -341,6 +365,9 @@ export const events = [
     iconUrl: benefitIcon3,
     imageUrl: benefitImage2,
     prize: "20000",
+    date: "22 march",
+    venue: "CSE Lab 1",
+    teamSize: "Individual",
     fullDescription: `Push your limits in our 12-hour Code Marathon!
 
     🏃‍♂️ Marathon Format:
@@ -389,6 +416,9 @@ export const events = [
     iconUrl: benefitIcon1,
     imageUrl: benefitImage2,
     prize: "15000",
+    date: "22 march",
+    venue: "CSE Lab 2",
+    teamSize: "Individual",
     fullDescription: `Compete in our high-energy competitive programming contest!
 
     🏆 Contest Format:
@@ -437,6 +467,9 @@ export const events = [
     iconUrl: benefitIcon2,
     imageUrl: benefitImage2,
     prize: "10000",
+    date: "22 march",
+    venue: "Seminar Hall",
+    teamSize: "Individual",
     fullDescription: `Challenge your technical knowledge in our comprehensive Tech Quiz!
 
     📚 Quiz Format:
@@ -486,6 +519,9 @@ export const events = [
     iconUrl: benefitIcon2,
     imageUrl: benefitImage2,
     prize: "10000",
+    date: "22 march",
+    venue: "Conference Hall",
+    teamSize: "2-3 members",
     fullDescription: `Transform your innovative ideas into impactful solutions!
 
     🎯 Focus Areas:
@@ -533,6 +569,9 @@ export const events = [
     iconUrl: benefitIcon3,
     imageUrl: benefitImage2,
     prize: "8000",
+    date: "22 march",
+    venue: "CSE Lab 3",
+    teamSize: "Individual",
     fullDescription: `Test your database skills in Query Crackers!
 
     💻 Challenge Format:
@@ -580,6 +619,9 @@ export const events = [
     iconUrl: benefitIcon4,
     imageUrl: benefitImage2,
     prize: "12000",
+    date: "22 march",
+    venue: "CSE Lab 4",
+    teamSize: "1-2 members",
     fullDescription: `Showcase your web development skills in Web Wreath!
 
     🎯 Challenge Areas:
@@ -628,6 +670,9 @@ export const events = [
     iconUrl: benefitIcon1,
     imageUrl: benefitImage2,
     prize: "25000",
+    date: "22 march",
+    venue: "Main Auditorium",
+    teamSize: "2-4 members",
     fullDescription: `Join us for Cynosure 2024's premier Hackathon! 
 
     🔥 Event Highlights:
@@ -687,6 +732,9 @@ export const fun = [
     iconUrl: benefitIcon4,
     imageUrl: benefitImage2,
     prize: "7000",
+    date: "22 march",
+    venue: "Seminar Hall 2",
+    teamSize: "Individual",
     fullDescription: `Challenge your mind in this intense battle of wits!
 
     🧩 Event Format:
@@ -738,6 +786,9 @@ export const fun = [
     iconUrl: benefitIcon3,
     imageUrl: benefitImage2,
     prize: "6000",
+    date: "22 march",
+    venue: "Classroom A101",
+    teamSize: "Individual",
     fullDescription: `Test your aptitude skills across various domains!
 
     📚 Test Format:
@@ -780,6 +831,9 @@ export const fun = [
     iconUrl: benefitIcon4,
     imageUrl: benefitImage2,
     prize: "8000",
+    date: "22 march",
+    venue: "College Campus",
+    teamSize: "3-4 members",
     fullDescription: `Embark on an exciting adventure around the campus!
 
     🗺️ Hunt Format:
@@ -831,6 +885,9 @@ export const fun = [
     iconUrl: benefitIcon2,
     imageUrl: benefitImage2,
     prize: "5000",
+    date: "22 march",
+    venue: "Photography Studio",
+    teamSize: "2 members",
     fullDescription: `Get ready for a unique blend of art and technology!
 
     🎨 Game Format:
@@ -882,6 +939,9 @@ export const fun = [
     iconUrl: benefitIcon4,
     imageUrl: benefitImage2,
     prize: "8000",
+    date: "22 march",
+    venue: "Activity Room",
+    teamSize: "3-4 members",
     fullDescription: `Embark on an exciting adventure around the campus!
 
     🗺️ Hunt Format:
