@@ -48,20 +48,20 @@ const Hero = (props: Props) => {
           </Button>
         </div>
 
-        <div className={cn("relative max-w-[23rem] mx-auto md:max-w-5xl xl:mb-24")}>
+        <div className={cn("relative max-w-[23rem] mx-auto md:max-w-5xl xl:mb-24 overflow-hidden")}>
           <div className={cn("relative z-1 rounded-2xl p-0.5 bg-conic-gradient")}>
             <div className={cn("relative bg-n-8 rounded-[1rem]")}>
-              <div className={cn("h-[1.4rem] bg-n-10 rounded-t-[0.9rem]")} />
+              <div className={cn(" bg-n-10 rounded-t-[0.9rem]")} />
               <div
                 className={cn(
-                  " rounded-b-[0.9rem] overflow-hidden md:aspect-[688/490] lg:aspect-[1024/490]"
+                  "max-sm:h-full  rounded-b-[0.9rem] overflow-hidden md:aspect-[688/490] lg:aspect-[1024/490]"
                 )}
               >
                 <Image
                   src={images.robot}
                   width={1024}
                   height={490}
-                  className="w-full translate-y-[8%] scale-[1.7] transition-transform duration-700 hover:scale-[1.8] md:translate-y-[-10%] md:scale-100 md:hover:scale-105 lg:translate-y-[-23%]"
+                  className="w-full rounded-md translate-y-[8%] scale-[1.7] transition-transform duration-700 hover:scale-[1.8] md:translate-y-[-10%] md:scale-100 md:hover:scale-105 lg:translate-y-[-23%]"
                   alt="AI"
                 />
               </div>

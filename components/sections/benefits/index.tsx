@@ -17,6 +17,7 @@ const Benefits = () => {
         "Dive into coding challenges, hackathons, and innovative technical competitions that push your limits",
       image: "/assets/gradient.png",
       duration: "2 Days",
+      gradient: "from-[#1F4AF6] to-[#1BC7FB]",
     },
     {
       id: "nontech",
@@ -26,6 +27,7 @@ const Benefits = () => {
         "Experience art, music, dance, and creative competitions that showcase your artistic talents",
       image: "/assets/gradient.png",
       duration: "3 Days",
+      gradient: "from-[#8F46FF] to-[#FF6B6B]",
     },
   ];
 
@@ -45,15 +47,13 @@ const Benefits = () => {
             className="relative"
           >
             <Heading
-              className="md:max-w-md lg:max-w-2xl text-center mx-auto mb-6"
+              className="md:max-w-md lg:max-w-2xl mx-auto mb-6"
               title="Explore Events"
+              tag="Discover Events"
             />
-            <p className="text-n-3 text-center max-w-[480px] mx-auto mb-12 text-lg">
-              Discover amazing events that await you at our fest
-            </p>
           </motion.div>
 
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 max-w-[1200px] mx-auto px-4 max-sm:mx-0 max-sm:px-0">
+          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 max-w-[1200px] mx-auto px-4 max-sm:px-0">
             {eventCards.map((card, index) => (
               <motion.div
                 key={card.id}
@@ -96,13 +96,13 @@ const Benefits = () => {
                     </div>
 
                     {/* Title and Subtitle */}
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-white/90 transition-colors">
+                    <h3 className="h4 mb-2 text-start group-hover:text-white/90 transition-colors">
                       {card.title}
                     </h3>
-                    <p className="text-n-3 text-lg mb-4">{card.subTitle}</p>
+                    <p className="body-2 text-n-4 mb-4 text-start">{card.subTitle}</p>
 
                     {/* Description */}
-                    <p className="text-n-3/80 mb-8 line-clamp-2 group-hover:text-n-3/90 transition-colors">
+                    <p className="body-2 text-n-4/80 mb-8 line-clamp-2 text-start group-hover:text-n-4/90 transition-colors">
                       {card.description}
                     </p>
 
@@ -110,7 +110,7 @@ const Benefits = () => {
                     <div className="flex items-center justify-between">
                       <Link
                         href={`/even`}
-                        className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-n-1/10 hover:bg-n-1/15 text-white font-medium transition-all duration-200 group-hover:px-10"
+                        className={`inline-flex items-center justify-center px-8 py-3 rounded-full bg-gradient-to-r ${card.gradient} hover:shadow-xl hover:shadow-n-1/10 text-white font-medium transition-all duration-200 group-hover:px-10`}
                       >
                         Explore
                       </Link>

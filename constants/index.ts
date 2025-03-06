@@ -112,21 +112,26 @@ const {
 export const navigation = [
   {
     id: "0",
+    title: "Home",
+    url: "/",
+  },
+  {
+    id: "1",
     title: "About",
     url: "#about",
   },
   {
-    id: "1",
+    id: "2",
     title: "Passes",
     url: "#pricing",
   },
   {
-    id: "2",
+    id: "3",
     title: "Events",
     url: "/even",
   },
   {
-    id: "3",
+    id: "4",
     title: "coordinators",
     url: "/coordinate",
   },
@@ -422,8 +427,7 @@ export const events = [
       },
     ],
   },
-  
-  
+
   {
     id: "1",
     type: "tech",
@@ -671,11 +675,9 @@ export const events = [
       },
     ],
   },
-  
 ];
 
 export const fun = [
-  
   {
     id: "1",
     type: "fun",
@@ -922,8 +924,6 @@ export const fun = [
       },
     ],
   },
-  
-  
 ];
 
 export const socials = [
@@ -1011,5 +1011,4 @@ export const coord = [
     contactInfo: "7075602932",
     mail: "harikavelpula8@gmail.com",
   },
-  
 ];
