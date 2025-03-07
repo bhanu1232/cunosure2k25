@@ -43,31 +43,22 @@ const Hero = () => {
 
   return (
     <Section
-      className={cn("pt-[12rem] -mt-[5.25rem] relative overflow-hidden")}
+      className={cn("pt-[12rem] -mt-[5.25rem] relative overflow-hidden bg-[#100C1B]")}
       crosses
       crossesOffset="lg:translate-y-[5.25rem]"
       customPaddings
       id="hero"
     >
-      {/* Grid Background */}
+      {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
           src="/assets/grid.png"
           alt="Grid Background"
           fill
-          className="object-cover opacity-10"
+          className="object-cover opacity-[0.04] bg-repeat"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-n-8 via-n-8/90 to-n-8" />
-      </div>
-
-      {/* Animated Background Circles */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#8E2DE2]/20 rounded-full blur-[120px] opacity-20 animate-pulse" />
-        <div
-          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#4A00E0]/20 rounded-full blur-[120px] opacity-20 animate-pulse"
-          style={{ animationDelay: "1s" }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#100C1B]/50 via-[#100C1B]/80 to-[#100C1B] pointer-events-none"></div>
       </div>
 
       <div className="container relative" ref={parallaxRef}>
@@ -172,50 +163,50 @@ const Hero = () => {
           </Button>
         </div>
 
-        <div className="relative mx-auto max-w-[1200px] overflow-hidden">
+        <div className="relative mx-auto max-w-[1400px]">
           {/* Main Image Container */}
-          <div className="relative z-1 overflow-hidden">
-            {/* Gradient Border */}
-            <div className="relative p-1 rounded-[2rem] bg-gradient-to-r from-[#8E2DE2] via-[#4A00E0] to-[#8E2DE2]">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="relative z-1 group"
+          >
+            {/* Glass Container */}
+            <div className="relative rounded-2xl bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm border border-white/10 p-2">
               {/* Image Wrapper */}
-              <div className="relative bg-n-8 rounded-[1.9rem] overflow-hidden backdrop-blur-sm border border-white/5">
-                {/* Top Shine Effect */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent h-[20%] z-10"></div>
-
-                {/* Bottom Gradient */}
-                <div className="absolute bottom-0 inset-x-0 h-[40%] bg-gradient-to-t from-n-8 to-transparent z-10"></div>
-
+              <div className="relative rounded-xl overflow-hidden">
                 {/* Image */}
-                <div className="relative aspect-[16/9] md:aspect-[2/1] lg:aspect-[2.5/1] overflow-hidden group">
+                <div className="relative aspect-[2/1] sm:aspect-[2.2/1] md:aspect-[2.5/1] lg:aspect-[3/1] overflow-hidden group">
                   <Image
                     src={images.banner}
-                    width={1920}
-                    height={1080}
-                    className="w-full h-full object-cover object-center transform scale-110 group-hover:scale-105 transition-transform duration-700 ease-out"
+                    fill
+                    className="w-full h-full object-cover object-center transform scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
                     alt="Cynosure 2025"
                     priority
                   />
-
-                  {/* Animated Shine Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent w-[200%] -translate-x-full animate-shine"></div>
-                </div>
-
-                {/* Decorative Elements */}
-                <div className="absolute top-4 left-4 flex items-center gap-2 z-20">
-                  <div className="w-2 h-2 rounded-full bg-[#8E2DE2] animate-pulse"></div>
-                  <div
-                    className="w-2 h-2 rounded-full bg-[#4A00E0] animate-pulse"
-                    style={{ animationDelay: "0.5s" }}
-                  ></div>
-                  <div
-                    className="w-2 h-2 rounded-full bg-[#8E2DE2] animate-pulse"
-                    style={{ animationDelay: "1s" }}
-                  ></div>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
+
+        <style jsx>{`
+          @keyframes gradient-shift {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
+          }
+          .animate-gradient-shift {
+            animation: gradient-shift 8s ease infinite;
+            background-size: 200% 200%;
+          }
+        `}</style>
 
         <BottomLine />
       </div>

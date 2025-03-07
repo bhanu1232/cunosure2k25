@@ -12,7 +12,7 @@ const Collaboration = (props: Props) => {
   return (
     <Section id="about" crosses>
       <div className="container lg:flex">
-        <div className="max-w-[25rem]">
+        <div className="max-w-[25rem] max-sm:pl-4">
           <h2 className="h2 mb-12 max-md:mb-4">Cynosure a Fest of Innovation and Fun!</h2>
           <ul className="mb-10 max-w-[22rem] md:mb-14">
             {collabContent.map((item) => (
@@ -21,7 +21,7 @@ const Collaboration = (props: Props) => {
                   <Image src={images.check} width={24} height={24} alt="check" />
                   <h6 className="body-2 ml-5">{item.title}</h6>
                 </div>
-                {item.text && <p className="body-2 mt-3 text-n-4">{item.text}</p>}
+                {item.text && <p className="body-2 mt-3 text-n-4 max-sm:px-10">{item.text}</p>}
               </li>
             ))}
           </ul>
