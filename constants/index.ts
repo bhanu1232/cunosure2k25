@@ -74,6 +74,7 @@ export const images = {
   pavan: "/assets/coord/pavan.jpg",
   sudhansu: "/assets/coord/sudhansu.jpeg",
   harika: "/assets/coord/harika.jpeg",
+  banner: "/banner.avif",
 };
 
 const {

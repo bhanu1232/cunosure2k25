@@ -120,41 +120,55 @@ const Hero = () => {
           </Button>
         </div>
 
-        <div className={cn("relative max-w-[23rem] mx-auto md:max-w-5xl xl:mb-24 overflow-hidden")}>
-          <div className={cn("relative z-1 rounded-2xl p-0.5 bg-conic-gradient")}>
-            <div className={cn("relative bg-n-8 rounded-[1rem]")}>
-              <div className={cn(" bg-n-10 rounded-t-[0.9rem]")} />
-              <div
-                className={cn(
-                  "max-sm:h-full  rounded-b-[0.9rem] overflow-hidden md:aspect-[688/490] lg:aspect-[1024/490]"
-                )}
-              >
-                <Image
-                  src={images.robot}
-                  width={1024}
-                  height={490}
-                  className="w-full rounded-md translate-y-[8%] scale-[1.7] transition-transform duration-700 hover:scale-[1.8] md:translate-y-[-10%] md:scale-100 md:hover:scale-105 lg:translate-y-[-23%]"
-                  alt="AI"
-                />
+        <div className="relative mx-auto max-w-[1200px] overflow-hidden">
+          {/* Animated Background Glow */}
+
+          {/* Main Image Container */}
+          <div className="relative z-1 overflow-hidden">
+            {/* Gradient Border */}
+            <div className="relative p-1 rounded-[2rem] bg-gradient-to-r from-[#8E2DE2] via-[#4A00E0] to-[#8E2DE2]">
+              {/* Image Wrapper */}
+              <div className="relative bg-n-8 rounded-[1.9rem] overflow-hidden backdrop-blur-sm border border-white/5">
+                {/* Top Shine Effect */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent h-[20%] z-10"></div>
+
+                {/* Bottom Gradient */}
+                <div className="absolute bottom-0 inset-x-0 h-[40%] bg-gradient-to-t from-n-8 to-transparent z-10"></div>
+
+                {/* Image */}
+                <div className="relative aspect-[16/9] md:aspect-[2/1] lg:aspect-[2.5/1] overflow-hidden">
+                  <Image
+                    src={images.banner}
+                    width={1920}
+                    height={1080}
+                    className="w-full h-full object-cover object-center transform scale-110 hover:scale-105 transition-transform duration-700 ease-out"
+                    alt="Cynosure 2025"
+                    priority
+                  />
+
+                  {/* Animated Shine Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent w-[200%] -translate-x-full animate-shine"></div>
+                </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute top-4 left-4 flex items-center gap-2 z-20">
+                  <div className="w-2 h-2 rounded-full bg-[#8E2DE2] animate-pulse"></div>
+                  <div
+                    className="w-2 h-2 rounded-full bg-[#4A00E0] animate-pulse"
+                    style={{ animationDelay: "0.5s" }}
+                  ></div>
+                  <div
+                    className="w-2 h-2 rounded-full bg-[#8E2DE2] animate-pulse"
+                    style={{ animationDelay: "1s" }}
+                  ></div>
+                </div>
               </div>
             </div>
-
-            <Gradient />
           </div>
-          <div className="absolute overflow-hidden h-[160vh] max-sm:h-[110vh] left-1/2 top-[-54%] w-[234%] -translate-x-1/2 md:top-[-46%] md:w-[138%] lg:top-[-104%] max-sm:top-0">
-            <Image
-              src={images.heroBackground}
-              width={1440}
-              height={1080}
-              className="w-full"
-              alt="hero"
-            />
-          </div>
-
-          <BackgroundCircles parallaxRef={parallaxRef} />
         </div>
+
+        <BottomLine />
       </div>
-      <BottomLine />
     </Section>
   );
 };
