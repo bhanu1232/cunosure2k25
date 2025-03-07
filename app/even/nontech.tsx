@@ -28,7 +28,7 @@ const Benefits1 = () => {
                       {/* Image Container */}
                       <div className="relative h-[160px] overflow-hidden">
                         <Image
-                          src={item.imageUrl || "/assets/placeholder.jpg"}
+                          src={item.backgroundUrl || "/assets/placeholder.jpg"}
                           alt={item.title}
                           fill
                           className="object-cover transition-transform duration-500 will-change-transform group-hover:scale-110"

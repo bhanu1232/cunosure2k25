@@ -28,7 +28,7 @@ const Benefits = () => {
         "Experience art, music, dance, and creative competitions that showcase your artistic talents",
       duration: "3 Days",
       gradient: "from-[#FF6B6B] via-[#FF8E53] to-[#FFB547]",
-      overlayText: "FUN",
+      overlayText: "NON-TECH",
     },
   ];
 

@@ -11,21 +11,21 @@ const Services = () => {
   const slides = [
     {
       id: 1,
-      image: images.service1,
-      title: "Technical Events",
+      image: "/assets/gallery/web.avif",
+      title: "Web Development",
       description: "Showcasing innovation and technical excellence",
     },
     {
       id: 2,
-      image: "/assets/hero/robot.jpg",
-      title: "Cultural Performances",
-      description: "Celebrating art, music, and creativity",
+      image: "/assets/gallery/query.avif",
+      title: "Query Cracker",
+      description: "A compative tech knowledge competition",
     },
     {
       id: 3,
-      image: "/assets/hero/1.avif",
-      title: "Workshop Sessions",
-      description: "Learning and growing together",
+      image: "/assets/gallery/four.avif",
+      title: "Flash Mob",
+      description: "A dance performance by the students",
     },
   ];
 

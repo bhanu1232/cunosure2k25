@@ -43,23 +43,67 @@ const Hero = () => {
 
   return (
     <Section
-      className={cn("pt-[12rem] -mt-[5.25rem]")}
+      className={cn("pt-[12rem] -mt-[5.25rem] relative overflow-hidden")}
       crosses
       crossesOffset="lg:translate-y-[5.25rem]"
       customPaddings
       id="hero"
     >
+      {/* Grid Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <Image
+          src="/assets/grid.png"
+          alt="Grid Background"
+          fill
+          className="object-cover opacity-10"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-n-8 via-n-8/90 to-n-8" />
+      </div>
+
+      {/* Animated Background Circles */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#8E2DE2]/20 rounded-full blur-[120px] opacity-20 animate-pulse" />
+        <div
+          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#4A00E0]/20 rounded-full blur-[120px] opacity-20 animate-pulse"
+          style={{ animationDelay: "1s" }}
+        />
+      </div>
+
       <div className="container relative" ref={parallaxRef}>
         <div className="relative z-1 mx-auto mb-16 max-w-[62rem] text-center md:mb-20 lg:mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="relative inline-block mb-6"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0] rounded-full opacity-20 blur-xl" />
+            <div className="px-6 py-2 rounded-full border border-n-1/10 bg-n-1/5 backdrop-blur-sm">
+              <span className="text-base md:text-lg font-medium bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0] bg-clip-text text-transparent">
+                Technical Fest 2025
+              </span>
+            </div>
+          </motion.div>
+
           <h1 className="relative mb-6 text-center font-bold">
             <div className="relative inline-block">
-              <span className="animate-typing inline-block bg-gradient-to-r from-[#8E2DE2] via-[#4A00E0] to-[#8E2DE2] bg-clip-text text-5xl text-transparent md:text-7xl">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="animate-typing inline-block bg-gradient-to-r from-[#8E2DE2] via-[#4A00E0] to-[#8E2DE2] bg-clip-text text-5xl text-transparent md:text-7xl"
+              >
                 CYNOSURE
-              </span>
+              </motion.span>
               <br />
-              <span className="animate-typing-delayed inline-block bg-gradient-to-r from-[#FF512F] to-[#DD2476] bg-clip-text text-4xl text-transparent md:text-6xl">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="animate-typing-delayed inline-block bg-gradient-to-r from-[#FF512F] to-[#DD2476] bg-clip-text text-4xl text-transparent md:text-6xl"
+              >
                 2025
-              </span>
+              </motion.span>
               <Image
                 src={images.curve}
                 className="absolute left-0 top-full w-full animate-fade-up xl:-mt-2"
@@ -69,14 +113,20 @@ const Hero = () => {
               />
             </div>
           </h1>
-          <p className={cn("body-1 mx-auto mb-6 max-w-3xl animate-fade-up text-n-2 lg:mb-8")}>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className={cn("body-1 mx-auto mb-6 max-w-3xl animate-fade-up text-n-2 lg:mb-8")}
+          >
             Unleash the power of AI within Brainwave. Upgrade your productivity with Brainwave, the
             open AI chat app.
-          </p>
+          </motion.p>
 
-          {/* Countdown Timer */}
-          <div className="mb-8">
-            <div className="flex justify-center gap-4 md:gap-8">
+          {/* Countdown Timer with Enhanced Design */}
+          <div className="mb-8 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#8E2DE2]/20 to-[#4A00E0]/20 blur-3xl" />
+            <div className="flex justify-center gap-4 md:gap-8 relative">
               {[
                 { label: "Days", value: timeLeft.days },
                 { label: "Hours", value: timeLeft.hours },
@@ -88,9 +138,10 @@ const Hero = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="relative"
+                  className="relative group"
                 >
-                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-2xl bg-n-8/80 backdrop-blur-sm border border-n-1/10 flex flex-col items-center justify-center p-2">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-2xl bg-n-8/80 backdrop-blur-sm border border-n-1/10 flex flex-col items-center justify-center p-2 relative">
                     <div className="relative">
                       <motion.span
                         key={item.value}
@@ -115,14 +166,13 @@ const Hero = () => {
             </div>
           </div>
 
-          <Button href="/passes" white className="animate-fade-up">
-            Register Now
+          <Button href="/passes" white className="animate-fade-up relative group overflow-hidden">
+            <span className="relative z-10">Register Now</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </Button>
         </div>
 
         <div className="relative mx-auto max-w-[1200px] overflow-hidden">
-          {/* Animated Background Glow */}
-
           {/* Main Image Container */}
           <div className="relative z-1 overflow-hidden">
             {/* Gradient Border */}
@@ -136,12 +186,12 @@ const Hero = () => {
                 <div className="absolute bottom-0 inset-x-0 h-[40%] bg-gradient-to-t from-n-8 to-transparent z-10"></div>
 
                 {/* Image */}
-                <div className="relative aspect-[16/9] md:aspect-[2/1] lg:aspect-[2.5/1] overflow-hidden">
+                <div className="relative aspect-[16/9] md:aspect-[2/1] lg:aspect-[2.5/1] overflow-hidden group">
                   <Image
                     src={images.banner}
                     width={1920}
                     height={1080}
-                    className="w-full h-full object-cover object-center transform scale-110 hover:scale-105 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-cover object-center transform scale-110 group-hover:scale-105 transition-transform duration-700 ease-out"
                     alt="Cynosure 2025"
                     priority
                   />

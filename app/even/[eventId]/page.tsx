@@ -40,7 +40,7 @@ const EventDetailPage = ({ params }: { params: { eventId: string } }) => {
 
           <div className="mb-8">
             <h2 className="mb-4 text-2xl font-semibold text-white">About the Event</h2>
-            <p className="whitespace-pre-line text-n-3">{event.fullDescription}</p>
+            <p className="whitespace-pre-line text-n-3">{event.text}</p>
           </div>
 
           <div className="mb-8">

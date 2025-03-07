@@ -45,34 +45,40 @@ const Navbar = () => {
   return (
     <div
       className={cn(
-        `fixed top-0 left-0 w-full z-50 border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm`,
+        `fixed top-0 left-0 w-full z-50 border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm overflow-hidden`,
         openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm"
       )}
     >
       <div className={cn(`flex items-center px-5 max-lg:py-4 lg:px-7.5 xl:px-10`)}>
-        <Link href="#hero" className="group block">
-          <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4">
+          <Link href="/" className="group block">
             {/* Logo/Icon */}
-            <div className="relative w-10 h-10 md:w-12 md:h-12  rounded-xl overflow-hidden">
+            <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-xl overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute inset-[1px] bg-n-8 rounded-xl flex items-center justify-center">
-                <Image src={"assets/brainwave-symbol.svg"} width={30} height={30} alt="AI" />
+                <Image
+                  src="/assets/logo.jpg"
+                  width={40}
+                  height={40}
+                  alt="AI"
+                  className="rounded-xl"
+                />
               </div>
             </div>
+          </Link>
 
-            {/* Text */}
-            <div className="flex flex-col">
-              <motion.span
-                className="text-lg md:text-xl font-bold  "
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                CYNOSURE
-              </motion.span>
-            </div>
-          </div>
-        </Link>
+          {/* Text */}
+          <Link href="/" className="block">
+            <motion.span
+              className="text-lg md:text-xl font-bold"
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              CYNOSURE
+            </motion.span>
+          </Link>
+        </div>
 
         <nav
           className={cn(
@@ -104,7 +110,7 @@ const Navbar = () => {
           <HamburgerMenu />
         </nav>
 
-        <Button className="hidden lg:flex" href="#pricing">
+        <Button className="hidden lg:flex" href="/passes">
           Register
         </Button>
 
