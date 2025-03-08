@@ -6,6 +6,7 @@ import Navbar from "@/components/layout/navbar";
 import { CheckCircle2, ChevronDown, X, AlertCircle } from "lucide-react";
 import { db } from "@/lib/firebase";
 import { collection, getDocs, query, where, addDoc } from "firebase/firestore";
+import Image from "next/image";
 
 interface Event {
   id: string;
@@ -13,13 +14,21 @@ interface Event {
   price: number;
 }
 
-const EVENTS: Event[] = [
-  { id: "e1", name: "Technical Quiz", price: 100 },
-  { id: "e2", name: "Coding Challenge", price: 150 },
-  { id: "e3", name: "Robotics Workshop", price: 200 },
-  { id: "e4", name: "AI Workshop", price: 200 },
-  { id: "e5", name: "Hackathon", price: 250 },
-  { id: "e6", name: "Paper Presentation", price: 150 },
+const TECH_EVENTS: Event[] = [
+  { id: "e1", name: "Code Marathon", price: 200 },
+  { id: "e2", name: "Blind Coding", price: 200 },
+  { id: "e3", name: "Tech Quiz", price: 200 },
+  { id: "e4", name: "Ideathon", price: 200 },
+  { id: "e5", name: "Query Crackers", price: 200 },
+  { id: "e6", name: "Web Wreath", price: 200 },
+  { id: "e7", name: "Hackathon", price: 200 },
+];
+
+const NON_TECH_EVENTS: Event[] = [
+  { id: "ne1", name: "Photography", price: 200 },
+  { id: "ne2", name: "Treasure Hunt", price: 200 },
+  { id: "ne3", name: "Brain Battle Blitz", price: 200 },
+  { id: "ne4", name: "Curious Crew", price: 200 },
 ];
 
 interface FormData {
@@ -49,11 +58,13 @@ const PassesPage = () => {
   });
   const [notification, setNotification] = useState<Notification | null>(null);
   const [loading, setLoading] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isTechDropdownOpen, setIsTechDropdownOpen] = useState(false);
+  const [isNonTechDropdownOpen, setIsNonTechDropdownOpen] = useState(false);
 
   const totalAmount = formData.selectedEvents.reduce((total, eventId) => {
-    const event = EVENTS.find((e) => e.id === eventId);
-    return total + (event?.price || 0);
+    const techEvent = TECH_EVENTS.find((e) => e.id === eventId);
+    const nonTechEvent = NON_TECH_EVENTS.find((e) => e.id === eventId);
+    return total + (techEvent?.price || nonTechEvent?.price || 0);
   }, DEFAULT_AMOUNT);
 
   const handleEventToggle = (eventId: string) => {
@@ -136,6 +147,12 @@ const PassesPage = () => {
     }
   };
 
+  const getEventName = (eventId: string) => {
+    const techEvent = TECH_EVENTS.find((e) => e.id === eventId);
+    const nonTechEvent = NON_TECH_EVENTS.find((e) => e.id === eventId);
+    return techEvent?.name || nonTechEvent?.name || "";
+  };
+
   return (
     <section className="relative min-h-screen py-20 overflow-hidden bg-[#100C1B]">
       <Navbar />
@@ -153,34 +170,56 @@ const PassesPage = () => {
               onClick={() => setNotification(null)}
             />
 
-            {/* Popup */}
+            {/* Enhanced Popup */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="fixed left-[35%] max-sm:left-[5%] top-[50%] max-sm:top-[40%] -translate-x-[50%] -translate-y-[50%] z-50 w-[calc(100%-2rem)] max-w-md"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="fixed left-[35%] max-sm:left-[5%] top-1/2 max-sm:top-[30%] -translate-x-1/2 -translate-y-1/2 z-50 w-[calc(100%-2rem)] max-w-md"
             >
               <div
-                className={`rounded-2xl p-6 shadow-xl backdrop-blur-md flex items-start gap-4 ${
-                  notification.type === "success"
-                    ? "bg-green-500/10 border border-green-500/20 text-green-500"
-                    : "bg-red-500/10 border border-red-500/20 text-red-500"
-                }`}
+                className={`
+                  rounded-2xl p-8 shadow-2xl backdrop-blur-xl
+                  ${
+                    notification.type === "success"
+                      ? "bg-white border-2 border-green-500/20"
+                      : "bg-white border-2 border-red-500/20"
+                  }
+                `}
               >
-                {notification.type === "success" ? (
-                  <CheckCircle2 className="w-6 h-6 flex-shrink-0 mt-0.5" />
-                ) : (
-                  <AlertCircle className="w-6 h-6 flex-shrink-0 mt-0.5" />
-                )}
-                <div className="flex-1 text-base sm:text-lg leading-relaxed">
-                  {notification.message}
+                <div className="flex items-start gap-4">
+                  <div
+                    className={`p-3 rounded-xl ${
+                      notification.type === "success"
+                        ? "bg-green-100 text-green-600"
+                        : "bg-red-100 text-red-600"
+                    }`}
+                  >
+                    {notification.type === "success" ? (
+                      <CheckCircle2 className="w-6 h-6" />
+                    ) : (
+                      <AlertCircle className="w-6 h-6" />
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <h3
+                      className={`text-lg font-semibold mb-1 ${
+                        notification.type === "success" ? "text-green-700" : "text-red-700"
+                      }`}
+                    >
+                      {notification.type === "success" ? "Success!" : "Error"}
+                    </h3>
+                    <p className="text-gray-600 text-base leading-relaxed">
+                      {notification.message}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setNotification(null)}
+                    className="text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
                 </div>
-                <button
-                  onClick={() => setNotification(null)}
-                  className="text-current opacity-70 hover:opacity-100 transition-opacity mt-0.5"
-                >
-                  <X className="w-5 h-5" />
-                </button>
               </div>
             </motion.div>
           </>
@@ -267,36 +306,43 @@ const PassesPage = () => {
                 </div>
               </div>
 
-              <div className="space-y-2">
+              {/* Tech Events Dropdown */}
+              <div className="space-y-2 mb-4">
                 <div className="flex justify-between items-center">
-                  <label className="block text-white/60">Additional Events (Optional)</label>
-                  {formData.selectedEvents.length > 0 && (
+                  <label className="block text-white/60">Technical Events</label>
+                  {formData.selectedEvents.filter((id) => TECH_EVENTS.some((e) => e.id === id))
+                    .length > 0 && (
                     <span className="text-white/60 text-sm">
-                      {formData.selectedEvents.length} selected
+                      {
+                        formData.selectedEvents.filter((id) => TECH_EVENTS.some((e) => e.id === id))
+                          .length
+                      }{" "}
+                      selected
                     </span>
                   )}
                 </div>
                 <div className="relative">
                   <div
-                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    onClick={() => setIsTechDropdownOpen(!isTechDropdownOpen)}
                     className={`w-full px-4 py-3 rounded-xl bg-white/5 border transition-colors duration-200 ${
-                      isDropdownOpen
+                      isTechDropdownOpen
                         ? "border-[#4A00E0] bg-white/10"
                         : "border-white/10 hover:border-white/30"
                     } text-white cursor-pointer flex items-center justify-between`}
                   >
                     <div className="flex flex-wrap gap-2">
-                      {formData.selectedEvents.length === 0 ? (
-                        <span className="text-white/40">Click to add more events...</span>
+                      {formData.selectedEvents.filter((id) => TECH_EVENTS.some((e) => e.id === id))
+                        .length === 0 ? (
+                        <span className="text-white/40">Select technical events...</span>
                       ) : (
-                        formData.selectedEvents.map((eventId) => {
-                          const event = EVENTS.find((e) => e.id === eventId);
-                          return (
+                        formData.selectedEvents
+                          .filter((id) => TECH_EVENTS.some((e) => e.id === id))
+                          .map((eventId) => (
                             <div
                               key={eventId}
                               className="flex items-center gap-1 bg-[#4A00E0]/20 px-2 py-1 rounded-full"
                             >
-                              <span className="text-sm text-white">{event?.name}</span>
+                              <span className="text-sm text-white">{getEventName(eventId)}</span>
                               <button
                                 type="button"
                                 onClick={(e) => {
@@ -308,22 +354,126 @@ const PassesPage = () => {
                                 <X className="w-3 h-3" />
                               </button>
                             </div>
-                          );
-                        })
+                          ))
                       )}
                     </div>
                     <ChevronDown
                       className={`w-5 h-5 text-white/60 transition-transform duration-200 ${
-                        isDropdownOpen ? "rotate-180" : ""
+                        isTechDropdownOpen ? "rotate-180" : ""
                       }`}
                     />
                   </div>
 
-                  {/* Dropdown Menu */}
-                  {isDropdownOpen && (
+                  {/* Tech Events Dropdown Menu */}
+                  {isTechDropdownOpen && (
                     <div className="absolute z-50 w-full mt-2 rounded-xl bg-[#1A1625] border border-white/10 shadow-xl backdrop-blur-md">
                       <div className="p-2 space-y-1 max-h-60 overflow-y-auto">
-                        {EVENTS.map((event) => (
+                        {TECH_EVENTS.map((event) => (
+                          <div
+                            key={event.id}
+                            onClick={() => handleEventToggle(event.id)}
+                            className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-all duration-200 ${
+                              formData.selectedEvents.includes(event.id)
+                                ? "bg-[#4A00E0]/20"
+                                : "hover:bg-white/5"
+                            }`}
+                          >
+                            <div className="flex items-center gap-3">
+                              <div
+                                className={`w-5 h-5 rounded-full border-2 transition-colors ${
+                                  formData.selectedEvents.includes(event.id)
+                                    ? "border-[#4A00E0] bg-[#4A00E0]"
+                                    : "border-white/20"
+                                }`}
+                              >
+                                {formData.selectedEvents.includes(event.id) && (
+                                  <CheckCircle2 className="w-4 h-4 text-white" />
+                                )}
+                              </div>
+                              <span className="text-white">{event.name}</span>
+                            </div>
+                            <span
+                              className={`text-sm transition-colors ${
+                                formData.selectedEvents.includes(event.id)
+                                  ? "text-[#4A00E0]"
+                                  : "text-white/60"
+                              }`}
+                            >
+                              +₹{event.price}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Non-Tech Events Dropdown */}
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <label className="block text-white/60">Non-Technical Events</label>
+                  {formData.selectedEvents.filter((id) => NON_TECH_EVENTS.some((e) => e.id === id))
+                    .length > 0 && (
+                    <span className="text-white/60 text-sm">
+                      {
+                        formData.selectedEvents.filter((id) =>
+                          NON_TECH_EVENTS.some((e) => e.id === id)
+                        ).length
+                      }{" "}
+                      selected
+                    </span>
+                  )}
+                </div>
+                <div className="relative">
+                  <div
+                    onClick={() => setIsNonTechDropdownOpen(!isNonTechDropdownOpen)}
+                    className={`w-full px-4 py-3 rounded-xl bg-white/5 border transition-colors duration-200 ${
+                      isNonTechDropdownOpen
+                        ? "border-[#4A00E0] bg-white/10"
+                        : "border-white/10 hover:border-white/30"
+                    } text-white cursor-pointer flex items-center justify-between`}
+                  >
+                    <div className="flex flex-wrap gap-2">
+                      {formData.selectedEvents.filter((id) =>
+                        NON_TECH_EVENTS.some((e) => e.id === id)
+                      ).length === 0 ? (
+                        <span className="text-white/40">Select non-technical events...</span>
+                      ) : (
+                        formData.selectedEvents
+                          .filter((id) => NON_TECH_EVENTS.some((e) => e.id === id))
+                          .map((eventId) => (
+                            <div
+                              key={eventId}
+                              className="flex items-center gap-1 bg-[#4A00E0]/20 px-2 py-1 rounded-full"
+                            >
+                              <span className="text-sm text-white">{getEventName(eventId)}</span>
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleEventToggle(eventId);
+                                }}
+                                className="text-white/60 hover:text-white transition-colors"
+                              >
+                                <X className="w-3 h-3" />
+                              </button>
+                            </div>
+                          ))
+                      )}
+                    </div>
+                    <ChevronDown
+                      className={`w-5 h-5 text-white/60 transition-transform duration-200 ${
+                        isNonTechDropdownOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+
+                  {/* Non-Tech Events Dropdown Menu */}
+                  {isNonTechDropdownOpen && (
+                    <div className="absolute z-50 w-full mt-2 rounded-xl bg-[#1A1625] border border-white/10 shadow-xl backdrop-blur-md">
+                      <div className="p-2 space-y-1 max-h-60 overflow-y-auto">
+                        {NON_TECH_EVENTS.map((event) => (
                           <div
                             key={event.id}
                             onClick={() => handleEventToggle(event.id)}
@@ -405,6 +555,55 @@ const PassesPage = () => {
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-[#4A00E0] focus:outline-none transition-colors"
                   placeholder="Enter your mobile number"
                 />
+              </div>
+
+              {/* Payment QR Code Section */}
+              <div className="relative p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                <div className="absolute top-0 right-0 px-3 py-1 rounded-tr-xl rounded-bl-xl bg-[#4A00E0]/20 border-b border-l border-[#4A00E0]/20">
+                  <span className="text-xs text-white/60">Scan to Pay</span>
+                </div>
+
+                <div className="flex flex-col md:flex-row items-center gap-6">
+                  {/* QR Code */}
+                  <div className="relative w-48 h-48 bg-white rounded-xl p-3 mx-auto md:mx-0">
+                    <Image
+                      src="/dummy-qr.jpeg"
+                      alt="Payment QR Code"
+                      width={200}
+                      height={200}
+                      className="w-full h-full object-contain"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-[#4A00E0]/10 via-transparent to-[#8E2DE2]/10 pointer-events-none rounded-xl"></div>
+                  </div>
+
+                  {/* Payment Instructions */}
+                  <div className="flex-1 space-y-4">
+                    <div className="space-y-2">
+                      <h4 className="text-white font-medium">Payment Instructions</h4>
+                      <ul className="space-y-2 text-sm text-white/60">
+                        <li className="flex items-center gap-2">
+                          <span className="w-1 h-1 rounded-full bg-[#4A00E0]"></span>
+                          Scan the QR code using any UPI app
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1 h-1 rounded-full bg-[#4A00E0]"></span>
+                          Pay the total amount shown above
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1 h-1 rounded-full bg-[#4A00E0]"></span>
+                          Save the payment ID/UTR number
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="p-3 rounded-lg bg-[#4A00E0]/10 border border-[#4A00E0]/20">
+                      <p className="text-sm text-white/80">
+                        <span className="font-medium text-white">Note:</span> After successful
+                        payment, enter the payment ID/UTR number in the field below
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div>

@@ -43,7 +43,7 @@ const importantPoints = [
   "Includes dinner and next day breakfast",
   "Must register in advance",
   "Collect pass on March 22 morning",
-  "Only for registered Sigmoid participants",
+  "Only for registered Cynosure participants",
   "You are responsible for your belongings",
 ];
 
@@ -116,7 +116,7 @@ const AccommodationPage = () => {
             transition={{ delay: 0.3 }}
             className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
           >
-            Comfortable and convenient accommodation for Sigmoid participants
+            Comfortable and convenient accommodation for Cynosure participants
           </motion.p>
 
           {/* Decorative Corner Elements */}
