@@ -31,12 +31,20 @@ const NON_TECH_EVENTS: Event[] = [
   { id: "ne4", name: "Curious Crew", price: 200 },
 ];
 
+const EXCLUDED_COMPLEMENTARY_EVENTS = ["e4", "e7"]; // Ideathon and Hackathon IDs
+
+const COMPLEMENTARY_EVENTS = [
+  ...TECH_EVENTS.filter((event) => !EXCLUDED_COMPLEMENTARY_EVENTS.includes(event.id)),
+  ...NON_TECH_EVENTS,
+];
+
 interface FormData {
   name: string;
   email: string;
   mobile: string;
   paymentId: string;
   selectedEvents: string[];
+  complementaryEvent: string;
   uid?: string;
   participationCount?: number;
 }
@@ -55,11 +63,13 @@ const PassesPage = () => {
     mobile: "",
     paymentId: "",
     selectedEvents: [],
+    complementaryEvent: "",
   });
   const [notification, setNotification] = useState<Notification | null>(null);
   const [loading, setLoading] = useState(false);
   const [isTechDropdownOpen, setIsTechDropdownOpen] = useState(false);
   const [isNonTechDropdownOpen, setIsNonTechDropdownOpen] = useState(false);
+  const [isComplementaryDropdownOpen, setIsComplementaryDropdownOpen] = useState(false);
 
   const totalAmount = formData.selectedEvents.reduce((total, eventId) => {
     const techEvent = TECH_EVENTS.find((e) => e.id === eventId);
@@ -100,6 +110,18 @@ const PassesPage = () => {
     return `CS${mobile}`;
   };
 
+  const handleComplementaryEventSelect = (eventId: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      complementaryEvent: prev.complementaryEvent === eventId ? "" : eventId,
+    }));
+    setIsComplementaryDropdownOpen(false);
+  };
+
+  const getComplementaryEventName = (eventId: string) => {
+    return COMPLEMENTARY_EVENTS.find((e) => e.id === eventId)?.name || "";
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -120,7 +142,7 @@ const PassesPage = () => {
       const registrationData = {
         ...formData,
         uid,
-        participationCount: formData.selectedEvents.length,
+        participationCount: formData.selectedEvents.length + (formData.complementaryEvent ? 1 : 0),
         totalAmount,
         date: new Date().toISOString(),
       };
@@ -136,6 +158,7 @@ const PassesPage = () => {
         mobile: "",
         paymentId: "",
         selectedEvents: [],
+        complementaryEvent: "",
       });
     } catch (error) {
       setNotification({
@@ -237,7 +260,7 @@ const PassesPage = () => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16 relative"
+          className="text-center mb-8 relative"
         >
           {/* Decorative Elements */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] pointer-events-none">
@@ -280,11 +303,85 @@ const PassesPage = () => {
           </motion.div>
         </motion.div>
 
+        {/* Separate Registrations Section */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
+          <div className="text-center mb-6">
+            <h4 className="text-xl text-white/80 font-medium">Separate Registrations</h4>
+            <p className="text-white/60 text-sm mt-1">Register directly for individual events</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            {/* Paper Presentation Card */}
+            <div className="relative group">
+              <a
+                href="/paper-presentation"
+                className="relative block p-6 rounded-xl bg-gradient-to-r from-[#4A00E0]/10 to-[#8E2DE2]/10 hover:from-[#4A00E0]/20 hover:to-[#8E2DE2]/20 backdrop-blur-sm border border-white/10 transition-all duration-300"
+              >
+                <div className="flex flex-col h-full">
+                  <h4 className="text-2xl font-semibold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-2">
+                    Paper Presentation
+                  </h4>
+                  <p className="text-white/60 text-sm mb-4 flex-grow">
+                    Submit your research paper and showcase your ideas to a panel of experts
+                  </p>
+                  <div className="flex items-center justify-between mt-auto">
+                    <span className="px-3 py-1 rounded-full bg-[#4A00E0]/20 text-sm text-white/80 border border-[#4A00E0]/20">
+                      ₹300
+                    </span>
+                    <span className="flex items-center gap-2 text-white/60 group-hover:text-white/80">
+                      Register Now
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">
+                        →
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            {/* Ideathon Card */}
+            <div className="relative group">
+              <a
+                href="/ideathon"
+                className="relative block p-6 rounded-xl bg-gradient-to-r from-[#4A00E0]/10 to-[#8E2DE2]/10 hover:from-[#4A00E0]/20 hover:to-[#8E2DE2]/20 backdrop-blur-sm border border-white/10 transition-all duration-300"
+              >
+                <div className="flex flex-col h-full">
+                  <h4 className="text-2xl font-semibold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-2">
+                    Ideathon
+                  </h4>
+                  <p className="text-white/60 text-sm mb-4 flex-grow">
+                    Present your innovative ideas and compete with creative minds
+                  </p>
+                  <div className="flex items-center justify-between mt-auto">
+                    <span className="px-3 py-1 rounded-full bg-[#4A00E0]/20 text-sm text-white/80 border border-[#4A00E0]/20">
+                      ₹200
+                    </span>
+                    <span className="flex items-center gap-2 text-white/60 group-hover:text-white/80">
+                      Register Now
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">
+                        →
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Main Registration Form Container */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="bg-white/5 rounded-2xl p-6 backdrop-blur-sm border border-white/10"
         >
+          <div className="text-center mb-6">
+            <h4 className="text-xl text-white/80 font-medium">General Events Registration</h4>
+            <p className="text-white/60 text-sm mt-1">
+              Register for multiple technical and non-technical events
+            </p>
+          </div>
+
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Event Selection Dropdown */}
             <div className="space-y-6">
@@ -304,6 +401,90 @@ const PassesPage = () => {
                     ₹{totalAmount}
                   </span>
                 </div>
+              </div>
+              {/* Complementary Event Dropdown */}
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <label className="block text-white/60">Complementary Event</label>
+                    <span className="px-2 py-0.5 rounded-full bg-[#4A00E0]/20 border border-[#4A00E0]/20 text-xs text-white/80">
+                      Free
+                    </span>
+                  </div>
+                </div>
+                <div className="relative">
+                  <div
+                    onClick={() => setIsComplementaryDropdownOpen(!isComplementaryDropdownOpen)}
+                    className={`w-full px-4 py-3 rounded-xl bg-white/5 border transition-colors duration-200 ${
+                      isComplementaryDropdownOpen
+                        ? "border-[#4A00E0] bg-white/10"
+                        : "border-white/10 hover:border-white/30"
+                    } text-white cursor-pointer flex items-center justify-between`}
+                  >
+                    <div className="flex flex-wrap gap-2">
+                      {!formData.complementaryEvent ? (
+                        <span className="text-white/40">Select your free event...</span>
+                      ) : (
+                        <div className="flex items-center gap-1 bg-[#4A00E0]/20 px-2 py-1 rounded-full">
+                          <span className="text-sm text-white">
+                            {getComplementaryEventName(formData.complementaryEvent)}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleComplementaryEventSelect(formData.complementaryEvent);
+                            }}
+                            className="text-white/60 hover:text-white transition-colors"
+                          >
+                            <X className="w-3 h-3" />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                    <ChevronDown
+                      className={`w-5 h-5 text-white/60 transition-transform duration-200 ${
+                        isComplementaryDropdownOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+
+                  {/* Complementary Events Dropdown Menu */}
+                  {isComplementaryDropdownOpen && (
+                    <div className="absolute z-50 w-full mt-2 rounded-xl bg-[#1A1625] border border-white/10 shadow-xl backdrop-blur-md">
+                      <div className="p-2 space-y-1 max-h-60 overflow-y-auto">
+                        {COMPLEMENTARY_EVENTS.map((event) => (
+                          <div
+                            key={event.id}
+                            onClick={() => handleComplementaryEventSelect(event.id)}
+                            className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-all duration-200 ${
+                              formData.complementaryEvent === event.id
+                                ? "bg-[#4A00E0]/20"
+                                : "hover:bg-white/5"
+                            }`}
+                          >
+                            <div className="flex items-center gap-3">
+                              <div
+                                className={`w-5 h-5 rounded-full border-2 transition-colors ${
+                                  formData.complementaryEvent === event.id
+                                    ? "border-[#4A00E0] bg-[#4A00E0]"
+                                    : "border-white/20"
+                                }`}
+                              >
+                                {formData.complementaryEvent === event.id && (
+                                  <CheckCircle2 className="w-4 h-4 text-white" />
+                                )}
+                              </div>
+                              <span className="text-white">{event.name}</span>
+                            </div>
+                            <span className="text-sm text-[#4A00E0]">Free</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <p className="text-xs text-white/40 mt-1">* Excluding Hackathon and Ideathon</p>
               </div>
 
               {/* Tech Events Dropdown */}
@@ -368,41 +549,43 @@ const PassesPage = () => {
                   {isTechDropdownOpen && (
                     <div className="absolute z-50 w-full mt-2 rounded-xl bg-[#1A1625] border border-white/10 shadow-xl backdrop-blur-md">
                       <div className="p-2 space-y-1 max-h-60 overflow-y-auto">
-                        {TECH_EVENTS.map((event) => (
-                          <div
-                            key={event.id}
-                            onClick={() => handleEventToggle(event.id)}
-                            className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-all duration-200 ${
-                              formData.selectedEvents.includes(event.id)
-                                ? "bg-[#4A00E0]/20"
-                                : "hover:bg-white/5"
-                            }`}
-                          >
-                            <div className="flex items-center gap-3">
-                              <div
-                                className={`w-5 h-5 rounded-full border-2 transition-colors ${
-                                  formData.selectedEvents.includes(event.id)
-                                    ? "border-[#4A00E0] bg-[#4A00E0]"
-                                    : "border-white/20"
-                                }`}
-                              >
-                                {formData.selectedEvents.includes(event.id) && (
-                                  <CheckCircle2 className="w-4 h-4 text-white" />
-                                )}
-                              </div>
-                              <span className="text-white">{event.name}</span>
-                            </div>
-                            <span
-                              className={`text-sm transition-colors ${
+                        {TECH_EVENTS.map((event) =>
+                          event.id !== formData.complementaryEvent ? (
+                            <div
+                              key={event.id}
+                              onClick={() => handleEventToggle(event.id)}
+                              className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-all duration-200 ${
                                 formData.selectedEvents.includes(event.id)
-                                  ? "text-[#4A00E0]"
-                                  : "text-white/60"
+                                  ? "bg-[#4A00E0]/20"
+                                  : "hover:bg-white/5"
                               }`}
                             >
-                              +₹{event.price}
-                            </span>
-                          </div>
-                        ))}
+                              <div className="flex items-center gap-3">
+                                <div
+                                  className={`w-5 h-5 rounded-full border-2 transition-colors ${
+                                    formData.selectedEvents.includes(event.id)
+                                      ? "border-[#4A00E0] bg-[#4A00E0]"
+                                      : "border-white/20"
+                                  }`}
+                                >
+                                  {formData.selectedEvents.includes(event.id) && (
+                                    <CheckCircle2 className="w-4 h-4 text-white" />
+                                  )}
+                                </div>
+                                <span className="text-white">{event.name}</span>
+                              </div>
+                              <span
+                                className={`text-sm transition-colors ${
+                                  formData.selectedEvents.includes(event.id)
+                                    ? "text-[#4A00E0]"
+                                    : "text-white/60"
+                                }`}
+                              >
+                                +₹{event.price}
+                              </span>
+                            </div>
+                          ) : null
+                        )}
                       </div>
                     </div>
                   )}
@@ -473,41 +656,43 @@ const PassesPage = () => {
                   {isNonTechDropdownOpen && (
                     <div className="absolute z-50 w-full mt-2 rounded-xl bg-[#1A1625] border border-white/10 shadow-xl backdrop-blur-md">
                       <div className="p-2 space-y-1 max-h-60 overflow-y-auto">
-                        {NON_TECH_EVENTS.map((event) => (
-                          <div
-                            key={event.id}
-                            onClick={() => handleEventToggle(event.id)}
-                            className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-all duration-200 ${
-                              formData.selectedEvents.includes(event.id)
-                                ? "bg-[#4A00E0]/20"
-                                : "hover:bg-white/5"
-                            }`}
-                          >
-                            <div className="flex items-center gap-3">
-                              <div
-                                className={`w-5 h-5 rounded-full border-2 transition-colors ${
-                                  formData.selectedEvents.includes(event.id)
-                                    ? "border-[#4A00E0] bg-[#4A00E0]"
-                                    : "border-white/20"
-                                }`}
-                              >
-                                {formData.selectedEvents.includes(event.id) && (
-                                  <CheckCircle2 className="w-4 h-4 text-white" />
-                                )}
-                              </div>
-                              <span className="text-white">{event.name}</span>
-                            </div>
-                            <span
-                              className={`text-sm transition-colors ${
+                        {NON_TECH_EVENTS.map((event) =>
+                          event.id !== formData.complementaryEvent ? (
+                            <div
+                              key={event.id}
+                              onClick={() => handleEventToggle(event.id)}
+                              className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-all duration-200 ${
                                 formData.selectedEvents.includes(event.id)
-                                  ? "text-[#4A00E0]"
-                                  : "text-white/60"
+                                  ? "bg-[#4A00E0]/20"
+                                  : "hover:bg-white/5"
                               }`}
                             >
-                              +₹{event.price}
-                            </span>
-                          </div>
-                        ))}
+                              <div className="flex items-center gap-3">
+                                <div
+                                  className={`w-5 h-5 rounded-full border-2 transition-colors ${
+                                    formData.selectedEvents.includes(event.id)
+                                      ? "border-[#4A00E0] bg-[#4A00E0]"
+                                      : "border-white/20"
+                                  }`}
+                                >
+                                  {formData.selectedEvents.includes(event.id) && (
+                                    <CheckCircle2 className="w-4 h-4 text-white" />
+                                  )}
+                                </div>
+                                <span className="text-white">{event.name}</span>
+                              </div>
+                              <span
+                                className={`text-sm transition-colors ${
+                                  formData.selectedEvents.includes(event.id)
+                                    ? "text-[#4A00E0]"
+                                    : "text-white/60"
+                                }`}
+                              >
+                                +₹{event.price}
+                              </span>
+                            </div>
+                          ) : null
+                        )}
                       </div>
                     </div>
                   )}
