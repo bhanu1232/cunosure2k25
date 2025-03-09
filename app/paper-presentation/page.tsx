@@ -22,7 +22,7 @@ interface Notification {
   message: string;
 }
 
-const PAPER_PRESENTATION_FEE = 300;
+const PAPER_PRESENTATION_FEE = 200;
 
 const PaperPresentationPage = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -55,6 +55,18 @@ const PaperPresentationPage = () => {
     }
   };
 
+  const checkMobileNumber = async (mobile: string) => {
+    try {
+      const registrationsRef = collection(db, "paper_presentations");
+      const q = query(registrationsRef, where("mobile", "==", mobile));
+      const querySnapshot = await getDocs(q);
+      return !querySnapshot.empty;
+    } catch (error) {
+      console.error("Error checking mobile number:", error);
+      throw error;
+    }
+  };
+
   const generateUID = (mobile: string) => {
     return `PP${mobile}`;
   };
@@ -65,12 +77,25 @@ const PaperPresentationPage = () => {
     setNotification(null);
 
     try {
-      const exists = await checkPaymentId(formData.paymentId);
-      if (exists) {
+      // Check mobile number first
+      const mobileExists = await checkMobileNumber(formData.mobile);
+      if (mobileExists) {
+        setNotification({
+          type: "error",
+          message: "This mobile number has already been registered for Paper Presentation",
+        });
+        setLoading(false);
+        return;
+      }
+
+      // Then check payment ID
+      const paymentExists = await checkPaymentId(formData.paymentId);
+      if (paymentExists) {
         setNotification({
           type: "error",
           message: "This payment ID has already been used",
         });
+        setLoading(false);
         return;
       }
 
@@ -218,8 +243,8 @@ const PaperPresentationPage = () => {
               Paper Presentation Registration
             </h3>
 
-            <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto relative">
-              Register for the paper presentation event
+            <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto relative mb-8">
+              Online Registration & Submission
               <motion.span
                 className="absolute -right-4 -top-4 text-[#4A00E0]"
                 initial={{ opacity: 0, scale: 0 }}
@@ -229,6 +254,60 @@ const PaperPresentationPage = () => {
                 ✦
               </motion.span>
             </p>
+
+            {/* Process Description */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="bg-white/5 rounded-2xl p-6 backdrop-blur-sm border border-white/10 mb-8 max-w-2xl mx-auto"
+            >
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#4A00E0]/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white font-semibold">1</span>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium mb-1">Online Registration</h4>
+                    <p className="text-white/60 text-sm">
+                      Complete the registration form and submit your paper through Google Drive link
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#4A00E0]/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white font-semibold">2</span>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium mb-1">Paper Review</h4>
+                    <p className="text-white/60 text-sm">
+                      Our panel will review all submitted papers and select the best entries
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#4A00E0]/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white font-semibold">3</span>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium mb-1">Final Presentation</h4>
+                    <p className="text-white/60 text-sm">
+                      Selected candidates will be invited for the final presentation round
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-4 p-3 rounded-lg bg-[#4A00E0]/10 border border-[#4A00E0]/20">
+                  <p className="text-sm text-white/80">
+                    <span className="font-medium text-white">Important:</span> Make sure your paper
+                    follows all the guidelines and is properly formatted. Selected candidates will
+                    be notified via email for the final presentation schedule.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </motion.div>
 

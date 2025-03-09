@@ -57,6 +57,18 @@ const IdeathonPage = () => {
     }
   };
 
+  const checkMobileNumber = async (mobile: string) => {
+    try {
+      const registrationsRef = collection(db, "ideathon_registrations");
+      const q = query(registrationsRef, where("mobile", "==", mobile));
+      const querySnapshot = await getDocs(q);
+      return !querySnapshot.empty;
+    } catch (error) {
+      console.error("Error checking mobile number:", error);
+      throw error;
+    }
+  };
+
   const generateUID = (mobile: string) => {
     return `ID${mobile}`;
   };
@@ -67,12 +79,25 @@ const IdeathonPage = () => {
     setNotification(null);
 
     try {
-      const exists = await checkPaymentId(formData.paymentId);
-      if (exists) {
+      // Check mobile number first
+      const mobileExists = await checkMobileNumber(formData.mobile);
+      if (mobileExists) {
+        setNotification({
+          type: "error",
+          message: "This mobile number has already been registered for Ideathon",
+        });
+        setLoading(false);
+        return;
+      }
+
+      // Then check payment ID
+      const paymentExists = await checkPaymentId(formData.paymentId);
+      if (paymentExists) {
         setNotification({
           type: "error",
           message: "This payment ID has already been used",
         });
+        setLoading(false);
         return;
       }
 
@@ -215,8 +240,8 @@ const IdeathonPage = () => {
               Ideathon Registration
             </h3>
 
-            <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto relative">
-              Submit your innovative ideas and compete with the best
+            <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto relative mb-8">
+              Online Registration & Offline Final Round
               <motion.span
                 className="absolute -right-4 -top-4 text-[#4A00E0]"
                 initial={{ opacity: 0, scale: 0 }}
@@ -226,6 +251,89 @@ const IdeathonPage = () => {
                 ✦
               </motion.span>
             </p>
+
+            {/* Process Description */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="bg-white/5 rounded-2xl p-6 backdrop-blur-sm border border-white/10 mb-8 max-w-2xl mx-auto"
+            >
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#4A00E0]/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white font-semibold">1</span>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium mb-1">Online Registration</h4>
+                    <p className="text-white/60 text-sm">
+                      Register your team and submit your innovative idea through Google Drive link
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#4A00E0]/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white font-semibold">2</span>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium mb-1">Initial Screening</h4>
+                    <p className="text-white/60 text-sm">
+                      Our expert panel will review all submitted ideas and select the most promising
+                      teams
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#4A00E0]/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white font-semibold">3</span>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium mb-1">Offline Final Round</h4>
+                    <p className="text-white/60 text-sm">
+                      Selected teams will present their ideas in person at the venue
+                    </p>
+                  </div>
+                </div>
+
+                {/* Accommodation Info */}
+                <div className="mt-6 p-4 rounded-xl bg-[#4A00E0]/10 border border-[#4A00E0]/20">
+                  <h4 className="text-white font-medium mb-2 flex items-center gap-2">
+                    <span className="text-[#4A00E0]">🏠</span>
+                    Accommodation & Food
+                  </h4>
+                  <div className="space-y-2">
+                    <p className="text-sm text-white/80">
+                      Selected teams will need to pay an additional ₹200 per person for:
+                    </p>
+                    <ul className="text-sm text-white/60 space-y-1 ml-4">
+                      <li className="flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-[#4A00E0]"></span>
+                        Accommodation during the final round
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-[#4A00E0]"></span>
+                        Food and refreshments
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-[#4A00E0]"></span>
+                        Access to event facilities
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-lg bg-[#4A00E0]/10 border border-[#4A00E0]/20">
+                  <p className="text-sm text-white/80">
+                    <span className="font-medium text-white">Important:</span> Selected teams will
+                    be notified via email with detailed instructions about the final round schedule
+                    and accommodation arrangements. The additional fee should be paid upon
+                    selection.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </motion.div>
 

@@ -106,6 +106,29 @@ const PassesPage = () => {
     }
   };
 
+  const checkMobileNumber = async (mobile: string) => {
+    try {
+      // Check in all registration collections
+      const collections = ["registrations", "paper_presentations", "ideathon_registrations"];
+
+      for (const collectionName of collections) {
+        const registrationsRef = collection(db, collectionName);
+        const q = query(registrationsRef, where("mobile", "==", mobile));
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+          // Return the collection name where the mobile number was found
+          return collectionName;
+        }
+      }
+
+      return null; // Mobile number not found in any collection
+    } catch (error) {
+      console.error("Error checking mobile number:", error);
+      throw error;
+    }
+  };
+
   const generateUID = (mobile: string) => {
     return `CS${mobile}`;
   };
@@ -128,12 +151,40 @@ const PassesPage = () => {
     setNotification(null);
 
     try {
-      const exists = await checkPaymentId(formData.paymentId);
-      if (exists) {
+      // Check mobile number first
+      const existingRegistration = await checkMobileNumber(formData.mobile);
+      if (existingRegistration) {
+        let errorMessage = "This mobile number has already been registered";
+
+        // Customize error message based on where the mobile number was found
+        switch (existingRegistration) {
+          case "registrations":
+            errorMessage = "This mobile number has already been registered for general events";
+            break;
+          case "paper_presentations":
+            errorMessage = "This mobile number has already been registered for Paper Presentation";
+            break;
+          case "ideathon_registrations":
+            errorMessage = "This mobile number has already been registered for Ideathon";
+            break;
+        }
+
+        setNotification({
+          type: "error",
+          message: errorMessage,
+        });
+        setLoading(false);
+        return;
+      }
+
+      // Then check payment ID
+      const paymentExists = await checkPaymentId(formData.paymentId);
+      if (paymentExists) {
         setNotification({
           type: "error",
           message: "This payment ID has already been used",
         });
+        setLoading(false);
         return;
       }
 
@@ -150,7 +201,7 @@ const PassesPage = () => {
       await addDoc(collection(db, "registrations"), registrationData);
       setNotification({
         type: "success",
-        message: `Your application has been received. We will verify and inform you via email after successful verification Thank you!`,
+        message: `Your application has been received. We will verify and inform you via email after successful verification. Thank you!`,
       });
       setFormData({
         name: "",
@@ -326,11 +377,11 @@ const PassesPage = () => {
                   </p>
                   <div className="flex items-center justify-between mt-auto">
                     <span className="px-3 py-1 rounded-full bg-[#4A00E0]/20 text-sm text-white/80 border border-[#4A00E0]/20">
-                      ₹300
+                      ₹200
                     </span>
                     <span className="flex items-center gap-2 text-white/60 group-hover:text-white/80">
                       Register Now
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      <span className="g  roup-hover:translate-x-1 transition-transform duration-300">
                         →
                       </span>
                     </span>

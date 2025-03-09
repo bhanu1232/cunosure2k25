@@ -802,7 +802,7 @@ export const fun = [
   {
     id: "2",
     type: "fun",
-    title: "Curious Crew",
+    title: "Curious Clue",
     text: "Means finding a perfect clue (just from basic aptitude, logical reasoning) that is strange, unusual, or unexpected, potentially causing the person trying to solve a puzzle",
     backgroundUrl: "assets/event/crew.avif",
     iconUrl: benefitIcon3,
