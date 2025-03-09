@@ -27,16 +27,6 @@ const FunEventDetailPage = ({ params }: { params: { eventId: string } }) => {
           <h1 className="mb-4 text-3xl font-bold text-white">{event.title}</h1>
 
           <div className="mb-8">
-            <Image
-              src={event.imageUrl}
-              alt={event.title}
-              width={800}
-              height={400}
-              className="h-64 w-full rounded-lg object-cover"
-            />
-          </div>
-
-          <div className="mb-8">
             <h2 className="mb-4 text-2xl font-semibold text-white">About the Event</h2>
             <p className="whitespace-pre-line text-n-3">{event.text}</p>
           </div>

@@ -2,7 +2,6 @@
 import { events } from "@/constants";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 
 const EventDetailPage = ({ params }: { params: { eventId: string } }) => {
   const event = events.find((e) => e.id === params.eventId);
@@ -27,16 +26,6 @@ const EventDetailPage = ({ params }: { params: { eventId: string } }) => {
         {/* Event Details */}
         <div className="rounded-xl border border-n-6 bg-n-7 p-6 shadow-lg sm:p-8">
           <h1 className="mb-4 text-3xl font-bold text-white">{event.title}</h1>
-
-          <div className="mb-8">
-            <Image
-              src={event.imageUrl}
-              alt={event.title}
-              width={800}
-              height={400}
-              className="h-64 w-full rounded-lg object-cover"
-            />
-          </div>
 
           <div className="mb-8">
             <h2 className="mb-4 text-2xl font-semibold text-white">About the Event</h2>

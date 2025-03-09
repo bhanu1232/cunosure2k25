@@ -90,7 +90,7 @@ const Benefits = () => {
                         {/* Center Text */}
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center">
-                            <h2 className="text-5xl font-bold text-white tracking-wider mb-4">
+                            <h2 className="text-5xl max-sm:text-3xl font-bold text-white tracking-wider mb-4">
                               {card.overlayText}
                             </h2>
                             <div className="flex items-center justify-center gap-2">
@@ -117,7 +117,7 @@ const Benefits = () => {
                         {/* Button */}
                         <div className="relative">
                           <Button href="/even" white className="animate-fade-up w-full">
-                            Register Now
+                            Explore Events
                           </Button>
                         </div>
                       </div>
