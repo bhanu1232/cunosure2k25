@@ -606,7 +606,7 @@ export const events = [
     coordinators: [
       {
         name: "M. Raghuram",
-        phone: "6305756926",
+        phone: "6305756962",
       },
       {
         name: "T. Soorya teja",

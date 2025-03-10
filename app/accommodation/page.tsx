@@ -15,7 +15,7 @@ const accommodationDetails = [
   {
     title: "Availability",
     icon: Users2,
-    details: [""],
+    details: ["Limited availability"],
     gradient: "from-[#FF6B6B] to-[#FF8E53]",
     description: "First come, first serve basis. Book early to secure your spot!",
   },
@@ -25,8 +25,8 @@ const accommodationDetails = [
     details: [
       "Girls: ₹250/Night",
       "Boys: ₹200/Night",
-      "Includes 27th Night Lunch",
-      "and 28th Afternoon Breakfast",
+      "Includes 27th Night Dinner",
+      "and 28th Morning Breakfast",
     ],
     gradient: "from-[#4A00E0] to-[#8E2DE2]",
     description: "All-inclusive package with meals",
@@ -202,7 +202,8 @@ const AccommodationPage = () => {
             </div>
             <div className="mt-8 p-4 bg-white/5 rounded-xl border border-white/10">
               <p className="text-white/90 text-base md:text-lg font-medium">
-                For any queries, please contact the accommodation desk before registering.
+                For boys any queries, please contact M. Suresh reddy mobile: ( 6300441669 ) For
+                girls, please contact L. Lakshmi shivani mobile: ( 8074345332 )
               </p>
             </div>
           </div>

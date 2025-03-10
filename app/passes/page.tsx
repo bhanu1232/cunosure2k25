@@ -109,7 +109,7 @@ const PassesPage = () => {
   const checkMobileNumber = async (mobile: string) => {
     try {
       // Check in all registration collections
-      const collections = ["registrations"];
+      const collections = ["registrations", "successRegistrations"];
 
       for (const collectionName of collections) {
         const registrationsRef = collection(db, collectionName);
