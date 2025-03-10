@@ -157,10 +157,33 @@ const Hero = () => {
             </div>
           </div>
 
-          <Button href="/passes" white className="animate-fade-up relative group overflow-hidden">
-            <span className="relative z-10">Register Now</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </Button>
+          {/* Updated Register Now Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="relative inline-block"
+          >
+            <a
+              href="/passes"
+              className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-xl"
+            >
+              <button className="group relative px-10 py-5 rounded-lg bg-gradient-to-br from-[#e8675f] via-amber-500 to-[#e89b46] text-black font-bold tracking-wider uppercase text-sm hover:from-yellow-500 hover:via-amber-600 hover:to-yellow-700  duration-300 ease-out  active:scale-90 overflow-hidden before:absolute before:inset-0 before:rounded-lg ">
+                <span className="flex text-white items-center gap-2 relative z-10">
+                  <Image
+                    src={"assets/crown.png"}
+                    alt="Arrow Right"
+                    width={20}
+                    height={20}
+                    className="animate-bounce scale-110 mr-4"
+                  />
+                  Register Now
+                </span>
+                <div className="absolute inset-0 rounded-lg opacity-50 group-hover:opacity-80 transition-opacity duration-300 bg-gradient-to-tl from-amber-200/40 via-transparent to-transparent"></div>
+                <div className="absolute -left-full top-0 h-full w-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-[200%] transition-transform duration-700 ease-out"></div>
+              </button>
+            </a>
+          </motion.div>
         </div>
 
         <div className="relative mx-auto max-w-[1400px]">

@@ -15,14 +15,14 @@ const accommodationDetails = [
   {
     title: "Availability",
     icon: Users2,
-    details: ["Limited Accommodation Will Be Available", "(100 Boys , 150 Girls)"],
+    details: [""],
     gradient: "from-[#FF6B6B] to-[#FF8E53]",
     description: "First come, first serve basis. Book early to secure your spot!",
   },
   {
     title: "Fee Structure",
     icon: Utensils,
-    details: ["₹150/Night", "Includes 22nd Night Lunch", "and 23rd Morning Breakfast"],
+    details: ["₹150/Night", "Includes 27nd Night Lunch", "and 28rd Afternoon Breakfast"],
     gradient: "from-[#4A00E0] to-[#8E2DE2]",
     description: "All-inclusive package with meals",
   },

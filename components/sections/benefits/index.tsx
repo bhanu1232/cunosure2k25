@@ -62,9 +62,7 @@ const Benefits = () => {
               >
                 <div className="relative rounded-[20px] p-1 overflow-hidden bg-n-8/50">
                   {/* Gradient Border */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-r ${card.gradient} opacity-40`}
-                  />
+                  <div className={`absolute inset-0 bg-gradient-to-r  border-2  opacity-40`} />
 
                   <div className="relative rounded-[18px] bg-n-8 overflow-hidden">
                     {/* Main Content Area */}

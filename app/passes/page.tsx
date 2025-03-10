@@ -15,23 +15,23 @@ interface Event {
 }
 
 const TECH_EVENTS: Event[] = [
-  { id: "e1", name: "Code Marathon", price: 50 },
-  { id: "e2", name: "Blind Coding", price: 50 },
-  { id: "e3", name: "Tech Quiz", price: 50 },
-  { id: "e4", name: "Ideathon", price: 200 },
-  { id: "e5", name: "Query Crackers", price: 50 },
-  { id: "e6", name: "Web Wreath", price: 50 },
-  { id: "e7", name: "Hackathon", price: 200 },
+  { id: "CM", name: "Code Marathon", price: 50 },
+  { id: "BC", name: "Blind Coding", price: 50 },
+  { id: "TQ", name: "Tech Quiz", price: 50 },
+  { id: "IA", name: "Ideathon", price: 200 },
+  { id: "QC", name: "Query Crackers", price: 50 },
+  { id: "WW", name: "Web Wreath", price: 50 },
+  { id: "HA", name: "Hackathon", price: 200 },
 ];
 
 const NON_TECH_EVENTS: Event[] = [
-  { id: "ne1", name: "Photography", price: 50 },
-  { id: "ne2", name: "Treasure Hunt", price: 50 },
-  { id: "ne3", name: "Brain Battle Blitz", price: 50 },
-  { id: "ne4", name: "Curious Clue", price: 50 },
+  { id: "PH", name: "Photography", price: 50 },
+  { id: "TH", name: "Treasure Hunt", price: 50 },
+  { id: "BB", name: "Brain Battle Blitz", price: 50 },
+  { id: "CC", name: "Curious Clue", price: 50 },
 ];
 
-const EXCLUDED_COMPLEMENTARY_EVENTS = ["e4", "e7"]; // Ideathon and Hackathon IDs
+const EXCLUDED_COMPLEMENTARY_EVENTS = ["IA", "HA"]; // Ideathon and Hackathon IDs
 
 const COMPLEMENTARY_EVENTS = [
   ...TECH_EVENTS.filter((event) => !EXCLUDED_COMPLEMENTARY_EVENTS.includes(event.id)),
