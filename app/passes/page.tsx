@@ -41,6 +41,8 @@ interface FormData {
   paymentId: string;
   selectedEvents: string[];
   complementaryEvent: string;
+  gender: "male" | "female" | "";
+  accommodation: "yes" | "no" | "";
   uid?: string;
   participationCount?: number;
 }
@@ -60,6 +62,8 @@ const PassesPage = () => {
     paymentId: "",
     selectedEvents: [],
     complementaryEvent: "",
+    gender: "",
+    accommodation: "",
   });
   const [notification, setNotification] = useState<Notification | null>(null);
   const [loading, setLoading] = useState(false);
@@ -105,7 +109,7 @@ const PassesPage = () => {
   const checkMobileNumber = async (mobile: string) => {
     try {
       // Check in all registration collections
-      const collections = ["registrations", "paper_presentations", "ideathon_registrations"];
+      const collections = ["registrations"];
 
       for (const collectionName of collections) {
         const registrationsRef = collection(db, collectionName);
@@ -145,6 +149,25 @@ const PassesPage = () => {
     e.preventDefault();
     setLoading(true);
     setNotification(null);
+
+    // Add validation for new fields
+    if (!formData.gender) {
+      setNotification({
+        type: "error",
+        message: "Please select your gender",
+      });
+      setLoading(false);
+      return;
+    }
+
+    if (!formData.accommodation) {
+      setNotification({
+        type: "error",
+        message: "Please select whether you need accommodation",
+      });
+      setLoading(false);
+      return;
+    }
 
     try {
       // Check mobile number first
@@ -206,6 +229,8 @@ const PassesPage = () => {
         paymentId: "",
         selectedEvents: [],
         complementaryEvent: "",
+        gender: "",
+        accommodation: "",
       });
     } catch (error) {
       setNotification({
@@ -786,6 +811,118 @@ const PassesPage = () => {
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-[#4A00E0] focus:outline-none transition-colors"
                   placeholder="Enter your mobile number"
                 />
+              </div>
+
+              {/* Add these new fields before the Payment QR Code Section */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Gender Selection */}
+                <div className="space-y-2">
+                  <label className="block text-white/60 mb-2">Gender</label>
+                  <div className="flex gap-4">
+                    <label className="flex items-center">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="male"
+                        checked={formData.gender === "male"}
+                        onChange={(e) =>
+                          setFormData((prev) => ({ ...prev, gender: e.target.value as "male" }))
+                        }
+                        className="hidden"
+                      />
+                      <div
+                        className={`px-4 py-2 rounded-xl cursor-pointer transition-all duration-300 ${
+                          formData.gender === "male"
+                            ? "bg-[#4A00E0] text-white"
+                            : "bg-white/5 text-white/60 hover:bg-white/10"
+                        }`}
+                      >
+                        Male
+                      </div>
+                    </label>
+                    <label className="flex items-center">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="female"
+                        checked={formData.gender === "female"}
+                        onChange={(e) =>
+                          setFormData((prev) => ({ ...prev, gender: e.target.value as "female" }))
+                        }
+                        className="hidden"
+                      />
+                      <div
+                        className={`px-4 py-2 rounded-xl cursor-pointer transition-all duration-300 ${
+                          formData.gender === "female"
+                            ? "bg-[#4A00E0] text-white"
+                            : "bg-white/5 text-white/60 hover:bg-white/10"
+                        }`}
+                      >
+                        Female
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                {/* Accommodation Selection */}
+                <div className="space-y-2">
+                  <label className="block text-white/60 mb-2">Need Accommodation?</label>
+                  <div className="flex gap-4">
+                    <label className="flex items-center">
+                      <input
+                        type="radio"
+                        name="accommodation"
+                        value="yes"
+                        checked={formData.accommodation === "yes"}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            accommodation: e.target.value as "yes",
+                          }))
+                        }
+                        className="hidden"
+                      />
+                      <div
+                        className={`px-4 py-2 rounded-xl cursor-pointer transition-all duration-300 ${
+                          formData.accommodation === "yes"
+                            ? "bg-[#4A00E0] text-white"
+                            : "bg-white/5 text-white/60 hover:bg-white/10"
+                        }`}
+                      >
+                        Yes
+                      </div>
+                    </label>
+                    <label className="flex items-center">
+                      <input
+                        type="radio"
+                        name="accommodation"
+                        value="no"
+                        checked={formData.accommodation === "no"}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            accommodation: e.target.value as "no",
+                          }))
+                        }
+                        className="hidden"
+                      />
+                      <div
+                        className={`px-4 py-2 rounded-xl cursor-pointer transition-all duration-300 ${
+                          formData.accommodation === "no"
+                            ? "bg-[#4A00E0] text-white"
+                            : "bg-white/5 text-white/60 hover:bg-white/10"
+                        }`}
+                      >
+                        No
+                      </div>
+                    </label>
+                  </div>
+                  {formData.accommodation === "yes" && (
+                    <p className="text-xs text-white/40 mt-1">
+                      * Accommodation fee will be collected during check-in
+                    </p>
+                  )}
+                </div>
               </div>
 
               {/* Payment QR Code Section */}
