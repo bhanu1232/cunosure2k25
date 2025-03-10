@@ -1018,7 +1018,6 @@ export const socials = [
 export const coord = [
   {
     id: "0",
-    title: "P_sudansu_reddy",
     text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
     backgroundUrl: "assets/benefits/card-1.svg",
     iconUrl: benefitIcon1,
@@ -1030,7 +1029,7 @@ export const coord = [
   },
   {
     id: "1",
-    title: "P_sudansu_reddy",
+    title: "sudhansu_reddy",
     text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
     backgroundUrl: "assets/benefits/card-1.svg",
     iconUrl: benefitIcon1,
