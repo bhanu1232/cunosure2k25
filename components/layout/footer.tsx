@@ -10,12 +10,6 @@ const Footer = (props: Props) => {
   return (
     <Section crosses className="!px-0 !py-10">
       <div className="container flex items-center justify-center gap-10 max-sm:flex-col sm:justify-between">
-        <p className="caption text-n-4 lg:block">
-          &copy; {new Date().getFullYear()} All rights reserved by &nbsp;
-          <a href="https://cbhanuprakash.great-site.net" className="text-purple-600 underline">
-            C.Bhanu Prakash
-          </a>
-        </p>
         <ul className="flex flex-wrap gap-5">
           {socials.map((item) => (
             <Link
