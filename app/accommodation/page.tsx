@@ -25,8 +25,8 @@ const accommodationDetails = [
     details: [
       "Girls: ₹250/Night",
       "Boys: ₹200/Night",
-      "Includes 27nd Night Lunch",
-      "and 28rd Afternoon Breakfast",
+      "Includes 27th Night Lunch",
+      "and 28th Afternoon Breakfast",
     ],
     gradient: "from-[#4A00E0] to-[#8E2DE2]",
     description: "All-inclusive package with meals",
