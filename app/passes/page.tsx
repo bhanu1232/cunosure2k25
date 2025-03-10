@@ -838,7 +838,7 @@ const PassesPage = () => {
               </div>
 
               <div>
-                <label className="block text-white/60 mb-2">Payment ID</label>
+                <label className="block text-white/60 mb-2">Payment ID ( UTR )</label>
                 <input
                   type="text"
                   name="paymentId"
@@ -846,7 +846,7 @@ const PassesPage = () => {
                   onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-[#4A00E0] focus:outline-none transition-colors"
-                  placeholder="Enter your payment ID"
+                  placeholder="Enter the UTR number"
                 />
               </div>
             </div>

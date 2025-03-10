@@ -31,7 +31,7 @@ const Benefits = () => {
                 <h3 className="mb-2 text-2xl max-sm:text-lg  font-semibold text-white">
                   {facultyCoord.coordinatorName}
                 </h3>
-                <p className="text-lg text-n-3">Faculty Coordinator</p>
+                <p className="text-lg text-n-3">Coordinator</p>
               </div>
             </div>
           </div>

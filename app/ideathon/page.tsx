@@ -292,35 +292,9 @@ const IdeathonPage = () => {
                   <div>
                     <h4 className="text-white font-medium mb-1">Offline Final Round</h4>
                     <p className="text-white/60 text-sm">
-                      Selected teams will present their ideas in person at the venue
+                      Selected teams will present their ideas in person at the venue and should pay
+                      an additional 250 rupees per person
                     </p>
-                  </div>
-                </div>
-
-                {/* Accommodation Info */}
-                <div className="mt-6 p-4 rounded-xl bg-[#4A00E0]/10 border border-[#4A00E0]/20">
-                  <h4 className="text-white font-medium mb-2 flex items-center gap-2">
-                    <span className="text-[#4A00E0]">🏠</span>
-                    Accommodation & Food
-                  </h4>
-                  <div className="space-y-2">
-                    <p className="text-sm text-white/80">
-                      Selected teams will need to pay an additional ₹250 per person for:
-                    </p>
-                    <ul className="text-sm text-white/60 space-y-1 ml-4">
-                      <li className="flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-[#4A00E0]"></span>
-                        Accommodation during the final round
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-[#4A00E0]"></span>
-                        Food and refreshments
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-[#4A00E0]"></span>
-                        Access to event facilities
-                      </li>
-                    </ul>
                   </div>
                 </div>
 

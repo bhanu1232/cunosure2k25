@@ -22,7 +22,12 @@ const accommodationDetails = [
   {
     title: "Fee Structure",
     icon: Utensils,
-    details: ["₹150/Night", "Includes 27nd Night Lunch", "and 28rd Afternoon Breakfast"],
+    details: [
+      "Girls: ₹250/Night",
+      "Boys: ₹200/Night",
+      "Includes 27nd Night Lunch",
+      "and 28rd Afternoon Breakfast",
+    ],
     gradient: "from-[#4A00E0] to-[#8E2DE2]",
     description: "All-inclusive package with meals",
   },
@@ -39,10 +44,10 @@ const importantPoints = [
   "Separate hostel rooms for boys and girls",
   "Basic amenities for bathing available",
   "Bring your own bedsheets",
-  "Available on March 22, 2025 night",
+  "Available on March 27, 2025 night",
   "Includes dinner and next day breakfast",
   "Must register in advance",
-  "Collect pass on March 22 morning",
+  "Collect pass on March 27 morning",
   "Only for registered Cynosure participants",
   "You are responsible for your belongings",
 ];
