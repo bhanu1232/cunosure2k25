@@ -15,20 +15,20 @@ interface Event {
 }
 
 const TECH_EVENTS: Event[] = [
-  { id: "e1", name: "Code Marathon", price: 200 },
-  { id: "e2", name: "Blind Coding", price: 200 },
-  { id: "e3", name: "Tech Quiz", price: 200 },
+  { id: "e1", name: "Code Marathon", price: 50 },
+  { id: "e2", name: "Blind Coding", price: 50 },
+  { id: "e3", name: "Tech Quiz", price: 50 },
   { id: "e4", name: "Ideathon", price: 200 },
-  { id: "e5", name: "Query Crackers", price: 200 },
-  { id: "e6", name: "Web Wreath", price: 200 },
+  { id: "e5", name: "Query Crackers", price: 50 },
+  { id: "e6", name: "Web Wreath", price: 50 },
   { id: "e7", name: "Hackathon", price: 200 },
 ];
 
 const NON_TECH_EVENTS: Event[] = [
-  { id: "ne1", name: "Photography", price: 200 },
-  { id: "ne2", name: "Treasure Hunt", price: 200 },
-  { id: "ne3", name: "Brain Battle Blitz", price: 200 },
-  { id: "ne4", name: "Curious Crew", price: 200 },
+  { id: "ne1", name: "Photography", price: 50 },
+  { id: "ne2", name: "Treasure Hunt", price: 50 },
+  { id: "ne3", name: "Brain Battle Blitz", price: 50 },
+  { id: "ne4", name: "Curious Clue", price: 50 },
 ];
 
 const EXCLUDED_COMPLEMENTARY_EVENTS = ["e4", "e7"]; // Ideathon and Hackathon IDs
