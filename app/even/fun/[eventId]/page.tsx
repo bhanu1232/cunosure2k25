@@ -70,7 +70,7 @@ const FunEventDetailPage = ({ params }: { params: { eventId: string } }) => {
                         {coordinator.phone}
                       </a>
                     </p>
-                    <p className="flex items-center gap-2">
+                    {/* <p className="flex items-center gap-2">
                       <span>📸</span>
                       <a
                         href={`https://instagram.com/${coordinator.insta}`}
@@ -80,7 +80,7 @@ const FunEventDetailPage = ({ params }: { params: { eventId: string } }) => {
                       >
                         @{coordinator.insta}
                       </a>
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               ))}

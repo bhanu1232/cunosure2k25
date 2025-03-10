@@ -15,28 +15,24 @@ interface Event {
 }
 
 const TECH_EVENTS: Event[] = [
-  { id: "CM", name: "Code Marathon", price: 50 },
-  { id: "BC", name: "Blind Coding", price: 50 },
-  { id: "TQ", name: "Tech Quiz", price: 50 },
-  { id: "IA", name: "Ideathon", price: 200 },
-  { id: "QC", name: "Query Crackers", price: 50 },
-  { id: "WW", name: "Web Wreath", price: 50 },
+  { id: "CM", name: "Code Marathon", price: 125 },
+  { id: "BC", name: "Blind Coding", price: 125 },
+  { id: "TQ", name: "Tech Quiz", price: 125 },
+  { id: "QC", name: "Query Crackers", price: 125 },
+  { id: "WW", name: "Web Wreath", price: 125 },
   { id: "HA", name: "Hackathon", price: 200 },
 ];
 
 const NON_TECH_EVENTS: Event[] = [
-  { id: "PH", name: "Photography", price: 50 },
-  { id: "TH", name: "Treasure Hunt", price: 50 },
-  { id: "BB", name: "Brain Battle Blitz", price: 50 },
-  { id: "CC", name: "Curious Clue", price: 50 },
+  { id: "PH", name: "Photography", price: 0 },
+  { id: "TH", name: "Treasure Hunt", price: 100 },
+  { id: "BB", name: "Brain Battle Blitz", price: 100 },
+  { id: "CC", name: "Curious Clue", price: 100 },
 ];
 
 const EXCLUDED_COMPLEMENTARY_EVENTS = ["IA", "HA"]; // Ideathon and Hackathon IDs
 
-const COMPLEMENTARY_EVENTS = [
-  ...TECH_EVENTS.filter((event) => !EXCLUDED_COMPLEMENTARY_EVENTS.includes(event.id)),
-  ...NON_TECH_EVENTS,
-];
+const COMPLEMENTARY_EVENTS = NON_TECH_EVENTS;
 
 interface FormData {
   name: string;
@@ -377,7 +373,7 @@ const PassesPage = () => {
                   </p>
                   <div className="flex items-center justify-between mt-auto">
                     <span className="px-3 py-1 rounded-full bg-[#4A00E0]/20 text-sm text-white/80 border border-[#4A00E0]/20">
-                      ₹200
+                      ₹209
                     </span>
                     <span className="flex items-center gap-2 text-white/60 group-hover:text-white/80">
                       Register Now
@@ -405,7 +401,7 @@ const PassesPage = () => {
                   </p>
                   <div className="flex items-center justify-between mt-auto">
                     <span className="px-3 py-1 rounded-full bg-[#4A00E0]/20 text-sm text-white/80 border border-[#4A00E0]/20">
-                      ₹200
+                      ₹199
                     </span>
                     <span className="flex items-center gap-2 text-white/60 group-hover:text-white/80">
                       Register Now
@@ -528,14 +524,13 @@ const PassesPage = () => {
                               </div>
                               <span className="text-white">{event.name}</span>
                             </div>
-                            <span className="text-sm text-[#4A00E0]">Free</span>
                           </div>
                         ))}
                       </div>
                     </div>
                   )}
                 </div>
-                <p className="text-xs text-white/40 mt-1">* Excluding Hackathon and Ideathon</p>
+                <p className="text-xs text-white/40 mt-1">* Excluding Technical Events</p>
               </div>
 
               {/* Tech Events Dropdown */}
@@ -803,7 +798,7 @@ const PassesPage = () => {
                   {/* QR Code */}
                   <div className="relative w-48 h-48 bg-white rounded-xl p-3 mx-auto md:mx-0">
                     <Image
-                      src="/dummy-qr.jpeg"
+                      src="/pay_qr.jpeg"
                       alt="Payment QR Code"
                       width={200}
                       height={200}

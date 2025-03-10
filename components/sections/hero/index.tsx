@@ -110,8 +110,7 @@ const Hero = () => {
             transition={{ delay: 0.3 }}
             className={cn("body-1 mx-auto mb-6 max-w-3xl animate-fade-up text-n-2 lg:mb-8")}
           >
-            Unleash the power of AI within Brainwave. Upgrade your productivity with Brainwave, the
-            open AI chat app.
+            Cynosure 2025 is back with a new theme, new events, and new opportunities.
           </motion.p>
 
           {/* Countdown Timer with Enhanced Design */}

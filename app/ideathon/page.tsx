@@ -23,7 +23,7 @@ interface Notification {
   message: string;
 }
 
-const IDEATHON_FEE = 200;
+const IDEATHON_FEE = 199;
 
 const IdeathonPage = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -305,7 +305,7 @@ const IdeathonPage = () => {
                   </h4>
                   <div className="space-y-2">
                     <p className="text-sm text-white/80">
-                      Selected teams will need to pay an additional ₹200 per person for:
+                      Selected teams will need to pay an additional ₹250 per person for:
                     </p>
                     <ul className="text-sm text-white/60 space-y-1 ml-4">
                       <li className="flex items-center gap-2">
@@ -436,7 +436,7 @@ const IdeathonPage = () => {
                   {/* QR Code */}
                   <div className="relative w-48 h-48 bg-white rounded-xl p-3 mx-auto md:mx-0">
                     <Image
-                      src="/dummy-qr.jpeg"
+                      src="/pay_qr.jpeg"
                       alt="Payment QR Code"
                       width={200}
                       height={200}
@@ -476,7 +476,7 @@ const IdeathonPage = () => {
               </div>
 
               <div>
-                <label className="block text-white/60 mb-2">Payment ID</label>
+                <label className="block text-white/60 mb-2">Payment ID ( UTR )</label>
                 <input
                   type="text"
                   name="paymentId"
@@ -484,7 +484,7 @@ const IdeathonPage = () => {
                   onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-[#4A00E0] focus:outline-none transition-colors"
-                  placeholder="Enter your payment ID"
+                  placeholder="Enter the UTR number"
                 />
               </div>
             </div>

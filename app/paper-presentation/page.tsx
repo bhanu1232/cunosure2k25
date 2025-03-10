@@ -22,7 +22,7 @@ interface Notification {
   message: string;
 }
 
-const PAPER_PRESENTATION_FEE = 200;
+const PAPER_PRESENTATION_FEE = 209;
 
 const PaperPresentationPage = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -292,9 +292,10 @@ const PaperPresentationPage = () => {
                     <span className="text-white font-semibold">3</span>
                   </div>
                   <div>
-                    <h4 className="text-white font-medium mb-1">Final Presentation</h4>
+                    <h4 className="text-white font-medium mb-1">Final Presentation Offline</h4>
                     <p className="text-white/60 text-sm">
-                      Selected candidates will be invited for the final presentation round
+                      Selected candidates will be invited for the final presentation round and an
+                      additional 250 rupees should pay for offline participation
                     </p>
                   </div>
                 </div>
@@ -397,7 +398,7 @@ const PaperPresentationPage = () => {
                   {/* QR Code */}
                   <div className="relative w-48 h-48 bg-white rounded-xl p-3 mx-auto md:mx-0">
                     <Image
-                      src="/dummy-qr.jpeg"
+                      src="/pay_qr.jpeg"
                       alt="Payment QR Code"
                       width={200}
                       height={200}
@@ -437,7 +438,7 @@ const PaperPresentationPage = () => {
               </div>
 
               <div>
-                <label className="block text-white/60 mb-2">Payment ID</label>
+                <label className="block text-white/60 mb-2">Payment ID ( UTR )</label>
                 <input
                   type="text"
                   name="paymentId"
@@ -445,7 +446,7 @@ const PaperPresentationPage = () => {
                   onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-[#4A00E0] focus:outline-none transition-colors"
-                  placeholder="Enter your payment ID"
+                  placeholder="Enter The UTR number"
                 />
               </div>
             </div>

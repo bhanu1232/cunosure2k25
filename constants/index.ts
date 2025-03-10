@@ -396,14 +396,12 @@ export const events = [
     requirements: ["Strong coding background", "Laptop with charger", "Development environment"],
     coordinators: [
       {
-        name: "Sudhansu Reddy",
-        insta: "p_sudansu_reddy",
-        phone: "95153 65601",
+        name: "K. Gayathri",
+        phone: "",
       },
       {
-        name: "Susheel Kumar",
-        insta: "susheel_kumar",
-        phone: "8688970995",
+        name: "P. Varun nag",
+        phone: "9391064986",
       },
     ],
   },
@@ -455,14 +453,12 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "Rahithya",
-        insta: "rahithya_22",
-        phone: "90142 42562",
+        name: "B. Jyothsna",
+        phone: "",
       },
       {
-        name: "Pavan Kumar",
-        insta: "__pavankumar_17",
-        phone: "79898 83868",
+        name: "M. Meghana",
+        phone: "",
       },
     ],
   },
@@ -507,14 +503,12 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "Rahithya",
-        insta: "rahithya_22",
-        phone: "90142 42562",
+        name: "N. Vishnu Priya",
+        phone: "",
       },
       {
-        name: "Pavan Kumar",
-        insta: "__pavankumar_17",
-        phone: "79898 83868",
+        name: "M. Akash",
+        phone: "9849535920",
       },
     ],
   },
@@ -560,14 +554,12 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "Swaroop",
-        insta: "swaroopkohli18",
-        phone: "86396 51716",
+        name: "E. Abhinaya",
+        phone: "",
       },
       {
-        name: "Sudhansu Reddy",
-        insta: "p_sudansu_reddy",
-        phone: "95153 65601",
+        name: "T. Yuvasree",
+        phone: "",
       },
     ],
   },
@@ -610,14 +602,12 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "Sudhansu Reddy",
-        insta: "p_sudansu_reddy",
-        phone: "95153 65601",
+        name: "M. Raghuram",
+        phone: "6305756926",
       },
       {
-        name: "Susheel Kumar",
-        insta: "susheel_kumar",
-        phone: "8688970995",
+        name: "T. Soorya teja",
+        phone: "9494748284",
       },
     ],
   },
@@ -632,7 +622,7 @@ export const events = [
     prize: "12000",
     date: "22 march",
     venue: "CSE Lab 4",
-    teamSize: "1-2 members",
+    teamSize: "Individual",
     fullDescription: `Showcase your web development skills in Web Wreath!
 
     🎯 Challenge Areas:
@@ -660,14 +650,12 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "Swaroop",
-        insta: "swaroopkohli18",
-        phone: "86396 51716",
+        name: "D. Mounika",
+        phone: "",
       },
       {
-        name: "Pavan Kumar",
-        insta: "__pavankumar_17",
-        phone: "79898 83868",
+        name: "D. Sai pallavi",
+        phone: "",
       },
     ],
   },
@@ -682,7 +670,7 @@ export const events = [
     imageUrl: benefitImage2,
     prize: "25000",
     date: "22 march",
-    venue: "Main Auditorium",
+    venue: "203",
     teamSize: "2-4 members",
     fullDescription: `Join us for Cynosure 2024's premier Hackathon! 
 
@@ -729,14 +717,12 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "Swaroop",
-        insta: "swaroopkohli18",
-        phone: "86396 51716",
+        name: "N. Chiranjeevi",
+        phone: "9705959253",
       },
       {
-        name: "Sudhansu Reddy",
-        insta: "p_sudansu_reddy",
-        phone: "95153 65601",
+        name: "S. Chaitanya",
+        phone: "9154900357",
       },
     ],
   },
@@ -788,14 +774,12 @@ export const fun = [
     ],
     coordinators: [
       {
-        name: "Rahithya",
-        insta: "rahithya_22",
-        phone: "90142 42562",
+        name: "V. Likitha",
+        phone: "",
       },
       {
-        name: "Pavan Kumar",
-        insta: "__pavankumar_17",
-        phone: "79898 83868",
+        name: "C. Chaturya prasad",
+        phone: "7702249549",
       },
     ],
   },
@@ -834,14 +818,12 @@ export const fun = [
     requirements: ["Basic math skills", "Analytical thinking", "Time management", "College ID"],
     coordinators: [
       {
-        name: "Sudhansu Reddy",
-        insta: "p_sudansu_reddy",
-        phone: "95153 65601",
+        name: "A. Sreenath",
+        phone: "8179417236",
       },
       {
-        name: "Susheel Kumar",
-        insta: "susheel_kumar",
-        phone: "8688970995",
+        name: "T. Suchitra",
+        phone: "",
       },
     ],
   },
@@ -891,14 +873,12 @@ export const fun = [
     ],
     coordinators: [
       {
-        name: "Sudhansu Reddy",
-        insta: "p_sudansu_reddy",
-        phone: "95153 65601",
+        name: "B. Chandra mouli",
+        phone: "7207241669",
       },
       {
-        name: "Susheel Kumar",
-        insta: "susheel_kumar",
-        phone: "8688970995",
+        name: "C. Sriram",
+        phone: "6309084262",
       },
     ],
   },
@@ -913,7 +893,7 @@ export const fun = [
     prize: "5000",
     date: "22 march",
     venue: "Photography Studio",
-    teamSize: "2 members",
+    teamSize: "Individual",
     fullDescription: `Get ready for a unique blend of art and technology!
 
     🎨 Game Format:
@@ -948,21 +928,19 @@ export const fun = [
     ],
     coordinators: [
       {
-        name: "Rahithya",
-        insta: "rahithya_22",
-        phone: "90142 42562",
+        name: "B. Ramu yadav",
+        phone: "9573619508",
       },
       {
-        name: "Pavan Kumar",
-        insta: "__pavankumar_17",
-        phone: "79898 83868",
+        name: "T. Kumara swamy",
+        phone: "9392155971",
       },
     ],
   },
   {
     id: "5",
     type: "fun",
-    title: "Escape Room",
+    title: "The Matrix Mystery",
     text: "Solve clues and navigate through an exciting tech-themed treasure hunt across campus.",
     backgroundUrl: "assets/event/escape.avif",
     iconUrl: benefitIcon4,
@@ -970,7 +948,7 @@ export const fun = [
     prize: "8000",
     date: "22 march",
     venue: "Activity Room",
-    teamSize: "3-4 members",
+    teamSize: "2-3 members",
     fullDescription: `Embark on an exciting adventure around the campus!
 
     🗺️ Hunt Format:
@@ -1014,14 +992,12 @@ export const fun = [
     ],
     coordinators: [
       {
-        name: "Sudhansu Reddy",
-        insta: "p_sudansu_reddy",
-        phone: "95153 65601",
+        name: "P. Sudhansu Reddy",
+        phone: "8919115624",
       },
       {
-        name: "Susheel Kumar",
-        insta: "susheel_kumar",
-        phone: "8688970995",
+        name: "M. Pavan kumar",
+        phone: "7989883868",
       },
     ],
   },
