@@ -1021,9 +1021,7 @@ const PassesPage = () => {
             <p className="text-white/80 text-lg">
               For registration inquiries, please contact the event coordinators
             </p>
-            <p className="text-white/60 mt-2">
-              Email: contact@cynosure2025.com | Phone: +91 XXXXXXXXXX
-            </p>
+            <p className="text-white/60 mt-2">Email: svucyno@gmail.com</p>
           </div>
         </motion.div>
       </div>
