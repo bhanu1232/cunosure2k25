@@ -15,22 +15,22 @@ interface Event {
 }
 
 const TECH_EVENTS: Event[] = [
-  { id: "CM", name: "Code Marathon", price: 125 },
-  { id: "BC", name: "Blind Coding", price: 125 },
-  { id: "TQ", name: "Tech Quiz", price: 125 },
-  { id: "QC", name: "Query Crackers", price: 125 },
-  { id: "WW", name: "Web Wreath", price: 125 },
-  { id: "HA", name: "Hackathon", price: 200 },
+  { id: "Code Marathon", name: "Code Marathon", price: 125 },
+  { id: "Blind Coding", name: "Blind Coding", price: 125 },
+  { id: "Tech Quiz", name: "Tech Quiz", price: 125 },
+  { id: "Query Crackers", name: "Query Crackers", price: 125 },
+  { id: "Web Wreath", name: "Web Wreath", price: 125 },
+  { id: "Hackathon", name: "Hackathon", price: 200 },
 ];
 
 const NON_TECH_EVENTS: Event[] = [
-  { id: "PH", name: "Photography", price: 0 },
-  { id: "TH", name: "Treasure Hunt", price: 100 },
-  { id: "BB", name: "Brain Battle Blitz", price: 100 },
-  { id: "CC", name: "Curious Clue", price: 100 },
+  { id: "Photography", name: "Photography", price: 0 },
+  { id: "Treasure Hunt", name: "Treasure Hunt", price: 100 },
+  { id: "Brain Battle Blitz", name: "Brain Battle Blitz", price: 100 },
+  { id: "Curious Clue", name: "Curious Clue", price: 100 },
 ];
 
-const EXCLUDED_COMPLEMENTARY_EVENTS = ["IA", "HA"]; // Ideathon and Hackathon IDs
+const EXCLUDED_COMPLEMENTARY_EVENTS = ["Ideathon", "Hackathon"]; // Ideathon and Hackathon IDs
 
 const COMPLEMENTARY_EVENTS = NON_TECH_EVENTS;
 
@@ -96,10 +96,20 @@ const PassesPage = () => {
 
   const checkPaymentId = async (paymentId: string) => {
     try {
-      const registrationsRef = collection(db, "registrations");
-      const q = query(registrationsRef, where("paymentId", "==", paymentId));
-      const querySnapshot = await getDocs(q);
-      return !querySnapshot.empty;
+      // Check in all registration collections
+      const collections = ["registrations", "successRegistrations"];
+
+      for (const collectionName of collections) {
+        const registrationsRef = collection(db, collectionName);
+        const q = query(registrationsRef, where("paymentId", "==", paymentId));
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+          return true; // Payment ID found in one of the collections
+        }
+      }
+
+      return false; // Payment ID not found in any collection
     } catch (error) {
       console.error("Error checking payment ID:", error);
       throw error;
