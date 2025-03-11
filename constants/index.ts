@@ -403,7 +403,7 @@ export const events = [
         phone: "",
       },
       {
-        name: "M. Raashid",
+        name: "Mohammed Raashid",
         phone: "7995935120",
       },
       {
@@ -570,15 +570,15 @@ export const events = [
     coordinators: [
       {
         name: "Harika Velpula",
-        phone: "7075602932",
+        phone: "",
       },
       {
         name: "T Yuvasree",
         phone: "",
       },
       {
-        name: "E Abhinaya",
-        phone: "",
+        name: "C. Martin",
+        phone: "9347967058",
       },
     ],
   },
@@ -808,16 +808,16 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "C. Martin",
-        phone: "9347967058",
+        name: "Abhinaya",
+        phone: "",
       },
       {
         name: "Swaroop K Devarajan",
         phone: "8639651716",
       },
       {
-        name: "Abhinaya",
-        phone: "",
+        name: "Kumara Swamy",
+        phone: "8639932286",
       },
     ],
   },
@@ -1039,12 +1039,12 @@ export const fun = [
         phone: "9573619508",
       },
       {
-        name: "T Kumara swamy",
-        phone: "9392155971",
-      },
-      {
         name: "C.S. Khalandhar",
         phone: "9908057264",
+      },
+      {
+        name: "B. Raj Kumar",
+        phone: "7993365691",
       },
     ],
   },
@@ -1167,6 +1167,9 @@ export const coord = [
     contactInfo: "79898 83868",
     mail: "matapallipavan@gmail.com",
   },
+];
+
+export const coord1 = [
   {
     id: "4",
     title: "",
