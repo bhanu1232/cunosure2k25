@@ -368,7 +368,7 @@ export const events = [
   {
     id: "6",
     type: "tech",
-    title: "Code Marathon",
+    title: "Codeflix Marathon",
     text: "A 'Code Marathon' is a challenging coding competition where participants must solve a series of complex programming problems within a limited timeframe. This competition tests their coding expertise, logical thinking, ability to work under pressure, strategy, and time management skills. ",
     backgroundUrl: "assets/event/marathon.avif",
     iconUrl: benefitIcon3,
@@ -403,8 +403,8 @@ export const events = [
         phone: "",
       },
       {
-        name: "Saketh Simha Reddy",
-        phone: "8801341534",
+        name: "M. Raashid",
+        phone: "7995935120",
       },
       {
         name: "P Varun nag",
@@ -621,8 +621,8 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "T Soorya teja",
-        phone: "9494748284",
+        name: "S. Roopa sree",
+        phone: "",
       },
       {
         name: "M Raghuram",
@@ -757,7 +757,7 @@ export const events = [
   {
     id: "13",
     type: "tech",
-    title: "Paper Presentation",
+    title: "Pitch Perfect Paper",
     text: "Are you passionate about research and innovation? Showcase your ideas at the Paper Presentation event of Cynosure 2024! Submit your research paper online, get shortlisted, and present your findings before an esteemed panel of judges. Whether it's AI, IoT, cybersecurity, or emerging tech trends, demonstrate your technical expertise, analytical skills, and presentation prowess. Impress the audience and compete for top honors in this intellectually stimulating event!",
     backgroundUrl: "assets/event/paper.jpg",
     iconUrl: benefitIcon1,
@@ -810,6 +810,10 @@ export const events = [
       {
         name: "C. Martin",
         phone: "9347967058",
+      },
+      {
+        name: "Swaroop K Devarajan",
+        phone: "8639651716",
       },
       {
         name: "Abhinaya",
@@ -1039,8 +1043,8 @@ export const fun = [
         phone: "9392155971",
       },
       {
-        name: "B Raj Kumar",
-        phone: "7993365691",
+        name: "C.S. Khalandhar",
+        phone: "9908057264",
       },
     ],
   },
@@ -1147,7 +1151,7 @@ export const coord = [
     imageUrl: benefitImage2,
     light: true,
     coordinatorImage: images.swaroop,
-    coordinatorName: "Swaroop",
+    coordinatorName: "Swaroop K Devarajan",
     contactInfo: "86396 51716",
     mail: "swaroopdevarajan@gmail.com",
   },
