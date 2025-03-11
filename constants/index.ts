@@ -399,11 +399,15 @@ export const events = [
     requirements: ["Strong coding background", "Laptop with charger", "Development environment"],
     coordinators: [
       {
-        name: "K. Gayathri",
+        name: "K Gayathri",
         phone: "",
       },
       {
-        name: "P. Varun nag",
+        name: "Saketh Simha Reddy",
+        phone: "8801341534",
+      },
+      {
+        name: "P Varun nag",
         phone: "9391064986",
       },
     ],
@@ -456,12 +460,16 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "B. Jyothsna",
+        name: "M Meghana",
         phone: "",
       },
       {
-        name: "M. Meghana",
+        name: "B Jyothsna",
         phone: "",
+      },
+      {
+        name: "Akhilesh Dasari",
+        phone: "8688006615",
       },
     ],
   },
@@ -506,12 +514,16 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "N. Vishnu Priya",
-        phone: "",
+        name: "M Akash",
+        phone: "9849535920",
       },
       {
-        name: "M. Akash",
-        phone: "9849535920",
+        name: "Harini Modugula",
+        phone: "8919032441",
+      },
+      {
+        name: "N Vishnu Priya",
+        phone: "",
       },
     ],
   },
@@ -557,11 +569,15 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "E. Abhinaya",
+        name: "Harika Velpula",
+        phone: "7075602932",
+      },
+      {
+        name: "T Yuvasree",
         phone: "",
       },
       {
-        name: "T. Yuvasree",
+        name: "E Abhinaya",
         phone: "",
       },
     ],
@@ -605,12 +621,16 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "M. Raghuram",
+        name: "T Soorya teja",
+        phone: "9494748284",
+      },
+      {
+        name: "M Raghuram",
         phone: "6305756962",
       },
       {
-        name: "T. Soorya teja",
-        phone: "9494748284",
+        name: "Uma Maheswari",
+        phone: "8978128841",
       },
     ],
   },
@@ -653,11 +673,15 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "D. Mounika",
+        name: "Kusheel Sanduri",
+        phone: "9100335859",
+      },
+      {
+        name: "D Mounika",
         phone: "",
       },
       {
-        name: "D. Sai pallavi",
+        name: "D Sai pallavi",
         phone: "",
       },
     ],
@@ -690,10 +714,7 @@ export const events = [
     - IoT & Hardware
     - Open Innovation
     
-    🏆 Prize Pool:
-    - First Prize: ₹25,000
-    - Second Prize: ₹15,000
-    - Third Prize: ₹10,000`,
+    `,
     rules: [
       "Round 1:",
       "This round will be seamlessly conducted online, leveraging cutting-edge digital platforms to ensure a smooth and efficient experience",
@@ -720,12 +741,79 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "N. Chiranjeevi",
+        name: "G S S Nikhil Chowdary",
+        phone: "9849009047",
+      },
+      {
+        name: "N Chiranjeevi",
         phone: "9705959253",
       },
       {
-        name: "S. Chaitanya",
+        name: "S Chaitanya",
         phone: "9154900357",
+      },
+    ],
+  },
+  {
+    id: "13",
+    type: "tech",
+    title: "Paper Presentation",
+    text: "Are you passionate about research and innovation? Showcase your ideas at the Paper Presentation event of Cynosure 2024! Submit your research paper online, get shortlisted, and present your findings before an esteemed panel of judges. Whether it's AI, IoT, cybersecurity, or emerging tech trends, demonstrate your technical expertise, analytical skills, and presentation prowess. Impress the audience and compete for top honors in this intellectually stimulating event!",
+    backgroundUrl: "assets/event/paper.jpg",
+    iconUrl: benefitIcon1,
+    imageUrl: benefitImage2,
+    prize: "15000",
+    date: "27 March",
+    venue: "203",
+    teamSize: "Individual",
+    fullDescription: `Step onto the stage at Cynosure 2024 and present your research in front of an esteemed panel of judges! 
+
+    📌 **Event Highlights:**
+    - Showcase your research and analytical skills
+    - Present papers on AI, ML, IoT, Blockchain, Cybersecurity, and more
+    - Gain valuable insights through expert feedback
+    - Engage in intellectual discussions with fellow researchers
+    - A chance to win exciting cash prizes!
+    
+    📝 **Topics Include (but are not limited to):**
+    - Artificial Intelligence & Machine Learning  
+    - Cybersecurity & Ethical Hacking  
+    - Blockchain & FinTech Innovations  
+    - IoT & Smart Systems  
+    - Emerging Trends in Computing  
+    - Green Technology & Sustainable Computing  
+    `,
+    rules: [
+      "Round 1: Online Submission",
+      "Participants must submit an abstract summarizing their research paper online before the deadline.",
+      "The abstract should clearly define the problem, methodology, and key findings.",
+      "Submissions will be reviewed based on originality, relevance, and clarity.",
+      "Top submissions will be shortlisted for the final round.",
+      "Shortlisted participants will be notified by March 22nd.",
+
+      "Round 2: On-Site Presentation",
+      "Shortlisted participants must present their research in person at the event venue.",
+      "Presentations should be within the allotted time frame (8-10 minutes).",
+      "Use of slides (PPT/PDF) is mandatory; clarity and structure will be assessed.",
+      "Judging criteria include originality, technical depth, presentation skills, and Q&A session.",
+      "Strict adherence to the schedule is required; late arrivals may be disqualified.",
+      "Reporting time: 10:30 AM, March 27th.",
+    ],
+    requirements: [
+      "Laptop or printed presentation materials",
+      "Valid college ID",
+      "Presentation slides in PDF/PPT format",
+      "Research paper document (if applicable)",
+      "Good communication and technical skills",
+    ],
+    coordinators: [
+      {
+        name: "C. Martin",
+        phone: "9347967058",
+      },
+      {
+        name: "Abhinaya",
+        phone: "",
       },
     ],
   },
@@ -777,11 +865,15 @@ export const fun = [
     ],
     coordinators: [
       {
-        name: "V. Likitha",
+        name: "K R Mahesh",
+        phone: "7997290406",
+      },
+      {
+        name: "V Likitha",
         phone: "",
       },
       {
-        name: "C. Chaturya prasad",
+        name: "C Chaturya prasad",
         phone: "7702249549",
       },
     ],
@@ -821,11 +913,15 @@ export const fun = [
     requirements: ["Basic math skills", "Analytical thinking", "Time management", "College ID"],
     coordinators: [
       {
-        name: "A. Sreenath",
+        name: "A Sreenath",
         phone: "8179417236",
       },
       {
-        name: "T. Suchitra",
+        name: "G Lakshmi Swomya",
+        phone: "9542124330",
+      },
+      {
+        name: "T Suchitra",
         phone: "",
       },
     ],
@@ -876,12 +972,16 @@ export const fun = [
     ],
     coordinators: [
       {
-        name: "B. Chandra mouli",
+        name: "B Chandra mouli",
         phone: "7207241669",
       },
       {
-        name: "C. Sriram",
+        name: "C Sriram",
         phone: "6309084262",
+      },
+      {
+        name: "Uday Divvi",
+        phone: "7989227578",
       },
     ],
   },
@@ -931,12 +1031,16 @@ export const fun = [
     ],
     coordinators: [
       {
-        name: "B. Ramu yadav",
+        name: "B Ramu yadav",
         phone: "9573619508",
       },
       {
-        name: "T. Kumara swamy",
+        name: "T Kumara swamy",
         phone: "9392155971",
+      },
+      {
+        name: "B Raj Kumar",
+        phone: "7993365691",
       },
     ],
   },
@@ -949,7 +1053,7 @@ export const fun = [
     iconUrl: benefitIcon4,
     imageUrl: benefitImage2,
     prize: "8000",
-    date: "22 march",
+    date: "28 march",
     venue: "Activity Room",
     teamSize: "2-3 members",
     fullDescription: `Embark on an exciting adventure around the campus!
@@ -977,15 +1081,6 @@ export const fun = [
       "Use the answers from the four puzzles to solve the final puzzle in the 5th open box.",
       "The team that solves all puzzles in the least time wins.",
       "Each team gets 7 minutes to complete all puzzles.",
-
-      "	Box & Puzzle Rules :-",
-
-      "Each of the first 4 boxes is locked with a key.",
-      "After opening a box, the team must solve the puzzle associated with it.",
-      "The 5th box is already open, but the team cannot move to 5 puzzle unless all 4 previous answers are correct.",
-      "External help (phones, calculators, internet, or outside assistance) is not allowed.",
-      "Once a box is unlocked, the answer must be written on the answer sheet.",
-      "The Judge's or Organizer's decision is final.",
     ],
     requirements: [
       "Smartphone with QR scanner",
@@ -995,12 +1090,16 @@ export const fun = [
     ],
     coordinators: [
       {
-        name: "P. Sudhansu Reddy",
+        name: "M Pavan kumar",
+        phone: "7989883868",
+      },
+      {
+        name: "P Sudhansu Reddy",
         phone: "8919115624",
       },
       {
-        name: "M. Pavan kumar",
-        phone: "7989883868",
+        name: "G Mohan Krishna",
+        phone: "8074019573",
       },
     ],
   },
