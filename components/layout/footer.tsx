@@ -9,7 +9,7 @@ type Props = {};
 const Footer = (props: Props) => {
   return (
     <Section crosses className="!px-0 !py-10">
-      <div className="container flex items-center justify-center gap-10 max-sm:flex-col sm:justify-between">
+      <div className="container flex flex-col items-center gap-6">
         <ul className="flex flex-wrap gap-5">
           {socials.map((item) => (
             <Link
@@ -22,6 +22,18 @@ const Footer = (props: Props) => {
             </Link>
           ))}
         </ul>
+        <div className="text-center">
+          <p className="text-sm text-[#666] opacity-60">
+            Contribution by{" "}
+            <Link
+              href="https://github.com/bhanuprakash1212"
+              target="_blank"
+              className="hover:text-[#4A00E0] underline transition-colors duration-200"
+            >
+              Bhanu Prakash c
+            </Link>
+          </p>
+        </div>
       </div>
     </Section>
   );

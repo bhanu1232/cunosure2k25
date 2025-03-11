@@ -20,7 +20,7 @@ const Hero = () => {
 
   useEffect(() => {
     // Set your event date here
-    const eventDate = new Date("2025-03-27T00:00:00");
+    const eventDate = new Date("2025-03-27T07:00:00");
 
     const calculateTimeLeft = () => {
       const difference = +eventDate - +new Date();
