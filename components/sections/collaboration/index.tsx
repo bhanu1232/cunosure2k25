@@ -21,7 +21,9 @@ const Collaboration = (props: Props) => {
                   <Image src={images.check} width={24} height={24} alt="check" />
                   <h6 className="body-2 ml-5">{item.title}</h6>
                 </div>
-                {item.text && <p className="body-2 mt-3 text-n-4 max-sm:px-10">{item.text}</p>}
+                {item.text && (
+                  <p className="body-2 mt-3 text-slate-300 max-sm:px-10">{item.text}</p>
+                )}
               </li>
             ))}
           </ul>

@@ -953,7 +953,9 @@ const PassesPage = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-tr from-[#4A00E0]/10 via-transparent to-[#8E2DE2]/10 pointer-events-none rounded-xl"></div>
                   </div>
-
+                  <span className="text-2xl font-bold bg-gradient-to-r from-[#ffffff] to-[#fefefe] bg-clip-text text-transparent">
+                    ₹{totalAmount}
+                  </span>
                   {/* Payment Instructions */}
                   <div className="flex-1 space-y-4">
                     <div className="space-y-2">
