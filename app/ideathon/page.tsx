@@ -394,7 +394,7 @@ const IdeathonPage = () => {
               </div>
 
               <div>
-                <label className="block text-white/60 mb-2">Team Members</label>
+                <label className="block text-white/60 mb-2">Team Members ( 4 members MAX )</label>
                 <textarea
                   name="teamMembers"
                   value={formData.teamMembers}
@@ -403,7 +403,9 @@ const IdeathonPage = () => {
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-[#4A00E0] focus:outline-none transition-colors min-h-[100px]"
                   placeholder="Enter team members' names (one per line)"
                 />
-                <p className="text-xs text-white/40 mt-1">Maximum 4 members per team</p>
+                <p className="text-xs text-white/40 mt-1">
+                  Maximum 4 members per team if more than 4 it wont be shortlisted
+                </p>
               </div>
 
               <div>
@@ -428,7 +430,7 @@ const IdeathonPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Gender Selection */}
                 <div className="space-y-2">
-                  <label className="block text-white/60 mb-2">Gender</label>
+                  <label className="block text-white/60 mb-2">Gender (Team Leader)</label>
                   <div className="flex gap-4">
                     <label className="flex items-center">
                       <input
