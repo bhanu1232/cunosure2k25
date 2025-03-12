@@ -22,7 +22,7 @@ const Collaboration = (props: Props) => {
                   <h6 className="body-2 ml-5">{item.title}</h6>
                 </div>
                 {item.text && (
-                  <p className="body-2 mt-3 text-slate-300 max-sm:px-10">{item.text}</p>
+                  <p className="body-2 mt-3 hidden text-slate-300 max-sm:px-10">{item.text}</p>
                 )}
               </li>
             ))}

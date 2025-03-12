@@ -401,7 +401,7 @@ const PassesPage = () => {
               >
                 <div className="flex flex-col h-full">
                   <h4 className="text-2xl font-semibold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-2">
-                    Paper Presentation
+                    Pitch Paper Perfect
                   </h4>
                   <p className="text-white/60 text-sm mb-4 flex-grow">
                     Submit your research paper and showcase your ideas to a panel of experts

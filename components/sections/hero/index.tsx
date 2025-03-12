@@ -167,7 +167,7 @@ const Hero = () => {
               href="/passes"
               className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-xl"
             >
-              <button className="group relative px-10 py-5 rounded-lg bg-gradient-to-br from-[#e8675f] via-amber-500 to-[#e89b46] text-black font-bold tracking-wider uppercase text-sm hover:from-yellow-500 hover:via-amber-600 hover:to-yellow-700  duration-300 ease-out  active:scale-90 overflow-hidden before:absolute before:inset-0 before:rounded-lg ">
+              <button className="group relative px-10 py-5 rounded-lg bg-gradient-to-br from-[#ffb703] to-[#fb8500] text-black font-bold tracking-wider uppercase text-sm hover:from-yellow-500 hover:via-amber-600 hover:to-yellow-700  duration-300 ease-out  active:scale-90 overflow-hidden before:absolute before:inset-0 before:rounded-lg ">
                 <span className="flex text-white items-center gap-2 relative z-10">
                   <Image
                     src={"assets/crown.png"}

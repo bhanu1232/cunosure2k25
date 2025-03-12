@@ -368,7 +368,7 @@ export const events = [
   {
     id: "6",
     type: "tech",
-    title: "Codeflix Marathon",
+    title: "CodeFlix Marathon",
     text: "A 'Code Marathon' is a challenging coding competition where participants must solve a series of complex programming problems within a limited timeframe. This competition tests their coding expertise, logical thinking, ability to work under pressure, strategy, and time management skills. ",
     backgroundUrl: "assets/event/marathon.avif",
     iconUrl: benefitIcon3,
@@ -407,7 +407,7 @@ export const events = [
         phone: "7995935120",
       },
       {
-        name: "P Varun nag",
+        name: "P Varun Nag",
         phone: "9391064986",
       },
     ],
@@ -461,7 +461,7 @@ export const events = [
     coordinators: [
       {
         name: "M Meghana",
-        phone: "",
+        phone: "7893098680",
       },
       {
         name: "B Jyothsna",
@@ -530,7 +530,7 @@ export const events = [
   {
     id: "5",
     type: "tech",
-    title: "Ideathon",
+    title: "Ideathon ",
     text: "Unleash your creativity and problem-solving skills in this exciting Ideathon! Participants will brainstorm and present innovative ideas to solve real-world challenges. Whether it’s a tech solution, social impact initiative, or business innovation, originality is key. Work individually or in teams to develop your concept. Impress the judges with feasibility, impact, and presentation. Turn your ideas into groundbreaking solutions!.",
     backgroundUrl: "assets/event/idea.avif",
     iconUrl: benefitIcon2,
@@ -539,6 +539,7 @@ export const events = [
     date: "27 march",
     venue: "Conference Hall",
     teamSize: "2-3 members",
+    spot: "No Spot Registration",
     fullDescription: `Transform your innovative ideas into impactful solutions!
 
     🎯 Focus Areas:
@@ -570,14 +571,14 @@ export const events = [
     coordinators: [
       {
         name: "Harika Velpula",
-        phone: "",
+        phone: "7075602932",
       },
       {
         name: "T Yuvasree",
         phone: "",
       },
       {
-        name: "C. Martin",
+        name: "C Martin",
         phone: "9347967058",
       },
     ],
@@ -585,7 +586,7 @@ export const events = [
   {
     id: "2",
     type: "tech",
-    title: "Query Crackers",
+    title: "The Query Games",
     text: "Embark on a captivating exploration of the dynamic world of querying at our exclusive Query Crackers Symposium..this is an event meticulously crafted for students, professionals, and database enthusiasts eager to sharpen their skills in the art of formulating and solving queries.Query cracker Challenge invites you to unravel the complexity of database queries and compete for exciting prizes! This thrilling two-round event is tailored for those who love the intricacies of Database Management Systems (DBMS) and have a flair for SQL.Don't miss the chance to showcase your database expertise and compete for cash prizes in this ultimate SQL showdown!Join us at the Query Crackers Symposium and unravel the potential within your data!.",
     backgroundUrl: "assets/event/query.avif",
     iconUrl: benefitIcon3,
@@ -594,7 +595,7 @@ export const events = [
     date: "27 march",
     venue: "CSE Lab 3",
     teamSize: "Individual",
-    fullDescription: `Test your database skills in Query Crackers!
+    fullDescription: `Test your database skills in The Query Games!
 
     💻 Challenge Format:
     - SQL query optimization
@@ -621,8 +622,8 @@ export const events = [
     ],
     coordinators: [
       {
-        name: "S. Roopa sree",
-        phone: "",
+        name: "S Roopa sree",
+        phone: "8639932286",
       },
       {
         name: "M Raghuram",
@@ -699,6 +700,7 @@ export const events = [
     date: "27 march",
     venue: "203",
     teamSize: "2-4 members",
+    spot: "No Spot Registration",
     fullDescription: `Join us for Cynosure 2024's premier Hackathon! 
 
     🔥 Event Highlights:
@@ -766,6 +768,7 @@ export const events = [
     date: "27 March",
     venue: "203",
     teamSize: "Individual",
+    spot: "No Spot Registration",
     fullDescription: `Step onto the stage at Cynosure 2024 and present your research in front of an esteemed panel of judges! 
 
     📌 **Event Highlights:**
@@ -816,7 +819,7 @@ export const events = [
         phone: "8639651716",
       },
       {
-        name: "Kumara Swamy",
+        name: "T Kumara Swamy",
         phone: "8639932286",
       },
     ],
@@ -885,7 +888,7 @@ export const fun = [
   {
     id: "2",
     type: "fun",
-    title: "Curious Clue",
+    title: "Curious Clues",
     text: "Means finding a perfect clue (just from basic aptitude, logical reasoning) that is strange, unusual, or unexpected, potentially causing the person trying to solve a puzzle",
     backgroundUrl: "assets/event/crew.avif",
     iconUrl: benefitIcon3,
@@ -926,7 +929,7 @@ export const fun = [
       },
       {
         name: "T Suchitra",
-        phone: "",
+        phone: "7981443966",
       },
     ],
   },

@@ -174,7 +174,7 @@ const Benefits = () => {
 
         {/* First Student Coordinators Section */}
         <div className="mb-20">
-          <Heading className="mb-10" title="organizers" />
+          <Heading className="mb-10" title="Organizers" />
           <CoordinatorCards scrollReference={scrollRef} data={studentCoords} />
         </div>
 

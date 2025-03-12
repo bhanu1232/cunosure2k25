@@ -101,6 +101,18 @@ const Benefits = () => {
                             </svg>
                             {item.teamSize || "Individual"}
                           </div>
+                          <div className="flex items-center text-n-1/80 col-span-2">
+                            <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none">
+                              <path
+                                d="M18 7.16a.605.605 0 0 0-.19 0 2.573 2.573 0 0 1-2.48-2.58c0-1.42 1.16-2.58 2.58-2.58 1.42 0 2.58 1.16 2.58 2.58 0 1.4-1.12 2.54-2.49 2.58Z"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                            {item.spot || "Spot Registration Available"}
+                          </div>
                         </div>
 
                         {/* CTA Button */}

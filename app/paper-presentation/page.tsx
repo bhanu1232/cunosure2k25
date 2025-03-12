@@ -264,7 +264,7 @@ const PaperPresentationPage = () => {
             </div>
 
             <h3 className="text-4xl md:text-5xl max-sm:text-3xl font-bold bg-gradient-to-br from-white to-white/60 bg-clip-text text-transparent mb-6">
-              Paper Presentation Registration
+              Pitch Paper Perfect
             </h3>
 
             <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto relative mb-8">
