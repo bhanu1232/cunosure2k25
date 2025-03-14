@@ -252,12 +252,39 @@ const PassesPage = () => {
       return;
     }
 
-    // Add validation for required number of events
+    // Validate required number of events based on package
     const maxEvents = getMaxEventsAllowed(formData.eventPackage);
-    if (formData.selectedEvents.length < maxEvents) {
+    const selectedEventsCount = formData.selectedEvents.length;
+
+    if (formData.eventPackage !== "free") {
+      if (selectedEventsCount < maxEvents) {
+        setNotification({
+          type: "error",
+          message: `Please select exactly ${maxEvents} event${maxEvents > 1 ? "s" : ""} for your ${
+            formData.eventPackage
+          } package except the complementary event`,
+        });
+        setLoading(false);
+        return;
+      }
+
+      if (selectedEventsCount > maxEvents) {
+        setNotification({
+          type: "error",
+          message: `You can only select ${maxEvents} event${maxEvents > 1 ? "s" : ""} for your ${
+            formData.eventPackage
+          } package except the complementary event`,
+        });
+        setLoading(false);
+        return;
+      }
+    }
+
+    // Add validation for complementary event
+    if (!formData.complementaryEvent) {
       setNotification({
         type: "error",
-        message: `Please select ${maxEvents} event${maxEvents > 1 ? "s" : ""} for your package`,
+        message: "Please select a complementary event",
       });
       setLoading(false);
       return;
