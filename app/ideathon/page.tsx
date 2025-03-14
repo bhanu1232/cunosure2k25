@@ -230,6 +230,66 @@ const IdeathonPage = () => {
         )}
       </AnimatePresence>
 
+      {/* Loading Overlay */}
+      <AnimatePresence>
+        {loading && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed left-[35%] max-sm:left-[5%] top-1/2 max-sm:top-[30%] -translate-x-1/2 -translate-y-1/2 z-50 w-[calc(100%-2rem)] max-w-md"
+            />
+
+            {/* Loading Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="fixed left-[35%] max-sm:left-[5%] top-1/2 max-sm:top-[30%] -translate-x-1/2 -translate-y-1/2 z-50 w-[calc(100%-2rem)] max-w-md"
+            >
+              <div className="bg-[#1A1625]/95 border border-[#4A00E0]/20 rounded-2xl p-8 backdrop-blur-xl shadow-2xl">
+                <div className="flex flex-col items-center gap-4">
+                  {/* Loading Animation */}
+                  <div className="relative size-16">
+                    {/* Outer rotating ring */}
+                    <div className="absolute inset-0 rounded-full border-4 border-[#4A00E0]/20" />
+                    <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#4A00E0] animate-spin" />
+
+                    {/* Inner pulsing circle */}
+                    <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-[#4A00E0] to-[#8E2DE2] animate-pulse" />
+                  </div>
+
+                  <div className="text-center">
+                    <h3 className="text-xl font-semibold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-2">
+                      Processing Registration
+                    </h3>
+                    <p className="text-white/60">Please wait while we submit your details...</p>
+                  </div>
+
+                  {/* Progress Steps */}
+                  <div className="w-full space-y-3 mt-4">
+                    <div className="flex items-center gap-3">
+                      <div className="size-2 rounded-full bg-[#4A00E0] animate-pulse" />
+                      <div className="text-sm text-white/60">Validating form data...</div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="size-2 rounded-full bg-[#4A00E0]/40" />
+                      <div className="text-sm text-white/40">Checking payment details...</div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="size-2 rounded-full bg-[#4A00E0]/40" />
+                      <div className="text-sm text-white/40">Submitting registration...</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
       {/* Grid Background with improved overlay */}
       <div className="absolute inset-0 w-full h-full">
         <div className="absolute inset-0 bg-[url('/assets/grid.png')] opacity-10" />

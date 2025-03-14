@@ -16,11 +16,11 @@ interface Event {
 
 const TECH_EVENTS: Event[] = [
   { id: "Code Marathon", name: "Code Marathon", price: 125 },
+  { id: "Hackathon", name: "Hackathon (₹200) / Team", price: 200 },
   { id: "Blind Coding", name: "Blind Coding", price: 125 },
   { id: "Tech Quiz", name: "Tech Quiz", price: 125 },
   { id: "Query Crackers", name: "Query Crackers", price: 125 },
   { id: "Web Wreath", name: "Web Wreath", price: 125 },
-  { id: "Hackathon", name: "Hackathon", price: 200 },
 ];
 
 const NON_TECH_EVENTS: Event[] = [
@@ -43,6 +43,7 @@ interface FormData {
   complementaryEvent: string;
   gender: "male" | "female" | "";
   accommodation: "yes" | "no" | "";
+  eventPackage: "free" | "basic" | "plus" | "premium" | "";
   uid?: string;
   participationCount?: number;
 }
@@ -64,6 +65,7 @@ const PassesPage = () => {
     complementaryEvent: "",
     gender: "",
     accommodation: "",
+    eventPackage: "free",
   });
   const [notification, setNotification] = useState<Notification | null>(null);
   const [loading, setLoading] = useState(false);
@@ -71,19 +73,99 @@ const PassesPage = () => {
   const [isNonTechDropdownOpen, setIsNonTechDropdownOpen] = useState(false);
   const [isComplementaryDropdownOpen, setIsComplementaryDropdownOpen] = useState(false);
 
-  const totalAmount = formData.selectedEvents.reduce((total, eventId) => {
-    const techEvent = TECH_EVENTS.find((e) => e.id === eventId);
-    const nonTechEvent = NON_TECH_EVENTS.find((e) => e.id === eventId);
-    return total + (techEvent?.price || nonTechEvent?.price || 0);
-  }, DEFAULT_AMOUNT);
+  const calculatePackageAmount = (packageType: string, baseAmount: number): number => {
+    let totalAmount = baseAmount;
+    const selectedEvents = formData.selectedEvents || [];
+
+    // Handle Hackathon separately as it has a fixed price
+    const hasHackathon = selectedEvents.includes("Hackathon");
+    const regularEvents = selectedEvents.filter((id) => id !== "Hackathon");
+
+    // Add Hackathon price if selected
+    if (hasHackathon) {
+      totalAmount += 200; // Hackathon always costs ₹200
+    }
+
+    // Calculate price for other events based on package
+    switch (packageType) {
+      case "plus":
+        // For plus package, each regular event costs ₹100
+        totalAmount += regularEvents.length * 100;
+        break;
+      case "premium":
+        // For premium package, each regular event costs ₹85
+        totalAmount += regularEvents.length * 85;
+        break;
+      case "basic":
+        // For basic package, add individual event prices
+        regularEvents.forEach((eventId) => {
+          const techEvent = TECH_EVENTS.find((e) => e.id === eventId);
+          const nonTechEvent = NON_TECH_EVENTS.find((e) => e.id === eventId);
+          if (techEvent && techEvent.id !== "Hackathon") {
+            totalAmount += 125;
+          } else if (nonTechEvent) {
+            totalAmount += nonTechEvent.price;
+          }
+        });
+        break;
+    }
+
+    return totalAmount;
+  };
+
+  const totalAmount = calculatePackageAmount(formData.eventPackage, DEFAULT_AMOUNT);
+
+  const getMaxEventsAllowed = (packageType: string): number => {
+    switch (packageType) {
+      case "free":
+        return 0; // No extra events allowed
+      case "basic":
+        return 1;
+      case "plus":
+        return 2;
+      case "premium":
+        return 3;
+      default:
+        return 0;
+    }
+  };
 
   const handleEventToggle = (eventId: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      selectedEvents: prev.selectedEvents.includes(eventId)
-        ? prev.selectedEvents.filter((id) => id !== eventId)
-        : [...prev.selectedEvents, eventId],
-    }));
+    setFormData((prev) => {
+      const maxEvents = getMaxEventsAllowed(prev.eventPackage);
+      const isSelected = prev.selectedEvents.includes(eventId);
+
+      // If trying to deselect, always allow it
+      if (isSelected) {
+        return {
+          ...prev,
+          selectedEvents: prev.selectedEvents.filter((id) => id !== eventId),
+        };
+      }
+
+      // If trying to select and haven't reached the limit, allow it
+      if (prev.selectedEvents.length < maxEvents || eventId === "Hackathon") {
+        return {
+          ...prev,
+          selectedEvents: [...prev.selectedEvents, eventId],
+        };
+      }
+
+      // If trying to select but reached the limit, don't change anything
+      return prev;
+    });
+  };
+
+  // Add a function to check if an event can be selected
+  const canSelectMoreEvents = (): boolean => {
+    const maxEvents = getMaxEventsAllowed(formData.eventPackage);
+    return formData.selectedEvents.length < maxEvents;
+  };
+
+  // Add a function to get remaining events count
+  const getRemainingEvents = (): number => {
+    const maxEvents = getMaxEventsAllowed(formData.eventPackage);
+    return Math.max(0, maxEvents - formData.selectedEvents.length);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -159,6 +241,27 @@ const PassesPage = () => {
     e.preventDefault();
     setLoading(true);
     setNotification(null);
+
+    // Add validation for package selection
+    if (!formData.eventPackage) {
+      setNotification({
+        type: "error",
+        message: "Please select an event package",
+      });
+      setLoading(false);
+      return;
+    }
+
+    // Add validation for required number of events
+    const maxEvents = getMaxEventsAllowed(formData.eventPackage);
+    if (formData.selectedEvents.length < maxEvents) {
+      setNotification({
+        type: "error",
+        message: `Please select ${maxEvents} event${maxEvents > 1 ? "s" : ""} for your package`,
+      });
+      setLoading(false);
+      return;
+    }
 
     // Add validation for new fields
     if (!formData.gender) {
@@ -241,6 +344,7 @@ const PassesPage = () => {
         complementaryEvent: "",
         gender: "",
         accommodation: "",
+        eventPackage: "free",
       });
     } catch (error) {
       setNotification({
@@ -324,6 +428,66 @@ const PassesPage = () => {
                   >
                     <X className="w-5 h-5" />
                   </button>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Loading Overlay */}
+      <AnimatePresence>
+        {loading && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed left-[35%] max-sm:left-[5%] top-1/2 max-sm:top-[30%] -translate-x-1/2 -translate-y-1/2 z-50 w-[calc(100%-2rem)] max-w-md"
+            />
+
+            {/* Loading Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="fixed left-[35%] max-sm:left-[5%] top-1/2 max-sm:top-[30%] -translate-x-1/2 -translate-y-1/2 z-50 w-[calc(100%-2rem)] max-w-md"
+            >
+              <div className="bg-[#1A1625]/95 border border-[#4A00E0]/20 rounded-2xl p-8 backdrop-blur-xl shadow-2xl">
+                <div className="flex flex-col items-center gap-4">
+                  {/* Loading Animation */}
+                  <div className="relative size-16">
+                    {/* Outer rotating ring */}
+                    <div className="absolute inset-0 rounded-full border-4 border-[#4A00E0]/20" />
+                    <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#4A00E0] animate-spin" />
+
+                    {/* Inner pulsing circle */}
+                    <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-[#4A00E0] to-[#8E2DE2] animate-pulse" />
+                  </div>
+
+                  <div className="text-center">
+                    <h3 className="text-xl font-semibold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-2">
+                      Processing Registration
+                    </h3>
+                    <p className="text-white/60">Please wait while we submit your details...</p>
+                  </div>
+
+                  {/* Progress Steps */}
+                  <div className="w-full space-y-3 mt-4">
+                    <div className="flex items-center gap-3">
+                      <div className="size-2 rounded-full bg-[#4A00E0] animate-pulse" />
+                      <div className="text-sm text-white/60">Validating form data...</div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="size-2 rounded-full bg-[#4A00E0]/40" />
+                      <div className="text-sm text-white/40">Checking payment details...</div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="size-2 rounded-full bg-[#4A00E0]/40" />
+                      <div className="text-sm text-white/40">Submitting registration...</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -459,31 +623,217 @@ const PassesPage = () => {
         >
           <div className="text-center mb-6">
             <h4 className="text-xl text-white/80 font-medium">General Events Registration</h4>
-            <p className="text-white/60 text-sm mt-1">
-              Register for multiple technical and non-technical events
-            </p>
+            <p className="text-white/60 text-sm mt-1">Choose your event package</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Event Selection Dropdown */}
-            <div className="space-y-6">
-              {/* Total Amount - Always visible */}
-              <div className="p-4 rounded-xl bg-[#4A00E0]/10 border border-[#4A00E0]/20">
-                <div className="flex justify-between items-center">
-                  <div className="space-y-1">
-                    <span className="text-white font-semibold">Total Amount</span>
-                    {formData.selectedEvents.length > 0 && (
-                      <p className="text-white/60 text-sm">
-                        Base fee + {formData.selectedEvents.length} event
-                        {formData.selectedEvents.length > 1 ? "s" : ""}
-                      </p>
+            {/* Package Selection */}
+            <div className="space-y-4">
+              <label className="block text-white/60 mb-2">Select Your Package</label>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+                {/* Free Package */}
+                <label className="relative group cursor-pointer">
+                  <input
+                    type="radio"
+                    name="eventPackage"
+                    value="free"
+                    checked={formData.eventPackage === "free"}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        eventPackage: e.target.value as "free",
+                        selectedEvents: [], // Reset selections when changing package
+                      }))
+                    }
+                    className="hidden"
+                  />
+                  <div
+                    className={`relative overflow-hidden p-3 rounded-xl border transition-all duration-300 ${
+                      formData.eventPackage === "free"
+                        ? "bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 border-[#4A00E0] shadow-[0_0_15px_rgba(74,0,224,0.15)]"
+                        : "bg-white/5 border-white/10 hover:border-white/30"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`flex items-center justify-center size-10 rounded-lg ${
+                          formData.eventPackage === "free"
+                            ? "bg-[#4A00E0] text-white"
+                            : "bg-white/5 text-white/60"
+                        }`}
+                      >
+                        <span className="text-lg font-semibold">F</span>
+                      </div>
+                      <div>
+                        <h3 className="text-white font-medium">Free</h3>
+                        <div className="flex items-center gap-2">
+                          <span className="text-white/40 text-sm">Base Entry</span>
+                        </div>
+                      </div>
+                    </div>
+                    {formData.eventPackage === "free" && (
+                      <div className="mt-2 text-xs text-white/40">
+                        * Only complementary event allowed
+                      </div>
                     )}
                   </div>
-                  <span className="text-2xl font-bold bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2] bg-clip-text text-transparent">
-                    ₹{totalAmount}
-                  </span>
-                </div>
+                </label>
+
+                {/* Basic Package */}
+                <label className="relative group cursor-pointer">
+                  <input
+                    type="radio"
+                    name="eventPackage"
+                    value="basic"
+                    checked={formData.eventPackage === "basic"}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        eventPackage: e.target.value as "basic",
+                        selectedEvents: [], // Reset selections when changing package
+                      }))
+                    }
+                    className="hidden"
+                  />
+                  <div
+                    className={`relative overflow-hidden p-3 rounded-xl border transition-all duration-300 ${
+                      formData.eventPackage === "basic"
+                        ? "bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 border-[#4A00E0] shadow-[0_0_15px_rgba(74,0,224,0.15)]"
+                        : "bg-white/5 border-white/10 hover:border-white/30"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`flex items-center justify-center size-10 rounded-lg ${
+                          formData.eventPackage === "basic"
+                            ? "bg-[#4A00E0] text-white"
+                            : "bg-white/5 text-white/60"
+                        }`}
+                      >
+                        <span className="text-lg font-semibold">1</span>
+                      </div>
+                      <div>
+                        <h3 className="text-white font-medium">Basic</h3>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#4A00E0] font-semibold">₹125</span>
+                          <span className="text-white/40 text-sm">+ Any One Event</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </label>
+
+                {/* Plus Package */}
+                <label className="relative group cursor-pointer">
+                  <input
+                    type="radio"
+                    name="eventPackage"
+                    value="plus"
+                    checked={formData.eventPackage === "plus"}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        eventPackage: e.target.value as "plus",
+                        selectedEvents: [], // Reset selections when changing package
+                      }))
+                    }
+                    className="hidden"
+                  />
+                  <div
+                    className={`relative overflow-hidden p-3 rounded-xl border transition-all duration-300 ${
+                      formData.eventPackage === "plus"
+                        ? "bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 border-[#4A00E0] shadow-[0_0_15px_rgba(74,0,224,0.15)]"
+                        : "bg-white/5 border-white/10 hover:border-white/30"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`flex items-center justify-center size-10 rounded-lg ${
+                          formData.eventPackage === "plus"
+                            ? "bg-[#4A00E0] text-white"
+                            : "bg-white/5 text-white/60"
+                        }`}
+                      >
+                        <span className="text-lg font-semibold">2</span>
+                      </div>
+                      <div>
+                        <h3 className="text-white font-medium">Plus</h3>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#4A00E0] font-semibold">₹200</span>
+                          <span className="text-white/40 text-sm">+Any Two Events</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </label>
+
+                {/* Premium Package */}
+                <label className="relative group cursor-pointer">
+                  <input
+                    type="radio"
+                    name="eventPackage"
+                    value="premium"
+                    checked={formData.eventPackage === "premium"}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        eventPackage: e.target.value as "premium",
+                        selectedEvents: [], // Reset selections when changing package
+                      }))
+                    }
+                    className="hidden"
+                  />
+                  <div
+                    className={`relative overflow-hidden p-3 rounded-xl border transition-all duration-300 ${
+                      formData.eventPackage === "premium"
+                        ? "bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 border-[#4A00E0] shadow-[0_0_15px_rgba(74,0,224,0.15)]"
+                        : "bg-white/5 border-white/10 hover:border-white/30"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`flex items-center justify-center size-10 rounded-lg ${
+                          formData.eventPackage === "premium"
+                            ? "bg-[#4A00E0] text-white"
+                            : "bg-white/5 text-white/60"
+                        }`}
+                      >
+                        <span className="text-lg font-semibold">3</span>
+                      </div>
+                      <div>
+                        <h3 className="text-white font-medium">Premium</h3>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#4A00E0] font-semibold">₹255</span>
+                          <span className="text-white/40 text-sm">+Any Three Events</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </label>
               </div>
+            </div>
+
+            {/* Total Amount - Updated */}
+            <div className="p-4 rounded-xl bg-[#4A00E0]/10 border border-[#4A00E0]/20">
+              <div className="flex justify-between items-center">
+                <div className="space-y-1">
+                  <span className="text-white font-semibold">Total Amount</span>
+                  {formData.eventPackage && (
+                    <p className="text-white/60 text-sm">
+                      {formData.eventPackage === "free"
+                        ? "Free package - Only complementary event"
+                        : `Base fee + ${formData.eventPackage} package`}
+                    </p>
+                  )}
+                </div>
+                <span className="text-2xl font-bold bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2] bg-clip-text text-transparent">
+                  ₹{totalAmount}
+                </span>
+              </div>
+            </div>
+
+            {/* Event Selection Dropdown */}
+            <div className="space-y-6">
               {/* Complementary Event Dropdown */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
@@ -572,16 +922,25 @@ const PassesPage = () => {
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between items-center">
                   <label className="block text-white/60">Technical Events</label>
-                  {formData.selectedEvents.filter((id) => TECH_EVENTS.some((e) => e.id === id))
-                    .length > 0 && (
-                    <span className="text-white/60 text-sm">
-                      {
-                        formData.selectedEvents.filter((id) => TECH_EVENTS.some((e) => e.id === id))
-                          .length
-                      }{" "}
-                      selected
-                    </span>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {formData.eventPackage && (
+                      <span className="text-white/60 text-sm">
+                        {getRemainingEvents()} event{getRemainingEvents() !== 1 ? "s" : ""}{" "}
+                        remaining
+                      </span>
+                    )}
+                    {formData.selectedEvents.filter((id) => TECH_EVENTS.some((e) => e.id === id))
+                      .length > 0 && (
+                      <span className="text-white/60 text-sm">
+                        {
+                          formData.selectedEvents.filter((id) =>
+                            TECH_EVENTS.some((e) => e.id === id)
+                          ).length
+                        }{" "}
+                        selected
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div className="relative">
                   <div
@@ -635,10 +994,17 @@ const PassesPage = () => {
                             <div
                               key={event.id}
                               onClick={() => handleEventToggle(event.id)}
-                              className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-all duration-200 ${
+                              className={`flex items-center justify-between p-3 rounded-lg ${
+                                !formData.eventPackage
+                                  ? "cursor-not-allowed opacity-50"
+                                  : "cursor-pointer hover:bg-white/5"
+                              } ${
                                 formData.selectedEvents.includes(event.id)
                                   ? "bg-[#4A00E0]/20"
-                                  : "hover:bg-white/5"
+                                  : !canSelectMoreEvents() &&
+                                    !formData.selectedEvents.includes(event.id)
+                                  ? "opacity-50 cursor-not-allowed"
+                                  : ""
                               }`}
                             >
                               <div className="flex items-center gap-3">
@@ -661,13 +1027,18 @@ const PassesPage = () => {
                                     ? "text-[#4A00E0]"
                                     : "text-white/60"
                                 }`}
-                              >
-                                +₹{event.price}
-                              </span>
+                              ></span>
                             </div>
                           ) : null
                         )}
                       </div>
+                      {!formData.eventPackage && (
+                        <div className="p-3 border-t border-white/10">
+                          <p className="text-white/60 text-sm text-center">
+                            Please select a package to choose events
+                          </p>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -768,9 +1139,7 @@ const PassesPage = () => {
                                     ? "text-[#4A00E0]"
                                     : "text-white/60"
                                 }`}
-                              >
-                                +₹{event.price}
-                              </span>
+                              ></span>
                             </div>
                           ) : null
                         )}
@@ -1003,9 +1372,12 @@ const PassesPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 rounded-xl bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2] text-white font-semibold hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-4 rounded-xl bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2] text-white font-semibold hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group"
             >
-              {loading ? "Processing..." : "Register Now"}
+              <span className={`inline-flex items-center gap-2 ${loading ? "invisible" : ""}`}>
+                Register Now
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
+              </span>
             </button>
           </form>
         </motion.div>
