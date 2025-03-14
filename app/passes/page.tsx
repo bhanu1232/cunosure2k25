@@ -715,7 +715,7 @@ const PassesPage = () => {
                       <div>
                         <h3 className="text-white font-medium">Basic</h3>
                         <div className="flex items-center gap-2">
-                          <span className="text-[#4A00E0] font-semibold">₹125</span>
+                          <span className="text-white font-semibold">₹125</span>
                           <span className="text-white/40 text-sm">+ Any One Event</span>
                         </div>
                       </div>
@@ -759,7 +759,7 @@ const PassesPage = () => {
                       <div>
                         <h3 className="text-white font-medium">Plus</h3>
                         <div className="flex items-center gap-2">
-                          <span className="text-[#4A00E0] font-semibold">₹200</span>
+                          <span className="text-white font-semibold">₹200</span>
                           <span className="text-white/40 text-sm">+Any Two Events</span>
                         </div>
                       </div>
@@ -803,7 +803,7 @@ const PassesPage = () => {
                       <div>
                         <h3 className="text-white font-medium">Premium</h3>
                         <div className="flex items-center gap-2">
-                          <span className="text-[#4A00E0] font-semibold">₹255</span>
+                          <span className="text-white font-semibold">₹255</span>
                           <span className="text-white/40 text-sm">+Any Three Events</span>
                         </div>
                       </div>
@@ -826,7 +826,7 @@ const PassesPage = () => {
                     </p>
                   )}
                 </div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2] bg-clip-text text-transparent">
+                <span className="text-2xl font-bold bg-gradient-to-r from-white to-white bg-clip-text text-transparent">
                   ₹{totalAmount}
                 </span>
               </div>
