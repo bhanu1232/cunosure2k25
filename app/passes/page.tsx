@@ -16,7 +16,6 @@ interface Event {
 
 const TECH_EVENTS: Event[] = [
   { id: "Code Marathon", name: "Code Marathon", price: 125 },
-  { id: "Hackathon", name: "Hackathon (₹200) / Team", price: 200 },
   { id: "Blind Coding", name: "Blind Coding", price: 125 },
   { id: "Tech Quiz", name: "Tech Quiz", price: 125 },
   { id: "Query Crackers", name: "Query Crackers", price: 125 },
@@ -26,11 +25,12 @@ const TECH_EVENTS: Event[] = [
 const NON_TECH_EVENTS: Event[] = [
   { id: "Photography", name: "Photography", price: 0 },
   { id: "Treasure Hunt", name: "Treasure Hunt", price: 100 },
-  { id: "Brain Battle Blitz", name: "Brain Battle Blitz", price: 100 },
+  { id: "Brain Battle Binge", name: "Brain Battle Binge", price: 100 },
   { id: "Curious Clue", name: "Curious Clue", price: 100 },
+  { id: "The Matric Mystery", name: "The Matric Mystery", price: 100 },
 ];
 
-const EXCLUDED_COMPLEMENTARY_EVENTS = ["Ideathon", "Hackathon"]; // Ideathon and Hackathon IDs
+const EXCLUDED_COMPLEMENTARY_EVENTS = ["Ideathon"]; // Only Ideathon is excluded
 
 const COMPLEMENTARY_EVENTS = NON_TECH_EVENTS;
 
@@ -53,7 +53,7 @@ interface Notification {
   message: string;
 }
 
-const DEFAULT_AMOUNT = 350;
+const DEFAULT_AMOUNT = 300;
 
 const PassesPage = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -77,32 +77,23 @@ const PassesPage = () => {
     let totalAmount = baseAmount;
     const selectedEvents = formData.selectedEvents || [];
 
-    // Handle Hackathon separately as it has a fixed price
-    const hasHackathon = selectedEvents.includes("Hackathon");
-    const regularEvents = selectedEvents.filter((id) => id !== "Hackathon");
-
-    // Add Hackathon price if selected
-    if (hasHackathon) {
-      totalAmount += 200; // Hackathon always costs ₹200
-    }
-
-    // Calculate price for other events based on package
+    // Calculate price for events based on package
     switch (packageType) {
       case "plus":
         // For plus package, each regular event costs ₹100
-        totalAmount += regularEvents.length * 100;
+        totalAmount += selectedEvents.length * 100;
         break;
       case "premium":
         // For premium package, each regular event costs ₹85
-        totalAmount += regularEvents.length * 85;
+        totalAmount += selectedEvents.length * 85;
         break;
       case "basic":
         // For basic package, add individual event prices
-        regularEvents.forEach((eventId) => {
+        selectedEvents.forEach((eventId) => {
           const techEvent = TECH_EVENTS.find((e) => e.id === eventId);
           const nonTechEvent = NON_TECH_EVENTS.find((e) => e.id === eventId);
-          if (techEvent && techEvent.id !== "Hackathon") {
-            totalAmount += 125;
+          if (techEvent) {
+            totalAmount += techEvent.price;
           } else if (nonTechEvent) {
             totalAmount += nonTechEvent.price;
           }
@@ -144,7 +135,7 @@ const PassesPage = () => {
       }
 
       // If trying to select and haven't reached the limit, allow it
-      if (prev.selectedEvents.length < maxEvents || eventId === "Hackathon") {
+      if (prev.selectedEvents.length < maxEvents) {
         return {
           ...prev,
           selectedEvents: [...prev.selectedEvents, eventId],
@@ -577,68 +568,129 @@ const PassesPage = () => {
         </motion.div>
 
         {/* Separate Registrations Section */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-          <div className="text-center mb-6">
-            <h4 className="text-xl text-white/80 font-medium">Separate Registrations</h4>
-            <p className="text-white/60 text-sm mt-1">Register directly for individual events</p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-12"
+        >
+          <div className="text-center mb-8">
+            <h4 className="text-2xl text-white font-semibold mb-2">Special Registrations</h4>
+            <p className="text-white/60">Register for our special events</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {/* Paper Presentation Card */}
-            <div className="relative group">
+            <motion.div whileHover={{ y: -5 }} className="group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-500" />
               <a
                 href="/paper-presentation"
-                className="relative block p-6 rounded-xl bg-gradient-to-r from-[#4A00E0]/10 to-[#8E2DE2]/10 hover:from-[#4A00E0]/20 hover:to-[#8E2DE2]/20 backdrop-blur-sm border border-white/10 transition-all duration-300"
+                className="relative block p-6 rounded-2xl bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-sm border border-white/10 transition-all duration-300"
               >
                 <div className="flex flex-col h-full">
-                  <h4 className="text-2xl font-semibold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-2">
-                    Pitch Paper Perfect
+                  <div className="mb-4">
+                    <div className="flex justify-between items-start">
+                      <span className="px-3 py-1 rounded-full bg-[#4A00E0]/20 text-xs text-white/90 border border-[#4A00E0]/20 backdrop-blur-sm">
+                        Research
+                      </span>
+                      <span className="text-2xl text-white/90">📝</span>
+                    </div>
+                  </div>
+                  <h4 className="text-xl font-semibold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-2">
+                    Paper Presentation
                   </h4>
-                  <p className="text-white/60 text-sm mb-4 flex-grow">
-                    Submit your research paper and showcase your ideas to a panel of experts
+                  <p className="text-white/60 text-sm mb-4">
+                    Present your research and innovative ideas
                   </p>
-                  <div className="flex items-center justify-between mt-auto">
-                    <span className="px-3 py-1 rounded-full bg-[#4A00E0]/20 text-sm text-white/80 border border-[#4A00E0]/20">
+                  <div className="mt-auto flex items-center justify-between">
+                    <span className="px-3 py-1.5 rounded-full bg-[#4A00E0]/20 text-sm text-white/90 font-medium border border-[#4A00E0]/20">
                       ₹209
                     </span>
-                    <span className="flex items-center gap-2 text-white/60 group-hover:text-white/80">
+                    <span className="flex items-center gap-2 text-sm text-white/60 group-hover:text-white/90 transition-colors">
                       Register Now
-                      <span className="g  roup-hover:translate-x-1 transition-transform duration-300">
+                      <span className="transform group-hover:translate-x-1 transition-transform">
                         →
                       </span>
                     </span>
                   </div>
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl" />
               </a>
-            </div>
+            </motion.div>
 
-            {/* Ideathon Card */}
-            <div className="relative group">
+            {/* Hackathon Card */}
+            <motion.div whileHover={{ y: -5 }} className="group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-500" />
               <a
-                href="/ideathon"
-                className="relative block p-6 rounded-xl bg-gradient-to-r from-[#4A00E0]/10 to-[#8E2DE2]/10 hover:from-[#4A00E0]/20 hover:to-[#8E2DE2]/20 backdrop-blur-sm border border-white/10 transition-all duration-300"
+                href="/hackathon"
+                className="relative block p-6 rounded-2xl bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-sm border border-white/10 transition-all duration-300"
               >
                 <div className="flex flex-col h-full">
-                  <h4 className="text-2xl font-semibold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-2">
-                    Ideathon
+                  <div className="mb-4">
+                    <div className="flex justify-between items-start">
+                      <span className="px-3 py-1 rounded-full bg-[#4A00E0]/20 text-xs text-white/90 border border-[#4A00E0]/20 backdrop-blur-sm">
+                        24 Hours
+                      </span>
+                      <span className="text-2xl text-white/90">💻</span>
+                    </div>
+                  </div>
+                  <h4 className="text-xl font-semibold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-2">
+                    Hackathon
                   </h4>
-                  <p className="text-white/60 text-sm mb-4 flex-grow">
-                    Present your innovative ideas and compete with creative minds
-                  </p>
-                  <div className="flex items-center justify-between mt-auto">
-                    <span className="px-3 py-1 rounded-full bg-[#4A00E0]/20 text-sm text-white/80 border border-[#4A00E0]/20">
-                      ₹199
-                    </span>
-                    <span className="flex items-center gap-2 text-white/60 group-hover:text-white/80">
+                  <p className="text-white/60 text-sm mb-4">Code, create, and innovate in teams</p>
+                  <div className="mt-auto flex items-center justify-between">
+                    <div className="flex flex-col">
+                      <span className="px-3 py-1.5 rounded-full bg-[#4A00E0]/20 text-sm text-white/90 font-medium border border-[#4A00E0]/20">
+                        ₹900/team
+                      </span>
+                      <span className="text-[10px] text-white/40 mt-1 ml-1">2-4 members</span>
+                    </div>
+                    <span className="flex items-center gap-2 text-sm text-white/60 group-hover:text-white/90 transition-colors">
                       Register Now
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      <span className="transform group-hover:translate-x-1 transition-transform">
                         →
                       </span>
                     </span>
                   </div>
                 </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl" />
               </a>
-            </div>
+            </motion.div>
+
+            {/* Ideathon Card */}
+            <motion.div whileHover={{ y: -5 }} className="group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-500" />
+              <a
+                href="/ideathon"
+                className="relative block p-6 rounded-2xl bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-sm border border-white/10 transition-all duration-300"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="mb-4">
+                    <div className="flex justify-between items-start">
+                      <span className="px-3 py-1 rounded-full bg-[#4A00E0]/20 text-xs text-white/90 border border-[#4A00E0]/20 backdrop-blur-sm">
+                        Innovation
+                      </span>
+                      <span className="text-2xl text-white/90">💡</span>
+                    </div>
+                  </div>
+                  <h4 className="text-xl font-semibold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-2">
+                    Ideathon
+                  </h4>
+                  <p className="text-white/60 text-sm mb-4">Transform your ideas into reality</p>
+                  <div className="mt-auto flex items-center justify-between">
+                    <span className="px-3 py-1.5 rounded-full bg-[#4A00E0]/20 text-sm text-white/90 font-medium border border-[#4A00E0]/20">
+                      ₹199
+                    </span>
+                    <span className="flex items-center gap-2 text-sm text-white/60 group-hover:text-white/90 transition-colors">
+                      Register Now
+                      <span className="transform group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl" />
+              </a>
+            </motion.div>
           </div>
         </motion.div>
 
