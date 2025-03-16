@@ -4,6 +4,7 @@ import ButtonGradient from "@/components/svg/button-gradient";
 import { cn } from "@/lib/utils";
 import Benefits from "./events"; // Import the Benefits component
 import Benefits1 from "./nontech";
+import Esports from "./esports"; // Import the Esports component
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/layout/navbar";
 export default function Even() {
@@ -13,6 +14,7 @@ export default function Even() {
     { id: "all", label: "All Events" },
     { id: "tech", label: "Tech Events" },
     { id: "nontech", label: "Non-Tech Events" },
+    { id: "esports", label: "Esports" },
   ];
 
   return (
@@ -24,11 +26,11 @@ export default function Even() {
         <ButtonGradient />
 
         {/* Hero Section */}
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8 max-sm:pb-2 ">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center text-4xl font-bold text-white mb-4 md:text-5xl lg:text-6xl"
+            className="text-center text-4xl max-sm:text-2xl font-bold text-white mb-4 md:text-5xl lg:text-6xl"
           >
             Explore Our Events
           </motion.h1>
@@ -36,9 +38,9 @@ export default function Even() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-center text-n-3 mb-8 max-w-2xl mx-auto"
+            className="text-center text-n-3 mb-8 max-w-2xl mx-auto max-sm:text-sm"
           >
-            Discover amazing technical and non-technical events that await you
+            Discover amazing technical, non-technical, and esports events that await you
           </motion.p>
         </div>
 
@@ -83,6 +85,7 @@ export default function Even() {
           >
             {(activeFilter === "all" || activeFilter === "tech") && <Benefits />}
             {(activeFilter === "all" || activeFilter === "nontech") && <Benefits1 />}
+            {(activeFilter === "all" || activeFilter === "esports") && <Esports />}
           </motion.div>
         </AnimatePresence>
       </div>
