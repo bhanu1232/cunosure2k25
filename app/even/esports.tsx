@@ -21,7 +21,7 @@ const ESPORTS_EVENTS = [
     price: 400,
     description: "Battle Royale mobile gaming competition. Last team standing wins.",
     players: "4 players per team",
-    schedule: "March 27, 2025",
+    schedule: "March 27-28, 2025",
     prize: "₹3,000 Prize Pool",
   },
 ];
