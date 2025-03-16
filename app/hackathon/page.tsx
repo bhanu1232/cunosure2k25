@@ -26,7 +26,7 @@ interface Notification {
   message: string;
 }
 
-const ENTRY_FEE = 350;
+const ENTRY_FEE = 300;
 const TEAM_REGISTRATION_FEE = 200;
 
 const initialFormState: FormData = {

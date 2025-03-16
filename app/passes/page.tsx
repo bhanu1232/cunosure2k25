@@ -639,9 +639,6 @@ const PassesPage = () => {
                   <p className="text-white/60 text-sm mb-4">Code, create, and innovate in teams</p>
                   <div className="mt-auto flex items-center justify-between">
                     <div className="flex flex-col">
-                      <span className="px-3 py-1.5 rounded-full bg-[#4A00E0]/20 text-sm text-white/90 font-medium border border-[#4A00E0]/20">
-                        ₹900/team
-                      </span>
                       <span className="text-[10px] text-white/40 mt-1 ml-1">2-4 members</span>
                     </div>
                     <span className="flex items-center gap-2 text-sm text-white/60 group-hover:text-white/90 transition-colors">
@@ -905,9 +902,12 @@ const PassesPage = () => {
                     </p>
                   )}
                 </div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-white to-white bg-clip-text text-transparent">
-                  ₹{totalAmount}
-                </span>
+                <div className="flex items-center flex-col text-orange-200">
+                  <span className=" line-through">350</span>
+                  <span className="text-2xl font-bold bg-gradient-to-r from-white to-white bg-clip-text text-transparent">
+                    ₹{totalAmount}
+                  </span>
+                </div>
               </div>
             </div>
 
