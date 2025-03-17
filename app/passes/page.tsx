@@ -23,11 +23,11 @@ const TECH_EVENTS: Event[] = [
 ];
 
 const NON_TECH_EVENTS: Event[] = [
-  { id: "Photography", name: "Photography", price: 0 },
-  { id: "Treasure Hunt", name: "Treasure Hunt", price: 100 },
-  { id: "Brain Battle Binge", name: "Brain Battle Binge", price: 100 },
-  { id: "Curious Clue", name: "Curious Clue", price: 100 },
-  { id: "The Matric Mystery", name: "The Matric Mystery", price: 100 },
+  { id: "Photography", name: "Photography", price: 125 },
+  { id: "Treasure Hunt", name: "Treasure Hunt", price: 125 },
+  { id: "Brain Battle Binge", name: "Brain Battle Binge", price: 125 },
+  { id: "Curious Clue", name: "Curious Clue", price: 125 },
+  { id: "The Matrix Mystery", name: "The Matrix Mystery", price: 125 },
 ];
 
 const EXCLUDED_COMPLEMENTARY_EVENTS = ["Ideathon"]; // Only Ideathon is excluded
@@ -43,7 +43,6 @@ interface FormData {
   complementaryEvent: string;
   gender: "male" | "female" | "";
   accommodation: "yes" | "no" | "";
-  eventPackage: "free" | "basic" | "plus" | "premium" | "";
   uid?: string;
   participationCount?: number;
 }
@@ -53,7 +52,15 @@ interface Notification {
   message: string;
 }
 
-const DEFAULT_AMOUNT = 300;
+const DEFAULT_AMOUNT = 350;
+
+// Dynamic pricing based on number of events
+const getEventPrice = (eventCount: number): number => {
+  if (eventCount <= 1) return 125;
+  if (eventCount === 2) return 100;
+  if (eventCount === 3) return 85;
+  return 75; // More than 3 events
+};
 
 const PassesPage = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -65,7 +72,6 @@ const PassesPage = () => {
     complementaryEvent: "",
     gender: "",
     accommodation: "",
-    eventPackage: "free",
   });
   const [notification, setNotification] = useState<Notification | null>(null);
   const [loading, setLoading] = useState(false);
@@ -73,90 +79,33 @@ const PassesPage = () => {
   const [isNonTechDropdownOpen, setIsNonTechDropdownOpen] = useState(false);
   const [isComplementaryDropdownOpen, setIsComplementaryDropdownOpen] = useState(false);
 
-  const calculatePackageAmount = (packageType: string, baseAmount: number): number => {
-    let totalAmount = baseAmount;
-    const selectedEvents = formData.selectedEvents || [];
+  const calculateTotalAmount = (): number => {
+    const eventCount = formData.selectedEvents.length;
+    let pricePerEvent = 125; // Default price for 1 event
 
-    // Calculate price for events based on package
-    switch (packageType) {
-      case "plus":
-        // For plus package, each regular event costs ₹100
-        totalAmount += selectedEvents.length * 100;
-        break;
-      case "premium":
-        // For premium package, each regular event costs ₹85
-        totalAmount += selectedEvents.length * 85;
-        break;
-      case "basic":
-        // For basic package, add individual event prices
-        selectedEvents.forEach((eventId) => {
-          const techEvent = TECH_EVENTS.find((e) => e.id === eventId);
-          const nonTechEvent = NON_TECH_EVENTS.find((e) => e.id === eventId);
-          if (techEvent) {
-            totalAmount += techEvent.price;
-          } else if (nonTechEvent) {
-            totalAmount += nonTechEvent.price;
-          }
-        });
-        break;
-    }
+    if (eventCount === 2) pricePerEvent = 100;
+    else if (eventCount === 3) pricePerEvent = 85;
+    else if (eventCount > 3) pricePerEvent = 75;
 
-    return totalAmount;
+    return DEFAULT_AMOUNT + eventCount * pricePerEvent;
   };
 
-  const totalAmount = calculatePackageAmount(formData.eventPackage, DEFAULT_AMOUNT);
-
-  const getMaxEventsAllowed = (packageType: string): number => {
-    switch (packageType) {
-      case "free":
-        return 0; // No extra events allowed
-      case "basic":
-        return 1;
-      case "plus":
-        return 2;
-      case "premium":
-        return 3;
-      default:
-        return 0;
-    }
-  };
+  const totalAmount = calculateTotalAmount();
 
   const handleEventToggle = (eventId: string) => {
     setFormData((prev) => {
-      const maxEvents = getMaxEventsAllowed(prev.eventPackage);
       const isSelected = prev.selectedEvents.includes(eventId);
-
-      // If trying to deselect, always allow it
       if (isSelected) {
         return {
           ...prev,
           selectedEvents: prev.selectedEvents.filter((id) => id !== eventId),
         };
       }
-
-      // If trying to select and haven't reached the limit, allow it
-      if (prev.selectedEvents.length < maxEvents) {
-        return {
-          ...prev,
-          selectedEvents: [...prev.selectedEvents, eventId],
-        };
-      }
-
-      // If trying to select but reached the limit, don't change anything
-      return prev;
+      return {
+        ...prev,
+        selectedEvents: [...prev.selectedEvents, eventId],
+      };
     });
-  };
-
-  // Add a function to check if an event can be selected
-  const canSelectMoreEvents = (): boolean => {
-    const maxEvents = getMaxEventsAllowed(formData.eventPackage);
-    return formData.selectedEvents.length < maxEvents;
-  };
-
-  // Add a function to get remaining events count
-  const getRemainingEvents = (): number => {
-    const maxEvents = getMaxEventsAllowed(formData.eventPackage);
-    return Math.max(0, maxEvents - formData.selectedEvents.length);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -233,45 +182,7 @@ const PassesPage = () => {
     setLoading(true);
     setNotification(null);
 
-    // Add validation for package selection
-    if (!formData.eventPackage) {
-      setNotification({
-        type: "error",
-        message: "Please select an event package",
-      });
-      setLoading(false);
-      return;
-    }
-
-    // Validate required number of events based on package
-    const maxEvents = getMaxEventsAllowed(formData.eventPackage);
-    const selectedEventsCount = formData.selectedEvents.length;
-
-    if (formData.eventPackage !== "free") {
-      if (selectedEventsCount < maxEvents) {
-        setNotification({
-          type: "error",
-          message: `Please select exactly ${maxEvents} event${maxEvents > 1 ? "s" : ""} for your ${
-            formData.eventPackage
-          } package except the complementary event`,
-        });
-        setLoading(false);
-        return;
-      }
-
-      if (selectedEventsCount > maxEvents) {
-        setNotification({
-          type: "error",
-          message: `You can only select ${maxEvents} event${maxEvents > 1 ? "s" : ""} for your ${
-            formData.eventPackage
-          } package except the complementary event`,
-        });
-        setLoading(false);
-        return;
-      }
-    }
-
-    // Add validation for complementary event
+    // Remove package validation
     if (!formData.complementaryEvent) {
       setNotification({
         type: "error",
@@ -281,7 +192,6 @@ const PassesPage = () => {
       return;
     }
 
-    // Add validation for new fields
     if (!formData.gender) {
       setNotification({
         type: "error",
@@ -301,7 +211,7 @@ const PassesPage = () => {
     }
 
     try {
-      // Check mobile number first
+      // Rest of the submit logic remains the same
       const existingRegistration = await checkMobileNumber(formData.mobile);
       if (existingRegistration) {
         let errorMessage = "This mobile number has already been registered";
@@ -327,7 +237,6 @@ const PassesPage = () => {
         return;
       }
 
-      // Then check payment ID
       const paymentExists = await checkPaymentId(formData.paymentId);
       if (paymentExists) {
         setNotification({
@@ -344,7 +253,7 @@ const PassesPage = () => {
         ...formData,
         uid,
         participationCount: formData.selectedEvents.length + (formData.complementaryEvent ? 1 : 0),
-        totalAmount,
+        totalAmount: totalAmount,
         date: new Date().toISOString(),
       };
 
@@ -362,7 +271,6 @@ const PassesPage = () => {
         complementaryEvent: "",
         gender: "",
         accommodation: "",
-        eventPackage: "free",
       });
     } catch (error) {
       setNotification({
@@ -521,25 +429,20 @@ const PassesPage = () => {
       </div>
 
       <div className="container mx-auto px-4 max-w-3xl mt-5 relative">
+        {/* Event Pricing Information */}
+
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8 relative"
         >
-          {/* Decorative Elements */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] pointer-events-none">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(74,0,224,0.05)_0%,transparent_50%)]" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[conic-gradient(from_0deg_at_50%_50%,rgba(74,0,224,0.1)_0%,transparent_50%,rgba(142,45,226,0.1)_100%)] animate-slow-spin" />
-          </div>
-
-          {/* Main Content */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
             className="relative"
           >
-            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-2xl bg-white/[0.03] border border-white/[0.05] backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 mb-6 max-sm:mb-0 px-4 py-2 rounded-2xl bg-white/[0.03] border border-white/[0.05] backdrop-blur-sm">
               <span className="flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-[#4A00E0] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4A00E0]"></span>
@@ -549,12 +452,7 @@ const PassesPage = () => {
               </span>
             </div>
 
-            <h3 className="text-4xl md:text-5xl max-sm:text-3xl font-bold bg-gradient-to-br from-white to-white/60 bg-clip-text text-transparent mb-6">
-              Choose Your Events
-            </h3>
-
             <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto relative">
-              Select multiple events to participate in
               <motion.span
                 className="absolute -right-4 -top-4 text-[#4A00E0]"
                 initial={{ opacity: 0, scale: 0 }}
@@ -567,15 +465,14 @@ const PassesPage = () => {
           </motion.div>
         </motion.div>
 
-        {/* Separate Registrations Section */}
+        {/* Special Registrations Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-12"
         >
           <div className="text-center mb-8">
-            <h4 className="text-2xl text-white font-semibold mb-2">Special Registrations</h4>
-            <p className="text-white/60">Register for our special events</p>
+            <p className="text-white/60">special events registrations</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
@@ -590,23 +487,17 @@ const PassesPage = () => {
                   <div className="mb-4">
                     <div className="flex justify-between items-start">
                       <span className="px-3 py-1 rounded-full bg-[#4A00E0]/20 text-xs text-white/90 border border-[#4A00E0]/20 backdrop-blur-sm">
-                        Research
+                        209
                       </span>
                       <span className="text-2xl text-white/90">📝</span>
                     </div>
                   </div>
                   <h4 className="text-xl font-semibold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-2">
-                    Paper Presentation
+                    Pitch Perfect Paper
                   </h4>
-                  <p className="text-white/60 text-sm mb-4">
-                    Present your research and innovative ideas
-                  </p>
                   <div className="mt-auto flex items-center justify-between">
-                    <span className="px-3 py-1.5 rounded-full bg-[#4A00E0]/20 text-sm text-white/90 font-medium border border-[#4A00E0]/20">
-                      ₹209
-                    </span>
                     <span className="flex items-center gap-2 text-sm text-white/60 group-hover:text-white/90 transition-colors">
-                      Register Now
+                      Click to Register
                       <span className="transform group-hover:translate-x-1 transition-transform">
                         →
                       </span>
@@ -628,28 +519,26 @@ const PassesPage = () => {
                   <div className="mb-4">
                     <div className="flex justify-between items-start">
                       <span className="px-3 py-1 rounded-full bg-[#4A00E0]/20 text-xs text-white/90 border border-[#4A00E0]/20 backdrop-blur-sm">
-                        24 Hours
+                        24h
                       </span>
-                      <span className="text-2xl text-white/90">💻</span>
+                      <span className="text-2xl">⚡</span>
                     </div>
                   </div>
                   <h4 className="text-xl font-semibold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-2">
                     Hackathon
                   </h4>
-                  <p className="text-white/60 text-sm mb-4">Code, create, and innovate in teams</p>
                   <div className="mt-auto flex items-center justify-between">
-                    <div className="flex flex-col">
-                      <span className="text-[10px] text-white/40 mt-1 ml-1">2-4 members</span>
-                    </div>
-                    <span className="flex items-center gap-2 text-sm text-white/60 group-hover:text-white/90 transition-colors">
-                      Register Now
-                      <span className="transform group-hover:translate-x-1 transition-transform">
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      className="flex items-center text-white/60 group-hover:text-white transition-colors"
+                    >
+                      <span className="text-sm">Click to Register</span>
+                      <span className="ml-1 transform group-hover:translate-x-1 transition-transform">
                         →
                       </span>
-                    </span>
+                    </motion.div>
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl" />
               </a>
             </motion.div>
 
@@ -664,28 +553,26 @@ const PassesPage = () => {
                   <div className="mb-4">
                     <div className="flex justify-between items-start">
                       <span className="px-3 py-1 rounded-full bg-[#4A00E0]/20 text-xs text-white/90 border border-[#4A00E0]/20 backdrop-blur-sm">
-                        Innovation
+                        ₹199
                       </span>
-                      <span className="text-2xl text-white/90">💡</span>
+                      <span className="text-2xl">💫</span>
                     </div>
                   </div>
                   <h4 className="text-xl font-semibold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-2">
                     Ideathon
                   </h4>
-                  <p className="text-white/60 text-sm mb-4">Transform your ideas into reality</p>
                   <div className="mt-auto flex items-center justify-between">
-                    <span className="px-3 py-1.5 rounded-full bg-[#4A00E0]/20 text-sm text-white/90 font-medium border border-[#4A00E0]/20">
-                      ₹199
-                    </span>
-                    <span className="flex items-center gap-2 text-sm text-white/60 group-hover:text-white/90 transition-colors">
-                      Register Now
-                      <span className="transform group-hover:translate-x-1 transition-transform">
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      className="flex items-center text-white/60 group-hover:text-white transition-colors"
+                    >
+                      <span className="text-sm">Click to Register</span>
+                      <span className="ml-1 transform group-hover:translate-x-1 transition-transform">
                         →
                       </span>
-                    </span>
+                    </motion.div>
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl" />
               </a>
             </motion.div>
           </div>
@@ -695,222 +582,67 @@ const PassesPage = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          className="mb-8 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"
+        >
+          <h4 className="text-xl text-white/80 font-medium mb-4 text-center">Event Pricing</h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between p-3 rounded-xl bg-[#4A00E0]/10 border border-[#4A00E0]/20">
+                <span className="text-white/80">Base Registration</span>
+                <span className="font-semibold text-white">₹350</span>
+              </div>
+              <p className="text-sm text-white/60 px-3">
+                Base registration fee includes access to the event and one complementary event
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between p-2 rounded-lg bg-white/5">
+                  <span className="text-white/80">1 Event</span>
+                  <span className="font-medium text-white">₹125/event</span>
+                </div>
+                <div className="flex items-center justify-between p-2 rounded-lg bg-white/5">
+                  <span className="text-white/80">2 Events</span>
+                  <span className="font-medium text-white">₹100/event</span>
+                </div>
+                <div className="flex items-center justify-between p-2 rounded-lg bg-white/5">
+                  <span className="text-white/80">3 Events</span>
+                  <span className="font-medium text-white">₹85/event</span>
+                </div>
+                <div className="flex items-center justify-between p-2 rounded-lg bg-white/5">
+                  <span className="text-white/80">4+ Events</span>
+                  <span className="font-medium text-white">₹75/event</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           className="bg-white/5 rounded-2xl p-6 backdrop-blur-sm border border-white/10"
         >
           <div className="text-center mb-6">
-            <h4 className="text-xl text-white/80 font-medium">General Events Registration</h4>
-            <p className="text-white/60 text-sm mt-1">Choose your event package</p>
+            <h4 className="text-xl text-white/80 font-medium">Event Registration</h4>
+          </div>
+
+          {/* Total Amount - Updated */}
+          <div className="p-4 rounded-xl bg-[#4A00E0]/10 border border-[#4A00E0]/20 mb-6">
+            <div className="flex justify-between items-center">
+              <div className="space-y-1">
+                <span className="text-white font-semibold">Total Amount</span>
+                <p className="text-white/60 text-sm">
+                  Base fee + {formData.selectedEvents.length} event
+                  {formData.selectedEvents.length !== 1 ? "s" : ""}
+                </p>
+              </div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-white to-white bg-clip-text text-transparent">
+                ₹{totalAmount}
+              </span>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Package Selection */}
-            <div className="space-y-4">
-              <label className="block text-white/60 mb-2">Select Your Package</label>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-                {/* Free Package */}
-                <label className="relative group cursor-pointer">
-                  <input
-                    type="radio"
-                    name="eventPackage"
-                    value="free"
-                    checked={formData.eventPackage === "free"}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        eventPackage: e.target.value as "free",
-                        selectedEvents: [], // Reset selections when changing package
-                      }))
-                    }
-                    className="hidden"
-                  />
-                  <div
-                    className={`relative overflow-hidden p-3 rounded-xl border transition-all duration-300 ${
-                      formData.eventPackage === "free"
-                        ? "bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 border-[#4A00E0] shadow-[0_0_15px_rgba(74,0,224,0.15)]"
-                        : "bg-white/5 border-white/10 hover:border-white/30"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`flex items-center justify-center size-10 rounded-lg ${
-                          formData.eventPackage === "free"
-                            ? "bg-[#4A00E0] text-white"
-                            : "bg-white/5 text-white/60"
-                        }`}
-                      >
-                        <span className="text-lg font-semibold">F</span>
-                      </div>
-                      <div>
-                        <h3 className="text-white font-medium">Free</h3>
-                        <div className="flex items-center gap-2">
-                          <span className="text-white/40 text-sm">Base Entry</span>
-                        </div>
-                      </div>
-                    </div>
-                    {formData.eventPackage === "free" && (
-                      <div className="mt-2 text-xs text-white/40">
-                        * Only complementary event allowed
-                      </div>
-                    )}
-                  </div>
-                </label>
-
-                {/* Basic Package */}
-                <label className="relative group cursor-pointer">
-                  <input
-                    type="radio"
-                    name="eventPackage"
-                    value="basic"
-                    checked={formData.eventPackage === "basic"}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        eventPackage: e.target.value as "basic",
-                        selectedEvents: [], // Reset selections when changing package
-                      }))
-                    }
-                    className="hidden"
-                  />
-                  <div
-                    className={`relative overflow-hidden p-3 rounded-xl border transition-all duration-300 ${
-                      formData.eventPackage === "basic"
-                        ? "bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 border-[#4A00E0] shadow-[0_0_15px_rgba(74,0,224,0.15)]"
-                        : "bg-white/5 border-white/10 hover:border-white/30"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`flex items-center justify-center size-10 rounded-lg ${
-                          formData.eventPackage === "basic"
-                            ? "bg-[#4A00E0] text-white"
-                            : "bg-white/5 text-white/60"
-                        }`}
-                      >
-                        <span className="text-lg font-semibold">1</span>
-                      </div>
-                      <div>
-                        <h3 className="text-white font-medium">Basic</h3>
-                        <div className="flex items-center gap-2">
-                          <span className="text-white font-semibold">₹125</span>
-                          <span className="text-white/40 text-sm">+ Any One Event</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </label>
-
-                {/* Plus Package */}
-                <label className="relative group cursor-pointer">
-                  <input
-                    type="radio"
-                    name="eventPackage"
-                    value="plus"
-                    checked={formData.eventPackage === "plus"}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        eventPackage: e.target.value as "plus",
-                        selectedEvents: [], // Reset selections when changing package
-                      }))
-                    }
-                    className="hidden"
-                  />
-                  <div
-                    className={`relative overflow-hidden p-3 rounded-xl border transition-all duration-300 ${
-                      formData.eventPackage === "plus"
-                        ? "bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 border-[#4A00E0] shadow-[0_0_15px_rgba(74,0,224,0.15)]"
-                        : "bg-white/5 border-white/10 hover:border-white/30"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`flex items-center justify-center size-10 rounded-lg ${
-                          formData.eventPackage === "plus"
-                            ? "bg-[#4A00E0] text-white"
-                            : "bg-white/5 text-white/60"
-                        }`}
-                      >
-                        <span className="text-lg font-semibold">2</span>
-                      </div>
-                      <div>
-                        <h3 className="text-white font-medium">Plus</h3>
-                        <div className="flex items-center gap-2">
-                          <span className="text-white font-semibold">₹200</span>
-                          <span className="text-white/40 text-sm">+Any Two Events</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </label>
-
-                {/* Premium Package */}
-                <label className="relative group cursor-pointer">
-                  <input
-                    type="radio"
-                    name="eventPackage"
-                    value="premium"
-                    checked={formData.eventPackage === "premium"}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        eventPackage: e.target.value as "premium",
-                        selectedEvents: [], // Reset selections when changing package
-                      }))
-                    }
-                    className="hidden"
-                  />
-                  <div
-                    className={`relative overflow-hidden p-3 rounded-xl border transition-all duration-300 ${
-                      formData.eventPackage === "premium"
-                        ? "bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 border-[#4A00E0] shadow-[0_0_15px_rgba(74,0,224,0.15)]"
-                        : "bg-white/5 border-white/10 hover:border-white/30"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`flex items-center justify-center size-10 rounded-lg ${
-                          formData.eventPackage === "premium"
-                            ? "bg-[#4A00E0] text-white"
-                            : "bg-white/5 text-white/60"
-                        }`}
-                      >
-                        <span className="text-lg font-semibold">3</span>
-                      </div>
-                      <div>
-                        <h3 className="text-white font-medium">Premium</h3>
-                        <div className="flex items-center gap-2">
-                          <span className="text-white font-semibold">₹255</span>
-                          <span className="text-white/40 text-sm">+Any Three Events</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </label>
-              </div>
-            </div>
-
-            {/* Total Amount - Updated */}
-            <div className="p-4 rounded-xl bg-[#4A00E0]/10 border border-[#4A00E0]/20">
-              <div className="flex justify-between items-center">
-                <div className="space-y-1">
-                  <span className="text-white font-semibold">Total Amount</span>
-                  {formData.eventPackage && (
-                    <p className="text-white/60 text-sm">
-                      {formData.eventPackage === "free"
-                        ? "Free package - Only complementary event"
-                        : `Base fee + ${formData.eventPackage} package`}
-                    </p>
-                  )}
-                </div>
-                <div className="flex items-center flex-col text-orange-200">
-                  <span className=" line-through">350</span>
-                  <span className="text-2xl font-bold bg-gradient-to-r from-white to-white bg-clip-text text-transparent">
-                    ₹{totalAmount}
-                  </span>
-                </div>
-              </div>
-            </div>
-
             {/* Event Selection Dropdown */}
             <div className="space-y-6">
               {/* Complementary Event Dropdown */}
@@ -1002,12 +734,6 @@ const PassesPage = () => {
                 <div className="flex justify-between items-center">
                   <label className="block text-white/60">Technical Events</label>
                   <div className="flex items-center gap-2">
-                    {formData.eventPackage && (
-                      <span className="text-white/60 text-sm">
-                        {getRemainingEvents()} event{getRemainingEvents() !== 1 ? "s" : ""}{" "}
-                        remaining
-                      </span>
-                    )}
                     {formData.selectedEvents.filter((id) => TECH_EVENTS.some((e) => e.id === id))
                       .length > 0 && (
                       <span className="text-white/60 text-sm">
@@ -1073,17 +799,10 @@ const PassesPage = () => {
                             <div
                               key={event.id}
                               onClick={() => handleEventToggle(event.id)}
-                              className={`flex items-center justify-between p-3 rounded-lg ${
-                                !formData.eventPackage
-                                  ? "cursor-not-allowed opacity-50"
-                                  : "cursor-pointer hover:bg-white/5"
-                              } ${
+                              className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-all duration-200 ${
                                 formData.selectedEvents.includes(event.id)
                                   ? "bg-[#4A00E0]/20"
-                                  : !canSelectMoreEvents() &&
-                                    !formData.selectedEvents.includes(event.id)
-                                  ? "opacity-50 cursor-not-allowed"
-                                  : ""
+                                  : "hover:bg-white/5"
                               }`}
                             >
                               <div className="flex items-center gap-3">
@@ -1111,13 +830,6 @@ const PassesPage = () => {
                           ) : null
                         )}
                       </div>
-                      {!formData.eventPackage && (
-                        <div className="p-3 border-t border-white/10">
-                          <p className="text-white/60 text-sm text-center">
-                            Please select a package to choose events
-                          </p>
-                        </div>
-                      )}
                     </div>
                   )}
                 </div>

@@ -2,30 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Gamepad2, Trophy, Users, Clock } from "lucide-react";
-
-const ESPORTS_EVENTS = [
-  {
-    id: "Free fire",
-    icon: "/freefire.webp",
-    title: "Free fire",
-    price: 500,
-    description: "4v4 tactical shooter tournament. Show your skills and strategy.",
-    players: "4 players per team",
-    schedule: "March 27-28, 2025",
-    prize: "₹5,000 Prize Pool",
-  },
-  {
-    id: "bgmi",
-    icon: "/bgmi.jpeg",
-    title: "BGMI",
-    price: 400,
-    description: "Battle Royale mobile gaming competition. Last team standing wins.",
-    players: "4 players per team",
-    schedule: "March 27-28, 2025",
-    prize: "₹3,000 Prize Pool",
-  },
-];
-
+import { ESPORTS_EVENTS } from "@/constants";
+import Link from "next/link";
 const Esports = () => {
   return (
     <div className="pb-20">
@@ -73,6 +51,25 @@ const Esports = () => {
                     <Trophy className="w-4 h-4 text-color-1" />
                     <span className="text-sm">{item.prize}</span>
                   </div> */}
+                  <Link
+                    href={`/even/esport/${item.id}`}
+                    className="inline-flex items-center justify-center w-full px-4 py-2.5 rounded-full bg-gradient-to-r from-[#8F46FF] to-[#FF6B6B] hover:shadow-lg hover:shadow-n-1/10 text-white font-medium transition-all duration-200 text-sm group-hover:scale-[1.02]"
+                  >
+                    View Details
+                    <svg
+                      className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M4 12h16m-4-4l4 4-4 4"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </Link>
                 </div>
               </div>
             </div>
