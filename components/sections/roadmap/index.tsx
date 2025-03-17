@@ -12,8 +12,8 @@ type Props = {};
 
 const Roadmap = (props: Props) => {
   return (
-    <Section id="roadmap" className="overflow-hidden">
-      <div className="container md:pb-10">
+    <Section id="roadmap" className="overflow-hidden max-sm:pb-3">
+      <div className="container md:pb-10 max-sm:mb-1">
         <Heading tag="Ready to get started" title="Experience. Connect. Elevate." />
 
         <div className="relative grid gap-6 md:grid-cols-2 md:gap-4 md:pb-20">
@@ -23,10 +23,10 @@ const Roadmap = (props: Props) => {
                 key={item.id}
                 className={cn(
                   "group md:flex even:md:translate-y-[5rem] p-0.25 rounded-[2rem] transition-transform duration-500 hover:scale-[1.02]",
-                  item.colorful ? "bg-conic-gradient" : "bg-n-6"
+                  item.colorful ? "border-[1px] border-white" : "bg-n-6"
                 )}
               >
-                <div className="relative rounded-[1.9375rem] bg-n-8 p-6 xl:p-8 overflow-hidden">
+                <div className="relative rounded-[1.9375rem] p-6 xl:p-8 overflow-hidden">
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-b from-n-8/50 to-n-8/0 pointer-events-none z-10" />
 

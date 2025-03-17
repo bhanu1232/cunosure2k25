@@ -164,24 +164,18 @@ export const roadmap = [
     date: "March 27, 2025",
     status: "done",
     imageUrl: roadmap1,
-    colorful: true,
+    colorful: false,
   },
   {
     id: "2",
-    title: "Tressure Hunt",
-    text: "A treasure hunt is an exciting adventure where participants follow cryptic clues to discover a hidden prize, often involving puzzles and challenges along the way.",
+    title: "Esports",
+    text: "Compete in our Cynosure Esports Challenge for glory and prizes! 🎮🔥",
     date: "March 28, 2025",
     status: "done",
-    imageUrl: roadmap3,
+    imageUrl: "/esport.png",
+    colorful: true,
+    fullbg: true,
   },
-  // {
-  //   id: "3",
-  //   title: "Connect with Industry Experts ",
-  //   text: "Get exclusive access to industry leaders, expand your professional network, and gain valuable insights straight from experts. Don't miss this chance to learn, engage, and grow at our event!",
-  //   date: "May 2023",
-  //   status: "progress",
-  //   imageUrl: roadmap4,
-  // },
 ];
 
 export const collabText =
