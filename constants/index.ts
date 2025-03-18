@@ -686,7 +686,7 @@ export const events = [
     id: "0",
     type: "tech",
     title: "Hackathon",
-    text: "Calling all tech enthusiasts! Gather your squad of four for an exhilarating journey of innovation and problem-solving at our Hackathon 2024. Dive deep into challenges, showcasing your creativity and tech prowess. Crack the code, unveil solutions, and stand out amidst the tech-savvy crowd. Develop a working prototype to earn extra points and push your limits. It's not just about winning; it's about the thrill of coding for the future! Are you ready to unleash your genius?",
+    text: "Calling all tech enthusiasts! Gather your squad of four for an exhilarating journey of innovation and problem-solving at our Hackathon 2025. Dive deep into challenges, showcasing your creativity and tech prowess. Crack the code, unveil solutions, and stand out amidst the tech-savvy crowd. Develop a working prototype to earn extra points and push your limits. It's not just about winning; it's about the thrill of coding for the future! Are you ready to unleash your genius?",
     backgroundUrl: "assets/event/hack.avif",
     iconUrl: benefitIcon1,
     imageUrl: benefitImage2,
@@ -695,7 +695,7 @@ export const events = [
     venue: "203",
     teamSize: "2-4 members",
     spot: "No Spot Registration",
-    fullDescription: `Join us for Cynosure 2024's premier Hackathon! 
+    fullDescription: `Join us for Cynosure 2025's premier Hackathon! 
 
     🔥 Event Highlights:
     - 24-hour intensive coding challenge
@@ -718,7 +718,7 @@ export const events = [
       " Each team will receive a selection of domains from which they must choose a statement and present a detailed solution within the allocated time.",
       "The problem statement chosen will not impact the actual problem statement provided in round 2",
       "All submissions will be evaluated, and the top 20 teams will advance to round 2.",
-      "Teams selected for the next round will be notified by noon on March 22nd.",
+      "Teams selected for the next round will be notified soon.",
       "Round 2:",
       "You are permitted to use AI tools for your projects",
       "It is compulsory to present your idea, and having a prototype will give your team additional points",
@@ -726,7 +726,7 @@ export const events = [
       "A single problem statement will be revealed on-site during the event on which all the teams have to tackle",
       "Ensure that each team has at least one laptop",
       "Strictly follow the timelines; failure to do so may lead to disqualification",
-      "Reporting time: 10: 30 AM, March 23rd",
+      "Reporting time: 8: 30 AM, March 27rd",
     ],
     requirements: [
       "Laptop with charger",
@@ -763,7 +763,7 @@ export const events = [
     venue: "203",
     teamSize: "Individual",
     spot: "No Spot Registration",
-    fullDescription: `Step onto the stage at Cynosure 2024 and present your research in front of an esteemed panel of judges! 
+    fullDescription: `Step onto the stage at Cynosure 2025 and present your research in front of an esteemed panel of judges! 
 
     📌 **Event Highlights:**
     - Showcase your research and analytical skills
