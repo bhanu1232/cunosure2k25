@@ -55,17 +55,6 @@ const FunEventDetailPage = ({ params }: { params: { eventId: string } }) => {
                         {coordinator.phone}
                       </a>
                     </p>
-                     <p className="flex items-center gap-2">
-                      <span>📸</span>
-                      <a
-                        href={`https://instagram.com/${coordinator.insta}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-cyan-400"
-                      >
-                        @{coordinator.insta}
-                      </a>
-                    </p> 
                   </div>
                 </div>
               ))}
