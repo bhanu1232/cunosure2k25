@@ -43,6 +43,7 @@ interface FormData {
   complementaryEvent: string;
   gender: "male" | "female" | "";
   accommodation: "yes" | "no" | "";
+  collegeName: string;
   uid?: string;
   participationCount?: number;
 }
@@ -62,6 +63,8 @@ const getEventPrice = (eventCount: number): number => {
   return 75; // More than 3 events
 };
 
+const totalAmount = getEventPrice(0);
+
 const PassesPage = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -72,6 +75,7 @@ const PassesPage = () => {
     complementaryEvent: "",
     gender: "",
     accommodation: "",
+    collegeName: "",
   });
   const [notification, setNotification] = useState<Notification | null>(null);
   const [loading, setLoading] = useState(false);
@@ -271,6 +275,7 @@ const PassesPage = () => {
         complementaryEvent: "",
         gender: "",
         accommodation: "",
+        collegeName: "",
       });
     } catch (error) {
       setNotification({
@@ -953,6 +958,19 @@ const PassesPage = () => {
                   required
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-[#4A00E0] focus:outline-none transition-colors"
                   placeholder="Enter your name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-white/60 mb-2">College Name</label>
+                <input
+                  type="text"
+                  name="collegeName"
+                  value={formData.collegeName}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-[#4A00E0] focus:outline-none transition-colors"
+                  placeholder="Enter your college name"
                 />
               </div>
 
