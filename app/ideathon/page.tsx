@@ -15,6 +15,7 @@ interface FormData {
   paymentId: string;
   ideaLink: string;
   teamMembers: string;
+  collegeName: string;
   gender: "male" | "female" | "";
   accommodation: "yes" | "no" | "";
   uid?: string;
@@ -35,6 +36,7 @@ const IdeathonPage = () => {
     paymentId: "",
     ideaLink: "",
     teamMembers: "",
+    collegeName: "",
     gender: "",
     accommodation: "",
   });
@@ -144,6 +146,7 @@ const IdeathonPage = () => {
         paymentId: "",
         ideaLink: "",
         teamMembers: "",
+        collegeName: "",
         gender: "",
         accommodation: "",
       });
@@ -423,6 +426,19 @@ const IdeathonPage = () => {
                   required
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-[#4A00E0] focus:outline-none transition-colors"
                   placeholder="Enter team leader's name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-white/60 mb-2">College Name</label>
+                <input
+                  type="text"
+                  name="collegeName"
+                  value={formData.collegeName}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-[#4A00E0] focus:outline-none transition-colors"
+                  placeholder="Enter your college name"
                 />
               </div>
 
