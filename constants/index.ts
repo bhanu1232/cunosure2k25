@@ -1163,12 +1163,8 @@ export const ESPORTS_EVENTS = [
     schedule: "March 27-28, 2025",
     rules: [
       "Tournament Format",
-      "Registration fee: ₹400 per team",
       "Teams must have exactly 4 players",
       "Point system: Placement + Kills",
-      "4 matches per round",
-      "Top 16 teams advance to finals",
-
       "Scoring System",
       "Victory Royale: 15 points",
       "2nd Place: 12 points",
