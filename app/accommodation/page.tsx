@@ -203,7 +203,7 @@ const AccommodationPage = () => {
             <div className="mt-8 p-4 bg-white/5 rounded-xl border border-white/10">
               <p className="text-white/90 text-base md:text-lg font-medium">
                 For boys any queries, please contact M. Suresh reddy mobile: ( 6300441669 ) For
-                girls, please contact L. Lakshmi shivani mobile: ( 8074345332 )
+                girls, please contact L. Lakshmi sivani mobile: ( 8074345332 )
               </p>
             </div>
           </div>
