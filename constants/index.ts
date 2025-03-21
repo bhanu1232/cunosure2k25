@@ -575,8 +575,8 @@ export const events = [
         phone: "",
       },
       {
-        name: "C Martin",
-        phone: "9347967058",
+        name: "P. Sudhansu reddy",
+        phone: "8919115624",
       },
     ],
   },
