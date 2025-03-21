@@ -159,12 +159,13 @@ export const brainwaveServicesIcons = [recording03, recording01, disc02, chromec
 export const roadmap = [
   {
     id: "0",
-    title: "Hackathon",
-    text: "Gain insights from industry experts, explore the latest tech trends, and expand your knowledge—all for free! Don't miss this opportunity to learn and network.",
+    title: "WORKSHOP",
+    text: "AI - Driven Analytics workshop",
     date: "March 27, 2025",
     status: "done",
     imageUrl: roadmap1,
     colorful: false,
+    toref: "https://forms.gle/EqB22RiaWGt1E1Ah7",
   },
   {
     id: "2",
@@ -175,6 +176,8 @@ export const roadmap = [
     imageUrl: "/esport.png",
     colorful: true,
     fullbg: true,
+    toref:
+      "https://docs.google.com/forms/d/e/1FAIpQLSeq6zsI2hwjAH7RlofDG3PBPCbl9a2beR1lc3oU8Ea3Ad1Vpg/viewform?usp=dialog",
   },
 ];
 
