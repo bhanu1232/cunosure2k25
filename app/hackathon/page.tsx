@@ -15,7 +15,6 @@ interface FormData {
   paymentId: string;
   teamName: string;
   collegeName: string;
-  problemStatement: string;
   teamSize: "2" | "3" | "4" | "";
   teamMembers: string[];
   accommodation: "yes" | "no" | "";
@@ -37,7 +36,6 @@ const initialFormState: FormData = {
   paymentId: "",
   teamName: "",
   collegeName: "",
-  problemStatement: "",
   teamSize: "4",
   teamMembers: Array(4).fill(""),
   accommodation: "",
@@ -355,23 +353,6 @@ const HackathonPage = () => {
                   required
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-[#4A00E0] focus:outline-none transition-colors"
                   placeholder="Enter your college name"
-                />
-              </div>
-
-              <div>
-                <label className="block text-white/60 mb-2">Problem Statement</label>
-                <textarea
-                  name="problemStatement"
-                  value={formData.problemStatement}
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      problemStatement: e.target.value,
-                    }))
-                  }
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:border-[#4A00E0] focus:outline-none transition-colors resize-none h-24"
-                  placeholder="Describe your problem statement or project idea"
                 />
               </div>
 
