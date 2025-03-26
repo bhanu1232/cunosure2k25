@@ -698,38 +698,27 @@ export const events = [
     venue: "203",
     teamSize: "2-4 members",
     spot: "No Spot Registration",
-    fullDescription: `Join us for Cynosure 2025's premier Hackathon! 
-
-    🔥 Event Highlights:
-    - 24-hour intensive coding challenge
-    - Build innovative solutions for real-world problems
-    - Team collaboration opportunity
-    - Industry expert mentoring
-    - Networking with tech enthusiasts
-    
-    🎯 Problem Statements:
-    - AI/ML Solutions
-    - Web/Mobile Applications
-    - IoT & Hardware
-    - Open Innovation
+    fullDescription: `Welcome to Hackathon, presented by Cynosure!
+•	Teams select a problem statement and present a solution within the allocated time.
+•	Problem statements will be revealed on-site for teams to tackle.
+•	AI tools are allowed, and having a prototype adds extra points.
+•	Mentors are available for guidance.
+•	Ensure at least one laptop per team and strictly follow the timelines.
+Reporting Time: 8:30 AM, March 27th.
+For further enquires, please contact the event coordinators
+Good luck, and may the best team win!
     
     `,
     rules: [
-      "Round 1:",
-      "This round will be seamlessly conducted online, leveraging cutting-edge digital platforms to ensure a smooth and efficient experience",
-      "This round assesses your expertise in the domain and your problem-solving skills.",
-      " Each team will receive a selection of domains from which they must choose a statement and present a detailed solution within the allocated time.",
-      "The problem statement chosen will not impact the actual problem statement provided in round 2",
-      "All submissions will be evaluated, and the top 20 teams will advance to round 2.",
-      "Teams selected for the next round will be notified soon.",
-      "Round 2:",
-      "You are permitted to use AI tools for your projects",
-      "It is compulsory to present your idea, and having a prototype will give your team additional points",
-      " Teams can only seek guidance from mentors",
-      "A single problem statement will be revealed on-site during the event on which all the teams have to tackle",
-      "Ensure that each team has at least one laptop",
-      "Strictly follow the timelines; failure to do so may lead to disqualification",
-      "Reporting time: 8: 30 AM, March 27rd",
+      `Welcome to Hackathon, presented by Cynosure!
+•	Teams select a problem statement and present a solution within the allocated time.
+•	Problem statements will be revealed on-site for teams to tackle.
+•	AI tools are allowed, and having a prototype adds extra points.
+•	Mentors are available for guidance.
+•	Ensure at least one laptop per team and strictly follow the timelines.
+Reporting Time: 8:30 AM, March 27th.
+For further enquires, please contact the event coordinators
+Good luck, and may the best team win!`,
     ],
     requirements: [
       "Laptop with charger",
