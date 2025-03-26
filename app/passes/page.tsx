@@ -296,6 +296,7 @@ const PassesPage = () => {
   return (
     <section className="relative min-h-screen py-20 overflow-hidden bg-[#100C1B]">
       <Navbar />
+      <h1 className="">Registrations closed</h1>
 
       {/* Notification Popup */}
       <AnimatePresence>
@@ -426,15 +427,13 @@ const PassesPage = () => {
         )}
       </AnimatePresence>
 
-      {/* Grid Background with improved overlay */}
       <div className="absolute inset-0 w-full h-full">
         <div className="absolute inset-0 bg-[url('/assets/grid.png')] opacity-10" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#100C1B] via-[#100C1B]/95 to-[#100C1B]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(74,0,224,0.1)_0%,transparent_65%)]" />
       </div>
 
-      <div className="container mx-auto px-4 max-w-3xl mt-5 relative">
-        {/* Event Pricing Information */}
+      {/* <div className="container mx-auto px-4 max-w-3xl mt-5 relative">
 
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -470,7 +469,6 @@ const PassesPage = () => {
           </motion.div>
         </motion.div>
 
-        {/* Special Registrations Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -481,7 +479,6 @@ const PassesPage = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            {/* Paper Presentation Card */}
             <motion.div whileHover={{ y: -5 }} className="group relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-500" />
               <a
@@ -513,7 +510,6 @@ const PassesPage = () => {
               </a>
             </motion.div>
 
-            {/* Hackathon Card */}
             <motion.div whileHover={{ y: -5 }} className="group relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-500" />
               <a
@@ -547,7 +543,6 @@ const PassesPage = () => {
               </a>
             </motion.div>
 
-            {/* Ideathon Card */}
             <motion.div whileHover={{ y: -5 }} className="group relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-[#4A00E0]/20 to-[#8E2DE2]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-500" />
               <a
@@ -583,7 +578,6 @@ const PassesPage = () => {
           </div>
         </motion.div>
 
-        {/* Main Registration Form Container */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -631,7 +625,6 @@ const PassesPage = () => {
             <h4 className="text-xl text-white/80 font-medium">Event Registration</h4>
           </div>
 
-          {/* Total Amount - Updated */}
           <div className="p-4 rounded-xl bg-[#4A00E0]/10 border border-[#4A00E0]/20 mb-6">
             <div className="flex justify-between items-center">
               <div className="space-y-1">
@@ -648,9 +641,7 @@ const PassesPage = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Event Selection Dropdown */}
             <div className="space-y-6">
-              {/* Complementary Event Dropdown */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
@@ -697,7 +688,6 @@ const PassesPage = () => {
                     />
                   </div>
 
-                  {/* Complementary Events Dropdown Menu */}
                   {isComplementaryDropdownOpen && (
                     <div className="absolute z-50 w-full mt-2 rounded-xl bg-[#1A1625] border border-white/10 shadow-xl backdrop-blur-md">
                       <div className="p-2 space-y-1 max-h-60 overflow-y-auto">
@@ -734,7 +724,6 @@ const PassesPage = () => {
                 <p className="text-xs text-white/40 mt-1">* Excluding Technical Events</p>
               </div>
 
-              {/* Tech Events Dropdown */}
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between items-center">
                   <label className="block text-white/60">Technical Events</label>
@@ -795,7 +784,6 @@ const PassesPage = () => {
                     />
                   </div>
 
-                  {/* Tech Events Dropdown Menu */}
                   {isTechDropdownOpen && (
                     <div className="absolute z-50 w-full mt-2 rounded-xl bg-[#1A1625] border border-white/10 shadow-xl backdrop-blur-md">
                       <div className="p-2 space-y-1 max-h-60 overflow-y-auto">
@@ -840,7 +828,6 @@ const PassesPage = () => {
                 </div>
               </div>
 
-              {/* Non-Tech Events Dropdown */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <label className="block text-white/60">Non-Technical Events</label>
@@ -900,7 +887,6 @@ const PassesPage = () => {
                     />
                   </div>
 
-                  {/* Non-Tech Events Dropdown Menu */}
                   {isNonTechDropdownOpen && (
                     <div className="absolute z-50 w-full mt-2 rounded-xl bg-[#1A1625] border border-white/10 shadow-xl backdrop-blur-md">
                       <div className="p-2 space-y-1 max-h-60 overflow-y-auto">
@@ -946,7 +932,6 @@ const PassesPage = () => {
               </div>
             </div>
 
-            {/* Form Fields */}
             <div className="space-y-4">
               <div>
                 <label className="block text-white/60 mb-2">Name</label>
@@ -1001,9 +986,7 @@ const PassesPage = () => {
                 />
               </div>
 
-              {/* Add these new fields before the Payment QR Code Section */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Gender Selection */}
                 <div className="space-y-2">
                   <label className="block text-white/60 mb-2">Gender</label>
                   <div className="flex gap-4">
@@ -1052,7 +1035,6 @@ const PassesPage = () => {
                   </div>
                 </div>
 
-                {/* Accommodation Selection */}
                 <div className="space-y-2">
                   <label className="block text-white/60 mb-2">Need Accommodation?</label>
                   <div className="flex gap-4">
@@ -1113,14 +1095,12 @@ const PassesPage = () => {
                 </div>
               </div>
 
-              {/* Payment QR Code Section */}
               <div className="relative p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
                 <div className="absolute top-0 right-0 px-3 py-1 rounded-tr-xl rounded-bl-xl bg-[#4A00E0]/20 border-b border-l border-[#4A00E0]/20">
                   <span className="text-xs text-white/60">Scan to Pay</span>
                 </div>
 
                 <div className="flex flex-col md:flex-row items-center gap-6">
-                  {/* QR Code */}
                   <div className="relative w-48 h-48 bg-white rounded-xl p-3 mx-auto md:mx-0">
                     <Image
                       src="/pay_qr.jpeg"
@@ -1134,7 +1114,6 @@ const PassesPage = () => {
                   <span className="text-2xl font-bold bg-gradient-to-r from-[#ffffff] to-[#fefefe] bg-clip-text text-transparent">
                     ₹{totalAmount}
                   </span>
-                  {/* Payment Instructions */}
                   <div className="flex-1 space-y-4">
                     <div className="space-y-2">
                       <h4 className="text-white font-medium">Payment Instructions</h4>
@@ -1197,7 +1176,6 @@ const PassesPage = () => {
           </form>
         </motion.div>
 
-        {/* Contact Information */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -1211,7 +1189,7 @@ const PassesPage = () => {
             <p className="text-white/60 mt-2">Email: svucyno@gmail.com</p>
           </div>
         </motion.div>
-      </div>
+      </div> */}
     </section>
   );
 };

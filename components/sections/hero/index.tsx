@@ -164,10 +164,10 @@ const Hero = () => {
             className="relative inline-block"
           >
             <a
-              href="/passes"
+              href="/"
               className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-xl"
             >
-              <button className="group relative px-10 py-5 rounded-lg bg-gradient-to-br from-[#ffb703] to-[#fb8500] text-black font-bold tracking-wider uppercase text-sm hover:from-yellow-500 hover:via-amber-600 hover:to-yellow-700  duration-300 ease-out  active:scale-90 overflow-hidden before:absolute before:inset-0 before:rounded-lg ">
+              <button className="group relative px-10 py-5 rounded-lg bg-gradient-to-br from-[#ffb703] to-[#fb8500] text-black font-bold tracking-wider uppercase text-sm hover:from-yellow-500 hover:via-amber-600 hover:to-yellow-700  duration-300 ease-out  active:scale-90 overflow-hidden before:absolute before:inset-0 before:rounded-lg opacity-30 cursor-not-allowed ">
                 <span className="flex text-white items-center gap-2 relative z-10">
                   <Image
                     src={"assets/crown.png"}
@@ -176,7 +176,7 @@ const Hero = () => {
                     height={20}
                     className="animate-bounce scale-110 mr-4"
                   />
-                  Register Now
+                  Registration closed
                 </span>
                 <div className="absolute inset-0 rounded-lg opacity-50 group-hover:opacity-80 transition-opacity duration-300 bg-gradient-to-tl from-amber-200/40 via-transparent to-transparent"></div>
                 <div className="absolute -left-full top-0 h-full w-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-[200%] transition-transform duration-700 ease-out"></div>

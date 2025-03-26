@@ -94,8 +94,8 @@ const Roadmap = () => {
         <div className="mt-12 flex justify-center md:mt-15 xl:mt-20">
           <div className="transform transition-transform duration-200 overflow-hidden  hover:scale-105 active:scale-95">
             <Button
-              href="/passes"
-              className="px-8 py-4 bg-white rounded-2xl text-black  font-semibold hover:shadow-[0_0_20px_rgba(74,0,224,0.4)] transition-all duration-300 animate-fade-up group/main flex items-center gap-2"
+              href="/"
+              className="px-8 py-4 bg-white rounded-2xl text-black  font-semibold hover:shadow-[0_0_20px_rgba(74,0,224,0.4)] transition-all duration-300 animate-fade-up group/main flex items-center gap-2 opacity-30 cursor-not-allowed "
             >
               Get Event Pass
             </Button>
