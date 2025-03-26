@@ -1142,7 +1142,7 @@ const PassesPage = () => {
                         <li className="flex flex-col items-center gap-2">
                           <span className="w-1 h-1 rounded-full bg-[#4A00E0]"></span>
                           Scan the QR code using any UPI app (Or)
-                          <p className=" font-bold text-xl">PhonePe: 9441005225</p>
+                          <p className=" font-bold text-xl">PhonePe: 7981269983</p>
                         </li>
                         <li className="flex items-center gap-2">
                           <span className="w-1 h-1 rounded-full bg-[#4A00E0]"></span>
