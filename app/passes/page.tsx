@@ -1152,6 +1152,11 @@ const PassesPage = () => {
                           <span className="w-1 h-1 rounded-full bg-[#4A00E0]"></span>
                           Save the payment ID/UTR number
                         </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1 h-1 rounded-full bg-[#4A00E0]"></span>
+                          If any failure occur please send the payment details to this Whatsapp
+                          number :9441005225
+                        </li>
                       </ul>
                     </div>
 
