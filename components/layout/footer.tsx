@@ -24,21 +24,13 @@ const Footer = (props: Props) => {
         </ul>
         <div className="text-center">
           <p className="text-sm text-slate-400 opacity-60">
-            Contribution by{" "}
+            Design & Developed by{" "}
             <Link
               href="https://www.linkedin.com/in/bhanuprakashchowdam"
               target="_blank"
               className="hover:text-[#4A00E0] text-slate-400 underline transition-colors duration-200"
             >
               Bhanu Prakash Chowdam{" "}
-            </Link>
-            <br />
-            <Link
-              href="https://www.linkedin.com/in/vaishnavimangati"
-              target="_blank"
-              className="hover:text-[#4A00E0] text-slate-500  underline transition-colors duration-200"
-            >
-              & Mangati Vaishnavi
             </Link>
           </p>
         </div>
