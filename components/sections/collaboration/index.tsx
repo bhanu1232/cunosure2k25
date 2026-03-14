@@ -27,8 +27,8 @@ const Collaboration = (props: Props) => {
               </li>
             ))}
           </ul>
-          <Button href="/" white className="animate-fade-up opacity-30 cursor-not-allowed ">
-            Registration closed
+          <Button href="/passes" white className="animate-fade-up">
+            Register Now
           </Button>
         </div>
 
@@ -38,10 +38,17 @@ const Collaboration = (props: Props) => {
           </p>
 
           <div className="relative max-sm:hidden left-1/2 flex aspect-square w-[22rem] -translate-x-1/2 scale-75 rounded-full border border-n-6 md:scale-100">
-            <div className="m-auto flex aspect-square w-60 rounded-full border border-n-6">
-              <div className="m-auto aspect-square w-24 rounded-full bg-conic-gradient p-[0.2rem]">
-                <div className="flex h-full items-center justify-center rounded-full bg-n-8">
-                  <Image src={images.brainwaveSymbol} width={48} height={48} alt="brainwave" />
+            <div className="m-auto flex aspect-square w-60 rounded-full border border-n-6/50 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#4A00E0]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <div className="m-auto aspect-square w-24 rounded-full bg-conic-gradient p-[0.2rem] shadow-2xl relative">
+                <div className="flex h-full items-center justify-center rounded-full bg-n-8 overflow-hidden">
+                  <Image 
+                    src="/assets/logo.jpg" 
+                    width={56} 
+                    height={56} 
+                    alt="Cynosure Logo"
+                    className="object-cover rounded-full"
+                  />
                 </div>
               </div>
             </div>

@@ -1,157 +1,179 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Section from "@/components/layout/section";
 import Heading from "../../atoms/heading";
-import { brainwaveServices, images } from "@/constants";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
+const slides = [
+  {
+    id: 1,
+    image: "/assets/gallery/web.avif",
+    title: "Web Development",
+    description: "Showcasing innovation and technical excellence",
+    tag: "Technical",
+  },
+  {
+    id: 2,
+    image: "/assets/gallery/query.avif",
+    title: "Query Cracker",
+    description: "A competitive tech knowledge competition",
+    tag: "Technical",
+  },
+  {
+    id: 3,
+    image: "/assets/gallery/four.avif",
+    title: "Flash Mob",
+    description: "A dance performance by the students",
+    tag: "Cultural",
+  },
+];
+
+const AUTOPLAY_DURATION = 5000;
+
 const Services = () => {
-  const slides = [
-    {
-      id: 1,
-      image: "/assets/gallery/web.avif",
-      title: "Web Development",
-      description: "Showcasing innovation and technical excellence",
-    },
-    {
-      id: 2,
-      image: "/assets/gallery/query.avif",
-      title: "Query Cracker",
-      description: "A compative tech knowledge competition",
-    },
-    {
-      id: 3,
-      image: "/assets/gallery/four.avif",
-      title: "Flash Mob",
-      description: "A dance performance by the students",
-    },
-  ];
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [progress, setProgress] = useState(0);
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const goTo = useCallback(
+    (index: number) => {
+      setDirection(index > current ? 1 : -1);
+      setCurrent(index);
+      setProgress(0);
+    },
+    [current]
+  );
 
+  const next = useCallback(() => {
+    const next = (current + 1) % slides.length;
+    setDirection(1);
+    setCurrent(next);
+    setProgress(0);
+  }, [current]);
+
+  const prev = useCallback(() => {
+    const prev = (current - 1 + slides.length) % slides.length;
+    setDirection(-1);
+    setCurrent(prev);
+    setProgress(0);
+  }, [current]);
+
+  // Autoplay with progress
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    const interval = setInterval(() => {
+      setProgress((p) => {
+        if (p >= 100) {
+          next();
+          return 0;
+        }
+        return p + 100 / (AUTOPLAY_DURATION / 100);
+      });
+    }, 100);
+    return () => clearInterval(interval);
+  }, [next]);
 
-    return () => clearInterval(timer);
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  const variants = {
+    enter: (dir: number) => ({ opacity: 0, x: dir > 0 ? 60 : -60 }),
+    center: { opacity: 1, x: 0 },
+    exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -60 : 60 }),
   };
 
   return (
     <Section id="how-to-use" className="overflow-hidden">
       <div className="container">
-        <Heading
-          title="Cynosure Past Highlights"
-          text="Relive the excitement and unforgettable moments of Cynosure's past events!"
-          tag="Gallery"
-        />
+        {/* Heading */}
+        <div className="mb-12 text-center">
+          <Heading
+            title="Relive the Moments"
+            text="A glimpse into the energy, innovation, and passion that defines Cynosure."
+          />
+        </div>
 
-        <div className="relative mt-10">
-          <div className="relative z-1 mb-5 h-[39rem] max-sm:h-[70vh] overflow-hidden rounded-3xl border border-n-1/10 lg:h-[46rem]">
-            {/* Background Glow Effects */}
-            <div className="absolute top-0 -left-[40%] w-[80%] aspect-square rounded-full bg-[#1F4AF6]/20 blur-[120px] pointer-events-none" />
-            <div className="absolute top-0 -right-[40%] w-[80%] aspect-square rounded-full bg-[#8F46FF]/20 blur-[120px] pointer-events-none" />
+        {/* Main slider */}
+        <div className="relative mx-auto max-w-[1100px]">
+          {/* Slider frame */}
+          <div className="relative rounded-2xl overflow-hidden border border-white/[0.07] bg-black shadow-[0_32px_80px_rgba(0,0,0,0.6)] aspect-[16/9] sm:aspect-[2/1] lg:aspect-[2.2/1]">
+            {/* Slides */}
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={current}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={slides[current].image}
+                  alt={slides[current].title}
+                  fill
+                  className="object-cover"
+                  priority={current === 0}
+                />
 
-            {/* Slider Container */}
-            <div className="relative h-full max-sm:h-[70vh]">
+                {/* Gradient overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Ambient glows */}
+            <div className="absolute -top-1/4 -left-1/4 w-1/2 aspect-square rounded-full bg-[#4A00E0]/15 blur-[100px] pointer-events-none" />
+            <div className="absolute -bottom-1/4 -right-1/4 w-1/2 aspect-square rounded-full bg-[#1BC7FB]/10 blur-[100px] pointer-events-none" />
+            {/* Tag badge top-left */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`tag-${current}`}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="absolute top-5 left-5 z-10"
+              >
+                <span className="px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] bg-[#4A00E0]/40 border border-[#4A00E0]/40 text-white/80 backdrop-blur-md">
+                  {slides[current].tag}
+                </span>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Content overlay bottom */}
+            <div className="absolute bottom-0 inset-x-0 z-10 p-6 sm:p-8 lg:p-10 flex items-end justify-between gap-4">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={currentSlide}
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -100 }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute inset-0 w-full h-full"
-                >
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={slides[currentSlide].image}
-                      alt={slides[currentSlide].title}
-                      fill
-                      className="object-cover"
-                      onLoadingComplete={() => setLoading(false)}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-n-8/80 via-n-8/20 to-transparent" />
-
-                    {/* Content Overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12 max-sm:mb-10">
-                      <motion.h3
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="h3 text-white mb-4"
-                      >
-                        {slides[currentSlide].title}
-                      </motion.h3>
-                      <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
-                        className="body-2 text-n-3"
-                      >
-                        {slides[currentSlide].description}
-                      </motion.p>
-                    </div>
-                  </div>
-                </motion.div>
+                  key={`content-${current}`}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                ></motion.div>
               </AnimatePresence>
-
-              {/* Navigation Buttons */}
-              <div className="absolute right-8 bottom-8 flex items-center gap-3 z-10">
-                <button
-                  onClick={prevSlide}
-                  className="flex items-center justify-center w-12 h-12 rounded-full bg-n-1/10 backdrop-blur-sm hover:bg-n-1/20 transition-colors"
-                >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M15 18L9 12L15 6"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="flex items-center justify-center w-12 h-12 rounded-full bg-n-1/10 backdrop-blur-sm hover:bg-n-1/20 transition-colors"
-                >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M9 6L15 12L9 18"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Slide Indicators */}
-              <div className="absolute bottom-8 left-8 flex items-center gap-2 z-10">
-                {slides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentSlide(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      currentSlide === index ? "w-8 bg-white" : "bg-white/40 hover:bg-white/60"
-                    }`}
-                  />
-                ))}
-              </div>
             </div>
+          </div>
+
+          {/* Progress indicators below */}
+          <div className="mt-5 flex items-center gap-3">
+            {slides.map((slide, index) => (
+              <button
+                key={index}
+                onClick={() => goTo(index)}
+                className="group relative flex-1 h-[3px] rounded-full bg-white/10 overflow-hidden"
+                aria-label={`Go to slide ${index + 1}`}
+              >
+                {/* Fill bar */}
+                {index === current ? (
+                  <motion.div
+                    className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#4A00E0] to-[#1BC7FB] rounded-full"
+                    style={{ width: `${progress}%` }}
+                  />
+                ) : index < current ? (
+                  <div className="absolute inset-0 bg-white/30 rounded-full" />
+                ) : null}
+              </button>
+            ))}
           </div>
         </div>
       </div>

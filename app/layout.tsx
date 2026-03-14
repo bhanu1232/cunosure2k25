@@ -6,7 +6,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Cynosure 2025",
+  title: "Cynosure 2026",
   description: "Technical Fest",
   icons: {
     icon: "/logo.jpg", // Make sure this file exists in the public folder

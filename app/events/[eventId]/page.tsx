@@ -16,7 +16,7 @@ const EventDetailPage = ({ params }: { params: { eventId: string } }) => {
         {/* Navigation */}
         <nav className="mb-8">
           <Link
-            href="/even"
+            href="/events"
             className="text-lg font-semibold text-cyan-400 transition-colors hover:text-cyan-300"
           >
             Back to Events

@@ -1,205 +1,171 @@
 "use client";
 
 import React, { useState } from "react";
-import Section from "@/components/layout/section";
-import Heading from "@/components/atoms/heading";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import Navbar from "@/components/layout/navbar";
+import dynamic from "next/dynamic";
+import { X } from "lucide-react";
+
+const Navbar = dynamic(() => import("@/components/layout/navbar"), { ssr: false });
+
+const images = [
+  {
+    id: "inauguration",
+    src: "/assets/gallery/one.avif",
+    title: "Opening Ceremony",
+    day: "Day 1",
+    span: "col-span-1 sm:col-span-2",
+    aspect: "aspect-[16/9]",
+  },
+  {
+    id: "cultural-night",
+    src: "/assets/gallery/two.avif",
+    title: "Cultural Night",
+    day: "Day 2",
+    span: "col-span-1",
+    aspect: "aspect-square",
+  },
+  {
+    id: "all-members",
+    src: "/assets/gallery/three.avif",
+    title: "Core Team Assembly",
+    day: "Day 1",
+    span: "col-span-1",
+    aspect: "aspect-square",
+  },
+  {
+    id: "flash-mob",
+    src: "/assets/gallery/four.avif",
+    title: "Flash Mob",
+    day: "Day 2",
+    span: "col-span-1",
+    aspect: "aspect-[4/3]",
+  },
+  {
+    id: "food",
+    src: "/assets/gallery/five.avif",
+    title: "Food Festival",
+    day: "Day 2",
+    span: "col-span-1",
+    aspect: "aspect-[4/3]",
+  },
+  {
+    id: "vr-room",
+    src: "/assets/gallery/six.avif",
+    title: "VR Experience Zone",
+    day: "Day 1",
+    span: "col-span-1 sm:col-span-2",
+    aspect: "aspect-[16/9]",
+  },
+];
 
 const GalleryPage = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  const images = [
-    {
-      src: "/assets/gallery/one.avif",
-      title: "Inauguration",
-      category: "Technical",
-      aspectRatio: "aspect-[4/3]",
-      size: "lg",
-    },
-    {
-      src: "/assets/gallery/two.avif",
-      title: "Cultural Night Performance",
-      category: "Cultural",
-      aspectRatio: "aspect-square",
-      size: "sm",
-    },
-    {
-      src: "/assets/gallery/three.avif",
-      title: "All members",
-      category: "Technical",
-      aspectRatio: "aspect-[4/3]",
-      size: "md",
-    },
-    {
-      src: "/assets/gallery/four.avif",
-      title: "Flash Mob",
-      category: "Cultural",
-      aspectRatio: "aspect-[3/4]",
-      size: "lg",
-    },
-    {
-      src: "/assets/gallery/five.avif",
-      title: "Food",
-      category: "Cultural",
-      aspectRatio: "aspect-square",
-      size: "md",
-    },
-    {
-      src: "/assets/gallery/six.avif",
-      title: "Vr Room",
-      category: "Technical",
-      aspectRatio: "aspect-[3/4]",
-      size: "sm",
-    },
-  ];
-
-  const categories = ["All", "Technical", "Cultural"];
-  const [activeCategory, setActiveCategory] = useState("All");
-
-  const filteredImages =
-    activeCategory === "All" ? images : images.filter((img) => img.category === activeCategory);
+  const [selected, setSelected] = useState<{ src: string; title: string } | null>(null);
 
   return (
-    <>
-      <Section className="overflow-hidden pt-24 sm:pt-32">
-        <div className="container relative z-2">
-          <Navbar />
-          <div className="relative lg:mt-9">
-            {/* Background Glow Effects */}
+    <main className="min-h-screen bg-[#09090f] text-white pb-16 sm:pb-24">
+      <Navbar />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="relative text-center mb-8 sm:mb-12 px-4"
-            >
-              <Heading
-                title="Event Gallery"
-                text="Relive the memorable moments from Cynosure 2024"
-                className="md:max-w-md lg:max-w-2xl mx-auto"
-              />
-            </motion.div>
-
-            {/* Category Filter - Horizontal Scrollable on Mobile */}
-            <div className="overflow-hidden scrollbar-hide mb-8 sm:mb-12 px-4">
-              <div className="flex justify-start sm:justify-center gap-3 min-w-max sm:min-w-0 sm:flex-wrap">
-                {categories.map((category) => (
-                  <motion.button
-                    key={category}
-                    onClick={() => setActiveCategory(category)}
-                    className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-all duration-300 text-sm font-medium whitespace-nowrap ${
-                      activeCategory === category
-                        ? "bg-gradient-to-r from-[#1F4AF6] to-[#1BC7FB] text-white shadow-lg scale-105"
-                        : "bg-n-7 text-n-1 hover:bg-n-6 hover:scale-105"
-                    }`}
-                    whileHover={{ scale: activeCategory === category ? 1.05 : 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {category}
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-
-            {/* Gallery Grid */}
-            <motion.div
-              layout
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 px-4 max-w-[1400px] mx-auto"
-            >
-              <AnimatePresence mode="popLayout">
-                {filteredImages.map((image, index) => (
-                  <motion.div
-                    key={image.src + activeCategory}
-                    layout
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className={`group cursor-pointer ${
-                      image.size === "lg" ? "sm:col-span-2 lg:col-span-1" : ""
-                    }`}
-                    onClick={() => setSelectedImage(image.src)}
-                  >
-                    <div
-                      className={`relative ${image.aspectRatio} rounded-xl sm:rounded-2xl overflow-hidden bg-n-8 shadow-lg transform transition-transform duration-500 hover:scale-[1.02] active:scale-95`}
-                    >
-                      <Image
-                        src={image.src}
-                        alt={image.title}
-                        fill
-                        className="object-cover transition-transform duration-700 will-change-transform group-hover:scale-110"
-                      />
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-n-8/20 to-n-8/90 opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
-
-                      {/* Content Overlay */}
-                      <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end">
-                        <div className="transform translate-y-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-transform duration-500 delay-100">
-                          <h3 className="text-white font-semibold text-lg sm:text-xl mb-2 line-clamp-2">
-                            {image.title}
-                          </h3>
-                          <span className="inline-block px-3 py-1 rounded-full bg-n-1/10 backdrop-blur-sm text-n-1 text-xs sm:text-sm">
-                            {image.category}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </motion.div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12">
+        {/* ── Page Header ──────────────────────────────── */}
+        <div className="pt-16 sm:pt-20 mb-8 sm:mb-10">
+          <div className="flex items-center gap-2.5 mb-3">
+            <div className="w-1 h-5 bg-white rounded-full" />
+            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
+              Cynosure 2026 Gallery
+            </span>
           </div>
         </div>
 
-        {/* Enhanced Lightbox */}
-        <AnimatePresence>
-          {selectedImage && (
+        {/* ── Photo Grid ───────────────────────────────── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          {images.map((image, index) => (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 backdrop-blur-lg"
-              onClick={() => setSelectedImage(null)}
+              key={image.id}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.07 }}
+              // Only apply col-span on sm+ so mobile is always 1-col
+              className={`group relative rounded-2xl overflow-hidden cursor-pointer bg-white/[0.03] ${
+                image.span
+              }`}
+              onClick={() => setSelected({ src: image.src, title: image.title })}
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                className="relative max-w-[95vw] sm:max-w-[90vw] max-h-[90vh]"
-              >
+              <div className={`relative w-full ${image.aspect}`}>
                 <Image
-                  src={selectedImage}
-                  alt="Selected image"
-                  width={1200}
-                  height={800}
-                  className="object-contain rounded-lg shadow-2xl"
+                  src={image.src}
+                  alt={image.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  priority={index < 3}
                 />
-                <motion.button
-                  className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 text-white bg-n-8/80 rounded-full p-2 hover:bg-n-7 transition-colors backdrop-blur-sm"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedImage(null);
-                  }}
-                >
-                  <svg
-                    className="w-5 h-5 sm:w-6 sm:h-6"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                  >
-                    <path d="M18 6L6 18M6 6l12 12" strokeWidth="2" strokeLinecap="round" />
-                  </svg>
-                </motion.button>
-              </motion.div>
+                {/* Dark gradient overlay for caption */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Caption */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="px-2 py-0.5 rounded-md bg-white/10 backdrop-blur-sm text-white/70 text-[10px] font-semibold uppercase tracking-wider">
+                      {image.day}
+                    </span>
+                  </div>
+                  <h3 className="text-white font-bold text-sm sm:text-base leading-tight">
+                    {image.title}
+                  </h3>
+                </div>
+              </div>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </Section>
-    </>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Lightbox ─────────────────────────────────── */}
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-xl"
+            onClick={() => setSelected(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.94 }}
+              transition={{ duration: 0.2 }}
+              className="relative max-w-[95vw] sm:max-w-[88vw] max-h-[90vh] rounded-xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-[90vw] sm:w-[80vw] h-[70vh] sm:h-[80vh]">
+                <Image
+                  src={selected.src}
+                  alt={selected.title}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+
+              {/* Title bar */}
+              <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-black/60 backdrop-blur-sm">
+                <p className="text-sm font-semibold text-white">{selected.title}</p>
+              </div>
+
+              {/* Close button */}
+              <button
+                className="absolute top-3 right-3 w-9 h-9 rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-sm flex items-center justify-center text-white transition-colors"
+                onClick={() => setSelected(null)}
+              >
+                <X className="w-4.5 h-4.5" />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </main>
   );
 };
 

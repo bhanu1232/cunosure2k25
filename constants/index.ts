@@ -120,19 +120,14 @@ export const navigation = [
     url: "/",
   },
   {
-    id: "2",
-    title: "Passes",
-    url: "/passes",
-  },
-  {
     id: "3",
     title: "Events",
-    url: "/even",
+    url: "/events",
   },
   {
     id: "4",
     title: "coordinators",
-    url: "/coordinate",
+    url: "/coordinators",
   },
   {
     id: "5",
@@ -152,16 +147,16 @@ export const notificationImages = [notification4, notification3, notification2];
 
 export const companyLogos = [yourlogo, yourlogo, yourlogo, yourlogo, yourlogo];
 
-export const brainwaveServices = ["Hackathon", "Flashmob", "Teck talk"];
+export const cynosureServices = ["Hackathon", "Flashmob", "Teck talk"];
 
-export const brainwaveServicesIcons = [recording03, recording01, disc02, chromecast, sliders04];
+export const cynosureServicesIcons = [recording03, recording01, disc02, chromecast, sliders04];
 
 export const roadmap = [
   {
     id: "0",
     title: "WORKSHOP",
     text: "AI - Driven Analytics workshop",
-    date: "March 27, 2025",
+    date: "March 27, 2026",
     status: "done",
     imageUrl: roadmap1,
     colorful: false,
@@ -171,7 +166,7 @@ export const roadmap = [
     id: "2",
     title: "Esports",
     text: "Compete in our Cynosure Esports Challenge for glory and prizes! 🎮🔥",
-    date: "March 28, 2025",
+    date: "March 28, 2026",
     status: "done",
     imageUrl: "/esport.png",
     colorful: true,
@@ -203,57 +198,57 @@ export const collabContent = [
 export const collabApps = [
   {
     id: "0",
-    title: "Figma",
-    icon: figma,
+    title: "AI",
+    icon: "/assets/collaboration/figma.png",
     width: 26,
     height: 36,
   },
   {
     id: "1",
-    title: "Notion",
-    icon: notion,
+    title: "Cloud",
+    icon: "/assets/collaboration/notion.png",
     width: 34,
     height: 36,
   },
   {
     id: "2",
     title: "Discord",
-    icon: discord,
+    icon: "/assets/collaboration/discord.png",
     width: 36,
     height: 28,
   },
   {
     id: "3",
-    title: "Slack",
-    icon: slack,
+    title: "Code",
+    icon: "/assets/collaboration/slack.png",
     width: 34,
     height: 35,
   },
   {
     id: "4",
-    title: "Photoshop",
-    icon: photoshop,
+    title: "Robotics",
+    icon: "/assets/collaboration/photoshop.png",
     width: 34,
     height: 34,
   },
   {
     id: "5",
-    title: "Protopie",
-    icon: protopie,
+    title: "Design",
+    icon: "/assets/collaboration/protopie.png",
     width: 34,
     height: 34,
   },
   {
     id: "6",
-    title: "Framer",
-    icon: framer,
+    title: "Security",
+    icon: "/assets/collaboration/framer.png",
     width: 26,
     height: 34,
   },
   {
     id: "7",
-    title: "Raindrop",
-    icon: raindrop,
+    title: "Innovation",
+    icon: "/assets/collaboration/raindrop.png",
     width: 38,
     height: 32,
   },
@@ -689,7 +684,7 @@ export const events = [
     id: "0",
     type: "tech",
     title: "Hackathon",
-    text: "Calling all tech enthusiasts! Gather your squad of four for an exhilarating journey of innovation and problem-solving at our Hackathon 2025. Dive deep into challenges, showcasing your creativity and tech prowess. Crack the code, unveil solutions, and stand out amidst the tech-savvy crowd. Develop a working prototype to earn extra points and push your limits. It's not just about winning; it's about the thrill of coding for the future! Are you ready to unleash your genius?",
+    text: "Calling all tech enthusiasts! Gather your squad of four for an exhilarating journey of innovation and problem-solving at our Hackathon 2026. Dive deep into challenges, showcasing your creativity and tech prowess. Crack the code, unveil solutions, and stand out amidst the tech-savvy crowd. Develop a working prototype to earn extra points and push your limits. It's not just about winning; it's about the thrill of coding for the future! Are you ready to unleash your genius?",
     backgroundUrl: "assets/event/hack.avif",
     iconUrl: benefitIcon1,
     imageUrl: benefitImage2,
@@ -755,7 +750,7 @@ Good luck, and may the best team win!`,
     venue: "203",
     teamSize: "Individual",
     spot: "No Spot Registration",
-    fullDescription: `Step onto the stage at Cynosure 2025 and present your research in front of an esteemed panel of judges! 
+    fullDescription: `Step onto the stage at Cynosure 2026 and present your research in front of an esteemed panel of judges! 
 
     📌 **Event Highlights:**
     - Showcase your research and analytical skills
@@ -1107,7 +1102,7 @@ export const ESPORTS_EVENTS = [
     price: "",
     description: "4v4 tactical shooter tournament. Show your skills and strategy.",
     players: "4 players per team",
-    schedule: "March 27-28, 2025",
+    schedule: "March 27-28, 2026",
     rules: [
       "Tournament Format",
       "Teams must have exactly 4 players",
@@ -1152,7 +1147,7 @@ export const ESPORTS_EVENTS = [
     price: "",
     description: "Battle Royale mobile gaming competition. Last team standing wins.",
     players: "4 players per team",
-    schedule: "March 27-28, 2025",
+    schedule: "March 27-28, 2026",
     rules: [
       "Tournament Format",
       "Teams must have exactly 4 players",
