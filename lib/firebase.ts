@@ -2,13 +2,13 @@ import { initializeApp, getApps } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCA62-2QTxxezoq8aLP9ZhZNFn2fY51JDA",
-  authDomain: "cyno-bd415.firebaseapp.com",
-  projectId: "cyno-bd415",
-  storageBucket: "cyno-bd415.firebasestorage.app",
-  messagingSenderId: "593658803011",
-  appId: "1:593658803011:web:35c25225df8d9a909a35f6",
-  measurementId: "G-6243EDPYLZ",
+  apiKey: "AIzaSyDctCGO-c9x7RBk72E1oBJM2ggHfRX69qY",
+  authDomain: "cyno2026-5a26c.firebaseapp.com",
+  projectId: "cyno2026-5a26c",
+  storageBucket: "cyno2026-5a26c.firebasestorage.app",
+  messagingSenderId: "792682169497",
+  appId: "1:792682169497:web:8702688322d1c7c3ada408",
+  measurementId: "G-WB6M2J0V2F"
 };
 
 // Initialize Firebase
