@@ -391,11 +391,10 @@ Good luck, and may the best team win!`,
       "Basic coding knowledge",
     ],
     coordinators: [
-      {},
-      // {
-      //   name: "G S S Nikhil Chowdary",
-      //   phone: "9849009047",
-      // },
+      {
+        name: "",
+        phone: "",
+      },
       // {
       //   name: "N Chiranjeevi",
       //   phone: "9705959253",
@@ -445,11 +444,10 @@ Good luck, and may the best team win!`,
       "Punctuality",
     ],
     coordinators: [
-      {},
-      // {
-      //   name: "M Akash",
-      //   phone: "9849535920",
-      // },
+      {
+        name: "",
+        phone: "",
+      },
       // {
       //   name: "Harini Modugula",
       //   phone: "8919032441",
@@ -498,11 +496,10 @@ Good luck, and may the best team win!`,
       "Laptop required",
     ],
     coordinators: [
-      {},
-      // {
-      //   name: "S Roopa sree",
-      //   phone: "8639932286",
-      // },
+      {
+        name: "",
+        phone: "",
+      },
       // {
       //   name: "M Raghuram",
       //   phone: "6305756962",
@@ -561,11 +558,10 @@ Good luck, and may the best team win!`,
       "HackerRank account",
     ],
     coordinators: [
-      {},
-      // {
-      //   name: "M Meghana",
-      //   phone: "7893098680",
-      // },
+      {
+        name: "",
+        phone: "",
+      },
       // {
       //   name: "B Jyothsna",
       //   phone: "",
@@ -610,11 +606,10 @@ Good luck, and may the best team win!`,
     ],
     requirements: ["Strong coding background", "Laptop with charger", "Development environment"],
     coordinators: [
-      {},
-      // {
-      //   name: "K Gayathri",
-      //   phone: "",
-      // },
+      {
+        name: "",
+        phone: "",
+      },
     ],
   },
 
@@ -660,11 +655,10 @@ Good luck, and may the best team win!`,
       "Team registration",
     ],
     coordinators: [
-      {},
-      // {
-      //   name: "Harika Velpula",
-      //   phone: "7075602932",
-      // },
+      {
+        name: "",
+        phone: "",
+      },
       // {
       //   name: "T Yuvasree",
       //   phone: "",
@@ -714,11 +708,10 @@ Good luck, and may the best team win!`,
       "Internet connectivity",
     ],
     coordinators: [
-      {},
-      // {
-      //   name: "Kusheel Sanduri",
-      //   phone: "9100335859",
-      // },
+      {
+        name: "",
+        phone: "",
+      },
       // {
       //   name: "D Mounika",
       //   phone: "",
@@ -846,10 +839,10 @@ export const fun = [
       "Writing materials",
     ],
     coordinators: [
-      // {
-      //   name: "K R Mahesh",
-      //   phone: "7997290406",
-      // },
+      {
+        name: "",
+        phone: "",
+      },
       // {
       //   name: "V Likitha",
       //   phone: "",
@@ -894,10 +887,10 @@ export const fun = [
     ],
     requirements: ["Basic math skills", "Analytical thinking", "Time management", "College ID"],
     coordinators: [
-      // {
-      //   name: "A Sreenath",
-      //   phone: "8179417236",
-      // },
+      {
+        name: "",
+        phone: "",
+      },
       // {
       //   name: "G Lakshmi Swomya",
       //   phone: "9542124330",
@@ -953,10 +946,10 @@ export const fun = [
       "College ID for all members",
     ],
     coordinators: [
-      // {
-      //   name: "B Chandra mouli",
-      //   phone: "7207241669",
-      // },
+      {
+        name: "",
+        phone: "",
+      },
       // {
       //   name: "C Sriram",
       //   phone: "6309084262",
