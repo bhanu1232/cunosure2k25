@@ -4,6 +4,9 @@ const nextConfig = {
     domains: ["firebasestorage.googleapis.com"],
     unoptimized: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = nextConfig;

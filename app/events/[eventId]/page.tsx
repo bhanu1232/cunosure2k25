@@ -3,8 +3,19 @@ import { events } from "@/constants";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
+type Coordinator = { name: string; phone: string };
+type EventDetail = {
+  id: string;
+  title: string;
+  text: string;
+  rules: string[];
+  requirements: string[];
+  prize: number | string;
+  coordinators: Coordinator[];
+};
+
 const EventDetailPage = ({ params }: { params: { eventId: string } }) => {
-  const event = events.find((e) => e.id === params.eventId);
+  const event = events.find((e) => e.id === params.eventId) as EventDetail | undefined;
 
   if (!event) {
     return notFound();
