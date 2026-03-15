@@ -390,18 +390,11 @@ export const events = [
     ],
     requirements: ["Strong coding background", "Laptop with charger", "Development environment"],
     coordinators: [
-      {
-        name: "K Gayathri",
-        phone: "",
-      },
-      {
-        name: "Mohammed Raashid",
-        phone: "7995935120",
-      },
-      {
-        name: "P Varun Nag",
-        phone: "9391064986",
-      },
+      {},
+      // {
+      //   name: "K Gayathri",
+      //   phone: "",
+      // },
     ],
   },
   {
@@ -451,18 +444,19 @@ export const events = [
       "HackerRank account",
     ],
     coordinators: [
-      {
-        name: "M Meghana",
-        phone: "7893098680",
-      },
-      {
-        name: "B Jyothsna",
-        phone: "",
-      },
-      {
-        name: "Akhilesh Dasari",
-        phone: "8688006615",
-      },
+      {},
+      // {
+      //   name: "M Meghana",
+      //   phone: "7893098680",
+      // },
+      // {
+      //   name: "B Jyothsna",
+      //   phone: "",
+      // },
+      // {
+      //   name: "Akhilesh Dasari",
+      //   phone: "8688006615",
+      // },
     ],
   },
 
@@ -505,18 +499,19 @@ export const events = [
       "Punctuality",
     ],
     coordinators: [
-      {
-        name: "M Akash",
-        phone: "9849535920",
-      },
-      {
-        name: "Harini Modugula",
-        phone: "8919032441",
-      },
-      {
-        name: "N Vishnu Priya",
-        phone: "",
-      },
+      {},
+      // {
+      //   name: "M Akash",
+      //   phone: "9849535920",
+      // },
+      // {
+      //   name: "Harini Modugula",
+      //   phone: "8919032441",
+      // },
+      // {
+      //   name: "N Vishnu Priya",
+      //   phone: "",
+      // },
     ],
   },
   {
@@ -561,18 +556,19 @@ export const events = [
       "Team registration",
     ],
     coordinators: [
-      {
-        name: "Harika Velpula",
-        phone: "7075602932",
-      },
-      {
-        name: "T Yuvasree",
-        phone: "",
-      },
-      {
-        name: "P. Sudhansu reddy",
-        phone: "8919115624",
-      },
+      {},
+      // {
+      //   name: "Harika Velpula",
+      //   phone: "7075602932",
+      // },
+      // {
+      //   name: "T Yuvasree",
+      //   phone: "",
+      // },
+      // {
+      //   name: "P. Sudhansu reddy",
+      //   phone: "8919115624",
+      // },
     ],
   },
   {
@@ -613,18 +609,19 @@ export const events = [
       "Laptop required",
     ],
     coordinators: [
-      {
-        name: "S Roopa sree",
-        phone: "8639932286",
-      },
-      {
-        name: "M Raghuram",
-        phone: "6305756962",
-      },
-      {
-        name: "Uma Maheswari",
-        phone: "8978128841",
-      },
+      {},
+      // {
+      //   name: "S Roopa sree",
+      //   phone: "8639932286",
+      // },
+      // {
+      //   name: "M Raghuram",
+      //   phone: "6305756962",
+      // },
+      // {
+      //   name: "Uma Maheswari",
+      //   phone: "8978128841",
+      // },
     ],
   },
   {
@@ -665,18 +662,19 @@ export const events = [
       "Internet connectivity",
     ],
     coordinators: [
-      {
-        name: "Kusheel Sanduri",
-        phone: "9100335859",
-      },
-      {
-        name: "D Mounika",
-        phone: "",
-      },
-      {
-        name: "D Sai pallavi",
-        phone: "",
-      },
+      {},
+      // {
+      //   name: "Kusheel Sanduri",
+      //   phone: "9100335859",
+      // },
+      // {
+      //   name: "D Mounika",
+      //   phone: "",
+      // },
+      // {
+      //   name: "D Sai pallavi",
+      //   phone: "",
+      // },
     ],
   },
 
@@ -723,18 +721,19 @@ Good luck, and may the best team win!`,
       "Basic coding knowledge",
     ],
     coordinators: [
-      {
-        name: "G S S Nikhil Chowdary",
-        phone: "9849009047",
-      },
-      {
-        name: "N Chiranjeevi",
-        phone: "9705959253",
-      },
-      {
-        name: "S Chaitanya",
-        phone: "9154900357",
-      },
+      {},
+      // {
+      //   name: "G S S Nikhil Chowdary",
+      //   phone: "9849009047",
+      // },
+      // {
+      //   name: "N Chiranjeevi",
+      //   phone: "9705959253",
+      // },
+      // {
+      //   name: "S Chaitanya",
+      //   phone: "9154900357",
+      // },
     ],
   },
   {
@@ -791,18 +790,19 @@ Good luck, and may the best team win!`,
       "Good communication and technical skills",
     ],
     coordinators: [
-      {
-        name: "Abhinaya",
-        phone: "",
-      },
-      {
-        name: "Swaroop K Devarajan",
-        phone: "8639651716",
-      },
-      {
-        name: "T Kumara Swamy",
-        phone: "8639932286",
-      },
+      {},
+      // {
+      //   name: "Abhinaya",
+      //   phone: "",
+      // },
+      // {
+      //   name: "Swaroop K Devarajan",
+      //   phone: "8639651716",
+      // },
+      // {
+      //   name: "T Kumara Swamy",
+      //   phone: "8639932286",
+      // },
     ],
   },
 ];
@@ -1212,46 +1212,60 @@ export const coord = [
     coordinatorImage: images.vivek,
     coordinatorName: "Prof Dr.D. Vivekanada Reddy",
     contactInfo: "",
-    mail: "Pandillapallesudhansureddy23@gmail.com",
-  },
-  {
-    id: "1",
-    title: "sudhansu_reddy",
-    text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
-    backgroundUrl: "assets/benefits/card-1.svg",
-    iconUrl: benefitIcon1,
-    imageUrl: benefitImage2,
-    coordinatorImage: images.sudhansu,
-    coordinatorName: "P. Sudhansu reddy",
-    contactInfo: "8919115624",
-    mail: "Pandillapallesudhansureddy23@gmail.com",
-  },
-  {
-    id: "2",
-    title: "swaroopkohli18",
-    text: "The app uses natural language processing to understand user queries and provide accurate and relevant responses.",
-    backgroundUrl: "assets/benefits/card-2.svg",
-    iconUrl: benefitIcon2,
-    imageUrl: benefitImage2,
-    light: true,
-    coordinatorImage: images.swaroop,
-    coordinatorName: "Swaroop K Devarajan",
-    contactInfo: "86396 51716",
-    mail: "swaroopdevarajan@gmail.com",
-  },
-  {
-    id: "5",
-    title: "__pavankumar_17",
-    text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
-    backgroundUrl: "assets/benefits/card-5.svg",
-    iconUrl: benefitIcon1,
-    imageUrl: benefitImage2,
-    coordinatorImage: images.pavan,
-    coordinatorName: "M pavan kumar",
-    contactInfo: "79898 83868",
-    mail: "matapallipavan@gmail.com",
+    mail: "",
   },
 ];
+
+// export const coord = [
+//   {
+//     id: "0",
+//     text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
+//     backgroundUrl: "assets/benefits/card-1.svg",
+//     iconUrl: benefitIcon1,
+//     imageUrl: benefitImage2,
+//     coordinatorImage: images.vivek,
+//     coordinatorName: "Prof Dr.D. Vivekanada Reddy",
+//     contactInfo: "",
+//     mail: "Pandillapallesudhansureddy23@gmail.com",
+//   },
+//   {
+//     id: "1",
+//     title: "sudhansu_reddy",
+//     text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
+//     backgroundUrl: "assets/benefits/card-1.svg",
+//     iconUrl: benefitIcon1,
+//     imageUrl: benefitImage2,
+//     coordinatorImage: images.sudhansu,
+//     coordinatorName: "P. Sudhansu reddy",
+//     contactInfo: "8919115624",
+//     mail: "Pandillapallesudhansureddy23@gmail.com",
+//   },
+//   {
+//     id: "2",
+//     title: "swaroopkohli18",
+//     text: "The app uses natural language processing to understand user queries and provide accurate and relevant responses.",
+//     backgroundUrl: "assets/benefits/card-2.svg",
+//     iconUrl: benefitIcon2,
+//     imageUrl: benefitImage2,
+//     light: true,
+//     coordinatorImage: images.swaroop,
+//     coordinatorName: "Swaroop K Devarajan",
+//     contactInfo: "86396 51716",
+//     mail: "swaroopdevarajan@gmail.com",
+//   },
+//   {
+//     id: "5",
+//     title: "__pavankumar_17",
+//     text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
+//     backgroundUrl: "assets/benefits/card-5.svg",
+//     iconUrl: benefitIcon1,
+//     imageUrl: benefitImage2,
+//     coordinatorImage: images.pavan,
+//     coordinatorName: "M pavan kumar",
+//     contactInfo: "79898 83868",
+//     mail: "matapallipavan@gmail.com",
+//   },
+// ];
 
 export const coord1 = [
   {
@@ -1261,34 +1275,8 @@ export const coord1 = [
     backgroundUrl: "assets/benefits/card-5.svg",
     iconUrl: benefitIcon1,
     imageUrl: benefitImage2,
-    coordinatorImage: images.divya,
-    coordinatorName: "M. Divya sree",
-    contactInfo: "",
-    mail: "",
-  },
-  {
-    id: "5",
-    title: "",
-    text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
-    backgroundUrl: "assets/benefits/card-4.svg",
-    iconUrl: benefitIcon4,
-    imageUrl: benefitImage2,
-    light: true,
-    coordinatorImage: images.balaji,
-    coordinatorName: "J. Balaji rao",
-    contactInfo: "",
-    mail: "",
-  },
-  {
-    id: "3",
-    title: "",
-    text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
-    backgroundUrl: "assets/benefits/card-4.svg",
-    iconUrl: benefitIcon4,
-    imageUrl: benefitImage2,
-    light: true,
-    coordinatorImage: images.raahithya,
-    coordinatorName: "P. Raahithya reddy",
+    coordinatorImage: "",
+    coordinatorName: "",
     contactInfo: "",
     mail: "",
   },

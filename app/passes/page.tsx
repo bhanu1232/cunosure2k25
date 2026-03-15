@@ -92,7 +92,10 @@ const PassesPage = () => {
     try {
       const existingMobile = await checkMobileNumber(formData.mobile);
       if (existingMobile) {
-        setNotification({ type: "error", message: "This mobile number has already been registered" });
+        setNotification({
+          type: "error",
+          message: "This mobile number has already been registered",
+        });
         setLoading(false);
         return;
       }
@@ -115,9 +118,18 @@ const PassesPage = () => {
 
       setNotification({
         type: "success",
-        message: "Your application has been received. We will verify and inform you via email after successful verification. Thank you!",
+        message:
+          "Your application has been received. We will verify and inform you via email after successful verification. Thank you!",
       });
-      setFormData({ name: "", email: "", mobile: "", paymentId: "", gender: "", accommodation: "", collegeName: "" });
+      setFormData({
+        name: "",
+        email: "",
+        mobile: "",
+        paymentId: "",
+        gender: "",
+        accommodation: "",
+        collegeName: "",
+      });
     } catch (error) {
       setNotification({
         type: "error",
@@ -149,15 +161,21 @@ const PassesPage = () => {
               className="w-full max-w-md"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className={`rounded-2xl p-6 shadow-2xl ${
-                notification.type === "success"
-                  ? "bg-white border border-green-200"
-                  : "bg-white border border-red-200"
-              }`}>
+              <div
+                className={`rounded-2xl p-6 shadow-2xl ${
+                  notification.type === "success"
+                    ? "bg-white border border-green-200"
+                    : "bg-white border border-red-200"
+                }`}
+              >
                 <div className="flex items-start gap-4">
-                  <div className={`p-2.5 rounded-xl shrink-0 ${
-                    notification.type === "success" ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"
-                  }`}>
+                  <div
+                    className={`p-2.5 rounded-xl shrink-0 ${
+                      notification.type === "success"
+                        ? "bg-green-100 text-green-600"
+                        : "bg-red-100 text-red-600"
+                    }`}
+                  >
                     {notification.type === "success" ? (
                       <CheckCircle2 className="w-5 h-5" />
                     ) : (
@@ -165,14 +183,19 @@ const PassesPage = () => {
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className={`text-base font-bold mb-1 ${
-                      notification.type === "success" ? "text-green-700" : "text-red-700"
-                    }`}>
+                    <h3
+                      className={`text-base font-bold mb-1 ${
+                        notification.type === "success" ? "text-green-700" : "text-red-700"
+                      }`}
+                    >
                       {notification.type === "success" ? "Registration Received!" : "Error"}
                     </h3>
                     <p className="text-gray-600 text-sm leading-relaxed">{notification.message}</p>
                   </div>
-                  <button onClick={() => setNotification(null)} className="text-gray-400 hover:text-gray-600 transition-colors shrink-0">
+                  <button
+                    onClick={() => setNotification(null)}
+                    className="text-gray-400 hover:text-gray-600 transition-colors shrink-0"
+                  >
                     <X className="w-4 h-4" />
                   </button>
                 </div>
@@ -212,7 +235,6 @@ const PassesPage = () => {
 
       {/* ── Page Content ────────────────────────────── */}
       <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-24 sm:pt-28">
-
         {/* Header */}
         <div className="mb-8 sm:mb-10">
           <div className="flex items-center gap-2.5 mb-3">
@@ -221,7 +243,9 @@ const PassesPage = () => {
               Cynosure 2026
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-white mb-2">Register</h1>
+          <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-white mb-2">
+            Register
+          </h1>
           <p className="text-sm sm:text-base text-white/50">
             Secure your pass for Cynosure 2026. Fill in the details below after completing payment.
           </p>
@@ -230,7 +254,9 @@ const PassesPage = () => {
         {/* Fee Card */}
         <div className="flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white/[0.04] mb-6">
           <div>
-            <p className="text-xs uppercase tracking-widest text-white/35 font-medium mb-0.5">Registration Fee</p>
+            <p className="text-xs uppercase tracking-widest text-white/35 font-medium mb-0.5">
+              Registration Fee
+            </p>
             <p className="text-sm text-white/60">Base fee — includes all events access</p>
           </div>
           <p className="text-2xl sm:text-3xl font-black text-white">₹{DEFAULT_AMOUNT}</p>
@@ -238,7 +264,9 @@ const PassesPage = () => {
 
         {/* Pass Benefits */}
         <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.03] mb-6">
-          <p className="text-xs uppercase tracking-widest text-white/35 font-medium mb-4">What's Included</p>
+          <p className="text-xs uppercase tracking-widest text-white/35 font-medium mb-4">
+            What's Included
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {[
               "Full access to all technical & non-technical events",
@@ -256,7 +284,9 @@ const PassesPage = () => {
 
         {/* Form Card */}
         <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.03]">
-          <p className="text-xs uppercase tracking-widest text-white/35 font-medium mb-5">Your Details</p>
+          <p className="text-xs uppercase tracking-widest text-white/35 font-medium mb-5">
+            Your Details
+          </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Name + College */}
@@ -326,11 +356,13 @@ const PassesPage = () => {
                         onChange={() => setFormData((p) => ({ ...p, gender: g }))}
                         className="hidden"
                       />
-                      <div className={`text-center py-2.5 rounded-xl text-sm font-medium transition-all capitalize ${
-                        formData.gender === g
-                          ? "bg-white text-black"
-                          : "bg-white/[0.05] text-white/50 hover:bg-white/10"
-                      }`}>
+                      <div
+                        className={`text-center py-2.5 rounded-xl text-sm font-medium transition-all capitalize ${
+                          formData.gender === g
+                            ? "bg-white text-black"
+                            : "bg-white/[0.05] text-white/50 hover:bg-white/10"
+                        }`}
+                      >
                         {g}
                       </div>
                     </label>
@@ -350,30 +382,36 @@ const PassesPage = () => {
                         onChange={() => setFormData((p) => ({ ...p, accommodation: opt }))}
                         className="hidden"
                       />
-                      <div className={`text-center py-2.5 rounded-xl text-sm font-medium transition-all capitalize ${
-                        formData.accommodation === opt
-                          ? "bg-white text-black"
-                          : "bg-white/[0.05] text-white/50 hover:bg-white/10"
-                      }`}>
+                      <div
+                        className={`text-center py-2.5 rounded-xl text-sm font-medium transition-all capitalize ${
+                          formData.accommodation === opt
+                            ? "bg-white text-black"
+                            : "bg-white/[0.05] text-white/50 hover:bg-white/10"
+                        }`}
+                      >
                         {opt}
                       </div>
                     </label>
                   ))}
                 </div>
                 {formData.accommodation === "yes" && (
-                  <p className="text-[11px] text-white/35 mt-1.5">* Accommodation fee collected during check-in</p>
+                  <p className="text-[11px] text-white/35 mt-1.5">
+                    * Accommodation fee collected during check-in
+                  </p>
                 )}
               </FormField>
             </div>
 
             {/* Payment Section */}
             <div className="p-4 sm:p-5 rounded-xl bg-white/[0.03]">
-              <p className="text-xs uppercase tracking-widest text-white/35 font-medium mb-4">Payment</p>
+              <p className="text-xs uppercase tracking-widest text-white/35 font-medium mb-4">
+                Payment
+              </p>
               <div className="flex flex-col sm:flex-row gap-5 items-start">
                 {/* QR */}
                 <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-xl overflow-hidden bg-white p-2 shrink-0 mx-auto sm:mx-0">
                   <Image
-                    src="/pay_qr.jpeg"
+                    src="/cyno2026.jpeg"
                     alt="Payment QR Code"
                     width={200}
                     height={200}
@@ -382,13 +420,20 @@ const PassesPage = () => {
                 </div>
                 {/* Instructions */}
                 <div className="flex-1 space-y-3">
-                  <p className="text-sm font-semibold text-white">₹{DEFAULT_AMOUNT} — Payment Instructions</p>
+                  <p className="text-sm font-semibold text-white">
+                    ₹{DEFAULT_AMOUNT} — Payment Instructions
+                  </p>
                   <div className="space-y-2">
                     {[
                       "Scan the QR code using any UPI app",
-                      <>Or pay via PhonePe: <span className="text-white font-semibold">7981269983</span></>,
+                      <>
+                        Or pay via PhonePe:{" "}
+                        <span className="text-white font-semibold">8978227231</span>
+                      </>,
                       "Save the payment UTR/ID after paying",
-                      <>For failures, WhatsApp: <span className="text-white font-semibold">9441005225</span></>,
+                      <>
+                        For failures, WhatsApp: <span className="text-white font-semibold"></span>
+                      </>,
                     ].map((step, i) => (
                       <div key={i} className="flex items-start gap-2">
                         <span className="w-4 h-4 rounded-full bg-white/[0.08] text-[10px] font-bold text-white/50 flex items-center justify-center shrink-0 mt-0.5">
@@ -432,7 +477,13 @@ const PassesPage = () => {
         {/* Contact Footer */}
         <div className="mt-8 p-4 sm:p-5 rounded-2xl text-center">
           <p className="text-sm text-white/40">
-            For registration inquiries: <a href="mailto:svucyno@gmail.com" className="text-white/70 hover:text-white transition-colors">svucyno@gmail.com</a>
+            For registration inquiries:{" "}
+            <a
+              href="mailto:svucyno@gmail.com"
+              className="text-white/70 hover:text-white transition-colors"
+            >
+              svucyno@gmail.com
+            </a>
           </p>
         </div>
       </div>
@@ -442,15 +493,19 @@ const PassesPage = () => {
           width: 100%;
           padding: 0.625rem 0.875rem;
           border-radius: 0.75rem;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.08);
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
           color: white;
           font-size: 0.875rem;
           transition: border-color 0.2s;
           outline: none;
         }
-        .form-input::placeholder { color: rgba(255,255,255,0.25); }
-        .form-input:focus { border-color: rgba(255,255,255,0.3); }
+        .form-input::placeholder {
+          color: rgba(255, 255, 255, 0.25);
+        }
+        .form-input:focus {
+          border-color: rgba(255, 255, 255, 0.3);
+        }
       `}</style>
     </main>
   );

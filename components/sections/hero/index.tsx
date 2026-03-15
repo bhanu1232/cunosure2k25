@@ -27,7 +27,7 @@ const Hero = () => {
 
   useEffect(() => {
     setMounted(true);
-    const eventDate = new Date("2026-03-27T07:00:00");
+    const eventDate = new Date("2026-04-05T07:00:00");
 
     const calculateTimeLeft = () => {
       const difference = +eventDate - +new Date();
@@ -174,7 +174,7 @@ const Hero = () => {
           >
             {/* Primary */}
             <Link
-              href="/"
+              href="/passes"
               className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-sm tracking-widest uppercase overflow-hidden transition-all duration-300"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2] transition-opacity duration-300 group-hover:opacity-90" />
@@ -186,7 +186,7 @@ const Hero = () => {
                 height={18}
                 className="relative z-10"
               />
-              <span className="relative z-10 text-white">opens soon</span>
+              <span className="relative z-10 text-white">Register Now</span>
               <svg
                 className="relative z-10 w-4 h-4 text-white/70 group-hover:translate-x-1 transition-transform duration-200"
                 fill="none"
