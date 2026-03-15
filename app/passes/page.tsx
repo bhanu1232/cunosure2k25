@@ -141,7 +141,7 @@ const PassesPage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[#09090f] text-white pb-16 sm:pb-24">
+    <main className="min-h-screen bg-slate-950 pb-16 text-slate-100 sm:pb-24">
       <Navbar />
 
       {/* ── Notification Modal ──────────────────────── */}
@@ -151,7 +151,7 @@ const PassesPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
             onClick={() => setNotification(null)}
           >
             <motion.div
@@ -164,39 +164,39 @@ const PassesPage = () => {
               <div
                 className={`rounded-2xl p-6 shadow-2xl ${
                   notification.type === "success"
-                    ? "bg-white border border-green-200"
-                    : "bg-white border border-red-200"
+                    ? "border border-green-200 bg-white"
+                    : "border border-red-200 bg-white"
                 }`}
               >
                 <div className="flex items-start gap-4">
                   <div
-                    className={`p-2.5 rounded-xl shrink-0 ${
+                    className={`shrink-0 rounded-xl p-2.5 ${
                       notification.type === "success"
                         ? "bg-green-100 text-green-600"
                         : "bg-red-100 text-red-600"
                     }`}
                   >
                     {notification.type === "success" ? (
-                      <CheckCircle2 className="w-5 h-5" />
+                      <CheckCircle2 className="size-5" />
                     ) : (
-                      <AlertCircle className="w-5 h-5" />
+                      <AlertCircle className="size-5" />
                     )}
                   </div>
-                  <div className="flex-1 min-w-0">
+                  <div className="min-w-0 flex-1">
                     <h3
-                      className={`text-base font-bold mb-1 ${
+                      className={`mb-1 text-base font-bold ${
                         notification.type === "success" ? "text-green-700" : "text-red-700"
                       }`}
                     >
                       {notification.type === "success" ? "Registration Received!" : "Error"}
                     </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{notification.message}</p>
+                    <p className="text-sm leading-relaxed text-gray-600">{notification.message}</p>
                   </div>
                   <button
                     onClick={() => setNotification(null)}
-                    className="text-gray-400 hover:text-gray-600 transition-colors shrink-0"
+                    className="shrink-0 text-gray-400 transition-colors hover:text-gray-600"
                   >
-                    <X className="w-4 h-4" />
+                    <X className="size-4" />
                   </button>
                 </div>
               </div>
@@ -212,7 +212,7 @@ const PassesPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -220,12 +220,12 @@ const PassesPage = () => {
               exit={{ opacity: 0, scale: 0.95 }}
               className="w-full max-w-sm"
             >
-              <div className="bg-[#131318] rounded-2xl p-8 text-center shadow-2xl">
-                <div className="relative w-14 h-14 mx-auto mb-5">
+              <div className="rounded-2xl bg-[#131318] p-8 text-center shadow-2xl">
+                <div className="relative mx-auto mb-5 size-14">
                   <div className="absolute inset-0 rounded-full border-4 border-white/10" />
-                  <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-white animate-spin" />
+                  <div className="absolute inset-0 animate-spin rounded-full border-4 border-transparent border-t-white" />
                 </div>
-                <h3 className="text-base font-semibold text-white mb-1">Processing Registration</h3>
+                <h3 className="mb-1 text-base font-semibold text-white">Processing Registration</h3>
                 <p className="text-sm text-white/50">Please wait while we submit your details…</p>
               </div>
             </motion.div>
@@ -234,40 +234,40 @@ const PassesPage = () => {
       </AnimatePresence>
 
       {/* ── Page Content ────────────────────────────── */}
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-24 sm:pt-28">
+      <div className="mx-auto max-w-2xl px-4 pt-24 sm:px-6 sm:pt-28">
         {/* Header */}
         <div className="mb-8 sm:mb-10">
-          <div className="flex items-center gap-2.5 mb-3">
-            <div className="w-1 h-5 bg-white rounded-full" />
-            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
+          <div className="mb-3 flex items-center gap-2.5">
+            <div className="h-5 w-1 rounded-full bg-white" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 sm:text-xs">
               Cynosure 2026
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-white mb-2">
+          <h1 className="mb-2 text-3xl font-black tracking-tight text-white sm:text-4xl">
             Register
           </h1>
-          <p className="text-sm sm:text-base text-white/50">
+          <p className="text-sm text-white/50 sm:text-base">
             Secure your pass for Cynosure 2026. Fill in the details below after completing payment.
           </p>
         </div>
 
         {/* Fee Card */}
-        <div className="flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white/[0.04] mb-6">
+        <div className="mb-6 flex items-center justify-between rounded-2xl border border-slate-700 bg-slate-800/90 p-4 shadow-lg sm:p-5">
           <div>
-            <p className="text-xs uppercase tracking-widest text-white/35 font-medium mb-0.5">
+            <p className="mb-0.5 text-xs font-medium uppercase tracking-widest text-slate-300">
               Registration Fee
             </p>
-            <p className="text-sm text-white/60">Base fee — includes all events access</p>
+            <p className="text-sm text-slate-300">Base fee — includes all events access</p>
           </div>
-          <p className="text-2xl sm:text-3xl font-black text-white">₹{DEFAULT_AMOUNT}</p>
+          <p className="text-2xl font-black text-cyan-300 sm:text-3xl">₹{DEFAULT_AMOUNT}</p>
         </div>
 
         {/* Pass Benefits */}
-        <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.03] mb-6">
-          <p className="text-xs uppercase tracking-widest text-white/35 font-medium mb-4">
-            What's Included
+        <div className="mb-6 rounded-2xl border border-slate-700 bg-slate-800/90 p-5 sm:p-6">
+          <p className="mb-4 text-xs font-medium uppercase tracking-widest text-slate-300">
+            What Included
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
             {[
               "Full access to all technical & non-technical events",
               "Access to keynote sessions & guest lectures",
@@ -275,22 +275,22 @@ const PassesPage = () => {
               "Networking with industry experts",
             ].map((b) => (
               <div key={b} className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-white/40 mt-0.5 shrink-0" />
-                <p className="text-xs sm:text-sm text-white/55 leading-snug">{b}</p>
+                <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-white/40" />
+                <p className="text-xs leading-snug text-white/55 sm:text-sm">{b}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Form Card */}
-        <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.03]">
-          <p className="text-xs uppercase tracking-widest text-white/35 font-medium mb-5">
+        <div className="rounded-2xl border border-slate-700 bg-slate-900/95 p-5 shadow-xl sm:p-6">
+          <p className="mb-5 text-xs font-medium uppercase tracking-widest text-slate-300">
             Your Details
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Name + College */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <FormField label="Full Name">
                 <input
                   type="text"
@@ -316,7 +316,7 @@ const PassesPage = () => {
             </div>
 
             {/* Email + Mobile */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <FormField label="Email">
                 <input
                   type="email"
@@ -343,7 +343,7 @@ const PassesPage = () => {
             </div>
 
             {/* Gender + Accommodation */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <FormField label="Gender">
                 <div className="flex gap-2">
                   {(["male", "female"] as const).map((g) => (
@@ -357,10 +357,10 @@ const PassesPage = () => {
                         className="hidden"
                       />
                       <div
-                        className={`text-center py-2.5 rounded-xl text-sm font-medium transition-all capitalize ${
+                        className={`rounded-xl py-2.5 text-center text-sm font-medium capitalize transition-all ${
                           formData.gender === g
                             ? "bg-white text-black"
-                            : "bg-white/[0.05] text-white/50 hover:bg-white/10"
+                            : "bg-slate-700 text-slate-200 hover:bg-slate-600"
                         }`}
                       >
                         {g}
@@ -383,10 +383,10 @@ const PassesPage = () => {
                         className="hidden"
                       />
                       <div
-                        className={`text-center py-2.5 rounded-xl text-sm font-medium transition-all capitalize ${
+                        className={`rounded-xl py-2.5 text-center text-sm font-medium capitalize transition-all ${
                           formData.accommodation === opt
                             ? "bg-white text-black"
-                            : "bg-white/[0.05] text-white/50 hover:bg-white/10"
+                            : "bg-slate-700 text-slate-200 hover:bg-slate-600"
                         }`}
                       >
                         {opt}
@@ -395,7 +395,7 @@ const PassesPage = () => {
                   ))}
                 </div>
                 {formData.accommodation === "yes" && (
-                  <p className="text-[11px] text-white/35 mt-1.5">
+                  <p className="mt-1.5 text-[11px] text-white/35">
                     * Accommodation fee collected during check-in
                   </p>
                 )}
@@ -403,19 +403,19 @@ const PassesPage = () => {
             </div>
 
             {/* Payment Section */}
-            <div className="p-4 sm:p-5 rounded-xl bg-white/[0.03]">
-              <p className="text-xs uppercase tracking-widest text-white/35 font-medium mb-4">
+            <div className="rounded-xl bg-white/[0.03] p-4 sm:p-5">
+              <p className="mb-4 text-xs font-medium uppercase tracking-widest text-white/35">
                 Payment
               </p>
-              <div className="flex flex-col sm:flex-row gap-5 items-start">
+              <div className="flex flex-col items-start gap-5 sm:flex-row">
                 {/* QR */}
-                <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-xl overflow-hidden bg-white p-2 shrink-0 mx-auto sm:mx-0">
+                <div className="mx-auto size-36 shrink-0 overflow-hidden rounded-xl bg-white p-2 sm:mx-0 sm:size-44">
                   <Image
                     src="/cyno2026.jpeg"
                     alt="Payment QR Code"
                     width={200}
                     height={200}
-                    className="w-full h-full object-contain"
+                    className="size-full object-contain"
                   />
                 </div>
                 {/* Instructions */}
@@ -428,22 +428,22 @@ const PassesPage = () => {
                       "Scan the QR code using any UPI app",
                       <>
                         Or pay via PhonePe:{" "}
-                        <span className="text-white font-semibold">8978227231</span>
+                        <span className="font-semibold text-white">8978227231</span>
                       </>,
                       "Save the payment UTR/ID after paying",
                       <>
-                        For failures, WhatsApp: <span className="text-white font-semibold"></span>
+                        For failures, WhatsApp: <span className="font-semibold text-white"></span>
                       </>,
                     ].map((step, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <span className="w-4 h-4 rounded-full bg-white/[0.08] text-[10px] font-bold text-white/50 flex items-center justify-center shrink-0 mt-0.5">
+                        <span className="mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full bg-white/[0.08] text-[10px] font-bold text-white/50">
                           {i + 1}
                         </span>
-                        <p className="text-xs sm:text-sm text-white/50 leading-snug">{step}</p>
+                        <p className="text-xs leading-snug text-white/50 sm:text-sm">{step}</p>
                       </div>
                     ))}
                   </div>
-                  <p className="text-[11px] text-white/35 pt-1">
+                  <p className="pt-1 text-[11px] text-white/35">
                     Enter the UTR/Payment ID below after completing payment
                   </p>
                 </div>
@@ -467,7 +467,7 @@ const PassesPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 rounded-xl bg-white text-black text-sm font-bold hover:bg-white/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed mt-2"
+              className="mt-2 w-full rounded-xl bg-white py-3.5 text-sm font-bold text-black transition-colors hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-40"
             >
               {loading ? "Processing…" : "Complete Registration →"}
             </button>
@@ -475,12 +475,12 @@ const PassesPage = () => {
         </div>
 
         {/* Contact Footer */}
-        <div className="mt-8 p-4 sm:p-5 rounded-2xl text-center">
+        <div className="mt-8 rounded-2xl p-4 text-center sm:p-5">
           <p className="text-sm text-white/40">
             For registration inquiries:{" "}
             <a
               href="mailto:svucyno@gmail.com"
-              className="text-white/70 hover:text-white transition-colors"
+              className="text-white/70 transition-colors hover:text-white"
             >
               svucyno@gmail.com
             </a>
@@ -493,18 +493,22 @@ const PassesPage = () => {
           width: 100%;
           padding: 0.625rem 0.875rem;
           border-radius: 0.75rem;
-          background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          color: white;
+          background: #fff;
+          border: 1px solid #cbd5e1;
+          color: #0f172a;
           font-size: 0.875rem;
-          transition: border-color 0.2s;
+          transition:
+            border-color 0.2s,
+            box-shadow 0.2s;
           outline: none;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
         }
         .form-input::placeholder {
-          color: rgba(255, 255, 255, 0.25);
+          color: #94a3b8;
         }
         .form-input:focus {
-          border-color: rgba(255, 255, 255, 0.3);
+          border-color: #7dd3fc;
+          box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.2);
         }
       `}</style>
     </main>
@@ -514,7 +518,7 @@ const PassesPage = () => {
 function FormField({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="block text-xs text-white/40 mb-1.5 font-medium">{label}</label>
+      <label className="mb-1.5 block text-xs font-medium text-white/40">{label}</label>
       {children}
     </div>
   );
