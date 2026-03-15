@@ -91,16 +91,7 @@ const {
   disc02,
   chromecast,
   sliders04,
-  discord,
-  figma,
-  framer,
-  notion,
-  photoshop,
-  protopie,
-  raindrop,
-  slack,
   roadmap1,
-  roadmap3,
   // roadmap4,
   notification2,
   notification3,
@@ -292,7 +283,7 @@ export const benefits = [
   {
     id: "2",
     type: "tech",
-    title: "Query Crackers",
+    title: "Query Clash",
     text: "Solve complex database queries and optimize solutions in this unique SQL challenge.",
     backgroundUrl: "assets/benefits/card-3.svg",
     iconUrl: benefitIcon3,
@@ -358,45 +349,171 @@ export interface Event {
 
 export const events = [
   {
-    id: "6",
+    id: "0",
     type: "tech",
-    title: "CodeFlix Marathon",
-    text: "A 'Code Marathon' is a challenging coding competition where participants must solve a series of complex programming problems within a limited timeframe. This competition tests their coding expertise, logical thinking, ability to work under pressure, strategy, and time management skills. ",
-    backgroundUrl: "assets/event/marathon.avif",
-    iconUrl: benefitIcon3,
+    title: "Hackathon",
+    text: "Calling all tech enthusiasts! Gather your squad of four for an exhilarating journey of innovation and problem-solving at our Hackathon 2026. Dive deep into challenges, showcasing your creativity and tech prowess. Crack the code, unveil solutions, and stand out amidst the tech-savvy crowd. Develop a working prototype to earn extra points and push your limits. It's not just about winning; it's about the thrill of coding for the future! Are you ready to unleash your genius?",
+    backgroundUrl: "assets/event/hack.avif",
+    iconUrl: benefitIcon1,
     imageUrl: benefitImage2,
     prize: "",
-    date: "27 march",
-    venue: "CSE Lab 1",
-    teamSize: "Individual",
-    fullDescription: `Push your limits in our 12-hour Code Marathon!
-
-    🏃‍♂️ Marathon Format:
-    - 12-hour coding challenge
-    - Multiple problem sets
-    - Progressive difficulty
-    - Checkpoint submissions
+    date: "",
+    venue: "203",
+    teamSize: "2-4 members",
+    spot: "No Spot Registration",
+    fullDescription: `Welcome to Hackathon, presented by Cynosure!
+•	Teams select a problem statement and present a solution within the allocated time.
+•	Problem statements will be revealed on-site for teams to tackle.
+•	AI tools are allowed, and having a prototype adds extra points.
+•	Mentors are available for guidance.
+•	Ensure at least one laptop per team and strictly follow the timelines.
+Reporting Time: 8:30 AM, March 27th.
+For further enquires, please contact the event coordinators
+Good luck, and may the best team win!
     
-    🎯 Challenge Areas:
-    - Algorithm Design
-    - Problem Solving
-    - Code Optimization
-    - Debug Challenges`,
+    `,
     rules: [
-      "Round 1: Basic Data Structures and Algorithms",
-      "Participants will be assessed on their fundamental understanding of data structures and algorithms, including arrays, linked lists, stacks, queues, trees, and algorithmic concepts.",
-      "Round 2: Live Online Coding Challenge",
-      "Participants must solve complex problems within a limited timeframe. This round tests their coding skills, strategy, and time management. Participants will be ranked based on their performance.",
+      `Welcome to Hackathon, presented by Cynosure!
+•	Teams select a problem statement and present a solution within the allocated time.
+•	Problem statements will be revealed on-site for teams to tackle.
+•	AI tools are allowed, and having a prototype adds extra points.
+•	Mentors are available for guidance.
+•	Ensure at least one laptop per team and strictly follow the timelines.
+Reporting Time: 8:30 AM, March 27th.
+For further enquires, please contact the event coordinators
+Good luck, and may the best team win!`,
     ],
-    requirements: ["Strong coding background", "Laptop with charger", "Development environment"],
+    requirements: [
+      "Laptop with charger",
+      "Valid college ID",
+      "Development tools",
+      "GitHub account",
+      "Basic coding knowledge",
+    ],
     coordinators: [
       {},
       // {
-      //   name: "K Gayathri",
+      //   name: "G S S Nikhil Chowdary",
+      //   phone: "9849009047",
+      // },
+      // {
+      //   name: "N Chiranjeevi",
+      //   phone: "9705959253",
+      // },
+      // {
+      //   name: "S Chaitanya",
+      //   phone: "9154900357",
+      // },
+    ],
+  },
+  {
+    id: "1",
+    type: "tech",
+    title: "Tech Quiz",
+    text: "Join us for the Event Tech Quiz and unleash your tech prowess. Show off your lightning-fast reflexes, deep understanding of the subject matter, and quick thinking to claim the prestigious title of the event's champion. Dare to participate and be prepared for an unforgettable tech quiz experience.Our quiz features a seamless integration of technology. Questions are displayed on the monitor, while participants answer them using their personal mobile devices. This tech-savvy approach ensures a smooth and interactive experience for all participants. Throughout the quiz, a dynamic leaderboard is displayed for every question. The fastest participant with the correct answer takes the top spot. The fastest and most accurate contender will emerge as the ultimate winner.",
+    backgroundUrl: "assets/event/quiz.avif",
+    iconUrl: benefitIcon2,
+    imageUrl: benefitImage2,
+    prize: "",
+    date: "",
+    venue: "Seminar Hall",
+    teamSize: "Individual",
+    fullDescription: `Challenge your technical knowledge in our comprehensive Tech Quiz!
+
+    📚 Quiz Format:
+    - Multiple rounds
+    - Technical MCQs
+    - Rapid fire round
+    - Problem-solving challenges
+    
+    🎯 Topics Covered:
+    - Programming Concepts
+    - Latest Tech Trends
+    - Computer Science Fundamentals
+    - Tech History
+    - Industry Knowledge`,
+    rules: [
+      "Round 1:",
+      "Eligibility: Registered members only. Ensure your registration status is confirmed before participating.30 questions in 30 minutes (45 seconds per question). Manage your time effectively to answer each question within the time limit.Each question has four options, with one correct answer. Read each question carefully before selecting your answer.No negative marking for incorrect answers. Feel free to guess if you're unsure, as there's no penalty for wrong answers.Top 5 performers proceed to Round 2. Aim to be among the top scorers to advance to the next round.",
+      "Round 2:",
+      "Format: Answer or pass. Choose to answer or pass based on your confidence level in each question.10 points for correct answer, -5 points for wrong answer, and 5 points for passing. Strategize your responses wisely to maximize points.3 sets with 5 questions each. Prepare to tackle different sets of questions, each testing various aspects of your knowledge and skills.Cumulative points determine the top 2 winners. Consistency is key; strive to accumulate the highest total points across all sets.",
+    ],
+    requirements: [
+      "College ID",
+      "Registration confirmation",
+      "Basic tech knowledge",
+      "Punctuality",
+    ],
+    coordinators: [
+      {},
+      // {
+      //   name: "M Akash",
+      //   phone: "9849535920",
+      // },
+      // {
+      //   name: "Harini Modugula",
+      //   phone: "8919032441",
+      // },
+      // {
+      //   name: "N Vishnu Priya",
       //   phone: "",
       // },
     ],
   },
+  {
+    id: "2",
+    type: "tech",
+    title: "Query Clash",
+    text: "Embark on a captivating exploration of the dynamic world of querying at our exclusive Query Crackers Symposium..this is an event meticulously crafted for students, professionals, and database enthusiasts eager to sharpen their skills in the art of formulating and solving queries.Query cracker Challenge invites you to unravel the complexity of database queries and compete for exciting prizes! This thrilling two-round event is tailored for those who love the intricacies of Database Management Systems (DBMS) and have a flair for SQL.Don't miss the chance to showcase your database expertise and compete for cash prizes in this ultimate SQL showdown!Join us at the Query Crackers Symposium and unravel the potential within your data!.",
+    backgroundUrl: "assets/event/query.avif",
+    iconUrl: benefitIcon3,
+    imageUrl: benefitImage2,
+    prize: "",
+    date: "",
+    venue: "CSE Lab 3",
+    teamSize: "Individual",
+    fullDescription: `Test your database skills in The Query Games!
+
+    💻 Challenge Format:
+    - SQL query optimization
+    - Database design challenges
+    - Performance tuning
+    - Real-world scenarios
+    
+    🎯 Focus Areas:
+    - SQL Query Writing
+    - Database Optimization
+    - Schema Design
+    - Performance Analysis`,
+    rules: [
+      " Round 1:",
+      "Participants face MCQs, True or False, and Fill-up questions to test their understanding of DBMS.Manage time efficiently within the 25-minute limit to answer all questions thoroughly.Challenging multiple-choice questions assess knowledge and application of DBMS concepts.Top 30 scorers advance, emphasizing the importance of achieving high scores to progress.Ensure comprehensive preparation to tackle varied question types effectively.",
+      "Round 2:",
+      "Solve SQL-based problems with provided tables to demonstrate practical SQL skills.Apply SQL knowledge swiftly and accurately within the 30-minute time frame.Craft precise queries based on given SQL-based questions and relevant tables.Judges evaluate solutions based on accuracy, efficiency, and creativity, showcasing SQL prowess.Strive for accuracy, efficiency, and creativity in crafting SQL queries to impress judges.",
+    ],
+    requirements: [
+      "SQL knowledge",
+      "Database concepts",
+      "Problem-solving skills",
+      "Laptop required",
+    ],
+    coordinators: [
+      {},
+      // {
+      //   name: "S Roopa sree",
+      //   phone: "8639932286",
+      // },
+      // {
+      //   name: "M Raghuram",
+      //   phone: "6305756962",
+      // },
+      // {
+      //   name: "Uma Maheswari",
+      //   phone: "8978128841",
+      // },
+    ],
+  },
+
   {
     id: "4",
     type: "tech",
@@ -406,7 +523,7 @@ export const events = [
     iconUrl: benefitIcon1,
     imageUrl: benefitImage2,
     prize: "",
-    date: "27 march",
+    date: "",
     venue: "CSE Lab 2",
     teamSize: "Individual",
     fullDescription: `Compete in our high-energy competitive programming contest!
@@ -461,69 +578,56 @@ export const events = [
   },
 
   {
-    id: "1",
+    id: "6",
     type: "tech",
-    title: "Tech Quiz",
-    text: "Join us for the Event Tech Quiz and unleash your tech prowess. Show off your lightning-fast reflexes, deep understanding of the subject matter, and quick thinking to claim the prestigious title of the event's champion. Dare to participate and be prepared for an unforgettable tech quiz experience.Our quiz features a seamless integration of technology. Questions are displayed on the monitor, while participants answer them using their personal mobile devices. This tech-savvy approach ensures a smooth and interactive experience for all participants. Throughout the quiz, a dynamic leaderboard is displayed for every question. The fastest participant with the correct answer takes the top spot. The fastest and most accurate contender will emerge as the ultimate winner.",
-    backgroundUrl: "assets/event/quiz.avif",
-    iconUrl: benefitIcon2,
+    title: "Byte Sprint",
+    text: "A 'Code Marathon' is a challenging coding competition where participants must solve a series of complex programming problems within a limited timeframe. This competition tests their coding expertise, logical thinking, ability to work under pressure, strategy, and time management skills. ",
+    backgroundUrl: "assets/event/marathon.avif",
+    iconUrl: benefitIcon3,
     imageUrl: benefitImage2,
     prize: "",
-    date: "27 march",
-    venue: "Seminar Hall",
+    date: "",
+    venue: "CSE Lab 1",
     teamSize: "Individual",
-    fullDescription: `Challenge your technical knowledge in our comprehensive Tech Quiz!
+    fullDescription: `Push your limits in our 12-hour Code Marathon!
 
-    📚 Quiz Format:
-    - Multiple rounds
-    - Technical MCQs
-    - Rapid fire round
-    - Problem-solving challenges
+    🏃‍♂️ Marathon Format:
+    - 12-hour coding challenge
+    - Multiple problem sets
+    - Progressive difficulty
+    - Checkpoint submissions
     
-    🎯 Topics Covered:
-    - Programming Concepts
-    - Latest Tech Trends
-    - Computer Science Fundamentals
-    - Tech History
-    - Industry Knowledge`,
+    🎯 Challenge Areas:
+    - Algorithm Design
+    - Problem Solving
+    - Code Optimization
+    - Debug Challenges`,
     rules: [
-      "Round 1:",
-      "Eligibility: Registered members only. Ensure your registration status is confirmed before participating.30 questions in 30 minutes (45 seconds per question). Manage your time effectively to answer each question within the time limit.Each question has four options, with one correct answer. Read each question carefully before selecting your answer.No negative marking for incorrect answers. Feel free to guess if you're unsure, as there's no penalty for wrong answers.Top 5 performers proceed to Round 2. Aim to be among the top scorers to advance to the next round.",
-      "Round 2:",
-      "Format: Answer or pass. Choose to answer or pass based on your confidence level in each question.10 points for correct answer, -5 points for wrong answer, and 5 points for passing. Strategize your responses wisely to maximize points.3 sets with 5 questions each. Prepare to tackle different sets of questions, each testing various aspects of your knowledge and skills.Cumulative points determine the top 2 winners. Consistency is key; strive to accumulate the highest total points across all sets.",
+      "Round 1: Basic Data Structures and Algorithms",
+      "Participants will be assessed on their fundamental understanding of data structures and algorithms, including arrays, linked lists, stacks, queues, trees, and algorithmic concepts.",
+      "Round 2: Live Online Coding Challenge",
+      "Participants must solve complex problems within a limited timeframe. This round tests their coding skills, strategy, and time management. Participants will be ranked based on their performance.",
     ],
-    requirements: [
-      "College ID",
-      "Registration confirmation",
-      "Basic tech knowledge",
-      "Punctuality",
-    ],
+    requirements: ["Strong coding background", "Laptop with charger", "Development environment"],
     coordinators: [
       {},
       // {
-      //   name: "M Akash",
-      //   phone: "9849535920",
-      // },
-      // {
-      //   name: "Harini Modugula",
-      //   phone: "8919032441",
-      // },
-      // {
-      //   name: "N Vishnu Priya",
+      //   name: "K Gayathri",
       //   phone: "",
       // },
     ],
   },
+
   {
     id: "5",
     type: "tech",
-    title: "Ideathon ",
+    title: "Spark Tank ",
     text: "Unleash your creativity and problem-solving skills in this exciting Ideathon! Participants will brainstorm and present innovative ideas to solve real-world challenges. Whether it's a tech solution, social impact initiative, or business innovation, originality is key. Work individually or in teams to develop your concept. Impress the judges with feasibility, impact, and presentation. Turn your ideas into groundbreaking solutions!.",
     backgroundUrl: "assets/event/idea.avif",
     iconUrl: benefitIcon2,
     imageUrl: benefitImage2,
     prize: "",
-    date: "27 march",
+    date: "",
     venue: "Conference Hall",
     teamSize: "2-3 members",
     spot: "No Spot Registration",
@@ -571,59 +675,7 @@ export const events = [
       // },
     ],
   },
-  {
-    id: "2",
-    type: "tech",
-    title: "The Query Games",
-    text: "Embark on a captivating exploration of the dynamic world of querying at our exclusive Query Crackers Symposium..this is an event meticulously crafted for students, professionals, and database enthusiasts eager to sharpen their skills in the art of formulating and solving queries.Query cracker Challenge invites you to unravel the complexity of database queries and compete for exciting prizes! This thrilling two-round event is tailored for those who love the intricacies of Database Management Systems (DBMS) and have a flair for SQL.Don't miss the chance to showcase your database expertise and compete for cash prizes in this ultimate SQL showdown!Join us at the Query Crackers Symposium and unravel the potential within your data!.",
-    backgroundUrl: "assets/event/query.avif",
-    iconUrl: benefitIcon3,
-    imageUrl: benefitImage2,
-    prize: "",
-    date: "27 march",
-    venue: "CSE Lab 3",
-    teamSize: "Individual",
-    fullDescription: `Test your database skills in The Query Games!
 
-    💻 Challenge Format:
-    - SQL query optimization
-    - Database design challenges
-    - Performance tuning
-    - Real-world scenarios
-    
-    🎯 Focus Areas:
-    - SQL Query Writing
-    - Database Optimization
-    - Schema Design
-    - Performance Analysis`,
-    rules: [
-      " Round 1:",
-      "Participants face MCQs, True or False, and Fill-up questions to test their understanding of DBMS.Manage time efficiently within the 25-minute limit to answer all questions thoroughly.Challenging multiple-choice questions assess knowledge and application of DBMS concepts.Top 30 scorers advance, emphasizing the importance of achieving high scores to progress.Ensure comprehensive preparation to tackle varied question types effectively.",
-      "Round 2:",
-      "Solve SQL-based problems with provided tables to demonstrate practical SQL skills.Apply SQL knowledge swiftly and accurately within the 30-minute time frame.Craft precise queries based on given SQL-based questions and relevant tables.Judges evaluate solutions based on accuracy, efficiency, and creativity, showcasing SQL prowess.Strive for accuracy, efficiency, and creativity in crafting SQL queries to impress judges.",
-    ],
-    requirements: [
-      "SQL knowledge",
-      "Database concepts",
-      "Problem-solving skills",
-      "Laptop required",
-    ],
-    coordinators: [
-      {},
-      // {
-      //   name: "S Roopa sree",
-      //   phone: "8639932286",
-      // },
-      // {
-      //   name: "M Raghuram",
-      //   phone: "6305756962",
-      // },
-      // {
-      //   name: "Uma Maheswari",
-      //   phone: "8978128841",
-      // },
-    ],
-  },
   {
     id: "3",
     type: "tech",
@@ -633,7 +685,7 @@ export const events = [
     iconUrl: benefitIcon4,
     imageUrl: benefitImage2,
     prize: "",
-    date: "27 march",
+    date: "",
     venue: "CSE Lab 4",
     teamSize: "Individual",
     fullDescription: `Showcase your web development skills in Web Wreath!
@@ -679,73 +731,15 @@ export const events = [
   },
 
   {
-    id: "0",
-    type: "tech",
-    title: "Hackathon",
-    text: "Calling all tech enthusiasts! Gather your squad of four for an exhilarating journey of innovation and problem-solving at our Hackathon 2026. Dive deep into challenges, showcasing your creativity and tech prowess. Crack the code, unveil solutions, and stand out amidst the tech-savvy crowd. Develop a working prototype to earn extra points and push your limits. It's not just about winning; it's about the thrill of coding for the future! Are you ready to unleash your genius?",
-    backgroundUrl: "assets/event/hack.avif",
-    iconUrl: benefitIcon1,
-    imageUrl: benefitImage2,
-    prize: "",
-    date: "27 march",
-    venue: "203",
-    teamSize: "2-4 members",
-    spot: "No Spot Registration",
-    fullDescription: `Welcome to Hackathon, presented by Cynosure!
-•	Teams select a problem statement and present a solution within the allocated time.
-•	Problem statements will be revealed on-site for teams to tackle.
-•	AI tools are allowed, and having a prototype adds extra points.
-•	Mentors are available for guidance.
-•	Ensure at least one laptop per team and strictly follow the timelines.
-Reporting Time: 8:30 AM, March 27th.
-For further enquires, please contact the event coordinators
-Good luck, and may the best team win!
-    
-    `,
-    rules: [
-      `Welcome to Hackathon, presented by Cynosure!
-•	Teams select a problem statement and present a solution within the allocated time.
-•	Problem statements will be revealed on-site for teams to tackle.
-•	AI tools are allowed, and having a prototype adds extra points.
-•	Mentors are available for guidance.
-•	Ensure at least one laptop per team and strictly follow the timelines.
-Reporting Time: 8:30 AM, March 27th.
-For further enquires, please contact the event coordinators
-Good luck, and may the best team win!`,
-    ],
-    requirements: [
-      "Laptop with charger",
-      "Valid college ID",
-      "Development tools",
-      "GitHub account",
-      "Basic coding knowledge",
-    ],
-    coordinators: [
-      {},
-      // {
-      //   name: "G S S Nikhil Chowdary",
-      //   phone: "9849009047",
-      // },
-      // {
-      //   name: "N Chiranjeevi",
-      //   phone: "9705959253",
-      // },
-      // {
-      //   name: "S Chaitanya",
-      //   phone: "9154900357",
-      // },
-    ],
-  },
-  {
     id: "13",
     type: "tech",
-    title: "Pitch Perfect Paper",
+    title: "Research Rumble",
     text: "Are you passionate about research and innovation? Showcase your ideas at the Paper Presentation event of Cynosure 2024! Submit your research paper online, get shortlisted, and present your findings before an esteemed panel of judges. Whether it's AI, IoT, cybersecurity, or emerging tech trends, demonstrate your technical expertise, analytical skills, and presentation prowess. Impress the audience and compete for top honors in this intellectually stimulating event!",
     backgroundUrl: "assets/event/paper.jpg",
     iconUrl: benefitIcon1,
     imageUrl: benefitImage2,
     prize: "",
-    date: "27 March",
+    date: "",
     venue: "203",
     teamSize: "Individual",
     spot: "No Spot Registration",
@@ -811,13 +805,13 @@ export const fun = [
   {
     id: "1",
     type: "fun",
-    title: "Brain Battle Binge",
+    title: "Code Chronicles",
     text: "Join us for Brain Battle Binge, where you'll put your intelligence to the test, compete against fellow participants, and have the chance to win exciting prizes! Get ready for an exhilarating event packed with brain-teasing challenges and friendly rivalry. Don't miss out on the opportunity to showcase your wit and walk away with fantastic rewards. Register now and prepare for an unforgettable experience!",
     backgroundUrl: "assets/event/battle.avif",
     iconUrl: benefitIcon4,
     imageUrl: benefitImage2,
     prize: "",
-    date: "28 march",
+    date: "",
     venue: "Seminar Hall 2",
     teamSize: "Individual",
     fullDescription: `Challenge your mind in this intense battle of wits!
@@ -852,30 +846,30 @@ export const fun = [
       "Writing materials",
     ],
     coordinators: [
-      {
-        name: "K R Mahesh",
-        phone: "7997290406",
-      },
-      {
-        name: "V Likitha",
-        phone: "",
-      },
-      {
-        name: "C Chaturya prasad",
-        phone: "7702249549",
-      },
+      // {
+      //   name: "K R Mahesh",
+      //   phone: "7997290406",
+      // },
+      // {
+      //   name: "V Likitha",
+      //   phone: "",
+      // },
+      // {
+      //   name: "C Chaturya prasad",
+      //   phone: "7702249549",
+      // },
     ],
   },
   {
     id: "2",
     type: "fun",
-    title: "Curious Clues",
+    title: "Curious Clue",
     text: "Means finding a perfect clue (just from basic aptitude, logical reasoning) that is strange, unusual, or unexpected, potentially causing the person trying to solve a puzzle",
     backgroundUrl: "assets/event/crew.avif",
     iconUrl: benefitIcon3,
     imageUrl: benefitImage2,
     prize: "",
-    date: "28 march",
+    date: "",
     venue: "Classroom A101",
     teamSize: "Individual",
     fullDescription: `Test your aptitude skills across various domains!
@@ -900,18 +894,18 @@ export const fun = [
     ],
     requirements: ["Basic math skills", "Analytical thinking", "Time management", "College ID"],
     coordinators: [
-      {
-        name: "A Sreenath",
-        phone: "8179417236",
-      },
-      {
-        name: "G Lakshmi Swomya",
-        phone: "9542124330",
-      },
-      {
-        name: "T Suchitra",
-        phone: "7981443966",
-      },
+      // {
+      //   name: "A Sreenath",
+      //   phone: "8179417236",
+      // },
+      // {
+      //   name: "G Lakshmi Swomya",
+      //   phone: "9542124330",
+      // },
+      // {
+      //   name: "T Suchitra",
+      //   phone: "7981443966",
+      // },
     ],
   },
   {
@@ -923,7 +917,7 @@ export const fun = [
     iconUrl: benefitIcon4,
     imageUrl: benefitImage2,
     prize: "",
-    date: "28 march",
+    date: "",
     venue: "College Campus",
     teamSize: "3-4 members",
     fullDescription: `Embark on an exciting adventure around the campus!
@@ -959,18 +953,18 @@ export const fun = [
       "College ID for all members",
     ],
     coordinators: [
-      {
-        name: "B Chandra mouli",
-        phone: "7207241669",
-      },
-      {
-        name: "C Sriram",
-        phone: "6309084262",
-      },
-      {
-        name: "Uday Divvi",
-        phone: "7989227578",
-      },
+      // {
+      //   name: "B Chandra mouli",
+      //   phone: "7207241669",
+      // },
+      // {
+      //   name: "C Sriram",
+      //   phone: "6309084262",
+      // },
+      // {
+      //   name: "Uday Divvi",
+      //   phone: "7989227578",
+      // },
     ],
   },
   {
@@ -982,7 +976,7 @@ export const fun = [
     iconUrl: benefitIcon2,
     imageUrl: benefitImage2,
     prize: "",
-    date: "28 march",
+    date: "",
     venue: "Photography Studio",
     teamSize: "Individual",
     fullDescription: `Get ready for a unique blend of art and technology!
@@ -1018,30 +1012,30 @@ export const fun = [
       "Enthusiasm to participate",
     ],
     coordinators: [
-      {
-        name: "B Ramu yadav",
-        phone: "9573619508",
-      },
-      {
-        name: "C.S. Khalandhar",
-        phone: "9908057264",
-      },
-      {
-        name: "B. Raj Kumar",
-        phone: "7993365691",
-      },
+      // {
+      //   name: "B Ramu yadav",
+      //   phone: "9573619508",
+      // },
+      // {
+      //   name: "C.S. Khalandhar",
+      //   phone: "9908057264",
+      // },
+      // {
+      //   name: "B. Raj Kumar",
+      //   phone: "7993365691",
+      // },
     ],
   },
   {
     id: "5",
     type: "fun",
-    title: "The Matrix Mystery",
+    title: "Mind Mayhem",
     text: "Solve clues and navigate through an exciting tech-themed treasure hunt across campus.",
     backgroundUrl: "assets/event/escape.avif",
     iconUrl: benefitIcon4,
     imageUrl: benefitImage2,
     prize: "",
-    date: "28 march",
+    date: "",
     venue: "Activity Room",
     teamSize: "2-3 members",
     fullDescription: `Embark on an exciting adventure around the campus!
@@ -1077,18 +1071,18 @@ export const fun = [
       "College ID for all members",
     ],
     coordinators: [
-      {
-        name: "M Pavan kumar",
-        phone: "7989883868",
-      },
-      {
-        name: "P Sudhansu Reddy",
-        phone: "8919115624",
-      },
-      {
-        name: "G Mohan Krishna",
-        phone: "8074019573",
-      },
+      // {
+      //   name: "M Pavan kumar",
+      //   phone: "7989883868",
+      // },
+      // {
+      //   name: "P Sudhansu Reddy",
+      //   phone: "8919115624",
+      // },
+      // {
+      //   name: "G Mohan Krishna",
+      //   phone: "8074019573",
+      // },
     ],
   },
 ];
@@ -1102,7 +1096,7 @@ export const ESPORTS_EVENTS = [
     price: "",
     description: "4v4 tactical shooter tournament. Show your skills and strategy.",
     players: "4 players per team",
-    schedule: "March 27-28, 2026",
+    schedule: "",
     rules: [
       "Tournament Format",
       "Teams must have exactly 4 players",
@@ -1133,10 +1127,10 @@ export const ESPORTS_EVENTS = [
     ],
     prize: "",
     coordinators: [
-      {
-        name: "co-ordinator",
-        phone: "8328210738",
-      },
+      // {
+      //   name: "co-ordinator",
+      //   phone: "8328210738",
+      // },
     ],
   },
   {
@@ -1147,7 +1141,7 @@ export const ESPORTS_EVENTS = [
     price: "",
     description: "Battle Royale mobile gaming competition. Last team standing wins.",
     players: "4 players per team",
-    schedule: "March 27-28, 2026",
+    schedule: "",
     rules: [
       "Tournament Format",
       "Teams must have exactly 4 players",
@@ -1187,7 +1181,7 @@ export const ESPORTS_EVENTS = [
     coordinators: [
       {
         name: "co-ordinator",
-        phone: "8328210738",
+        phone: "",
       },
     ],
   },

@@ -3,17 +3,7 @@
 import React, { Suspense } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import {
-  Building2,
-  Users2,
-  Utensils,
-  Info,
-  CheckCircle2,
-  PhoneCall,
-  ChevronLeft,
-  Calendar,
-  MapPin,
-} from "lucide-react";
+import { Users2, Utensils, Info, CheckCircle2, PhoneCall, Calendar, MapPin } from "lucide-react";
 import Link from "next/link";
 
 const Navbar = dynamic(() => import("@/components/layout/navbar"), { ssr: false });
@@ -31,17 +21,17 @@ const importantPoints = [
 
 const AccommodationPage = () => {
   return (
-    <main className="relative min-h-screen bg-[#09090f] text-white pb-16 sm:pb-24">
+    <main className="relative min-h-screen bg-[#09090f] pb-16 text-white sm:pb-24">
       <Suspense fallback={<div className="h-20 bg-[#09090f]" />}>
         <Navbar />
       </Suspense>
 
       {/* ── Content wrapper ──────────────────────────── */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12">
+      <div className="mx-auto max-w-6xl px-4 pt-8 sm:px-6 sm:pt-12">
         {/* Back link */}
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-[12px] sm:text-[13px] text-white/40 hover:text-white/70 transition-colors mb-6 sm:mb-8 mt-16 sm:mt-20 group"
+          className="group mb-6 mt-16 inline-flex items-center gap-1.5 text-[12px] text-white/40 transition-colors hover:text-white/70 sm:mb-8 sm:mt-20 sm:text-[13px]"
         ></Link>
 
         {/* ── Page Header ──────────────────────────────── */}
@@ -51,46 +41,46 @@ const AccommodationPage = () => {
           transition={{ duration: 0.6 }}
           className="mb-10 sm:mb-14"
         >
-          <div className="flex items-center gap-2.5 mb-3">
-            <div className="w-1 h-5 bg-white rounded-full" />
-            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
+          <div className="mb-3 flex items-center gap-2.5">
+            <div className="h-5 w-1 rounded-full bg-white" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 sm:text-xs">
               Cynosure 2026
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-3">
+          <h1 className="mb-3 text-3xl font-black tracking-tight text-white sm:text-4xl md:text-5xl">
             Accommodation
           </h1>
-          <p className="text-sm sm:text-base text-white/50 max-w-xl">
+          <p className="max-w-xl text-sm text-white/50 sm:text-base">
             Secure, comfortable on-campus housing curated for Cynosure participants.
           </p>
         </motion.div>
 
         {/* ── Info grid ────────────────────────────────── */}
         {/* Row 1: Availability + Fee */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {/* Availability */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="p-6 sm:p-7 rounded-2xl bg-white/[0.03] hover:bg-white/[0.05] transition-colors"
+            className="rounded-2xl bg-white/[0.03] p-6 transition-colors hover:bg-white/[0.05] sm:p-7"
           >
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-9 h-9 rounded-xl bg-white/[0.06] flex items-center justify-center shrink-0">
+            <div className="mb-5 flex items-center gap-3">
+              <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white/[0.06]">
                 <Users2 className="w-4.5 h-4.5 text-white/70" />
               </div>
-              <h2 className="text-base sm:text-lg font-bold text-white">Availability</h2>
+              <h2 className="text-base font-bold text-white sm:text-lg">Availability</h2>
             </div>
             <div className="space-y-3">
               {["Limited rooms available", "First come, first serve basis"].map((d) => (
                 <div key={d} className="flex items-center gap-2.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white/30 shrink-0" />
-                  <p className="text-sm sm:text-base text-white/60">{d}</p>
+                  <div className="size-1.5 shrink-0 rounded-full bg-white/30" />
+                  <p className="text-sm text-white/60 sm:text-base">{d}</p>
                 </div>
               ))}
             </div>
-            <p className="mt-6 text-[11px] uppercase tracking-widest text-white/30 font-medium">
+            <p className="mt-6 text-[11px] font-medium uppercase tracking-widest text-white/30">
               Book early to secure your spot
             </p>
           </motion.div>
@@ -101,13 +91,13 @@ const AccommodationPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.08 }}
-            className="p-6 sm:p-7 rounded-2xl bg-white/[0.03] hover:bg-white/[0.05] transition-colors"
+            className="rounded-2xl bg-white/[0.03] p-6 transition-colors hover:bg-white/[0.05] sm:p-7"
           >
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-9 h-9 rounded-xl bg-white/[0.06] flex items-center justify-center shrink-0">
+            <div className="mb-5 flex items-center gap-3">
+              <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white/[0.06]">
                 <Utensils className="w-4.5 h-4.5 text-white/70" />
               </div>
-              <h2 className="text-base sm:text-lg font-bold text-white">Fee Structure</h2>
+              <h2 className="text-base font-bold text-white sm:text-lg">Fee Structure</h2>
             </div>
             <div className="space-y-3">
               {[
@@ -117,39 +107,39 @@ const AccommodationPage = () => {
                 "Includes 28th Morning Breakfast",
               ].map((d) => (
                 <div key={d} className="flex items-center gap-2.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white/30 shrink-0" />
-                  <p className="text-sm sm:text-base text-white/60">{d}</p>
+                  <div className="size-1.5 shrink-0 rounded-full bg-white/30" />
+                  <p className="text-sm text-white/60 sm:text-base">{d}</p>
                 </div>
               ))}
             </div>
-            <p className="mt-6 text-[11px] uppercase tracking-widest text-white/30 font-medium">
+            <p className="mt-6 text-[11px] font-medium uppercase tracking-widest text-white/30">
               All-inclusive package
             </p>
           </motion.div>
         </div>
 
         {/* Row 2: Guidelines + Contacts */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+        <div className="mb-4 grid grid-cols-1 gap-4 lg:grid-cols-3">
           {/* Guidelines – takes 2 cols on lg */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="lg:col-span-2 p-6 sm:p-7 rounded-2xl bg-white/[0.03] hover:bg-white/[0.05] transition-colors"
+            className="rounded-2xl bg-white/[0.03] p-6 transition-colors hover:bg-white/[0.05] sm:p-7 lg:col-span-2"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-9 h-9 rounded-xl bg-white/[0.06] flex items-center justify-center shrink-0">
+            <div className="mb-6 flex items-center gap-3">
+              <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white/[0.06]">
                 <Info className="w-4.5 h-4.5 text-white/70" />
               </div>
-              <h2 className="text-base sm:text-lg font-bold text-white">Important Guidelines</h2>
+              <h2 className="text-base font-bold text-white sm:text-lg">Important Guidelines</h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sm:gap-y-4">
+            <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 sm:gap-y-4">
               {importantPoints.map((point, i) => (
                 <div key={i} className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-white/40 mt-0.5 shrink-0" />
-                  <p className="text-sm text-white/55 leading-snug">{point}</p>
+                  <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-white/40" />
+                  <p className="text-sm leading-snug text-white/55">{point}</p>
                 </div>
               ))}
             </div>
@@ -163,26 +153,23 @@ const AccommodationPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.15 }}
-              className="flex-1 p-6 rounded-2xl bg-white/[0.03] hover:bg-white/[0.05] transition-colors"
+              className="flex-1 rounded-2xl bg-white/[0.03] p-6 transition-colors hover:bg-white/[0.05]"
             >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-xl bg-white/[0.06] flex items-center justify-center shrink-0">
-                  <PhoneCall className="w-4 h-4 text-white/70" />
+              <div className="mb-3 flex items-center gap-3">
+                <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white/[0.06]">
+                  <PhoneCall className="size-4 text-white/70" />
                 </div>
-                <h3 className="text-sm sm:text-base font-bold text-white">Boys Hostel</h3>
+                <h3 className="text-sm font-bold text-white sm:text-base">Boys Hostel</h3>
               </div>
-              <p className="text-[11px] text-white/35 uppercase tracking-wider mb-1">
+              <p className="mb-1 text-[11px] uppercase tracking-wider text-white/35">
                 Primary Coordinator
               </p>
-              <p className="text-sm sm:text-base font-semibold text-white/80 mb-3">
-                M. Suresh Reddy
-              </p>
+              <p className="mb-3 text-sm font-semibold text-white/80 sm:text-base">TBA</p>
               <a
                 href="tel:6300441669"
-                className="inline-flex items-center gap-2 text-sm font-mono text-white/60 hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 font-mono text-sm text-white/60 transition-colors hover:text-white"
               >
-                <PhoneCall className="w-3.5 h-3.5" />
-                +91 6300441669
+                <PhoneCall className="size-3.5" /> TBA
               </a>
             </motion.div>
 
@@ -192,26 +179,24 @@ const AccommodationPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="flex-1 p-6 rounded-2xl bg-white/[0.03] hover:bg-white/[0.05] transition-colors"
+              className="flex-1 rounded-2xl bg-white/[0.03] p-6 transition-colors hover:bg-white/[0.05]"
             >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-xl bg-white/[0.06] flex items-center justify-center shrink-0">
-                  <PhoneCall className="w-4 h-4 text-white/70" />
+              <div className="mb-3 flex items-center gap-3">
+                <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white/[0.06]">
+                  <PhoneCall className="size-4 text-white/70" />
                 </div>
-                <h3 className="text-sm sm:text-base font-bold text-white">Girls Hostel</h3>
+                <h3 className="text-sm font-bold text-white sm:text-base">Girls Hostel</h3>
               </div>
-              <p className="text-[11px] text-white/35 uppercase tracking-wider mb-1">
+              <p className="mb-1 text-[11px] uppercase tracking-wider text-white/35">
                 Primary Coordinator
               </p>
-              <p className="text-sm sm:text-base font-semibold text-white/80 mb-3">
-                L. Lakshmi Sivani
-              </p>
+              <p className="mb-3 text-sm font-semibold text-white/80 sm:text-base">TBA</p>
               <a
                 href="tel:8074345332"
-                className="inline-flex items-center gap-2 text-sm font-mono text-white/60 hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 font-mono text-sm text-white/60 transition-colors hover:text-white"
               >
-                <PhoneCall className="w-3.5 h-3.5" />
-                +91 8074345332
+                <PhoneCall className="size-3.5" />
+                TBA
               </a>
             </motion.div>
           </div>
@@ -223,33 +208,33 @@ const AccommodationPage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 p-5 sm:p-6 rounded-2xl bg-white/[0.03] hover:bg-white/[0.05] transition-colors"
+          className="flex flex-col items-start justify-between gap-4 rounded-2xl bg-white/[0.03] p-5 transition-colors hover:bg-white/[0.05] sm:flex-row sm:items-center sm:gap-6 sm:p-6"
         >
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-white/[0.06] flex items-center justify-center shrink-0">
-              <Calendar className="w-4 h-4 text-white/70" />
+            <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white/[0.06]">
+              <Calendar className="size-4 text-white/70" />
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-widest text-white/35 font-medium mb-0.5">
+              <p className="mb-0.5 text-[11px] font-medium uppercase tracking-widest text-white/35">
                 Event Date
               </p>
-              <p className="text-sm sm:text-base font-bold text-white">March 27–28, 2026</p>
+              <p className="text-sm font-bold text-white sm:text-base">March 5–6, 2026</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-white/[0.06] flex items-center justify-center shrink-0">
-              <MapPin className="w-4 h-4 text-white/70" />
+            <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white/[0.06]">
+              <MapPin className="size-4 text-white/70" />
             </div>
             <div>
-              <p className="text-[11px] uppercase tracking-widest text-white/35 font-medium mb-0.5">
+              <p className="mb-0.5 text-[11px] font-medium uppercase tracking-widest text-white/35">
                 Venue
               </p>
-              <p className="text-sm sm:text-base font-bold text-white">On-Campus Hostels</p>
+              <p className="text-sm font-bold text-white sm:text-base">On-Campus Hostels</p>
             </div>
           </div>
           <Link
             href="/passes"
-            className="px-5 py-2.5 rounded-lg bg-white text-black text-sm font-bold hover:bg-white/90 transition-colors w-full sm:w-auto text-center shrink-0"
+            className="w-full shrink-0 rounded-lg bg-white px-5 py-2.5 text-center text-sm font-bold text-black transition-colors hover:bg-white/90 sm:w-auto"
           >
             Register Now
           </Link>

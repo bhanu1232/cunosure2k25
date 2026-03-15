@@ -62,7 +62,7 @@ const Hero = () => {
       id="hero"
     >
       {/* ── Background layers ── */}
-      <div className="absolute inset-0 pointer-events-none select-none">
+      <div className="pointer-events-none absolute inset-0 select-none">
         {/* Grid texture */}
         <Image
           src="/assets/grid.svg"
@@ -73,10 +73,10 @@ const Hero = () => {
         />
 
         {/* Radial glow: top-center */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-[#4A00E0] opacity-[0.12] blur-[140px]" />
+        <div className="absolute left-1/2 top-0 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-[#4A00E0] opacity-[0.12] blur-[140px]" />
 
         {/* Secondary accent: bottom-right */}
-        <div className="absolute bottom-0 right-0 w-[600px] h-[400px] rounded-full bg-[#1BC7FB] opacity-[0.07] blur-[120px]" />
+        <div className="absolute bottom-0 right-0 h-[400px] w-[600px] rounded-full bg-[#1BC7FB] opacity-[0.07] blur-[120px]" />
 
         {/* Vignette overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#07050F]/60 via-transparent to-[#07050F]" />
@@ -84,7 +84,7 @@ const Hero = () => {
 
       {/* ── Noise grain ── */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay"
+        className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
         }}
@@ -94,23 +94,23 @@ const Hero = () => {
         {/* ── Hero text block ── */}
         <div className="mx-auto mb-12 max-w-[58rem] text-center md:mb-16 lg:mb-20">
           {/* Event badge */}
-          <motion.div {...FADE_UP(0)} className="inline-flex items-center gap-2 mb-8">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1BC7FB] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1BC7FB]" />
+          <motion.div {...FADE_UP(0)} className="mb-8 inline-flex items-center gap-2">
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-[#1BC7FB] opacity-75" />
+              <span className="relative inline-flex size-2 rounded-full bg-[#1BC7FB]" />
             </span>
-            <span className="px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold tracking-[0.18em] uppercase border border-white/10 bg-white/5 text-[#1BC7FB] backdrop-blur-sm">
+            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#1BC7FB] backdrop-blur-sm md:text-sm">
               Technical Fest 2026
             </span>
           </motion.div>
 
           {/* Title */}
           <div className="relative mb-6">
-            <motion.h1 {...FADE_UP(0.1)} className="font-black tracking-tighter leading-none">
-              <span className="block text-[clamp(3.5rem,12vw,8rem)] bg-gradient-to-br from-white via-white/90 to-white/40 bg-clip-text text-transparent">
+            <motion.h1 {...FADE_UP(0.1)} className="font-black leading-none tracking-tighter">
+              <span className="block bg-gradient-to-br from-white via-white/90 to-white/40 bg-clip-text text-[clamp(3.5rem,12vw,8rem)] text-transparent">
                 CYNOSURE
               </span>
-              <span className="block text-[clamp(2rem,7vw,5rem)] bg-gradient-to-r from-[#1BC7FB] to-[#8E2DE2] bg-clip-text text-transparent mt-1">
+              <span className="mt-1 block bg-gradient-to-r from-[#1BC7FB] to-[#8E2DE2] bg-clip-text text-[clamp(2rem,7vw,5rem)] text-transparent">
                 2026
               </span>
             </motion.h1>
@@ -120,14 +120,14 @@ const Hero = () => {
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="mx-auto mt-4 h-px w-48 bg-gradient-to-r from-transparent via-[#4A00E0] to-transparent origin-center"
+              className="mx-auto mt-4 h-px w-48 origin-center bg-gradient-to-r from-transparent via-[#4A00E0] to-transparent"
             />
           </div>
 
           {/* Tagline */}
           <motion.p
             {...FADE_UP(0.25)}
-            className="mx-auto max-w-xl text-sm md:text-base text-white/50 leading-relaxed tracking-wide font-light mb-10"
+            className="mx-auto mb-10 max-w-xl text-sm font-light leading-relaxed tracking-wide text-white/50 md:text-base"
           >
             Experience the future of innovation. Elite competitions, breakthrough tech, and
             boundless opportunities await.
@@ -136,32 +136,32 @@ const Hero = () => {
           {/* ── Countdown ── */}
           <motion.div
             {...FADE_UP(0.35)}
-            className="inline-flex items-center gap-2 sm:gap-3 md:gap-4 mb-10 p-3 rounded-2xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-md"
+            className="mb-10 inline-flex items-center gap-2 rounded-2xl border border-white/[0.06] bg-white/[0.03] p-3 backdrop-blur-md sm:gap-3 md:gap-4"
           >
             {countdownItems.map((item, index) => (
               <React.Fragment key={item.label}>
-                <div className="flex flex-col items-center w-14 sm:w-18 md:w-24">
+                <div className="sm:w-18 flex w-14 flex-col items-center md:w-24">
                   <div className="relative w-full">
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-[#4A00E0]/20 to-transparent blur-sm" />
-                    <div className="relative rounded-xl bg-white/[0.05] border border-white/[0.08] px-2 py-3 sm:py-4 flex items-center justify-center">
+                    <div className="relative flex items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.05] px-2 py-3 sm:py-4">
                       <motion.span
                         key={mounted ? item.value : "init"}
                         initial={{ opacity: 0, y: -6 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.25 }}
-                        className="text-2xl sm:text-3xl md:text-4xl font-black text-white tabular-nums tracking-tighter"
+                        className="text-2xl font-black tabular-nums tracking-tighter text-white sm:text-3xl md:text-4xl"
                       >
                         {item.value.toString().padStart(2, "0")}
                       </motion.span>
                     </div>
                   </div>
-                  <span className="mt-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">
+                  <span className="mt-2 text-[9px] font-bold uppercase tracking-[0.2em] text-white/30 sm:text-[10px]">
                     {item.label}
                   </span>
                 </div>
 
                 {index < countdownItems.length - 1 && (
-                  <span className="text-white/20 text-xl font-thin pb-4 select-none">:</span>
+                  <span className="select-none pb-4 text-xl font-thin text-white/20">:</span>
                 )}
               </React.Fragment>
             ))}
@@ -170,15 +170,15 @@ const Hero = () => {
           {/* ── CTA buttons ── */}
           <motion.div
             {...FADE_UP(0.45)}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
+            className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
           >
             {/* Primary */}
             <Link
               href="/passes"
-              className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-sm tracking-widest uppercase overflow-hidden transition-all duration-300"
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-xl px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all duration-300"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2] transition-opacity duration-300 group-hover:opacity-90" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#1BC7FB] to-[#4A00E0] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1BC7FB] to-[#4A00E0] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <Image
                 src="/assets/crown.png"
                 alt="Crown"
@@ -188,7 +188,7 @@ const Hero = () => {
               />
               <span className="relative z-10 text-white">Register Now</span>
               <svg
-                className="relative z-10 w-4 h-4 text-white/70 group-hover:translate-x-1 transition-transform duration-200"
+                className="relative z-10 size-4 text-white/70 transition-transform duration-200 group-hover:translate-x-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -205,11 +205,11 @@ const Hero = () => {
             {/* Secondary */}
             <Link
               href="/events"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm tracking-widest uppercase border border-white/10 bg-white/[0.03] text-white/70 hover:text-white hover:border-white/20 hover:bg-white/[0.06] transition-all duration-300 backdrop-blur-sm"
+              className="group inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white/70 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
             >
               Explore Events
               <svg
-                className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200"
+                className="size-4 opacity-50 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -227,11 +227,11 @@ const Hero = () => {
           {/* Date + venue strip */}
           <motion.div
             {...FADE_UP(0.55)}
-            className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-white/30 font-medium tracking-wider uppercase"
+            className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs font-medium uppercase tracking-wider text-white/30"
           >
             <span className="flex items-center gap-2">
               <svg
-                className="w-3.5 h-3.5 text-[#1BC7FB]/60"
+                className="size-3.5 text-[#1BC7FB]/60"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -243,12 +243,12 @@ const Hero = () => {
                   d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                 />
               </svg>
-              March 27, 2026
+              April 5, 2026
             </span>
-            <span className="w-px h-3 bg-white/10" />
+            <span className="h-3 w-px bg-white/10" />
             <span className="flex items-center gap-2">
               <svg
-                className="w-3.5 h-3.5 text-[#1BC7FB]/60"
+                className="size-3.5 text-[#1BC7FB]/60"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -268,10 +268,10 @@ const Hero = () => {
               </svg>
               On Campus
             </span>
-            <span className="w-px h-3 bg-white/10" />
+            <span className="h-3 w-px bg-white/10" />
             <span className="flex items-center gap-2">
               <svg
-                className="w-3.5 h-3.5 text-[#1BC7FB]/60"
+                className="size-3.5 text-[#1BC7FB]/60"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -296,34 +296,34 @@ const Hero = () => {
           className="relative mx-auto max-w-[1300px]"
         >
           {/* Outer glow ring */}
-          <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-white/10 to-white/0 pointer-events-none" />
+          <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-b from-white/10 to-white/0" />
 
           {/* Glass frame */}
-          <div className="relative rounded-2xl border border-white/[0.07] bg-white/[0.02] backdrop-blur-sm overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.6)]">
+          <div className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02] shadow-[0_32px_80px_rgba(0,0,0,0.6)] backdrop-blur-sm">
             {/* Top bar with faux browser chrome */}
-            <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/[0.05] bg-white/[0.02]">
-              <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
-              <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
-              <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
-              <div className="mx-auto flex items-center gap-2 px-4 py-1 rounded-full bg-white/[0.04] border border-white/[0.06]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#1BC7FB]/60" />
-                <span className="text-[10px] text-white/25 font-mono tracking-wider">
+            <div className="flex items-center gap-1.5 border-b border-white/[0.05] bg-white/[0.02] px-4 py-3">
+              <span className="size-2.5 rounded-full bg-white/10" />
+              <span className="size-2.5 rounded-full bg-white/10" />
+              <span className="size-2.5 rounded-full bg-white/10" />
+              <div className="mx-auto flex items-center gap-2 rounded-full border border-white/[0.06] bg-white/[0.04] px-4 py-1">
+                <span className="size-1.5 rounded-full bg-[#1BC7FB]/60" />
+                <span className="font-mono text-[10px] tracking-wider text-white/25">
                   cynosure2026.tech
                 </span>
               </div>
             </div>
 
             {/* Image */}
-            <div className="relative aspect-[16/7] sm:aspect-[2.2/1] overflow-hidden group">
+            <div className="group relative aspect-[16/7] overflow-hidden sm:aspect-[2.2/1]">
               <Image
                 src={images.banner}
                 fill
-                className="object-cover object-center scale-105 group-hover:scale-[1.07] transition-transform duration-700 ease-out"
+                className="scale-105 object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.07]"
                 alt="Cynosure 2026"
                 priority
               />
               {/* Subtle gradient overlay at bottom */}
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#07050F]/80 to-transparent pointer-events-none" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#07050F]/80 to-transparent" />
             </div>
           </div>
 
@@ -332,11 +332,11 @@ const Hero = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.9, duration: 0.5 }}
-            className="absolute -left-3 bottom-8 hidden lg:flex items-center gap-2.5 px-4 py-3 rounded-xl bg-[#0D0A1E]/90 border border-white/[0.08] backdrop-blur-md shadow-xl"
+            className="absolute -left-3 bottom-8 hidden items-center gap-2.5 rounded-xl border border-white/[0.08] bg-[#0D0A1E]/90 px-4 py-3 shadow-xl backdrop-blur-md lg:flex"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#4A00E0]/30 flex items-center justify-center">
+            <div className="flex size-8 items-center justify-center rounded-lg bg-[#4A00E0]/30">
               <svg
-                className="w-4 h-4 text-[#8E2DE2]"
+                className="size-4 text-[#8E2DE2]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -350,8 +350,8 @@ const Hero = () => {
               </svg>
             </div>
             <div>
-              <div className="text-white text-sm font-bold">30+ Events</div>
-              <div className="text-white/40 text-[10px]">Competitions</div>
+              <div className="text-sm font-bold text-white">30+ Events</div>
+              <div className="text-[10px] text-white/40">Competitions</div>
             </div>
           </motion.div>
 
@@ -359,11 +359,11 @@ const Hero = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.0, duration: 0.5 }}
-            className="absolute -right-3 bottom-8 hidden lg:flex items-center gap-2.5 px-4 py-3 rounded-xl bg-[#0D0A1E]/90 border border-white/[0.08] backdrop-blur-md shadow-xl"
+            className="absolute -right-3 bottom-8 hidden items-center gap-2.5 rounded-xl border border-white/[0.08] bg-[#0D0A1E]/90 px-4 py-3 shadow-xl backdrop-blur-md lg:flex"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#1BC7FB]/10 flex items-center justify-center">
+            <div className="flex size-8 items-center justify-center rounded-lg bg-[#1BC7FB]/10">
               <svg
-                className="w-4 h-4 text-[#1BC7FB]"
+                className="size-4 text-[#1BC7FB]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -377,8 +377,8 @@ const Hero = () => {
               </svg>
             </div>
             <div>
-              <div className="text-white text-sm font-bold">₹5L+ Prizes</div>
-              <div className="text-white/40 text-[10px]">Prize Pool</div>
+              <div className="text-sm font-bold text-white">₹5L+ Prizes</div>
+              <div className="text-[10px] text-white/40">Prize Pool</div>
             </div>
           </motion.div>
         </motion.div>
