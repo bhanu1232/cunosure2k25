@@ -35,7 +35,7 @@ const images = [
   },
   {
     id: "flash-mob",
-    src: "/assets/gallery/four.avif",
+    src: "/assets/gallery/her1.jpeg",
     title: "Flash Mob",
     day: "Day 2",
     span: "col-span-1",
@@ -63,22 +63,22 @@ const GalleryPage = () => {
   const [selected, setSelected] = useState<{ src: string; title: string } | null>(null);
 
   return (
-    <main className="min-h-screen bg-[#09090f] text-white pb-16 sm:pb-24">
+    <main className="min-h-screen bg-[#09090f] pb-16 text-white sm:pb-24">
       <Navbar />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12">
+      <div className="mx-auto max-w-6xl px-4 pt-8 sm:px-6 sm:pt-12">
         {/* ── Page Header ──────────────────────────────── */}
-        <div className="pt-16 sm:pt-20 mb-8 sm:mb-10">
-          <div className="flex items-center gap-2.5 mb-3">
-            <div className="w-1 h-5 bg-white rounded-full" />
-            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
+        <div className="mb-8 pt-16 sm:mb-10 sm:pt-20">
+          <div className="mb-3 flex items-center gap-2.5">
+            <div className="h-5 w-1 rounded-full bg-white" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 sm:text-xs">
               Cynosure 2026 Gallery
             </span>
           </div>
         </div>
 
         {/* ── Photo Grid ───────────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
           {images.map((image, index) => (
             <motion.div
               key={image.id}
@@ -86,7 +86,7 @@ const GalleryPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.07 }}
               // Only apply col-span on sm+ so mobile is always 1-col
-              className={`group relative rounded-2xl overflow-hidden cursor-pointer bg-white/[0.03] ${
+              className={`group relative cursor-pointer overflow-hidden rounded-2xl bg-white/[0.03] ${
                 image.span
               }`}
               onClick={() => setSelected({ src: image.src, title: image.title })}
@@ -101,16 +101,16 @@ const GalleryPage = () => {
                   priority={index < 3}
                 />
                 {/* Dark gradient overlay for caption */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
                 {/* Caption */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="px-2 py-0.5 rounded-md bg-white/10 backdrop-blur-sm text-white/70 text-[10px] font-semibold uppercase tracking-wider">
+                <div className="absolute inset-x-0 bottom-0 translate-y-2 p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:p-5">
+                  <div className="mb-1.5 flex items-center gap-2">
+                    <span className="rounded-md bg-white/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/70 backdrop-blur-sm">
                       {image.day}
                     </span>
                   </div>
-                  <h3 className="text-white font-bold text-sm sm:text-base leading-tight">
+                  <h3 className="text-sm font-bold leading-tight text-white sm:text-base">
                     {image.title}
                   </h3>
                 </div>
@@ -128,7 +128,7 @@ const GalleryPage = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-xl"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-xl sm:p-6"
             onClick={() => setSelected(null)}
           >
             <motion.div
@@ -136,10 +136,10 @@ const GalleryPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.94 }}
               transition={{ duration: 0.2 }}
-              className="relative max-w-[95vw] sm:max-w-[88vw] max-h-[90vh] rounded-xl overflow-hidden shadow-2xl"
+              className="relative max-h-[90vh] max-w-[95vw] overflow-hidden rounded-xl shadow-2xl sm:max-w-[88vw]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative w-[90vw] sm:w-[80vw] h-[70vh] sm:h-[80vh]">
+              <div className="relative h-[70vh] w-[90vw] sm:h-[80vh] sm:w-[80vw]">
                 <Image
                   src={selected.src}
                   alt={selected.title}
@@ -150,13 +150,13 @@ const GalleryPage = () => {
               </div>
 
               {/* Title bar */}
-              <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-black/60 backdrop-blur-sm">
+              <div className="absolute inset-x-0 bottom-0 bg-black/60 px-4 py-3 backdrop-blur-sm">
                 <p className="text-sm font-semibold text-white">{selected.title}</p>
               </div>
 
               {/* Close button */}
               <button
-                className="absolute top-3 right-3 w-9 h-9 rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-sm flex items-center justify-center text-white transition-colors"
+                className="absolute right-3 top-3 flex size-9 items-center justify-center rounded-lg bg-black/60 text-white backdrop-blur-sm transition-colors hover:bg-black/80"
                 onClick={() => setSelected(null)}
               >
                 <X className="w-4.5 h-4.5" />
