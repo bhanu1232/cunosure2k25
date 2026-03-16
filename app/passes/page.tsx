@@ -52,6 +52,7 @@ const PASSES = [
       "Base Pass Access ✓",
       "Complimentary Lunch and Refreshments",
       "Free ROBOTRAC 3.0 Registration",
+      "Complimentary SV Zoo Park Ticket",
     ],
   },
   {
@@ -79,6 +80,7 @@ const PASSES = [
       "Base Pass Access ✓",
       "Complimentary Lunch and Refreshments",
       "Free ROBOTRAC 3.0 Registration",
+      "Complimentary SV Zoo Park Ticket",
     ],
   },
   {
@@ -106,6 +108,7 @@ const PASSES = [
       "Base Pass Access ✓",
       "Complimentary Lunch and Refreshments",
       "Free ROBOTRAC 3.0 Registration",
+      "Complimentary SV Zoo Park Ticket",
     ],
   },
   {
@@ -133,6 +136,7 @@ const PASSES = [
       "Base Pass Access ✓",
       "Complimentary Lunch and Refreshments",
       "Free ROBOTRAC 3.0 Registration",
+      "Complimentary SV Zoo Park Ticket",
     ],
   },
 ];

@@ -179,6 +179,10 @@ export const collabContent = [
     id: "4",
     title: "Free ROBOTRAC 3.0 Registration from (SV Regional Science Centre, Tirupati)",
   },
+  {
+    id: "5",
+    title: "Complimentary SV Zoo Park Ticket",
+  },
 ];
 
 export const collabApps = [

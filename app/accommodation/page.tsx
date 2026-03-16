@@ -11,9 +11,9 @@ const Navbar = dynamic(() => import("@/components/layout/navbar"), { ssr: false 
 const importantPoints = [
   "Separate hostel rooms for boys and girls",
   "Bring your own bedsheets & personal items",
-  "Available strictly on March 27, 2026 night",
+  "Available strictly on April 5, 2026 night",
   "Pre-registration is mandatory for accommodation",
-  "Collect your accommodation pass on March 27 morning",
+  "Collect your accommodation pass on April 5 morning",
   "Only for registered Cynosure participants",
   "You are responsible for your own belongings",
   "Maintain discipline and adhere to campus rules",
@@ -101,10 +101,12 @@ const AccommodationPage = () => {
             </div>
             <div className="space-y-3">
               {[
-                "Girls: ₹250 / Night",
-                "Boys: ₹200 / Night",
-                "Includes 27th Night Dinner",
-                "Includes 28th Morning Breakfast",
+                "Girls: ₹350 / Night ( with food )",
+                "Girls: ₹250 / Night ( with out food )",
+                "Boys: ₹350 / Night ( with food )",
+                "Boys: ₹250 / Night ( with out food )",
+                "Includes 5th Night Dinner",
+                "Includes 6th Morning Breakfast",
               ].map((d) => (
                 <div key={d} className="flex items-center gap-2.5">
                   <div className="size-1.5 shrink-0 rounded-full bg-white/30" />
@@ -218,7 +220,7 @@ const AccommodationPage = () => {
               <p className="mb-0.5 text-[11px] font-medium uppercase tracking-widest text-white/35">
                 Event Date
               </p>
-              <p className="text-sm font-bold text-white sm:text-base">March 5–6, 2026</p>
+              <p className="text-sm font-bold text-white sm:text-base">April 5–6, 2026</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
