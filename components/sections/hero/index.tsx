@@ -175,30 +175,29 @@ const Hero = () => {
             {/* Primary */}
             <Link
               href="/passes"
-              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-xl px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all duration-300"
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-xl px-10 py-5 text-sm font-black uppercase tracking-[0.2em]  transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_50px_rgba(249,115,22,0.8)] active:scale-95"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2] transition-opacity duration-300 group-hover:opacity-90" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#1BC7FB] to-[#4A00E0] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              {/* Fiery animated background base */}
+              <div className="absolute inset-0 animate-[pulse_2s_ease-in-out_infinite] bg-gradient-to-r from-[#4A00E0] via-[#1BC7FB] to-[#8E2DE2] bg-[length:200%_auto]" />
+              {/* Overlay hover effect */}
+              <div className="absolute inset-0 animate-[bounce_3s_ease-in-out_infinite] bg-gradient-to-tr from-[#4A00E0] via-[#1BC7FB] to-[#8E2DE2] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
               <Image
                 src="/assets/crown.png"
                 alt="Crown"
-                width={18}
-                height={18}
-                className="relative z-10"
+                width={20}
+                height={20}
+                className="relative z-10 drop-shadow-[0_2px_10px_rgba(255,255,255,0.8)]"
               />
-              <span className="relative z-10 text-white">Register Now</span>
+              <span className="relative z-10 text-white drop-shadow-md">Register Now</span>
               <svg
-                className="relative z-10 size-4 text-white/70 transition-transform duration-200 group-hover:translate-x-1"
+                className="relative z-10 size-4 text-white drop-shadow-md transition-transform duration-200 group-hover:translate-x-1"
                 fill="none"
                 stroke="currentColor"
+                strokeWidth={3}
                 viewBox="0 0 24 24"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </Link>
 
@@ -243,7 +242,7 @@ const Hero = () => {
                   d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                 />
               </svg>
-              April 5, 2026
+              April 5-6, 2026
             </span>
             <span className="h-3 w-px bg-white/10" />
             <span className="flex items-center gap-2">

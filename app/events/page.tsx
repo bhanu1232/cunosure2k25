@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import ButtonGradient from "@/components/svg/button-gradient";
 import { cn } from "@/lib/utils";
 import Benefits from "./events";
@@ -8,8 +9,16 @@ import Esports from "./esports";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/layout/navbar";
 
-export default function Even() {
-  const [activeFilter, setActiveFilter] = useState("all");
+function EventsContent() {
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get("category");
+  const [activeFilter, setActiveFilter] = useState(categoryParam || "all");
+
+  useEffect(() => {
+    if (categoryParam) {
+      setActiveFilter(categoryParam);
+    }
+  }, [categoryParam]);
 
   const filterButtons = [
     { id: "all", label: "All" },
@@ -92,6 +101,20 @@ export default function Even() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function Even() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center bg-[#09090f] text-white">
+          <div className="size-8 animate-spin rounded-full border-4 border-white/20 border-t-white" />
+        </div>
+      }
+    >
+      <EventsContent />
+    </Suspense>
   );
 }
 

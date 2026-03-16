@@ -61,7 +61,9 @@ const FunEventDetailPage = ({ params }: { params: { eventId: string } }) => {
           </div>
 
           <a
-            href="/passes"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeq6zsI2hwjAH7RlofDG3PBPCbl9a2beR1lc3oU8Ea3Ad1Vpg/viewform?usp=dialog"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block rounded-lg bg-cyan-500 px-8 py-3 text-center text-white transition-colors hover:bg-cyan-400"
           >
             Register Now

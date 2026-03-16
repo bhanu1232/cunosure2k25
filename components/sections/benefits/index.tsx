@@ -2,7 +2,6 @@
 
 import React from "react";
 import Section from "@/components/layout/section";
-import Heading from "../../atoms/heading";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -23,19 +22,11 @@ const eventCards = [
     accentFrom: "#4A00E0",
     accentTo: "#1BC7FB",
     gradientClass: "from-[#4A00E0] via-[#6B1FD6] to-[#1BC7FB]",
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-        />
-      </svg>
-    ),
+    image:
+      "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3F1dnEwcXJ5bzZwMjlzM3Y4NzNibHp4eGdwZmE1Zm00YTQzeHo2NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/u1WhXLjwgcXpHJBMRM/giphy.gif",
     stats: [
-      { label: "Events", value: "15+" },
-      { label: "Prize Pool", value: "₹3L" },
+      { label: "Events", value: "8" },
+      { label: "Prize Pool", value: "₹1L" },
     ],
     overlayText: "TECH",
   },
@@ -48,19 +39,28 @@ const eventCards = [
     accentFrom: "#147CE5",
     accentTo: "#8E2DE2",
     gradientClass: "from-[#1BC7FB] via-[#147CE5] to-[#4A00E0]",
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"
-        />
-      </svg>
-    ),
+    image:
+      "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2FpNDZnZDhpamJudDRuOXBnazNvY3YwOGFuN3hjemlxM2wxYmxsYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qDa4qpPsBbC2IJG88B/giphy.gif",
     stats: [
-      { label: "Events", value: "18+" },
-      { label: "Prize Pool", value: "₹2L" },
+      { label: "Events", value: "4" },
+      { label: "Prize Pool", value: "₹1L" },
+    ],
+    overlayText: "CULTURE",
+  },
+  {
+    id: "Esports",
+    title: "Esports Events",
+    subTitle: "Competitions & Tournaments ",
+    description:
+      "Competitive gaming events featuring popular titles, where strategy, skill, and teamwork lead to victory and prizes.",
+    accentFrom: "#147CE5",
+    accentTo: "#8E2DE2",
+    gradientClass: "from-[#1BC7FB] via-[#147CE5] to-[#4A00E0]",
+    image:
+      "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjV6aXl5aDU0dHB4aGk3NHlwYW9vdTBka3F3Y2wwNmRmdWViM3dyZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EXPiY4IWIWV6bQeALe/giphy.gif",
+    stats: [
+      { label: "Events", value: "2" },
+      { label: "Prize Pool", value: "₹10k" },
     ],
     overlayText: "CULTURE",
   },
@@ -70,26 +70,19 @@ const Benefits = () => {
   return (
     <Section className="overflow-hidden">
       <div className="container relative z-2">
-        {/* Heading */}
-        <motion.div {...FADE_UP(0)} className="text-center mb-14">
-          <p className="mt-4 text-sm text-white/40 max-w-md mx-auto leading-relaxed">
-            Two tracks. Endless possibilities. Find your arena.
-          </p>
-        </motion.div>
-
         {/* Cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[1100px] mx-auto">
+        <div className="mx-auto grid max-w-[1100px] grid-cols-1 gap-5 md:grid-cols-2">
           {eventCards.map((card, index) => (
             <motion.div key={card.id} {...FADE_UP(0.1 + index * 0.12)}>
               <Link
-                href="/events"
-                className="group relative flex flex-col rounded-2xl overflow-hidden border border-white/[0.07] bg-white/[0.03] hover:border-white/[0.14] transition-all duration-500 hover:shadow-[0_24px_60px_rgba(0,0,0,0.4)]"
+                href={`/events?category=${card.id}`}
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.03] transition-all duration-500 hover:border-white/[0.14] hover:shadow-[0_24px_60px_rgba(0,0,0,0.4)]"
               >
                 {/* Gradient visual block */}
                 <div className="relative h-[220px] overflow-hidden">
                   {/* Base gradient */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${card.gradientClass} opacity-80 group-hover:opacity-95 transition-opacity duration-500`}
+                    className={`absolute inset-0 bg-gradient-to-br ${card.gradientClass} opacity-80 transition-opacity duration-500 group-hover:opacity-95`}
                   />
 
                   {/* Mesh overlay */}
@@ -106,34 +99,23 @@ const Benefits = () => {
                     }}
                   />
 
-                  {/* Large ghost text */}
-                  <div className="absolute inset-0 flex items-center justify-center select-none">
-                    <span className="text-[5.5rem] sm:text-[7rem] font-black text-white/[0.07] tracking-tighter leading-none group-hover:text-white/[0.11] transition-all duration-500 group-hover:scale-105 inline-block">
-                      {card.overlayText}
-                    </span>
-                  </div>
-
-                  {/* Subtitle row */}
-                  <div className="absolute bottom-0 inset-x-0 p-5 flex items-end justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/15 text-white backdrop-blur-sm border border-white/10">
-                        {card.icon}
-                      </span>
-                      <span className="text-xs font-bold uppercase tracking-[0.18em] text-white/80">
-                        {card.subTitle}
-                      </span>
-                    </div>
-                  </div>
+                  {card.image && (
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="absolute inset-0 size-full object-cover opacity-60"
+                    />
+                  )}
                 </div>
 
                 {/* Content block */}
-                <div className="flex flex-col flex-grow p-6 gap-5">
+                <div className="flex grow flex-col gap-5 p-6">
                   {/* Title row */}
                   <div className="flex items-start justify-between gap-4">
-                    <h3 className="text-lg font-bold text-white leading-snug">{card.title}</h3>
-                    <span className="shrink-0 mt-0.5 flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/[0.04] text-white/40 group-hover:text-white group-hover:border-white/20 group-hover:bg-white/[0.08] transition-all duration-300">
+                    <h3 className="text-lg font-bold leading-snug text-white">{card.title}</h3>
+                    <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/40 transition-all duration-300 group-hover:border-white/20 group-hover:bg-white/[0.08] group-hover:text-white">
                       <svg
-                        className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
+                        className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -148,16 +130,16 @@ const Benefits = () => {
                     </span>
                   </div>
 
-                  <p className="text-sm text-white/50 leading-relaxed">{card.description}</p>
+                  <p className="text-sm leading-relaxed text-white/50">{card.description}</p>
 
                   {/* Stats row */}
-                  <div className="grid grid-cols-3 gap-3 mt-auto">
+                  <div className="mt-auto grid grid-cols-3 gap-3">
                     {card.stats.map((stat) => (
                       <div
                         key={stat.label}
-                        className="flex flex-col items-center rounded-xl py-3 px-2 bg-white/[0.04] border border-white/[0.06]"
+                        className="flex flex-col items-center rounded-xl border border-white/[0.06] bg-white/[0.04] px-2 py-3"
                       >
-                        <span className="text-base font-black text-white tracking-tight">
+                        <span className="text-base font-black tracking-tight text-white">
                           {stat.value}
                         </span>
                       </div>
@@ -165,10 +147,10 @@ const Benefits = () => {
                   </div>
 
                   {/* CTA */}
-                  <div className="flex items-center gap-2 text-sm font-semibold text-white/40 group-hover:text-white transition-colors duration-300 mt-1">
+                  <div className="mt-1 flex items-center gap-2 text-sm font-semibold text-white/40 transition-colors duration-300 group-hover:text-white">
                     <span>Browse {card.title}</span>
                     <svg
-                      className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
+                      className="size-4 transition-transform duration-200 group-hover:translate-x-1"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -190,12 +172,12 @@ const Benefits = () => {
         {/* Bottom CTA strip */}
         <motion.div
           {...FADE_UP(0.4)}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 text-center"
+          className="mt-10 flex flex-col items-center justify-center gap-3 text-center sm:flex-row"
         >
           <span className="text-sm text-white/30">Want to see everything?</span>
           <Link
             href="/events"
-            className="text-sm font-semibold text-white/70 hover:text-white underline underline-offset-4 decoration-white/20 hover:decoration-white/50 transition-all duration-200"
+            className="text-sm font-semibold text-white/70 underline decoration-white/20 underline-offset-4 transition-all duration-200 hover:text-white hover:decoration-white/50"
           >
             View all events
           </Link>

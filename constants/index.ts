@@ -145,25 +145,16 @@ export const cynosureServicesIcons = [recording03, recording01, disc02, chromeca
 export const roadmap = [
   {
     id: "0",
-    title: "WORKSHOP",
-    text: "AI - Driven Analytics workshop",
-    date: "March 27, 2026",
+    title: "SVUCE Campus Map",
+    text: "Find your way to the Department of Computer Science and Engineering, SVUCE for Cynosure 2026! Join us for an extraordinary experience.",
+    date: "April 5, 2026",
     status: "done",
     imageUrl: roadmap1,
-    colorful: false,
-    toref: "https://forms.gle/EqB22RiaWGt1E1Ah7",
-  },
-  {
-    id: "2",
-    title: "Esports",
-    text: "Compete in our Cynosure Esports Challenge for glory and prizes! 🎮🔥",
-    date: "March 28, 2026",
-    status: "done",
-    imageUrl: "/esport.png",
     colorful: true,
-    fullbg: true,
-    toref:
-      "https://docs.google.com/forms/d/e/1FAIpQLSeq6zsI2hwjAH7RlofDG3PBPCbl9a2beR1lc3oU8Ea3Ad1Vpg/viewform?usp=dialog",
+    isMap: true,
+    toref: "https://maps.app.goo.gl/XvH221U5AXXtT4dD8",
+    iframeHtml:
+      '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1219.27519422466!2d79.39458608145354!3d13.627765799899105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4d4b3b377b880b%3A0xa2b39b4759aa90ec!2sDepartment%20Of%20Computer%20Science%20And%20Engineering%2CSVUCE!5e0!3m2!1sen!2sin!4v1773663950126!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
   },
 ];
 
@@ -173,16 +164,20 @@ export const collabText =
 export const collabContent = [
   {
     id: "0",
-    title: "Innovate Fearlessly",
+    title: "Participation Certificate for All",
     text: collabText,
   },
   {
     id: "1",
-    title: "Compete Strategically",
+    title: "100+ Internship Opportunities",
   },
   {
     id: "2",
-    title: "Conquer Challenges",
+    title: "Complimentary Lunch and Refreshments",
+  },
+  {
+    id: "4",
+    title: "Free ROBOTRAC 3.0 Registration from (SV Regional Science Centre, Tirupati)",
   },
 ];
 
