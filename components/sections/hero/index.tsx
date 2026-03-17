@@ -175,12 +175,17 @@ const Hero = () => {
             {/* Primary */}
             <Link
               href="/passes"
-              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-xl px-10 py-5 text-sm font-black uppercase tracking-[0.2em]  transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_50px_rgba(249,115,22,0.8)] active:scale-95"
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-xl border border-white/20 px-10 py-5 text-sm font-black uppercase tracking-[0.2em] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_50px_rgba(249,115,22,0.8)] active:scale-95"
             >
+              {/* Rotating cracker thread border */}
+              <span className="pointer-events-none absolute inset-0 rounded-xl border border-white/20" />
+              <span
+                className="pointer-events-none absolute inset-0 animate-spin rounded-xl border border-dashed border-white/40 opacity-70"
+                style={{ animationDuration: "6s" }}
+              />
               {/* Fiery animated background base */}
-              <div className="absolute inset-0 animate-[pulse_2s_ease-in-out_infinite] bg-gradient-to-r from-[#4A00E0] via-[#1BC7FB] to-[#8E2DE2] bg-[length:200%_auto]" />
+              <div className="absolute inset-0 animate-[pulse_2s_ease-in-out_infinite] bg-gradient-to-r from-blue-500 via-blue-500 to-yellow-500 bg-[length:200%_auto]" />
               {/* Overlay hover effect */}
-              <div className="absolute inset-0 animate-[bounce_3s_ease-in-out_infinite] bg-gradient-to-tr from-[#4A00E0] via-[#1BC7FB] to-[#8E2DE2] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
               <Image
                 src="/assets/crown.png"
@@ -189,7 +194,10 @@ const Hero = () => {
                 height={20}
                 className="relative z-10 drop-shadow-[0_2px_10px_rgba(255,255,255,0.8)]"
               />
-              <span className="relative z-10 text-white drop-shadow-md">Register Now</span>
+              <span className="relative z-10 text-white drop-shadow-md">
+                Register Now
+                <br /> <p className="text-[10px] text-white">few slots left</p>
+              </span>
               <svg
                 className="relative z-10 size-4 text-white drop-shadow-md transition-transform duration-200 group-hover:translate-x-1"
                 fill="none"
@@ -268,22 +276,6 @@ const Hero = () => {
               On Campus
             </span>
             <span className="h-3 w-px bg-white/10" />
-            <span className="flex items-center gap-2">
-              <svg
-                className="size-3.5 text-[#1BC7FB]/60"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-              2000+ Participants
-            </span>
           </motion.div>
         </div>
 
