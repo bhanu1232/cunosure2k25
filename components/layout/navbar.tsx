@@ -61,7 +61,7 @@ const Navbar = () => {
             <div className="relative size-10 overflow-hidden rounded-xl bg-gradient-to-br from-[#8E2DE2] to-[#4A00E0] p-px shadow-lg transition-colors duration-500 group-hover:from-[#1BC7FB] group-hover:to-[#4A00E0] md:size-11">
               <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-[#0A0514]">
                 <Image
-                  src="/assets/logo.jpg"
+                  src="/logo.jpeg"
                   width={44}
                   height={44}
                   alt="Cynosure Logo"
