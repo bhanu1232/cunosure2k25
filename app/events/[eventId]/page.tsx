@@ -12,6 +12,7 @@ type EventDetail = {
   requirements: string[];
   prize: number | string;
   coordinators: Coordinator[];
+  domains?: string[];
 };
 
 const EventDetailPage = ({ params }: { params: { eventId: string } }) => {
@@ -41,6 +42,12 @@ const EventDetailPage = ({ params }: { params: { eventId: string } }) => {
           <div className="mb-8">
             <h2 className="mb-4 text-2xl font-semibold text-white">About the Event</h2>
             <p className="whitespace-pre-line text-n-3">{event.text}</p>
+
+            {event.domains && event.domains.length > 0 && (
+              <div className="mt-4 rounded-lg border border-n-6 bg-n-8 p-3 text-sm text-n-1">
+                <strong className="text-white">Domains:</strong> {event.domains.join(", ")}
+              </div>
+            )}
           </div>
 
           <div className="mb-8">

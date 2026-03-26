@@ -360,16 +360,34 @@ export const events = [
     venue: "203",
     teamSize: "2-4 members",
     spot: "No Spot Registration",
+    domains: [
+      "Agriculture",
+      "Healthcare",
+      "Inventory/Logistics",
+      "Education",
+      "Sustainability",
+      "Civic Services",
+      "Finance",
+    ],
     fullDescription: `Welcome to Hackathon, presented by Cynosure!
 •	Teams select a problem statement and present a solution within the allocated time.
 •	Problem statements will be revealed on-site for teams to tackle.
 •	AI tools are allowed, and having a prototype adds extra points.
 •	Mentors are available for guidance.
 •	Ensure at least one laptop per team and strictly follow the timelines.
+
+Domain themes for participants:
+- Agriculture
+- Healthcare
+- Inventory/Logistics
+- Education
+- Sustainability
+- Civic Services
+- Finance
+
 Reporting Time: 8:30 AM, April 5th.
-For further enquires, please contact the event coordinators
+For further enquires, please contact the event coordinators.
 Good luck, and may the best team win!
-    
     `,
     rules: [
       `Welcome to Hackathon, presented by Cynosure!
@@ -391,17 +409,13 @@ Good luck, and may the best team win!`,
     ],
     coordinators: [
       {
-        name: "",
-        phone: "",
+        name: "Poorna Prasad",
+        phone: "+91 9419303752",
       },
-      // {
-      //   name: "N Chiranjeevi",
-      //   phone: "9705959253",
-      // },
-      // {
-      //   name: "S Chaitanya",
-      //   phone: "9154900357",
-      // },
+      {
+        name: "Susheel",
+        phone: "+91 86889 70995",
+      },
     ],
   },
   {

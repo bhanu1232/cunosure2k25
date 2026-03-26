@@ -30,8 +30,7 @@ const Benefits = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#09090f] via-[#09090f]/30 to-transparent" />
               {/* Prize badge */}
               <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/50 backdrop-blur-sm text-white text-xs font-semibold">
-                <Trophy className="w-3 h-3 text-white/70" />
-                ₹{item.prize}
+                <Trophy className="w-3 h-3 text-white/70" />₹{item.prize}
               </div>
             </div>
 
@@ -58,6 +57,13 @@ const Benefits = () => {
                   <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
                   <span className="truncate">{item.spot || "Spot Registration Available"}</span>
                 </div>
+
+                {item.domains && item.domains.length > 0 && (
+                  <div className="mt-3 text-xs text-white/60">
+                    <span className="font-semibold text-white/80">Domains:</span>{" "}
+                    {item.domains.join(", ")}
+                  </div>
+                )}
               </div>
 
               {/* CTA */}
