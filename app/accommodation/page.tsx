@@ -53,6 +53,7 @@ function FormField({ label, children }: { label: string; children: React.ReactNo
 const AccommodationPage = () => {
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     gender: "",
     mobile: "",
     package: "",
@@ -93,6 +94,7 @@ const AccommodationPage = () => {
 
       await addDoc(collection(db, "accommodations"), {
         name: formData.name,
+        email: formData.email,
         gender: formData.gender,
         mobile: formData.mobile,
         packageId: formData.package,
@@ -107,7 +109,7 @@ const AccommodationPage = () => {
         message:
           "Accommodation request submitted successfully. We will verify your payment and confirm.",
       });
-      setFormData({ name: "", gender: "", mobile: "", package: "", paymentId: "" });
+      setFormData({ name: "", email: "", gender: "", mobile: "", package: "", paymentId: "" });
     } catch (err) {
       setNotification({
         type: "error",
@@ -281,6 +283,31 @@ const AccommodationPage = () => {
                   className="form-input"
                 />
               </FormField>
+              <FormField label="Email Address">
+                <input
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  placeholder="Your email address"
+                  className="form-input"
+                />
+              </FormField>
+            </div>
+
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <FormField label="Mobile Number">
+                <input
+                  type="tel"
+                  value={formData.mobile}
+                  onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                  required
+                  pattern="[0-9]{10}"
+                  placeholder="10-digit number"
+                  className="form-input"
+                />
+              </FormField>
+
               <FormField label="Gender">
                 <select
                   value={formData.gender}
@@ -299,18 +326,7 @@ const AccommodationPage = () => {
               </FormField>
             </div>
 
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <FormField label="Mobile Number">
-                <input
-                  type="tel"
-                  value={formData.mobile}
-                  onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                  required
-                  pattern="[0-9]{10}"
-                  placeholder="10-digit number"
-                  className="form-input"
-                />
-              </FormField>
+            <div className="grid grid-cols-1 gap-5">
               <FormField label="Accommodation Package">
                 <select
                   value={formData.package}
