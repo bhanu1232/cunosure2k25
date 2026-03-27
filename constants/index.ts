@@ -410,7 +410,7 @@ Good luck, and may the best team win!`,
     coordinators: [
       {
         name: "Poorna Prasad",
-        phone: "+91 9419303752",
+        phone: "+91 94913 03752",
       },
       {
         name: "Susheel",
