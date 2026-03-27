@@ -18,14 +18,20 @@ export default function Home() {
         <Navbar />
 
         {/* Combo Pass Marquee Banner */}
-        <div className="relative z-40 flex h-10 w-full overflow-hidden bg-gradient-to-r from-orange-600 via-amber-500 to-orange-600 sm:h-12 shadow-lg sm:shadow-[0_0_20px_rgba(249,115,22,0.6)]">
-          
-          <Link href="/passes" className="group flex h-full w-full items-center">
+        <div className="relative z-40 flex h-10 w-full overflow-hidden bg-gradient-to-r from-orange-600 via-amber-500 to-orange-600 shadow-lg sm:h-12 sm:shadow-[0_0_20px_rgba(249,115,22,0.6)]">
+          <Link href="/passes" className="group flex size-full items-center">
             <div className="animate-marquee hover:[animation-play-state:paused]">
               {[...Array(8)].map((_, i) => (
-                <span key={i} className="flex shrink-0 items-center whitespace-nowrap px-6 text-xs font-black uppercase tracking-[0.1em] text-white sm:text-sm">
-                   ⚡ <span className="ml-2 mr-1 text-yellow-200">PLATINUM COMBO PASS:</span> 3 MEMBERS FOR ₹1200
-                   <span className="ml-2 mr-3 font-semibold text-white/80">(JUST ₹400 EACH!)</span> 🔥 LIMITED TIME OFFER 
+                <span
+                  key={i}
+                  className="flex shrink-0 items-center whitespace-nowrap px-6 text-xs font-black uppercase tracking-widest text-white sm:text-sm"
+                >
+                  ⚡ <span className="ml-2 mr-1 text-yellow-200">PLATINUM COMBO PASS:</span> 3
+                  MEMBERS FOR ₹1260
+                  <span className="ml-2 mr-3 font-semibold text-white/80">
+                    (JUST ₹420 EACH!)
+                  </span>{" "}
+                  🔥 LIMITED TIME OFFER
                 </span>
               ))}
             </div>
