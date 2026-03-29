@@ -1097,7 +1097,7 @@ const PassesPage = () => {
                         <div className="absolute inset-0 rounded-2xl bg-white/20 blur-xl transition-all duration-500 group-hover:bg-white/40" />
                         <div className="relative size-44 overflow-hidden rounded-2xl bg-white p-3 shadow-2xl sm:size-48">
                           <Image
-                            src="/cyno2026.jpeg"
+                            src="/cyno2026.png"
                             alt="Payment QR Code"
                             width={200}
                             height={200}
@@ -1309,7 +1309,7 @@ const PassesPage = () => {
                         <div className="absolute inset-0 rounded-2xl bg-white/20 blur-xl transition-all duration-500 group-hover:bg-white/40" />
                         <div className="relative size-44 overflow-hidden rounded-2xl bg-white p-3 shadow-2xl sm:size-48">
                           <Image
-                            src="/cyno2026.jpeg"
+                            src="/cyno2026.png"
                             alt="Payment QR Code"
                             width={200}
                             height={200}
