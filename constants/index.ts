@@ -421,15 +421,15 @@ Good luck, and may the best team win!`,
       },
       {
         name: "M. Vaishnavi",
-        phone: "+91 83284 53871",
+        phone: "",
       },
       {
         name: "K. Kalyani",
-        phone: "+91 77803 36196",
+        phone: "",
       },
       {
-        name: "Poorna Prasad",
-        phone: "+91 94913 03752",
+        name: "V. Momica",
+        phone: "",
       },
     ],
   },
@@ -635,7 +635,11 @@ Good luck, and may the best team win!`,
     requirements: ["Strong coding background", "Laptop with charger", "Development environment"],
     coordinators: [
       {
-        name: "",
+        name: "A. Hemanth",
+        phone: "95422 32964",
+      },
+      {
+        name: "K. Madhu Priya",
         phone: "",
       },
     ],
@@ -1033,10 +1037,10 @@ export const fun = [
       "Enthusiasm to participate",
     ],
     coordinators: [
-      // {
-      //   name: "B Ramu yadav",
-      //   phone: "9573619508",
-      // },
+      {
+        name: "T. Venkat Naveen",
+        phone: "77318 52077",
+      },
       // {
       //   name: "C.S. Khalandhar",
       //   phone: "9908057264",
