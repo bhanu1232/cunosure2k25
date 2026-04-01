@@ -24,7 +24,7 @@ const Navbar = dynamic(() => import("@/components/layout/navbar"), { ssr: false 
 const importantPoints = [
   "Separate hostel rooms for boys and girls",
   "Bring your own bedsheets & personal items",
-  "Available strictly on April 5, 2026 night",
+  "Available strictly on April 6, 2026 night",
   "Pre-registration is mandatory for accommodation",
   "Collect your accommodation pass on April 5 morning",
   "Only for registered Cynosure participants",
@@ -33,10 +33,13 @@ const importantPoints = [
 ];
 
 const ACCOMMODATION_OPTIONS = [
-  { id: "g350", label: "Girls: ₹350 / Night ( with food )", price: 350, gender: "Female" },
-  { id: "g250", label: "Girls: ₹250 / Night ( with out food )", price: 250, gender: "Female" },
-  { id: "b250", label: "Boys: ₹250 / Night ( with food )", price: 250, gender: "Male" },
-  { id: "b200", label: "Boys: ₹200 / Night ( with out food )", price: 200, gender: "Male" },
+  {
+    id: "accom",
+    label: "Accommodation: ₹350 / Night (with food) - Sunday",
+    price: 350,
+    gender: "Both",
+    day: "Sunday",
+  },
 ];
 
 function FormField({ label, children }: { label: string; children: React.ReactNode }) {
@@ -56,7 +59,6 @@ const AccommodationPage = () => {
     email: "",
     gender: "",
     mobile: "",
-    package: "",
     paymentId: "",
   });
   const [loading, setLoading] = useState(false);
@@ -65,18 +67,12 @@ const AccommodationPage = () => {
     message: string;
   } | null>(null);
 
-  const availablePackages = ACCOMMODATION_OPTIONS.filter(
-    (opt) => formData.gender === "" || opt.gender === formData.gender
-  );
+  const selectedPackage = ACCOMMODATION_OPTIONS[0];
 
-  const selectedPackage = ACCOMMODATION_OPTIONS.find((opt) => opt.id === formData.package);
+  const totalPrice = selectedPackage ? selectedPackage.price : 0;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.package) {
-      setNotification({ type: "error", message: "Please select an accommodation package." });
-      return;
-    }
     setLoading(true);
     setNotification(null);
 
@@ -97,9 +93,9 @@ const AccommodationPage = () => {
         email: formData.email,
         gender: formData.gender,
         mobile: formData.mobile,
-        packageId: formData.package,
-        packageLabel: selectedPackage?.label,
-        price: selectedPackage?.price,
+        packageId: selectedPackage.id,
+        packageLabel: selectedPackage.label,
+        price: totalPrice,
         paymentId: formData.paymentId,
         timestamp: new Date().toISOString(),
       });
@@ -109,7 +105,7 @@ const AccommodationPage = () => {
         message:
           "Accommodation request submitted successfully. We will verify your payment and confirm.",
       });
-      setFormData({ name: "", email: "", gender: "", mobile: "", package: "", paymentId: "" });
+      setFormData({ name: "", email: "", gender: "", mobile: "", paymentId: "" });
     } catch (err) {
       setNotification({
         type: "error",
@@ -312,7 +308,7 @@ const AccommodationPage = () => {
                 <select
                   value={formData.gender}
                   onChange={(e) => {
-                    setFormData({ ...formData, gender: e.target.value, package: "" });
+                    setFormData({ ...formData, gender: e.target.value });
                   }}
                   required
                   className="form-input text-white [&>option]:text-black"
@@ -326,32 +322,11 @@ const AccommodationPage = () => {
               </FormField>
             </div>
 
-            <div className="grid grid-cols-1 gap-5">
-              <FormField label="Accommodation Package">
-                <select
-                  value={formData.package}
-                  onChange={(e) => setFormData({ ...formData, package: e.target.value })}
-                  required
-                  className="form-input text-white [&>option]:text-black"
-                  disabled={formData.gender === ""}
-                >
-                  <option value="" disabled>
-                    {formData.gender === "" ? "Select gender first" : "Select a package"}
-                  </option>
-                  {availablePackages.map((opt) => (
-                    <option key={opt.id} value={opt.id}>
-                      {opt.label}
-                    </option>
-                  ))}
-                </select>
-              </FormField>
-            </div>
-
             {/* Payment Section */}
             {selectedPackage && (
               <div className="relative mt-6 overflow-hidden rounded-3xl bg-white/[0.03] p-6 sm:p-8">
                 <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">
-                  Secure Payment — ₹{selectedPackage.price}
+                  Secure Payment — ₹{totalPrice}
                 </p>
                 <div className="flex flex-col items-center gap-7 sm:flex-row sm:items-start">
                   {/* QR */}
@@ -370,9 +345,7 @@ const AccommodationPage = () => {
                   {/* Steps */}
                   <div className="flex-1 space-y-4">
                     <div className="inline-flex rounded-full bg-white/5 px-4 py-1.5">
-                      <span className="text-sm font-black text-white">
-                        ₹{selectedPackage.price}
-                      </span>
+                      <span className="text-sm font-black text-white">₹{totalPrice}</span>
                     </div>
                     <div className="space-y-3">
                       {[
@@ -478,14 +451,7 @@ const AccommodationPage = () => {
               <h2 className="text-base font-bold text-white sm:text-lg">Fee Structure</h2>
             </div>
             <div className="space-y-3">
-              {[
-                "Girls: ₹150 / Night ( with food 5pm onwards) saturday",
-                "Girls: ₹350 / Night ( with food ) Sunday",
-                "Girls: ₹250 / Night ( with out food ) sunday",
-                "Boys: ₹100 / Night ( with out food 5pm onwords) saturday",
-                "Boys: ₹250 / Night ( with food ) sunday",
-                "Boys: ₹200 / Night ( with out food ) sunday",
-              ].map((d) => (
+              {["Accommodation: ₹350 / Night (with food) - Sunday"].map((d) => (
                 <div key={d} className="flex items-center gap-2.5">
                   <div className="size-1.5 shrink-0 rounded-full bg-white/30" />
                   <p className="text-sm text-white/60 sm:text-base">{d}</p>
@@ -598,7 +564,7 @@ const AccommodationPage = () => {
               <p className="mb-0.5 text-[11px] font-medium uppercase tracking-widest text-white/35">
                 Event Date
               </p>
-              <p className="text-sm font-bold text-white sm:text-base">April 5–6, 2026</p>
+              <p className="text-sm font-bold text-white sm:text-base">April 6, 2026</p>
             </div>
           </div>
           <div className="flex items-center gap-3">

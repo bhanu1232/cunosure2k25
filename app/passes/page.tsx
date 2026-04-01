@@ -1078,7 +1078,7 @@ const PassesPage = () => {
                             </div>
                             {comboParticipants[idx].accommodation === "yes" && (
                               <p className="mt-1.5 text-[11px] text-white/35">
-                                * Accommodation fee collected during check-in
+                                * Book your accommodation fee from accomamodations page
                               </p>
                             )}
                           </FormField>
@@ -1293,7 +1293,7 @@ const PassesPage = () => {
                       </div>
                       {formData.accommodation === "yes" && (
                         <p className="mt-1.5 text-[11px] text-white/35">
-                          * Accommodation fee collected during check-in
+                          * Book your accommodation fee from accomamodations page
                         </p>
                       )}
                     </FormField>

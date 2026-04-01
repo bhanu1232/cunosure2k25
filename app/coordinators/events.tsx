@@ -12,23 +12,23 @@ const CoordinatorsContent = () => {
   const allStudentCoords = [...coord.slice(1), ...coord1];
 
   return (
-    <div className="min-h-screen bg-[#09090f] text-white pt-[4.75rem]">
+    <div className="min-h-screen bg-[#09090f] pt-[4.75rem] text-white">
       {/* ── Page Header ────────────────────────────────── */}
       <header className="bg-[#09090f]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
           {/* Title row */}
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <div className="flex items-center gap-2.5 mb-3">
-                <div className="w-1 h-5 bg-white rounded-full" />
-                <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
+              <div className="mb-3 flex items-center gap-2.5">
+                <div className="h-5 w-1 rounded-full bg-white" />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40 sm:text-xs">
                   Cynosure 2026
                 </span>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
+              <h1 className="text-3xl font-black tracking-tight text-white sm:text-4xl md:text-5xl">
                 Our Team
               </h1>
-              <p className="mt-2 sm:mt-3 text-sm sm:text-base text-white/50 max-w-md">
+              <p className="mt-2 max-w-md text-sm text-white/50 sm:mt-3 sm:text-base">
                 Meet the faculty coordinator and student organizers who make Cynosure happen.
               </p>
             </div>
@@ -37,16 +37,16 @@ const CoordinatorsContent = () => {
       </header>
 
       {/* ── Main Content ───────────────────────────────── */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-14 sm:space-y-20">
+      <main className="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:space-y-20 sm:px-6 sm:py-16">
         {/* ── Faculty Coordinator ─────────────────────── */}
         <section>
           {/* Section label */}
-          <div className="flex items-center gap-3 mb-6 sm:mb-8">
-            <Award className="w-4 h-4 text-white/50 shrink-0" />
-            <h2 className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-white/40 whitespace-nowrap">
-              Faculty Coordinator
+          <div className="mb-6 flex items-center gap-3 sm:mb-8">
+            <Award className="size-4 shrink-0 text-white/50" />
+            <h2 className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 sm:text-xs">
+              Coordinator
             </h2>
-            <div className="flex-1 h-px bg-white/[0.04]" />
+            <div className="h-px flex-1 bg-white/[0.04]" />
           </div>
 
           <motion.div
@@ -54,36 +54,36 @@ const CoordinatorsContent = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left gap-6 sm:gap-8 p-6 sm:p-8 rounded-2xl bg-white/[0.03] hover:bg-white/[0.05] transition-all duration-300">
+            <div className="flex flex-col items-center gap-6 rounded-2xl bg-white/[0.03] p-6 text-center transition-all duration-300 hover:bg-white/[0.05] sm:flex-row sm:items-start sm:gap-8 sm:p-8 sm:text-left">
               {/* Photo */}
-              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl overflow-hidden shrink-0">
+              <div className="size-24 shrink-0 overflow-hidden rounded-2xl sm:size-32">
                 <Image
                   src={facultyCoord.coordinatorImage}
                   alt={facultyCoord.coordinatorName}
                   width={128}
                   height={128}
-                  className="object-cover w-full h-full"
+                  className="size-full object-cover"
                 />
               </div>
 
               {/* Info */}
-              <div className="flex-1 min-w-0">
-                <div className="inline-flex items-center px-2.5 py-1 rounded-md bg-white/[0.06] text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-white/50 mb-3">
-                  Faculty Lead
+              <div className="min-w-0 flex-1">
+                <div className="mb-3 inline-flex items-center rounded-md bg-white/[0.06] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/50 sm:text-[11px]">
+                  HOD
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white break-words">
+                <h3 className="break-words text-xl font-bold text-white sm:text-2xl">
                   {facultyCoord.coordinatorName}
                 </h3>
-                <p className="text-white/40 text-xs sm:text-sm mt-1">
+                <p className="mt-1 text-xs text-white/40 sm:text-sm">
                   Department of Computer Science &amp; Engineering
                 </p>
 
                 {facultyCoord.mail && (
                   <a
                     href={`mailto:${facultyCoord.mail}`}
-                    className="inline-flex items-center gap-2 mt-4 sm:mt-5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg bg-white/[0.06] text-xs sm:text-sm text-white/60 hover:text-white hover:bg-white/10 transition-all break-all"
+                    className="mt-4 inline-flex items-center gap-2 break-all rounded-lg bg-white/[0.06] px-3 py-2 text-xs text-white/60 transition-all hover:bg-white/10 hover:text-white sm:mt-5 sm:px-4 sm:py-2.5 sm:text-sm"
                   >
-                    <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+                    <Mail className="size-3.5 shrink-0 sm:size-4" />
                     <span className="truncate">{facultyCoord.mail}</span>
                   </a>
                 )}
@@ -95,16 +95,16 @@ const CoordinatorsContent = () => {
         {/* ── Student Organizers ──────────────────────── */}
         <section>
           {/* Section label */}
-          <div className="flex items-center gap-3 mb-6 sm:mb-8">
-            <Users className="w-4 h-4 text-white/50 shrink-0" />
-            <h2 className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-white/40 whitespace-nowrap">
-              Student Organizers
+          <div className="mb-6 flex items-center gap-3 sm:mb-8">
+            <Users className="size-4 shrink-0 text-white/50" />
+            <h2 className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 sm:text-xs">
+              faculty coordinators
             </h2>
-            <div className="flex-1 h-px bg-white/[0.04]" />
+            <div className="h-px flex-1 bg-white/[0.04]" />
           </div>
 
           {/* Responsive grid: 1 col → 2 col → 3 col */}
-          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          <div className="xs:grid-cols-2 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
             {allStudentCoords.map((item, index) => (
               <motion.div
                 key={item.id + index}
@@ -112,38 +112,35 @@ const CoordinatorsContent = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-20px" }}
                 transition={{ duration: 0.35, delay: index * 0.06 }}
-                className="group relative flex flex-col p-4 sm:p-6 rounded-2xl bg-white/[0.03] hover:bg-white/[0.05] transition-all duration-300"
+                className="group relative flex flex-col rounded-2xl bg-white/[0.03] p-4 transition-all duration-300 hover:bg-white/[0.05] sm:p-6"
               >
                 {/* Index */}
-                <span className="absolute top-4 right-4 sm:top-5 sm:right-5 text-[10px] sm:text-xs font-mono text-white/20 tabular-nums">
+                <span className="absolute right-4 top-4 font-mono text-[10px] tabular-nums text-white/20 sm:right-5 sm:top-5 sm:text-xs">
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
                 {/* Photo */}
                 <div className="mb-4 sm:mb-5">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden">
+                  <div className="size-16 overflow-hidden rounded-xl sm:size-20">
                     <Image
                       src={item.coordinatorImage}
                       alt={item.coordinatorName}
                       width={80}
                       height={80}
-                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                      className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
                 </div>
 
                 {/* Info */}
                 <div className="flex-1">
-                  <h3 className="text-sm sm:text-base font-bold text-white leading-tight break-words pr-6">
+                  <h3 className="break-words pr-6 text-sm font-bold leading-tight text-white sm:text-base">
                     {item.coordinatorName}
                   </h3>
-                  <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-white/35 mt-1">
-                    Student Organizer
-                  </p>
                 </div>
 
                 {/* Divider */}
-                <div className="h-px bg-white/[0.04] my-3 sm:my-4" />
+                <div className="my-3 h-px bg-white/[0.04] sm:my-4" />
 
                 {/* Contact buttons */}
                 <div className="flex flex-wrap gap-2">
@@ -152,32 +149,32 @@ const CoordinatorsContent = () => {
                       href={`https://instagram.com/${item.title}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/[0.05] text-white/50 hover:text-white hover:bg-white/10 transition-all text-[11px] sm:text-xs"
+                      className="flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-2.5 py-1.5 text-[11px] text-white/50 transition-all hover:bg-white/10 hover:text-white sm:text-xs"
                     >
-                      <Instagram className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+                      <Instagram className="size-3 shrink-0 sm:size-3.5" />
                       <span className="font-medium">Instagram</span>
                     </a>
                   )}
                   {item.mail && (
                     <a
                       href={`mailto:${item.mail}`}
-                      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/[0.05] text-white/50 hover:text-white hover:bg-white/10 transition-all text-[11px] sm:text-xs"
+                      className="flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-2.5 py-1.5 text-[11px] text-white/50 transition-all hover:bg-white/10 hover:text-white sm:text-xs"
                     >
-                      <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+                      <Mail className="size-3 shrink-0 sm:size-3.5" />
                       <span className="font-medium">Email</span>
                     </a>
                   )}
                   {item.contactInfo && !item.contactInfo.includes("@") && (
                     <a
                       href={`tel:${item.contactInfo}`}
-                      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/[0.05] text-white/50 hover:text-white hover:bg-white/10 transition-all text-[11px] sm:text-xs"
+                      className="flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-2.5 py-1.5 text-[11px] text-white/50 transition-all hover:bg-white/10 hover:text-white sm:text-xs"
                     >
-                      <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
-                      <span className="font-medium truncate max-w-[80px]">{item.contactInfo}</span>
+                      <Phone className="size-3 shrink-0 sm:size-3.5" />
+                      <span className="max-w-[80px] truncate font-medium">{item.contactInfo}</span>
                     </a>
                   )}
                   {!item.title && !item.mail && !item.contactInfo && (
-                    <span className="text-[10px] sm:text-xs text-white/20 italic">
+                    <span className="text-[10px] italic text-white/20 sm:text-xs">
                       No contact listed
                     </span>
                   )}
