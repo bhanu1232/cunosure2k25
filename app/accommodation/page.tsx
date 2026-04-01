@@ -24,7 +24,6 @@ const Navbar = dynamic(() => import("@/components/layout/navbar"), { ssr: false 
 const importantPoints = [
   "Separate hostel rooms for boys and girls",
   "Bring your own bedsheets & personal items",
-  "Available strictly on April 6, 2026 night",
   "Pre-registration is mandatory for accommodation",
   "Collect your accommodation pass on April 5 morning",
   "Only for registered Cynosure participants",
@@ -510,12 +509,14 @@ const AccommodationPage = () => {
               <p className="mb-1 text-[11px] uppercase tracking-wider text-white/35">
                 Primary Coordinator
               </p>
-              <p className="mb-3 text-sm font-semibold text-white/80 sm:text-base">TBA</p>
+              <p className="mb-3 text-sm font-semibold text-white/80 sm:text-base">
+                K. Rohit Kumar
+              </p>
               <a
-                href="tel:6300441669"
+                href="tel:9666233912"
                 className="inline-flex items-center gap-2 font-mono text-sm text-white/60 transition-colors hover:text-white"
               >
-                <PhoneCall className="size-3.5" /> TBA
+                <PhoneCall className="size-3.5" /> 9666233912
               </a>
             </motion.div>
 
@@ -536,13 +537,15 @@ const AccommodationPage = () => {
               <p className="mb-1 text-[11px] uppercase tracking-wider text-white/35">
                 Primary Coordinator
               </p>
-              <p className="mb-3 text-sm font-semibold text-white/80 sm:text-base">TBA</p>
+              <p className="mb-3 text-sm font-semibold text-white/80 sm:text-base">
+                P. Naga Jyothi
+              </p>
               <a
-                href="tel:8074345332"
+                href="tel:"
                 className="inline-flex items-center gap-2 font-mono text-sm text-white/60 transition-colors hover:text-white"
               >
                 <PhoneCall className="size-3.5" />
-                TBA
+                NA
               </a>
             </motion.div>
           </div>
@@ -564,7 +567,7 @@ const AccommodationPage = () => {
               <p className="mb-0.5 text-[11px] font-medium uppercase tracking-widest text-white/35">
                 Event Date
               </p>
-              <p className="text-sm font-bold text-white sm:text-base">April 6, 2026</p>
+              <p className="text-sm font-bold text-white sm:text-base">April 5-6, 2026</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
