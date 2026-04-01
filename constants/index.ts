@@ -416,7 +416,7 @@ Good luck, and may the best team win!`,
     ],
     coordinators: [
       {
-        name: "Susheel",
+        name: "M. Susheel Kumar",
         phone: "+91 86889 70995",
       },
       {
@@ -428,7 +428,7 @@ Good luck, and may the best team win!`,
         phone: "",
       },
       {
-        name: "V. Momica",
+        name: "V. Monica",
         phone: "",
       },
     ],
