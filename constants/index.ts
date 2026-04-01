@@ -85,6 +85,7 @@ export const images = {
   suresh: "fac/suresh.jpeg",
   ramu: "fac/RAMU.jpeg",
   lakshmi: "fac/lakshmi.jpeg",
+  dhamu: "fac/dhamu.jpeg",
 };
 
 const {
@@ -1303,6 +1304,18 @@ export const coord = [
     imageUrl: benefitImage2,
     coordinatorImage: images.ramu,
     coordinatorName: "Mr S Ramaiah",
+    contactInfo: "",
+    mail: "",
+  },
+  {
+    id: "7",
+    title: "",
+    text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
+    backgroundUrl: "assets/benefits/card-1.svg",
+    iconUrl: benefitIcon1,
+    imageUrl: benefitImage2,
+    coordinatorImage: images.dhamu,
+    coordinatorName: "Mr M Damodar Reddy",
     contactInfo: "",
     mail: "",
   },
