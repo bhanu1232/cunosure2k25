@@ -409,12 +409,20 @@ Good luck, and may the best team win!`,
     ],
     coordinators: [
       {
-        name: "Poorna Prasad",
-        phone: "+91 94913 03752",
-      },
-      {
         name: "Susheel",
         phone: "+91 86889 70995",
+      },
+      {
+        name: "M. Vaishnavi",
+        phone: "+91 83284 53871",
+      },
+      {
+        name: "K. Kalyani",
+        phone: "+91 77803 36196",
+      },
+      {
+        name: "Poorna Prasad",
+        phone: "+91 94913 03752",
       },
     ],
   },
@@ -722,17 +730,17 @@ Good luck, and may the best team win!`,
     ],
     coordinators: [
       {
-        name: "",
+        name: "C. Bhanu Prakash",
+        phone: "+91 72074 94328",
+      },
+      {
+        name: "p. Teja",
         phone: "",
       },
-      // {
-      //   name: "D Mounika",
-      //   phone: "",
-      // },
-      // {
-      //   name: "D Sai pallavi",
-      //   phone: "",
-      // },
+      {
+        name: "R. Gayatri",
+        phone: "",
+      },
     ],
   },
 
