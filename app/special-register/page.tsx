@@ -698,7 +698,7 @@ const SpecialRegisterPage = () => {
                       <div className="absolute inset-0 rounded-2xl bg-white/20 blur-xl transition-all duration-500 group-hover:bg-white/40" />
                       <div className="relative size-44 overflow-hidden rounded-2xl bg-white p-3 shadow-2xl sm:size-48">
                         <Image
-                          src="/cyno2026.png"
+                          src="/vivek_sir.png"
                           alt="Payment QR"
                           width={200}
                           height={200}
@@ -715,8 +715,8 @@ const SpecialRegisterPage = () => {
                         {[
                           "Scan the QR code using any UPI app",
                           <>
-                            Or pay via PhonePe:{" "}
-                            <span className="font-bold text-white">8978227231</span>
+                            Or pay via UPI:{" "}
+                            <span className="font-bold text-white">svuvivek1@ybl</span>
                           </>,
                           "Save the UTR/Payment ID after paying",
                         ].map((step, i) => (

@@ -62,7 +62,7 @@ export default function OfferPopup() {
 
           <div className="mb-8 w-full rounded-2xl border border-white/10 bg-white/5 p-4">
             <p className="text-[10px] font-bold uppercase tracking-widest text-white/50">Only</p>
-            <p className="my-1 text-5xl font-black text-white">₹1260</p>
+            <p className="my-1 text-5xl font-black text-white">₹1350</p>
             <p className="text-xs font-semibold text-white/50">Equivalent to ₹420 per person!</p>
           </div>
 

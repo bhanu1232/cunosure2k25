@@ -40,8 +40,8 @@ const PASSES = [
   {
     id: "platinum",
     name: "Combo Pass",
-    price: 1260,
-    pricePerPerson: 420,
+    price: 1350,
+    pricePerPerson: 450,
     tagline: "Combo Pass — 3 Members",
     isCombo: true,
     comboCount: 3,
@@ -73,8 +73,8 @@ const PASSES = [
   {
     id: "silver",
     name: "Silver",
-    price: 400,
-    pricePerPerson: 400,
+    price: 500,
+    pricePerPerson: 500,
     tagline: "Base Pass",
     isCombo: false,
     comboCount: 1,
@@ -101,37 +101,37 @@ const PASSES = [
       "Complimentary SV Zoo Park Ticket",
     ],
   },
-  {
-    id: "gold",
-    name: "Gold",
-    price: 550,
-    pricePerPerson: 550,
-    tagline: "Standard Pass",
-    isCombo: false,
-    comboCount: 1,
-    isFlash: false,
-    color: "#F59E0B",
-    textColor: "text-amber-900",
-    cardBg: "from-amber-300 via-yellow-200 to-amber-500",
-    chipBg: "bg-amber-600/30",
-    shineBg: "from-white/70 via-white/20 to-transparent",
-    shadowColor: "shadow-amber-400/50",
-    hoverShadow: "hover:shadow-amber-400/70",
-    borderColor: "border-amber-300/30",
-    badgeBg: "bg-amber-700",
-    badgeText: "text-amber-50",
-    btnBg: "bg-amber-800",
-    btnText: "text-amber-50",
-    borderHex: "#F59E0B",
-    benefits: [
-      "4 Technical Event (Your Choice)",
-      "2 Non-Technical Event (Your Choice)",
-      "Participation Certificate",
-      "Complimentary Lunch and Refreshments",
-      "Free ROBOTRAC 3.0 Registration",
-      "Complimentary SV Zoo Park Ticket",
-    ],
-  },
+  // {
+  //   id: "gold",
+  //   name: "Gold",
+  //   price: 550,
+  //   pricePerPerson: 550,
+  //   tagline: "Standard Pass",
+  //   isCombo: false,
+  //   comboCount: 1,
+  //   isFlash: false,
+  //   color: "#F59E0B",
+  //   textColor: "text-amber-900",
+  //   cardBg: "from-amber-300 via-yellow-200 to-amber-500",
+  //   chipBg: "bg-amber-600/30",
+  //   shineBg: "from-white/70 via-white/20 to-transparent",
+  //   shadowColor: "shadow-amber-400/50",
+  //   hoverShadow: "hover:shadow-amber-400/70",
+  //   borderColor: "border-amber-300/30",
+  //   badgeBg: "bg-amber-700",
+  //   badgeText: "text-amber-50",
+  //   btnBg: "bg-amber-800",
+  //   btnText: "text-amber-50",
+  //   borderHex: "#F59E0B",
+  //   benefits: [
+  //     "4 Technical Event (Your Choice)",
+  //     "2 Non-Technical Event (Your Choice)",
+  //     "Participation Certificate",
+  //     "Complimentary Lunch and Refreshments",
+  //     "Free ROBOTRAC 3.0 Registration",
+  //     "Complimentary SV Zoo Park Ticket",
+  //   ],
+  // },
   // {
   //   id: "diamond",
   //   name: "Diamond",
@@ -342,8 +342,8 @@ const PassesPage = () => {
         await addDoc(collection(db, "registrations"), {
           ...p,
           passType: "Platinum",
-          amount: 420,
-          totalAmount: 1260,
+          amount: 450,
+          totalAmount: 1350,
           paymentId: comboPaymentId,
           participantNumber: i + 1,
           comboGroup: comboPaymentId,
@@ -667,14 +667,14 @@ const PassesPage = () => {
                         {/* Price */}
                         <div className="mt-5 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:items-end sm:gap-4">
                           <p className="bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-500 bg-clip-text text-5xl font-black leading-none tracking-tight text-transparent sm:text-7xl">
-                            ₹1260
+                            ₹1350
                           </p>
                           <div className="flex flex-col pb-0 sm:pb-1">
                             <span className="text-xs font-bold text-white/80 sm:text-sm">
                               for 3 persons
                             </span>
                             <span className="text-[10px] font-medium text-white/40 sm:text-[11px]">
-                              Equivalent to ₹420/person
+                              Equivalent to ₹450/person
                             </span>
                           </div>
                         </div>
@@ -1090,14 +1090,14 @@ const PassesPage = () => {
                   {/* Payment Section */}
                   <div className="relative overflow-hidden rounded-3xl bg-white/[0.03] p-6 sm:p-8">
                     <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">
-                      Secure Payment — ₹1260 Total (₹420/person)
+                      Secure Payment — ₹1350 Total (₹450/person)
                     </p>
                     <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start">
                       <div className="group relative">
                         <div className="absolute inset-0 rounded-2xl bg-white/20 blur-xl transition-all duration-500 group-hover:bg-white/40" />
                         <div className="relative size-44 overflow-hidden rounded-2xl bg-white p-3 shadow-2xl sm:size-48">
                           <Image
-                            src="/cyno2026.png"
+                            src="/vivek_sir.png"
                             alt="Payment QR Code"
                             width={200}
                             height={200}
@@ -1108,15 +1108,15 @@ const PassesPage = () => {
                       <div className="flex-1 space-y-5 text-center sm:text-left">
                         <div className="inline-flex rounded-full bg-purple-500/10 px-4 py-1.5 align-middle">
                           <span className="text-sm font-black text-purple-300">
-                            ₹1260 for 3 members (₹420 each)
+                            ₹1350 for 3 members (₹450 each)
                           </span>
                         </div>
                         <div className="space-y-3">
                           {[
                             "Scan the QR code using any UPI app",
                             <>
-                              Or pay via PhonePe:{" "}
-                              <span className="font-bold text-white">8978227231</span>
+                              Or pay via UPI:{" "}
+                              <span className="font-bold text-white">svuvivek1@ybl</span>
                             </>,
                             "Save the payment UTR/ID after paying",
                           ].map((step, i) => (
@@ -1309,7 +1309,7 @@ const PassesPage = () => {
                         <div className="absolute inset-0 rounded-2xl bg-white/20 blur-xl transition-all duration-500 group-hover:bg-white/40" />
                         <div className="relative size-44 overflow-hidden rounded-2xl bg-white p-3 shadow-2xl sm:size-48">
                           <Image
-                            src="/cyno2026.png"
+                            src="/vivek_sir.png"
                             alt="Payment QR Code"
                             width={200}
                             height={200}
@@ -1327,8 +1327,8 @@ const PassesPage = () => {
                           {[
                             "Scan the QR code using any UPI app",
                             <>
-                              Or pay via PhonePe:{" "}
-                              <span className="font-bold text-white">8978227231</span>
+                              Or pay via UPI:{" "}
+                              <span className="font-bold text-white">svuvivek1@ybl</span>
                             </>,
                             "Save the payment UTR/ID after paying",
                           ].map((step, i) => (
