@@ -15,7 +15,7 @@ const EVENTS = [
   {
     id: "hackathon",
     name: "Hackathon",
-    fee: 200,
+    fee: 350,
     type: "team",
     tagline: "Build. Innovate. Win.",
     color: "text-orange-400",
