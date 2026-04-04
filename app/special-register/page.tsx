@@ -30,6 +30,7 @@ const EVENTS = [
     btnText: "text-orange-50",
     description: "Team-based. Build a solution, pitch it, win.",
     note: "Team of 2–4 members. One registration per team.",
+    closed: true,
   },
   {
     id: "ideathon",
@@ -440,15 +441,23 @@ const SpecialRegisterPage = () => {
                           Registration Fee
                         </p>
                         <p className={`text-4xl font-black leading-none ${ev.textColor}`}>
-                          ₹{ev.fee}
+                          {ev.closed ? "—" : `₹${ev.fee}`}
                         </p>
+                        {ev.closed && (
+                          <p
+                            className={`mt-1 text-xs font-bold uppercase tracking-widest ${ev.textColor} opacity-75`}
+                          >
+                            Registrations Closed
+                          </p>
+                        )}
                       </div>
                       <button
                         onClick={() => setSelectedEvent(ev)}
-                        className={`w-full rounded-2xl ${ev.btnBg} px-6 py-3.5 text-xs font-black uppercase tracking-[0.15em] ${ev.btnText} transition-all duration-300 active:scale-95 sm:w-auto`}
-                        style={{ boxShadow: `0 4px 16px 0 ${ev.borderHex}55` }}
+                        disabled={ev.closed}
+                        className={`w-full rounded-2xl ${ev.closed ? "cursor-not-allowed bg-gray-600 text-gray-300" : `${ev.btnBg} ${ev.btnText}`} px-6 py-3.5 text-xs font-black uppercase tracking-[0.15em] transition-all duration-300 active:scale-95 sm:w-auto ${!ev.closed && "active:scale-95"}`}
+                        style={{ boxShadow: ev.closed ? "none" : `0 4px 16px 0 ${ev.borderHex}55` }}
                       >
-                        Register Now →
+                        {ev.closed ? "✕ Registrations Closed" : "Register Now →"}
                       </button>
                     </div>
                   </div>
