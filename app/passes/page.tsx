@@ -63,7 +63,7 @@ const PASSES = [
       "3 Members Participate Together",
       "All Technical Events (per member)",
       "All Non-Technical Events (per member)",
-      "Excludes Hackathon, Ideathon & Paper Presentation",
+      "Excludes Hackathon, Ideathon & Paper Presentation & spot events",
       "Participation Certificates (All 3)",
       "Complimentary Lunch and Refreshments",
       "Free ROBOTRAC 3.0 Registration",
