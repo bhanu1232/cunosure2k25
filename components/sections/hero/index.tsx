@@ -133,38 +133,17 @@ const Hero = () => {
             boundless opportunities await.
           </motion.p>
 
-          {/* ── Countdown ── */}
+          {/* ── Event Ended Badge ── */}
           <motion.div
             {...FADE_UP(0.35)}
-            className="mb-10 inline-flex items-center gap-2 rounded-2xl border border-white/[0.06] bg-white/[0.03] p-3 backdrop-blur-md sm:gap-3 md:gap-4"
+            className="mb-10 inline-flex items-center gap-3 rounded-2xl border border-red-500/20 bg-red-500/[0.08] px-6 py-3 backdrop-blur-md"
           >
-            {countdownItems.map((item, index) => (
-              <React.Fragment key={item.label}>
-                <div className="sm:w-18 flex w-14 flex-col items-center md:w-24">
-                  <div className="relative w-full">
-                    <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-[#4A00E0]/20 to-transparent blur-sm" />
-                    <div className="relative flex items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.05] px-2 py-3 sm:py-4">
-                      <motion.span
-                        key={mounted ? item.value : "init"}
-                        initial={{ opacity: 0, y: -6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.25 }}
-                        className="text-2xl font-black tabular-nums tracking-tighter text-white sm:text-3xl md:text-4xl"
-                      >
-                        {item.value.toString().padStart(2, "0")}
-                      </motion.span>
-                    </div>
-                  </div>
-                  <span className="mt-2 text-[9px] font-bold uppercase tracking-[0.2em] text-white/30 sm:text-[10px]">
-                    {item.label}
-                  </span>
-                </div>
-
-                {index < countdownItems.length - 1 && (
-                  <span className="select-none pb-4 text-xl font-thin text-white/20">:</span>
-                )}
-              </React.Fragment>
-            ))}
+            <span className="relative flex size-2">
+              <span className="relative inline-flex size-2 rounded-full bg-red-400" />
+            </span>
+            <span className="text-sm font-bold uppercase tracking-[0.18em] text-red-400">
+              Event Concluded — April 5–6, 2026
+            </span>
           </motion.div>
 
           {/* ── CTA buttons ── */}
@@ -172,44 +151,7 @@ const Hero = () => {
             {...FADE_UP(0.45)}
             className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
           >
-            {/* Primary */}
-            <Link
-              href="/passes"
-              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-xl border border-white/20 px-10 py-5 text-sm font-black uppercase tracking-[0.2em] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_50px_rgba(249,115,22,0.8)] active:scale-95"
-            >
-              {/* Rotating cracker thread border */}
-              <span className="pointer-events-none absolute inset-0 rounded-xl border border-white/20" />
-              <span
-                className="pointer-events-none absolute inset-0 animate-spin rounded-xl border border-dashed border-white/40 opacity-70"
-                style={{ animationDuration: "6s" }}
-              />
-              {/* Fiery animated background base */}
-              <div className="absolute inset-0 animate-[pulse_2s_ease-in-out_infinite] bg-gradient-to-r from-blue-500 via-blue-500 to-yellow-500 bg-[length:200%_auto]" />
-              {/* Overlay hover effect */}
-
-              <Image
-                src="/assets/crown.png"
-                alt="Crown"
-                width={20}
-                height={20}
-                className="relative z-10 drop-shadow-[0_2px_10px_rgba(255,255,255,0.8)]"
-              />
-              <span className="relative z-10 text-white drop-shadow-md">
-                Register Now
-                <br /> <p className="text-[10px] text-white">few slots left</p>
-              </span>
-              <svg
-                className="relative z-10 size-4 text-white drop-shadow-md transition-transform duration-200 group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={3}
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
-
-            {/* Secondary */}
+            {/* Explore Events only */}
             <Link
               href="/events"
               className="group inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white/70 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] hover:text-white"

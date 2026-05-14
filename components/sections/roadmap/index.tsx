@@ -88,36 +88,16 @@ const Roadmap = () => {
           <Gradient />
         </div>
 
-        {/* CTA */}
+        {/* Event Concluded Notice */}
         <div className="mt-14 flex flex-col items-center gap-3 md:mt-16 xl:mt-20">
-          <Link
-            href="/passes"
-            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-xl px-10 py-4 text-sm font-bold uppercase tracking-widest transition-all duration-300 hover:shadow-[0_0_40px_rgba(74,0,224,0.35)]"
-          >
-            {/* Background */}
-            <div className="absolute inset-0 bg-white transition-opacity duration-300 group-hover:opacity-90" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-            <span className="relative z-10 text-black transition-colors duration-300 group-hover:text-white">
-              Register Now
+          <div className="inline-flex items-center gap-3 rounded-xl border border-red-500/15 bg-red-500/[0.07] px-8 py-4">
+            <span className="size-2 rounded-full bg-red-400" />
+            <span className="text-sm font-bold uppercase tracking-widest text-red-400">
+              Registrations Closed
             </span>
-            <svg
-              className="relative z-10 size-4 text-black transition-all duration-200 group-hover:translate-x-1 group-hover:text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </Link>
-
+          </div>
           <p className="text-xs tracking-wide text-white/25">
-            Early bird pricing available. Limited seats.
+            Thank you for your interest in Cynosure 2026.
           </p>
         </div>
       </div>

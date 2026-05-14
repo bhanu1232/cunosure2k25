@@ -129,19 +129,16 @@ const Navbar = () => {
 
         {/* === RIGHT: CTA & Mobile Hamburger === */}
         <div className="flex items-center justify-end gap-4 lg:col-span-1">
-          {/* Desktop Button */}
+          {/* Desktop Button - Registrations Closed */}
           <div className="hidden lg:block">
-            <Link
-              href="/passes"
-              className="group relative inline-flex transform-gpu items-center justify-center overflow-hidden rounded-full p-px outline-none transition-all duration-300 hover:scale-105 active:scale-95"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#8E2DE2] via-[#4A00E0] to-[#1BC7FB] transition-opacity duration-500" />
-              <div className="relative rounded-full bg-[#0A0514] px-7 py-2.5 transition-colors duration-500 group-hover:bg-[#1A1A32]">
-                <span className="text-sm font-semibold tracking-wide text-white transition-colors duration-300">
-                  Register
+            <div className="group relative inline-flex transform-gpu items-center justify-center overflow-hidden rounded-full p-px outline-none cursor-not-allowed opacity-50">
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-600" />
+              <div className="relative rounded-full bg-[#0A0514] px-7 py-2.5">
+                <span className="text-sm font-semibold tracking-wide text-white/50">
+                  Registrations Closed
                 </span>
               </div>
-            </Link>
+            </div>
           </div>
 
           {/* Mobile Hamburger Button */}

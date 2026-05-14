@@ -26,9 +26,10 @@ const Collaboration = (props: Props) => {
               </li>
             ))}
           </ul>
-          <Button href="/passes" white className="animate-fade-up">
-            Register Now
-          </Button>
+          <div className="inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-5 py-2.5">
+            <span className="size-2 rounded-full bg-red-400" />
+            <span className="text-sm font-bold uppercase tracking-widest text-red-400">Event Concluded</span>
+          </div>
         </div>
 
         <div className="mt-2 lg:ml-auto xl:w-[38rem]">

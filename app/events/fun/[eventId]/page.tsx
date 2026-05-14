@@ -87,12 +87,11 @@ const FunEventDetailPage = ({ params }: { params: { eventId: string } }) => {
             </div>
           </div>
 
-          <Link
-            href="/passes"
-            className="inline-block rounded-lg bg-cyan-500 px-8 py-3 text-center text-white transition-colors hover:bg-cyan-400"
-          >
-            Register Now
-          </Link>
+          {/* Registrations Closed */}
+          <div className="inline-flex items-center gap-2 rounded-lg border border-red-500/20 bg-red-500/10 px-6 py-3">
+            <span className="size-2 rounded-full bg-red-400" />
+            <span className="text-sm font-bold text-red-400">Registrations Closed</span>
+          </div>
         </div>
       </div>
     </div>

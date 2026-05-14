@@ -25,7 +25,8 @@ export default function OfferPopup() {
     sessionStorage.setItem("cyno_offer_seen", "true");
   };
 
-  if (!isOpen) return null;
+  // Event has concluded — popup disabled
+  if (true) return null;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 px-4 backdrop-blur-sm transition-opacity duration-300">
